@@ -10,7 +10,7 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
-</body>s
+</body>
 </html>
 // 네카라쿠배 화이팅
 // branch test by daseul
