@@ -7,6 +7,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() throws Exception {
-        return "auth/loginForm";
+//        return "auth/loginForm";
+    	return "page/flight";
     }
 }
