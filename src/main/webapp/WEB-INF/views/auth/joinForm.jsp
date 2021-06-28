@@ -19,13 +19,13 @@
            <!--회원가입섹션-->
             <section class="login">
                 <article class="login__form__container">
-                  
+                  <!-- 아아아아아 -->
                    <!--회원가입 폼-->
                     <div class="login__form">
                         <!--로고-->
                         <h1><img src="${pageContext.request.contextPath}/resources/images/sky.png" alt=""></h1>
                          <!--로고end-->
-                         
+                         <!-- ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ -->
                          <!--회원가입 인풋-->
                         <form class="login__input" action="/auth/joinForm" method="post"id="signFrm"name="signFrm">
                             <input type="text" name="id" placeholder="아이디" required="required" id="id">
@@ -46,7 +46,7 @@
                         <span>계정이 있으신가요?</span>
                         <a href="/auth/loginForm">로그인</a>
                     </div>
-<!-- ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅁㄴㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ -->
+
                     
                 </article>
             </section>
