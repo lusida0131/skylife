@@ -71,8 +71,13 @@ public class skylifeJoinController {
 	@ResponseBody
 	public String idCheck(HttpServletRequest request) {
 		
+<<<<<<< HEAD
 		String id = request.getParameter("id");
 		int result=service.idCheck(id);
+=======
+		String userID = request.getParameter("userID");
+		int result=service.idCheck(userID);
+>>>>>>> e3a52d50edaac527bdc22406ad3eb71c5df6ab45
 		return Integer.toString(result);
 	}
 	
