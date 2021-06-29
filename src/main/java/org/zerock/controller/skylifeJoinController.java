@@ -41,19 +41,19 @@ public class skylifeJoinController {
 	}
 	
 	@PostMapping("/auth/joinForm")
-	public String joinForm(skylifeVO instarvo,RedirectAttributes redirectAttributes) {
-		String hashedPw = BCrypt.hashpw(instarvo.getPw(), BCrypt.gensalt()); 
-		instarvo.setPw(hashedPw); 
-		service.register(instarvo); 
+	public String joinForm(skylifeVO skylifevo,RedirectAttributes redirectAttributes) {
+		String hashedPw = BCrypt.hashpw(skylifevo.getPw(), BCrypt.gensalt()); 
+		skylifevo.setPw(hashedPw); 
+		service.register(skylifevo); 
 		redirectAttributes.addFlashAttribute("msg", "REGISTERED");
 
 		return "redirect:/auth/loginForm";
 	}
 	
 	@PostMapping("/auth/loginForm")
-	public String loginForm(HttpSession session, skylifeVO instarvo, Model model ) throws Exception {
-		skylifeVO user = service.Login(instarvo);
-		if(user!=null&&BCrypt.checkpw(instarvo.getPw(), user.getPw())) {
+	public String loginForm(HttpSession session, skylifeVO skylifevo, Model model ) throws Exception {
+		skylifeVO user = service.Login(skylifevo);
+		if(user!=null&&BCrypt.checkpw(skylifevo.getPw(), user.getPw())) {
 			session.setAttribute("user", user);
 			
 			return "redirect:/home";
@@ -71,8 +71,8 @@ public class skylifeJoinController {
 	@ResponseBody
 	public String idCheck(HttpServletRequest request) {
 		
-		String userID = request.getParameter("userID");
-		int result=service.idCheck(userID);
+		String id = request.getParameter("id");
+		int result=service.idCheck(id);
 		return Integer.toString(result);
 	}
 	
