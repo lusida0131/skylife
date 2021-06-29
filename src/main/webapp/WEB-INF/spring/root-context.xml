@@ -10,11 +10,7 @@
 	
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-<<<<<<< HEAD
-		<property name="jdbcUrl" value="jdbc:log4jdbc:mysql://localhost:3306/skylifedb?useSSL=false"></property>
-=======
 		<property name="jdbcUrl" value="jdbc:log4jdbc:mysql://localhost:3306/skylifedb?useSSL=false&amp;allowPublicKeyRetrieval=true"></property>
->>>>>>> e3a52d50edaac527bdc22406ad3eb71c5df6ab45
 		<property name="username" value="skylife"></property>
 		<property name="password" value="skylife"></property>
 	</bean>
