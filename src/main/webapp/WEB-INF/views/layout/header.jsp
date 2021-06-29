@@ -60,17 +60,19 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cs-skin-border.css">
 	
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+	
+	
 
 
 	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
+	<script src=""${pageContext.request.contextPath}/resources/js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
 	</head>
-	<body>
+	<body class="font-sans">
 		<div id="fh5co-wrapper">
 		<div id="fh5co-page">
 
@@ -78,7 +80,7 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>SkyLife</a></h1>
+					<h1 id="fh5co-logo"><a href="/page/index"><i class="icon-airplane"></i>SkyLife</a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
@@ -86,7 +88,7 @@
 							<li><a href="/page/flight">항공편</a></li>
 							<li class="active"><a href="/page/hotel">호텔</a></li>
 							<li><a href="/page/board">게시판</a></li>
-							<li><a href="/page/blog">공지사항</a></li>
+							<li><a href="/page/public">공지사항</a></li>
 							<li><a href="contact.html" class="fh5co-sub-ddown">Contact</a>
 								<ul class="fh5co-sub-menu">
 									<li><a href="/auth/loginForm">로그인</a></li>

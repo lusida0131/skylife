@@ -7,8 +7,8 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() throws Exception {
-//        return "auth/loginForm";
-    	return "page/flight";
+      return "page/index";
+
     }
     @GetMapping("/page/index")
     public String index() throws Exception {
@@ -26,8 +26,13 @@ public class HomeController {
     public String board() throws Exception {
         return "page/board";
     }
-    @GetMapping("/page/blog")
-    public String blog() throws Exception {
-        return "page/blog";
+
+	/*
+	 * @GetMapping("/page/blog") public String blog() throws Exception { return
+	 * "page/blog"; }
+	 */
+    @GetMapping("/page/public")
+    public String pub() throws Exception {
+        return "page/public";
     }
 }
