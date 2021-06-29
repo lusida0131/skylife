@@ -7,7 +7,32 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() throws Exception {
-//        return "auth/loginForm";
-    	return "page/flight";
+      return "page/index";
+
+    }
+    @GetMapping("/page/index")
+    public String index() throws Exception {
+        return "page/index";
+    }
+    @GetMapping("/page/flight")
+    public String flight() throws Exception {
+        return "page/flight";
+    }
+    @GetMapping("/page/hotel")
+    public String hotel() throws Exception {
+        return "page/hotel";
+    }
+    @GetMapping("/page/board")
+    public String board() throws Exception {
+        return "page/board";
+    }
+
+	/*
+	 * @GetMapping("/page/blog") public String blog() throws Exception { return
+	 * "page/blog"; }
+	 */
+    @GetMapping("/page/public")
+    public String pub() throws Exception {
+        return "page/public";
     }
 }
