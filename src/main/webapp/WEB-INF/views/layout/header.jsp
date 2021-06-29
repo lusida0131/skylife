@@ -82,14 +82,14 @@
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="vacation.html">항공편</a></li>
-							<li class="active"><a href="hotel.html">호텔</a></li>
-							<li><a href="car.html">게시판</a></li>
-							<li><a href="blog.html">공지사항</a></li>
+							<li><a href="/page/index">Home</a></li>
+							<li><a href="/page/flight">항공편</a></li>
+							<li class="active"><a href="/page/hotel">호텔</a></li>
+							<li><a href="/page/board">게시판</a></li>
+							<li><a href="/page/blog">공지사항</a></li>
 							<li><a href="contact.html" class="fh5co-sub-ddown">Contact</a>
 								<ul class="fh5co-sub-menu">
-									<li><a href="#">Family</a></li>
+									<li><a href="/auth/loginForm">로그인</a></li>
 									<li><a href="#">CSS3 &amp; HTML5</a></li>
 									<li><a href="#">Angular JS</a></li>
 									<li><a href="#">Node JS</a></li>

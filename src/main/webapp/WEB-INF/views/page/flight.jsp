@@ -30,25 +30,25 @@
 										<div class="row">
 											<div class="col-xxs-12 col-xs-6 mt">
 												<div class="input-field">
-													<label for="from">From:</label>
+													<label for="from">출발지:</label>
 													<input type="text" class="form-control" id="from-place" placeholder="Los Angeles, USA"/>
 												</div>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt">
 												<div class="input-field">
-													<label for="from">To:</label>
+													<label for="from">도착지:</label>
 													<input type="text" class="form-control" id="to-place" placeholder="Tokyo, Japan"/>
 												</div>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt alternate">
 												<div class="input-field">
-													<label for="date-start">Check In:</label>
+													<label for="date-start">가는날:</label>
 													<input type="text" class="form-control" id="date-start" placeholder="mm/dd/yyyy"/>
 												</div>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt alternate">
 												<div class="input-field">
-													<label for="date-end">Check Out:</label>
+													<label for="date-end">오는날:</label>
 													<input type="text" class="form-control" id="date-end" placeholder="mm/dd/yyyy"/>
 												</div>
 											</div>
@@ -226,9 +226,9 @@
 							</div>
 							<div class="desc2 animate-box">
 								<div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
-									<p>HandCrafted by <a href="http://frehtml5.co/" target="_blank" class="fh5co-site-name">FreeHTML5.co</a></p>
-									<h2>Exclusive Limited Time Offer</h2>
-									<h3>Fly to Hong Kong via Los Angeles, USA</h3>
+									<p>HandCrafted by <a href="https://github.com/lusida0131/skylife" target="_blank" class="fh5co-site-name">SkyLife.git</a></p>
+									<h2>이제 여행을 시작하세요</h2>
+									<h3>현재 최저가 항공권으로 갈 수 있는 여행지를 확인해보세요. 이 밖에도 평균보다 낮은 가격으로 여행할 수 있는 여행지가 많습니다.</h3>
 									<span class="price">$599</span>
 									<!-- <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p> -->
 								</div>
