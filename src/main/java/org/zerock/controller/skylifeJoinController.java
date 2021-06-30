@@ -1,8 +1,5 @@
 package org.zerock.controller;
 
-
-
-
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
@@ -40,7 +37,7 @@ public class skylifeJoinController {
 	private skylifeService service;
 	
 	//로깅을 위한 변수
-	private static final Logger logger=
+	private static final Logger logger= 
 	LoggerFactory.getLogger(skylifeJoinController.class);
 	private static final String String = null;
 
@@ -76,10 +73,18 @@ public class skylifeJoinController {
 			return "redirect:/";
 		}
 		else {
-			
+	
 			
 			return "redirect:/auth/loginForm";
 		}
+	}
+	// 로그아웃
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) throws Exception {
+
+		session.invalidate();
+
+		return "/page/index";
 	}
 
 	
