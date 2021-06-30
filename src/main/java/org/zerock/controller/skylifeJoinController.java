@@ -88,10 +88,6 @@ public class skylifeJoinController {
 	@ResponseBody
 	public String idCheck(HttpServletRequest request) {
 		
-<<<<<<< HEAD
-=======
-
->>>>>>> 268d36e96279f3404a4c32db61dac3143a06e8e0
 		String id = request.getParameter("id");
 		int result=service.idCheck(id);
 		return Integer.toString(result);
