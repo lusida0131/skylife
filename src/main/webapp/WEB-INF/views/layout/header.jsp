@@ -4,16 +4,17 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
+
+<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Travel &mdash; 100% Free Fully Responsive HTML5 Template by FREEHTML5.co</title>
+	<title>SkyLife - with Happy Life</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
 	<meta name="author" content="FREEHTML5.CO" />
 
-  <!-- 
+	<!-- 
 	//////////////////////////////////////////////////////
 
 	FREE HTML5 TEMPLATE 
@@ -26,7 +27,7 @@
 
 	//////////////////////////////////////////////////////
 	 -->
-
+	
   	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
 	<meta property="og:image" content=""/>
@@ -62,8 +63,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 	
 	
-
-
+	
 	<!-- Modernizr JS -->
 	<script src=""${pageContext.request.contextPath}/resources/js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
@@ -71,37 +71,41 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
-	</head>
-	<body class="font-sans">
-		<div id="fh5co-wrapper">
-		<div id="fh5co-page">
+</head>
 
-		<header id="fh5co-header-section" class="sticky-banner">
-			<div class="container">
-				<div class="nav-header">
-					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="/page/index"><i class="icon-airplane"></i>SkyLife</a></h1>
-					<!-- START #fh5co-menu-wrap -->
-					<nav id="fh5co-menu-wrap" role="navigation">
-						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li><a href="/page/index">Home</a></li>
-							<li><a href="/page/flight">항공편</a></li>
-							<li class="active"><a href="/page/hotel">호텔</a></li>
-							<li><a href="/page/board">게시판</a></li>
-							<li><a href="/page/public">공지사항</a></li>
-							<li><a href="contact.html" class="fh5co-sub-ddown">Contact</a>
-								<ul class="fh5co-sub-menu">
-									<li><a href="/auth/loginForm">로그인</a></li>
-									<li><a href="#">CSS3 &amp; HTML5</a></li>
-									<li><a href="#">Angular JS</a></li>
-									<li><a href="#">Node JS</a></li>
-									<li><a href="#">Django &amp; Python</a></li>
-								</ul>
-							</li>
-						</ul>
-					</nav>
-				</div>
+
+<body class="font-sans">
+
+	<div id="fh5co-wrapper">
+	<div id="fh5co-page">
+
+	<header id="fh5co-header-section" class="sticky-banner">
+		<div class="container">
+			<div class="nav-header">
+				<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
+				<h1 id="fh5co-logo"><a href="/page/index"><i class="icon-airplane"></i>SkyLife</a></h1>
+				<!-- START #fh5co-menu-wrap -->
+				<nav id="fh5co-menu-wrap" role="navigation">
+					<ul class="sf-menu" id="fh5co-primary-menu">
+						<li><a href="/page/index">Home</a></li>
+						<li><a href="/page/flight">항공편</a></li>
+						<li class="active"><a href="/page/hotel">맛집</a></li>
+						<li><a href="/page/board">게시판</a></li>
+						<li><a href="/page/public">공지사항</a></li>
+						<li><a href="contact.html" class="fh5co-sub-ddown">Contact</a>
+							<ul class="fh5co-sub-menu">
+								<li><a href="/auth/loginForm">로그인</a></li>
+								<li><a href="#">CSS3 &amp; HTML5</a></li>
+								<li><a href="#">Angular JS</a></li>
+								<li><a href="#">Node JS</a></li>
+								<li><a href="#">Django &amp; Python</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
 			</div>
-		</header>
+		</div>
+	</header>
 
-		<!-- end:header-top -->
+	<!-- end:header-top -->
+	

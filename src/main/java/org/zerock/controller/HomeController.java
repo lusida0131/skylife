@@ -16,7 +16,7 @@ public class HomeController {
     }
     @GetMapping("/page/flight")
     public String flight() throws Exception {
-        return "page/flight";
+    	return "page/flight";
     }
     @GetMapping("/page/hotel")
     public String hotel() throws Exception {
