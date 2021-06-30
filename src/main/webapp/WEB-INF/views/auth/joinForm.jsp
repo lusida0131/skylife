@@ -32,9 +32,19 @@
                             <input type = "button" id="check" value = "중복체크">
                             <input type="password" name="pw" placeholder="패스워드" required="required"id="pw">
                             <input type="text" name="name" placeholder="이름" required="required"id="name">
-                               <input type="date" name="bday" placeholder="생년월일" required="required"id="bday">
-                            <input type="email" name="email" placeholder="이메일" required="required"id="email">
-                               <input type="text" name="phone" placeholder="전화번호" required="required"id="phone">
+                            <input type="date" name="bday" placeholder="생년월일" required="required"id="bday">
+                            <input class="mail_input" type="email" name="email" placeholder="이메일" required="required"id="email">
+                            <div class="mail_check_wrap">
+                            	<div class="mail_check_input_box" id="mail_check_input_box_false">
+                            		<input class="mail_check_input" disabled="disabled">
+                            	</div>
+                            	<div class="mail_check_button">
+                            		<span class="mail_check_button">인증번호 전송</span>
+                            	</div>
+                            	<div class="clearfix"></div>
+                            	<span id="mail_check_input_box_warn"></span>
+                            </div>
+                            <input type="text" name="phone" placeholder="전화번호" required="required"id="phone">
                             <input type = "button" id = "signUp"value = "회원가입">
                             <input hidden="">
                         </form>
@@ -54,6 +64,8 @@
     </div>
 </body>
 <script type="text/javascript">
+	var code = "";
+	
 	$(document).ready(function(e){
 		
 		var idx = false;
@@ -104,6 +116,37 @@
 				}
 			});
 		});
+		/* 인증번호 이메일 전송*/
+        $(".mail_check_button").click(function() {
+        	var email = $(".mail_input").val(); 	// 입력한 이메일
+        	var cehckBox = $(".mail_check_input");	// 인증번호 입력란
+        	var boxWrap = $(".mail_check_input_box"); // 인증번호 입력란 박스
+        	
+        	$.ajax({
+        		type:"GET",
+        		url:"mailCheck?email=" + email,
+        		success:function(data) {
+        			console.log("data : " + data)
+        			cehckBox.attr("disabled",false);
+        			boxWrap.attr("id", "mail_check_input_box_true");
+        			code = data;
+        		}
+        	});
+        });
+        /* 인증번호 비교 */
+        $(".mail_check_input").blur(function() {
+        	
+        	var inputCode = $(".mail_check_input").val();		// 입력코드
+        	var checkResult = $("#mail_check_input_box_warn");	// 비교 결과 
+        	
+        	if(inputCode == code) {
+        		checkResult.html("인증번호가 일치합니다.");
+        		checkResult.attr("class", "correct");
+        	} else {
+        		checkResult.html("인증번호를 다시 확인해주세요.");
+        		checkResult.attr("class", "incorrect");
+        	}
+        });
 	});
 </script>
 </html>

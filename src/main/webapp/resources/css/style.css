@@ -23,6 +23,46 @@ body {
 body.fh5co-offcanvas {
   overflow: hidden;
 }
+.mail_check_wrap {
+    /* margin-top: 20px; */
+    margin-bottom: 10px;
+}
+.mail_check_input_box {
+    border: 1px solid black;
+    /* height: 31px; */
+    /* padding: 10px 14px; */
+    width: 65%;
+    float: left;
+    /* display: inline; */
+}
+#mail_check_input_box_warn {
+	    display: inline-block;
+}
+
+.mail_check_input_box > .mail_check_input {
+	padding: 0;
+    height: auto;
+    margin: 0;
+    display: block;
+	
+}
+#mail_check_input_box_false{
+	background-color:#ebebe4;
+}
+#mail_check_input_box_true{
+	background-color:white;
+}
+.mail_check_button{
+	border: 1px solid black;
+	float: right;
+	font-size: 5px
+}
+.correct{
+	color : green;
+}
+.incorrect{
+	color : red;
+}
 
 a {
   color: #1262CD;
