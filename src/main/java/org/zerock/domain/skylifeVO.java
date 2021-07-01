@@ -19,6 +19,6 @@ public class skylifeVO {
 	private Date bday;
 	private String email;
 	private String phone;
-	
+
 	
 }

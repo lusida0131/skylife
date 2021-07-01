@@ -42,15 +42,9 @@
                         <!-- 또는end -->
                         
                         <!-- Oauth 소셜로그인 -->
-                        <div class="login__facebook">
-                        <a href="/oauth2/authorization/facebook">
-                            <button>
-                                <i class="fab fa-facebook-square"></i>
-                             
-                                <span>Facebook으로 로그인</span>
-                                
-                            </button>
-                         </a>
+                        <div class="text-center">
+                        	<a href="${naver_url }"><img width="300" alt="Naver Login" src="/resources/images/big_g.png"></a>
+                        	<a href="http://localhost:8080/auth/GOOGLE"><img width="300" alt="Google Login" src="/resources/images/GoogleSignUpDarl.png"></a>
                         </div>
                         <!-- Oauth 소셜로그인end -->
                     </div>
