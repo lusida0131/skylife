@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.BoardMapper">
+	<!-- 게시글 리스트 -->
+	<select id="list" resultType="org.zerock.domain.BoardVO">
+		select
+			*
+		from
+			sbs
+	</select>
+	
+	<!-- 게시글 작성 -->
+	<insert id="insert">
+		insert into sbs (
+			b_title,
+			b_content,
+			id
+		) values (
+			#{b_title},
+			#{b_content},
+			#{b_id}
+		)
+	</insert>
+	
+	<!-- 게시글 보기 -->
+	<select id="view">
+		selete * from sbs
+		where b_num = #{b_num}
+	</select>
+	
+	<!-- 게시글  조회수 -->
+	<update id="increaseViewcnt">
+		update sbs set rcount = rcount + 1
+		where b_num = #{b_num}
+	</update>
+	
+	<!-- 게시글 수정처리 -->
+	<update id="updateArticle">
+		update sbs set
+			b_title = #{b_title},
+			b_content = #{b_content}
+			id= #{id}
+		where b_num = #{b_num}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteArticle">
+		delete from sbs
+		where b_num = #{b_num}
+	</delete>
+	
+</mapper>

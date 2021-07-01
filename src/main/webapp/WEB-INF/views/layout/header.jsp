@@ -96,7 +96,6 @@
 							<li><a href="/page/board">게시판</a></li>
 							<li><a href="/page/public">공지사항</a></li>
 							<li><a href="contact.html" class="fh5co-sub-ddown">Contact</a>
-							// 로그인 로그아웃
 							<c:set var="name" value="${user.id}"/>
 								<ul class="fh5co-sub-menu">
 								<c:choose>

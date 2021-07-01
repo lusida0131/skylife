@@ -22,10 +22,10 @@ public class HomeController {
     public String hotel() throws Exception {
         return "page/hotel";
     }
-    @GetMapping("/page/board")
-    public String board() throws Exception {
-        return "page/board";
-    }
+//    @GetMapping("/page/board")
+//    public String board() throws Exception {
+//        return "page/board";
+//    }
 
 	/*
 	 * @GetMapping("/page/blog") public String blog() throws Exception { return

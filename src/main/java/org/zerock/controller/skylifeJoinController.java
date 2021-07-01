@@ -40,8 +40,6 @@ public class skylifeJoinController {
 	private static final Logger logger= 
 	LoggerFactory.getLogger(skylifeJoinController.class);
 	private static final String String = null;
-
-	
 	
 	@GetMapping("/auth/loginForm")
 	public String login() {
