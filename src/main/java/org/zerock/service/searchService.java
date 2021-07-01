@@ -1,11 +1,14 @@
 package org.zerock.service;
 
-import java.io.IOException;
 
-//import org.zerock.domain.skylifeVO;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import org.zerock.domain.searchVO;
+
 
 public interface searchService {
 	
-	public void airApi() throws IOException;
+	public ArrayList<searchVO> airApi() throws IOException;
 	
 }
