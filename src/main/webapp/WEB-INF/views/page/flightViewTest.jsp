@@ -1,6 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+
+		<p>나오나?</p><br>
+		<c:forEach var="list" items="${clist}">
+			<br>
+			항공편명 : ${list.vihicleId} <br>
+			항공사 : ${list.airlineNm} <br>
+			출발지(출발공항) : ${list.depAirportNm} <br>
+			출발시간 : ${list.depPlandTime} <br>
+			도착지(도착공항) : ${list.arrAirportNm} <br>
+			도착시간 : ${list.arrPlandTime} <br>
+			가격1 : ${list.economyCharge} <br>
+			가격2 : ${list.prestigeCharge} <br>
+			---------- @@@@@ ---------- <br>
+		</c:forEach>
 
 		<div class="fh5co-hero">
 			<div class="fh5co-overlay"></div>

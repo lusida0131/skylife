@@ -56,7 +56,7 @@ public class skylifeJoinController {
 		if(user!=null&&BCrypt.checkpw(skylifevo.getPw(), user.getPw())) {
 			session.setAttribute("user", user);
 			
-			return "redirect:/home";
+			return "redirect:/page/index";
 		}
 		else {
 			

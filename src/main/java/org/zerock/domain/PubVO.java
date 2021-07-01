@@ -1,6 +1,7 @@
 package org.zerock.domain;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import lombok.Data;
 import lombok.Getter;
@@ -10,8 +11,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PubVO {
-	private int pno;
-	private Date p_time;
+	private Integer pno;
+	private Timestamp p_time;
 	private String p_title;
 	private String p_content;
 }

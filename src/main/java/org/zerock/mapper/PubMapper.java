@@ -5,9 +5,9 @@ import java.util.List;
 import org.zerock.domain.PubVO;
 
 public interface PubMapper {
-	public List<PubVO> getList();
+	public List<PubVO> list();
+	public PubVO read(Integer pno); // get 세부조회
 	public void insert(PubVO pub);
-	public void insertSelectKey(PubVO pub);
 	public int delete(Integer pno);
-	public int update(PubVO pub);
+	public int update(PubVO pno);
 }

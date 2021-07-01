@@ -20,8 +20,9 @@ public class PubServiceImpl implements PubService{
 	private PubMapper mapper;
 	
 	@Override
-	public void insert(PubVO pub) {
+	public void register(PubVO pub) {
 		log.info("register..." + pub);
+		mapper.insert(pub);
 	}
 	
 	@Override
@@ -29,15 +30,23 @@ public class PubServiceImpl implements PubService{
 		log.info("modify..." + pub);
 		return mapper.update(pub) == 1;
 	}
+	
 	@Override
 	public boolean remove(Integer pno) {
 		log.info("remove..." + pno);
 		return mapper.delete(pno) == 1;
 	}
+	
 	@Override
-	public List<PubVO> getList() {
+	public List<PubVO> list() {
 		log.info("getList...");
-		return mapper.getList();
+		return mapper.list();
 	}
 		
+	 @Override 
+	 public PubVO get(Integer pno) {
+	      log.info("조회한 공지사항 번호 : " + pno);
+	      return mapper.read(pno);
+	   }
+
 }

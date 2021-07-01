@@ -27,16 +27,9 @@ public class PubController {
 	@GetMapping("/public")
 	public void list(Model model) {
 		log.info("list");
-		model.addAttribute("list", service.getList());
+		model.addAttribute("list", service.list());
 	}
-	@GetMapping("/modify")
-	public String modify(PubVO pub, RedirectAttributes rttr) {
-		log.info("modify" + pub);
-		if(service.modify(pub)) {
-			rttr.addFlashAttribute("result","success");
-		}
-		return "redirect:/pub/public";
-	}
+	
 	@GetMapping("/register")
 	public void register() {
 		
@@ -45,18 +38,46 @@ public class PubController {
 	@PostMapping("/register")
 	public String register(PubVO pub, RedirectAttributes rttr) {
 		log.info("register: " + pub);
-		service.insert(pub);
+		service.register(pub);
 		rttr.addFlashAttribute("result", pub.getPno());
 		return "redirect:/pub/public";
 	}
+	
 	@PostMapping("/remove")
-	public String remove(@RequestParam("bno") Integer pno, RedirectAttributes rttr) {
-		log.info("remove..." +pno);
-		if(service.remove(pno) ) {
+	public String remove(@RequestParam("pno") Integer pno, RedirectAttributes rttr) {
+		log.info("remove..." + pno);
+		if(service.remove(pno)) {
 			rttr.addFlashAttribute("result","success");
+		} else {
+			System.out.println("삭제 실패");
 		}
 		return "redirect:/pub/public";
 	}
+	@GetMapping("/remove")
+	public void get12(@RequestParam("pno") Integer pno, Model model) {
+		log.info("/remove : 삭제 클릭");
+		model.addAttribute("pub", service.get(pno));
+	}
+	
+	@PostMapping("/modify")
+	public String modify(PubVO pub, RedirectAttributes rttr) {
+		log.info("modify : 수정하기 완료 클릭 " + pub);
+		
+		if(service.modify(pub)) { //구현이 되었는지에 대한 확인
+			rttr.addFlashAttribute("result","success");
+		} else {
+			System.out.println("수정 실패");
+		}
+		
+		return "redirect:/pub/public";
+	}
+	@GetMapping("/modify")
+	public void get(@RequestParam("pno") Integer pno, Model model) {
+		log.info("/modify : 수정 클릭");
+		model.addAttribute("pub", service.get(pno));
+//	    model.addAttribute("notice", service.get(notice_bno));
+	}
+	
 	/*
 	 * @RequestMapping(value="/public", method=RequestMethod.POST,
 	 * produces="application/text; charset=utf8") // @GetMapping("/loginForm")
