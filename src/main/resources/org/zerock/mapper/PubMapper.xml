@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.PubMapper">
+	<insert id = "insert">
+		insert into spub (p_title, p_content)
+		values (#{p_title}, #{p_content})	
+	</insert>
+	<!-- <insert id = "insertSelectKey" useGeneratedKeys="true" keyProperty="pno" keyColumn="pno">
+		insert into spub (p_title, p_content)
+		values (#{p_title}, #{p_content})
+		<selectKey keyProperty="pno" order="AFTER" resultType="Integer">
+			select last_insert_id() as pno
+		</selectKey>	
+	</insert> -->
+	<select id="list" resultType="org.zerock.domain.PubVO">
+		select * from spub
+	</select>
+	<delete id="delete">
+		delete from spub where pno=#{pno}
+	</delete>
+	<update id="update">
+		update spub set p_title=#{p_title}, p_content=#{p_content} where pno=#{pno}
+	</update>
+</mapper>

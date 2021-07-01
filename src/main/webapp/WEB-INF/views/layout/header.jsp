@@ -88,7 +88,7 @@
 							<li><a href="/page/flight">항공편</a></li>
 							<li class="active"><a href="/page/hotel">호텔</a></li>
 							<li><a href="/page/board">게시판</a></li>
-							<li><a href="/page/public">공지사항</a></li>
+							<li><a href="/pub/public">공지사항</a></li>
 							<li><a href="contact.html" class="fh5co-sub-ddown">Contact</a>
 								<ul class="fh5co-sub-menu">
 									<li><a href="/auth/loginForm">로그인</a></li>
