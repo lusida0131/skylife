@@ -19,48 +19,41 @@ import org.zerock.domain.searchVO;
 import org.zerock.service.searchService;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 
 
 @Controller
 @RequestMapping
 @AllArgsConstructor
+@Log4j
 public class searchController {
 	
 	private searchService service;
 	
 	
-//	@GetMapping("/page/flightViewTest")
-//	public String flightViewTestG() {
-//		return"/page/flightViewTest";
-//	}
-	@PostMapping("/page/flightViewTest")
+	@PostMapping("/page/flightList")
 	public String flightViewTest() {
-		return"/page/flightViewTest";
+		return"/page/flightList";
 	}
 	
 	
-	//@RequestMapping(value="/page/flightViewTest", method=RequestMethod.POST)
 	@RequestMapping(value="/page/searchFlight", method=RequestMethod.POST)
 	public String searchFlight(HttpServletRequest request, searchVO sVO, Model model) throws IOException {
 		
 		String startPortName = request.getParameter("from_place");
 		String endPortName = request.getParameter("to_place");
 		String startTime = request.getParameter("date_start");
-		//String endTime = request.getParameter("date_end");
-
-//		System.out.println("@@@@@@@@@@\n@startPortName: " + startPortName + "\n@endPortName: " + endPortName 
-//				+ "\n@startTime: " + startTime + "\n@endTime: " + endTime + "\n@@@@@@@@@@");
-		System.out.println("@@@@@@@@@@\n@startPortName: " + startPortName + "\n@endPortName: " + endPortName 
-				+ "\n@startTime: " + startTime + "\n@@@@@@@@@@");
 		
-		ArrayList<searchVO> clist = service.airApi();
-		//ArrayList<searchVO> clist = service.airApi(startPortName, endPortName, startTime);
+		log.info("startPortName: " + startPortName + " // endPortName: " + endPortName + " // startTime: " + startTime);
+		
+		//ArrayList<searchVO> clist = service.airApi();
+		ArrayList<searchVO> clist = service.airApi(startPortName, endPortName, startTime);
 		
 		model.addAttribute("clist", clist);
-		System.out.println("\n clist: " + clist);
+		log.info("clist: " + clist);
 		
-		return "/page/flightViewTest";
+		return "/page/flightList";
 		
 	}
 	
