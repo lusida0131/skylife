@@ -62,6 +62,8 @@
 	
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 	
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/map.css">
+	
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<!-- Modernizr JS -->
@@ -89,7 +91,7 @@
 					<ul class="sf-menu" id="fh5co-primary-menu">
 						<li><a href="/page/index">Home</a></li>
 						<li><a href="/page/flight">항공편</a></li>
-						<li class="active"><a href="/page/hotel">맛집</a></li>
+						<li class="active"><a href="/page/map">지도</a></li>
 						<li><a href="/page/board">게시판</a></li>
 						<li><a href="/page/public">공지사항</a></li>
 						<li><a href="#" class="fh5co-sub-ddown">Contact</a>
