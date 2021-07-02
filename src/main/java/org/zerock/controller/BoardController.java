@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.skylifeVO;
 import org.zerock.mapper.BoardMapper;
 import org.zerock.service.BoardService;
 
@@ -39,7 +40,7 @@ public class BoardController {
 	// 게시글 목록
 	@GetMapping("/page/board")
 	public String boardList(BoardVO vo, Model model) {
-		log.info("제발 들어가주라...");
+		log.info("제발...");
 		List<BoardVO> list = service.list(vo);
 		model.addAttribute("list", list);
 		
@@ -47,50 +48,71 @@ public class BoardController {
 	}
 	
 	// 게시글 작성
-	@RequestMapping(value="/page/boardWrite", method=RequestMethod.GET)
-	public String write() {
+	@GetMapping("/page/boardWrite")
+	public String write(@ModelAttribute skylifeVO vo) {
+		log.info("제바루ㅜㅜ");
 		return "/page/boardWrite";
 	}
-	
-	// 게시글 작성 기능
-	@RequestMapping(value="insert", method=RequestMethod.POST)
-	public String insert(@ModelAttribute BoardVO vo) throws Exception {
+	@PostMapping("/page/boardWrite")
+	public String write1(@ModelAttribute BoardVO vo) {
 		log.info("들어갔니??");
 		service.insert(vo);
+		log.info("dld" + vo);
 		
 		return "redirect:/page/board";
 	}
 	
+	// 게시글 작성 기능
+//	@RequestMapping(value="insert", method=RequestMethod.POST)
+//	public String insert(@ModelAttribute BoardVO vo) throws Exception {
+//		log.info("들어갔니??");
+//		service.insert(vo);
+//		
+//		return "redirect:/page/board";
+//	}
+	
 	@GetMapping("/page/boardView")
-	public String view1() {
+	public String view1(Model model, @RequestParam int b_num) throws Exception {
+		log.info("여긴가?");
+		BoardVO data = service.view(b_num);
+		model.addAttribute("data", data);
+		log.info("돌아가~ " + data);
 		return "/page/boardView";
 	}
 	
 	// 게시글 보기, 게시글 조회수 증가
-	@PostMapping("/page/boardView")
-	public ModelAndView view(@RequestParam int b_num, HttpSession session) throws Exception {
-		// 조회수 증가 처리
-		service.increaseViewcnt(b_num, session);
-		// 모델(데이터) + 뷰(화면)을 함께 전달하는 객체
-		ModelAndView mav = new ModelAndView();
-		// 뷰의 이름
-		mav.setViewName("/page/boardView");
-		// 뷰에 전달할 데이터
-		mav.addObject("vo", service.view(b_num));
-		
-		return mav;
-	}
+//	@PostMapping("/page/boardView")
+//	public ModelAndView view(@RequestParam int b_num, HttpSession session) throws Exception {
+//		log.info("여기는??");
+//		// 조회수 증가 처리
+//		service.increaseViewcnt(b_num, session);
+//		// 모델(데이터) + 뷰(화면)을 함께 전달하는 객체
+//		ModelAndView mav = new ModelAndView();
+//		// 뷰의 이름
+//		mav.setViewName("/page/boardView");
+//		// 뷰에 전달할 데이터
+//		mav.addObject("vo", service.view(b_num));
+//		
+//		return mav;
+//	}
 	
+//	
+//	@GetMapping("/page/boardUpdate")
+//	public String update1(@ModelAttribute skylifeVO vo) {
+//		log.info("수정전");
+//		return "/page/boardUpdate";
+//	}
 	// 게시글 수정
-	@RequestMapping(value="update", method=RequestMethod.POST)
+	@RequestMapping(value="/board/update", method=RequestMethod.POST)
 	public String update(@ModelAttribute BoardVO vo) throws Exception {
+		log.info("수정");
 		service.update(vo);
 		
 		return "redirect:/page/board";
 	}
 	
 	// 게시글 삭제
-	@RequestMapping("delete")
+	@RequestMapping("board/delete")
 	public String delete(@RequestParam int b_num) throws Exception {
 		service.delete(b_num);
 		

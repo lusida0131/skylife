@@ -19,13 +19,13 @@
 		) values (
 			#{b_title},
 			#{b_content},
-			#{b_id}
+			#{id}
 		)
 	</insert>
 	
 	<!-- 게시글 보기 -->
-	<select id="view">
-		selete * from sbs
+	<select id="view" resultType="org.zerock.domain.BoardVO">
+		select * from sbs
 		where b_num = #{b_num}
 	</select>
 	
@@ -36,16 +36,16 @@
 	</update>
 	
 	<!-- 게시글 수정처리 -->
-	<update id="updateArticle">
+	<update id="update">
 		update sbs set
 			b_title = #{b_title},
 			b_content = #{b_content}
-			id= #{id}
+			<!-- id= #{id} -->
 		where b_num = #{b_num}
 	</update>
 	
 	<!-- 게시글 삭제 -->
-	<delete id="deleteArticle">
+	<delete id="delete">
 		delete from sbs
 		where b_num = #{b_num}
 	</delete>

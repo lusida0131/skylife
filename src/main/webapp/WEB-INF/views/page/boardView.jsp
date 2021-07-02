@@ -19,22 +19,22 @@
 	<div class="row">
       <form name="form1" method="post">
 		<div>
-			작성일자: <fmt:formatDate value="${vo.time}" pattern="yyy-MM-dd HH:mm:ss"/>
+			작성일자: <fmt:formatDate value="${data.time}" pattern="yyy-MM-dd HH:mm:ss"/>
 		</div>
 		<div>
 			제목
-			<input name="b_title" id="b_title" value="${vo.b_title}" placeholder="제목을 입력해주세요.">
+			<input name="b_title" id="b_title" value="${data.b_title}" placeholder="제목을 입력해주세요.">
 		</div>
 		<div>
 			내용
-			<textarea name="b_content" id="b_content" rows="4" cols="80" placeholder="내용을 입력해주세요">${vo.b_content}</textarea>
+			<textarea name="b_content" id="b_content" rows="4" cols="80" placeholder="내용을 입력해주세요">${data.b_content}</textarea>
 		</div>
 		<div>
 			이름
-			<input name="id" id="id" value="${vo.id}" placeholder="이름을 입력해주세요">
+			<input name="id" id="id" value="${data.id}" placeholder="이름을 입력해주세요">
 		</div>
 		<div style="width:650px; text-align:center;">
-			<input type="hidden" name="b_num" value="vo.b_num">
+			<input type="hidden" name="b_num" value="${data.b_num}">
 			<button type="button" id="btnUpdate">수정</button>
 			<button type="button" id="btnDelete">삭제</button>
 		</div>

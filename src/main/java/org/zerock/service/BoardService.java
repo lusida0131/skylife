@@ -5,6 +5,10 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.skylifeVO;
+
+import lombok.AllArgsConstructor;
+
 
 public interface BoardService {
 	// 게시글 작성

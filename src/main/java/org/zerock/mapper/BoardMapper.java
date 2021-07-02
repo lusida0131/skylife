@@ -3,6 +3,7 @@ package org.zerock.mapper;
 import java.util.List;
 
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.skylifeVO;
 
 public interface BoardMapper {
 	// 게시글 작성

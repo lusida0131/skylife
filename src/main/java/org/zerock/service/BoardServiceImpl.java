@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.skylifeVO;
 import org.zerock.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
@@ -26,15 +27,15 @@ public class BoardServiceImpl implements BoardService {
 		String b_content = vo.getB_content();
 		String id = vo.getId();
 		
-		b_title = b_title.replace("<", "&lt;");
-		b_title = b_title.replace("<", "&gt;");
-		id = id.replace("<", "&gt;");
-		id = id.replace("<", "&gt;");
-		
-		b_title = b_title.replace(" ", "&nbsp;&nbsp;");
-		id = id.replace(" ", "&nbsp;&nbsp;");
-		
-		b_content = b_content.replace("\n", "<br>");
+//		b_title = b_title.replace("<", "&lt;");
+//		b_title = b_title.replace("<", "&gt;");
+//		id = id.replace("<", "&gt;");
+//		id = id.replace("<", "&gt;");
+//		
+//		b_title = b_title.replace(" ", "&nbsp;&nbsp;");
+//		id = id.replace(" ", "&nbsp;&nbsp;");
+//		
+//		b_content = b_content.replace("\n", "<br>");
 		vo.setB_title(b_title);
 		vo.setB_content(b_content);
 		vo.setId(id);
@@ -50,6 +51,13 @@ public class BoardServiceImpl implements BoardService {
 	// 게시글 수정
 	@Override
 	public void update(BoardVO vo) {
+//		String b_title = vo.getB_title();
+//		String b_content = vo.getB_content();
+//		String id = vo.getId();
+//		
+//		vo.setB_title(b_title);
+//		vo.setB_content(b_content);
+//		vo.setId(id);
 		mapper.update(vo);
 	}
 	

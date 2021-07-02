@@ -17,7 +17,7 @@
 <!------ Include the above in your HEAD tag ---------->
 <div class="container">
 	<div class="row">
-      <form name="form1" method="post" action="${pageContext.request.contextPath}/page/boardWrite">
+      <form name="form1" method="post" action="${pageContext.request.contextPath}/board/update">
 		<div>
 			제목
 			<input name="b_title" id="b_title" placeholder="제목을 입력해주세요.">
@@ -31,7 +31,7 @@
 			<input name="id" id="id" value="${user.id}">
 		</div>
 		<div style="width:650px; text-align:center;">
-			<button type="button" id="btnSave">확인</button>
+			<button type="button" id="btnUpdate">수정</button>
 			<button type="reset">취소</button>
 		</div>
 		</form>
@@ -40,7 +40,7 @@
 </body>
 <script>
 	$(document).ready(function() {
-		$("#btnSave").click(function() {
+		$("#btnUpdate").click(function() {
 			var b_title = $("#b_title").val();
 			var b_content = $("#b_content").val();
 			var id = $("#id").val();
