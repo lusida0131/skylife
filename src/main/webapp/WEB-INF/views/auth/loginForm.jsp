@@ -4,6 +4,9 @@
 <html lang="ko">
 
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="11264373594-v17ti619msdqg94fdh10l60c157u3tl5.apps.googleusercontent.com">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +15,14 @@
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/insta.svg">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<style>
+div.abcRioButton {
+margin: 0 auto;
+}
+
+</style>
 </head>
 
 <body>
@@ -42,15 +53,10 @@
                         <!-- 또는end -->
                         
                         <!-- Oauth 소셜로그인 -->
-                        <div class="login__facebook">
-                        <a href="/oauth2/authorization/facebook">
-                            <button>
-                                <i class="fab fa-facebook-square"></i>
-                             
-                                <span>Facebook으로 로그인</span>
-                                
-                            </button>
-                         </a>
+                        <div class="text-center">
+                        	<br>
+                        	<div class="g-signin2" data-width="240" data-longtitle="true" data-onsuccess="onSignIn"></div>
+                        	<a href="https://kauth.kakao.com/oauth/authorize?client_id=c4f3e60f17766b60ae9f4c4957c155f7&redirect_uri=http://localhost:8080/page/index&response_type=code"><br><img width="220" alt="Kakao Login" src="/resources/images/kakao_login_medium_narrow.png"></a>
                         </div>
                         <!-- Oauth 소셜로그인end -->
                     </div>
@@ -88,5 +94,21 @@
 		});
 
 	});
+     
+	function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+        location.href="index";
+      }
 </script>
 </html>
