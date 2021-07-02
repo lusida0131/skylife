@@ -32,62 +32,91 @@
 										<form id="flightFrm" name="flightFrm" action="/page/searchFlight" method="post">
 											 <div role="tabpanel" class="tab-pane active" id="flights">
 												<div class="row">
-													<div class="col-xxs-12 col-xs-6 mt">
+													<!-- <div class="col-xxs-12 col-xs-6 mt">
 														<div class="input-field">
-															<label for="from">출발지:</label>
+															<label for="from">출발지</label>
 															<input type="text" class="form-control" id="from_place" name="from_place" placeholder="Los Angeles, USA"/>
 														</div>
-													</div>
+													</div> -->
 													<div class="col-xxs-12 col-xs-6 mt">
+														<section>
+															<label for="from">출발지</label>
+															<select class="cs-select cs-skin-border" id="from_place" name="from_place">
+																<option value="" disabled selected>출발지 선택</option>
+						                                        <option value="NAARKJJ">광주</option>
+						                                        <option value="NAARKJK">군산</option>
+																<option value="NAARKSS">김포</option>
+						                                        <option value="NAARKPK">김해/부산</option>
+						                                        <option value="NAARKTN">대구</option>
+						                                        <option value="NAARKJB">무안</option>
+						                                        <option value="NAARKPS">사천</option>
+						                                        <option value="NAARKNY">양양</option>
+						                                        <option value="NAARKJY">여수</option>
+						                                        <option value="NAARKPU">울산</option>
+						                                        <option value="NAARKNW">원주</option>
+						                                        <option value="NAARKSI">인천</option>
+						                                        <option value="NAARKPC">제주</option>
+						                                        <option value="NAARKTU">청주</option>
+						                                        <option value="NAARKTH">포항</option>
+															</select>
+														</section>
+													</div>
+													<!-- <div class="col-xxs-12 col-xs-6 mt">
 														<div class="input-field">
-															<label for="from">도착지:</label>
+															<label for="from">도착지</label>
 															<input type="text" class="form-control" id="to_place" name="to_place" placeholder="Tokyo, Japan"/>
 														</div>
+													</div> -->
+													<div class="col-xxs-12 col-xs-6 mt">
+														<section>
+															<label for="from">도착지</label>
+															<select class="cs-select cs-skin-border" id="to_place" name="to_place">
+																<option value="" disabled selected>도착지 선택</option>
+																<option value="NAARKJJ">광주</option>
+						                                        <option value="NAARKJK">군산</option>
+																<option value="NAARKSS">김포</option>
+						                                        <option value="NAARKPK">김해/부산</option>
+						                                        <option value="NAARKTN">대구</option>
+						                                        <option value="NAARKJB">무안</option>
+						                                        <option value="NAARKPS">사천</option>
+						                                        <option value="NAARKNY">양양</option>
+						                                        <option value="NAARKJY">여수</option>
+						                                        <option value="NAARKPU">울산</option>
+						                                        <option value="NAARKNW">원주</option>
+						                                        <option value="NAARKSI">인천</option>
+						                                        <option value="NAARKPC">제주</option>
+						                                        <option value="NAARKTU">청주</option>
+						                                        <option value="NAARKTH">포항</option>
+															</select>
+														</section>
 													</div>
 													<div class="col-xxs-12 col-xs-6 mt alternate">
 														<div class="input-field">
-															<label for="date-start">출발일:</label>
-															<input type="text" class="form-control" id="date_start" name="date_start" placeholder="mm/dd/yyyy"/>
+															<label for="date_start">출발일</label>
+															<input type="text" class="form-control" id="date_start" name="date_start" placeholder="yyyymmdd"/>
 														</div>
 													</div>
 													<div class="col-xxs-12 col-xs-6 mt alternate">
 														<div class="input-field">
-															<label for="date-end">도착일:</label>
-															<input type="text" class="form-control" id="date_end" name="date_end" placeholder="mm/dd/yyyy"/>
+															<label for="date_end">도착일</label>
+															<input type="text" class="form-control" id="date_end" name="date_end" placeholder="yyyymmdd"/>
 														</div>
 													</div>
 													<div class="col-sm-12 mt">
 														<section>
-															<label for="class">Class:</label>
+															<label for="class">항공사</label>
 															<select class="cs-select cs-skin-border">
-																<option value="" disabled selected>Economy</option>
-																<option value="economy">Economy</option>
-																<option value="first">First</option>
-																<option value="business">Business</option>
-															</select>
-														</section>
-													</div>
-													<div class="col-xxs-12 col-xs-6 mt">
-														<section>
-															<label for="class">Adult:</label>
-															<select class="cs-select cs-skin-border">
-																<option value="" disabled selected>1</option>
-																<option value="1">1</option>
-																<option value="2">2</option>
-																<option value="3">3</option>
-																<option value="4">4</option>
-															</select>
-														</section>
-													</div>
-													<div class="col-xxs-12 col-xs-6 mt">
-														<section>
-															<label for="class">Children:</label>
-															<select class="cs-select cs-skin-border">
-																<option value="" disabled selected>1</option>
-																<option value="1">1</option>
-																<option value="2">2</option>
-																<option value="3">3</option>
-																<option value="4">4</option>
+																<option value="" disabled selected>항공사</option>
+																<option value="AAR">아시아나항공</option>
+																<option value="ABL">에어부산</option>
+																<option value="ASV">에어서울</option>
+																<option value="ESR">이스타항공</option>
+																<option value="FGW">플라이강원</option>
+																<option value="HGG">하이에어</option>
+																<option value="JJA">제주항공</option>
+																<option value="JNA">진에어</option>
+																<option value="KAL">대한항공</option>
+																<option value="TWB">티웨이항공</option>
 															</select>
 														</section>
 													</div>

@@ -92,7 +92,7 @@
 						<li class="active"><a href="/page/hotel">맛집</a></li>
 						<li><a href="/page/board">게시판</a></li>
 						<li><a href="/page/public">공지사항</a></li>
-						<li><a href="contact.html" class="fh5co-sub-ddown">Contact</a>
+						<li><a href="#" class="fh5co-sub-ddown">Contact</a>
 							<ul class="fh5co-sub-menu">
 								<li><a href="/auth/loginForm">로그인</a></li>
 								<li><a href="#">CSS3 &amp; HTML5</a></li>
