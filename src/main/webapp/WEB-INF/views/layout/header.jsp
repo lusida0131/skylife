@@ -87,31 +87,41 @@
 	<div id="fh5co-wrapper">
 	<div id="fh5co-page">
 
-	<header id="fh5co-header-section" class="sticky-banner">
-		<div class="container">
-			<div class="nav-header">
-				<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-				<h1 id="fh5co-logo"><a href="/page/flight"><i class="icon-airplane"></i>SkyLife</a></h1>
-				<!-- START #fh5co-menu-wrap -->
-				<nav id="fh5co-menu-wrap" role="navigation">
-					<ul class="sf-menu" id="fh5co-primary-menu">
-						<!-- <li><a href="/page/index">Home</a></li> -->
-						<li><a href="/page/flight">항공편</a></li>
-						<li class="active"><a href="/page/map">지도</a></li>
-						<li><a href="/page/board">게시판</a></li>
-						<li><a href="/page/public">공지사항</a></li>
-						<li><a href="#" class="fh5co-sub-ddown">Contact</a>
-							<ul class="fh5co-sub-menu">
-								<li><a href="/auth/loginForm">로그인</a></li>
-								<li><a href="#">CSS3 &amp; HTML5</a></li>
-								<li><a href="#">Angular JS</a></li>
-								<li><a href="#">Node JS</a></li>
-								<li><a href="#">Django &amp; Python</a></li>
-							</ul>
-						</li>
-					</ul>
-				</nav>
+		<header id="fh5co-header-section" class="sticky-banner">
+			<div class="container">
+				<div class="nav-header">
+					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
+					<h1 id="fh5co-logo"><a href="/"><i class="icon-airplane"></i>SkyLife</a></h1>
+					<!-- START #fh5co-menu-wrap -->
+					<nav id="fh5co-menu-wrap" role="navigation">
+						<ul class="sf-menu" id="fh5co-primary-menu">
+							<!-- <li><a href="/page/index">Home</a></li> -->
+							<li class="active"><a href="/page/flight">항공편</a></li>
+							<li><a href="/page/map">지도</a></li>
+							<li><a href="/page/board">게시판</a></li>
+							<li><a href="/page/public">공지사항</a></li>
+							<li><a href="#" class="fh5co-sub-ddown">Menu</a>
+								<c:set var="name" value="${user.id}"/>
+								<ul class="fh5co-sub-menu">
+								<c:choose>
+									<c:when test="${name eq null}">
+										<li><a href="/auth/loginForm">로그인</a></li>
+										<li><a href="#">메뉴</a></li>
+									</c:when>	
+									<c:when test="${name ne null}">
+										<li><a href="#">${user.id}님</a></li>
+										<li><a href="#">메뉴</a></li>
+										<li><a href="/memUpdate">회원정보 수정</a></li>
+										<li><a href="/logout">로그아웃</a></li>
+									</c:when>
+								</c:choose>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+				</div>
 			</div>
-		</div>
-	</header>
+		</header>
+
+	<!-- end:header-top -->
 	

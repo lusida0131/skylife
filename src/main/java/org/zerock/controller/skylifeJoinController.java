@@ -82,7 +82,7 @@ public class skylifeJoinController {
 
 		session.invalidate();
 
-		return "/page/index";
+		return "redirect:/";
 	}
 
 	
@@ -135,5 +135,24 @@ public class skylifeJoinController {
 		String num = Integer.toString(checkNum);
 
 		return num;
+	}
+	////////////////////////////////////////////////////////
+	// 회원정보 수정
+	
+	@RequestMapping(value="/memUpdate", method = RequestMethod.GET)
+	public String memUpdateView() throws Exception {
+		return "/page/memUpdate";
+	}
+	
+	@RequestMapping(value="/memUpdate", method = RequestMethod.POST)
+	public String memUpdate(skylifeVO vo, HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
+		String hashedPw = BCrypt.hashpw(vo.getPw(), BCrypt.gensalt()); 
+		vo.setPw(hashedPw); 
+		service.memUpdate(vo);
+		redirectAttributes.addFlashAttribute("msg", "REGISTERED");
+		
+		session.invalidate();
+		
+		return "redirect:/";
 	}
 }

@@ -18,4 +18,10 @@
 		select * from smem where id=#{id} 
 	</select>
 	
+	<update id="memUpdate">
+		update smem
+		set pw = #{pw}, phone = #{phone}
+		where id = #{id}
+	</update>
+	
 </mapper>

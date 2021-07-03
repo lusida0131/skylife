@@ -25,7 +25,7 @@
                         <!--로고-->
                         <h1><img src="${pageContext.request.contextPath}/resources/images/sky.png" alt=""></h1>
                          <!--로고end-->
-                         <!-- ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ -->
+                         
                          <!--회원가입 인풋-->
                         <form class="login__input" action="/auth/joinForm" method="post"id="signFrm"name="signFrm">
                             <input type="text" name="id" placeholder="아이디" required="required" id="id">
@@ -64,86 +64,85 @@
         </main>
     </div>
 </body>
+
 <script type="text/javascript">
 	var code = "";
-	
+   
 	$(document).ready(function(e){
-		
+
 		var idx = false;
-    	
-    	
-    	
 		$('#signUp').click(function(){
-			
-			if($.trim($('#id').val()) == ''){
-				alert("아이디를 입력해주세요.");
-				$('#id').focus();
-				return;
-			}else if($.trim($('#pw').val()) == ''){
-				alert("패스워드를 입력해주세요.");
-				$('#pw').focus();
-				return;
-			}else if($.trim($('#email').val()) == ''){
-				alert("이메일을 입력해주세요.");
-				$('#email').focus();
-				return;
-			}else if($.trim($('#name').val()) == ''){
-				alert("이름을 입력 해주세요.");
-				$('#name').focus();
-				return;
-			}else if($.trim($('#mail_check_input').val()) == ''){
-				alert("인증번호를 입력 해주세요.");
-				$('#mail_check_input').focus();
-				return;
-			}else if(idx==false){
-				alert("아이디 중복체크를 해주세요.");
-				return;
-			}else if($.trim($('#mail_check_input').val()) != code) {
-				alert("인증번호를 확인해주세요.")
-				return;
-			}
-			else{
-				$('#signFrm').submit();
-			}
+	         if($.trim($('#id').val()) == ''){
+	            alert("아이디를 입력해주세요.");
+	            $('#id').focus();
+	            return;
+	         }else if($.trim($('#pw').val()) == ''){
+	            alert("패스워드를 입력해주세요.");
+	            $('#pw').focus();
+	            return;
+	         }else if($.trim($('#email').val()) == ''){
+	            alert("이메일을 입력해주세요.");
+	            $('#email').focus();
+	            return;
+	         }else if($.trim($('#name').val()) == ''){
+	            alert("이름을 입력 해주세요.");
+	            $('#name').focus();
+	            return;
+	         }else if($.trim($('#mail_check_input').val()) == ''){
+	            alert("인증번호를 입력 해주세요.");
+	            $('#mail_check_input').focus();
+	            return;
+	         }else if(idx==false){
+	            alert("아이디 중복체크를 해주세요.");
+	            return;
+	         }else if($.trim($('#mail_check_input').val()) != code) {
+	            alert("인증번호를 확인해주세요.")
+	            return;
+	         }
+	         else{
+	            $('#signFrm').submit();
+	         }
 		});
-		
+      
 		$('#check').click(function(){
-			$.ajax({
-				url: "${pageContext.request.contextPath}/idCheck",
-				type: "GET",
-				data:{
-					"id":$('#id').val()
-				},
-				success: function(data){
-					if(data == 0 && $.trim($('#id').val()) != '' ){
-						idx=true;
-						alert("사용 가능한 아이디 입니다.")
-					}else{
-						alert("사용 불가능한 아이디 입니다.")
-					}
-				},
-				error: function(){
-					alert("서버에러");
-				}
-			});
+	         $.ajax({
+	            url: "${pageContext.request.contextPath}/idCheck",
+	            type: "GET",
+	            data:{
+	               "id":$('#id').val()
+	            },
+	            success: function(data){
+	               if(data == 0 && $.trim($('#id').val()) != '' ){
+	                  idx=true;
+	                  alert("사용 가능한 아이디 입니다.")
+	               }else{
+	                  alert("사용 불가능한 아이디 입니다.")
+	               }
+	            },
+	            error: function(){
+	               alert("서버에러");
+	            }
+	         });
 		});
+      
 		/* 인증번호 이메일 전송*/
         $(".mail_check_button").click(function() {
-        	var email = $(".mail_input").val(); 	// 입력한 이메일
-        	var cehckBox = $(".mail_check_input");	// 인증번호 입력란
-        	var boxWrap = $(".mail_check_input_box"); // 인증번호 입력란 박스
-        	
-        	$.ajax({
-        		type:"GET",
-        		url:"mailCheck?email=" + email,
-        		success:function(data) {
-        			console.log("data : " + data)
-        			cehckBox.attr("disabled",false);
-        			boxWrap.attr("id", "mail_check_input_box_true");
-        			code = data;
-        		}
-        	});
+           var email = $(".mail_input").val();    // 입력한 이메일
+           var cehckBox = $(".mail_check_input");   // 인증번호 입력란
+           var boxWrap = $(".mail_check_input_box"); // 인증번호 입력란 박스
+           
+           $.ajax({
+              type:"GET",
+              url:"mailCheck?email=" + email,
+              success:function(data) {
+                 console.log("data : " + data)
+                 cehckBox.attr("disabled",false);
+                 boxWrap.attr("id", "mail_check_input_box_true");
+                 code = data;
+              }
+           });
         });
+		
         /* 인증번호 비교 */
         $(".mail_check_input").blur(function() {
         	
@@ -159,5 +158,7 @@
         	} 
         });
 	});
+	
 </script>
+
 </html>
