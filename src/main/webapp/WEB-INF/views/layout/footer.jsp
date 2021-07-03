@@ -80,7 +80,7 @@
 	<!-- END fh5co-wrapper -->
 
 	<!-- jQuery -->
-
+	
 
 	<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
 	<!-- jQuery Easing -->

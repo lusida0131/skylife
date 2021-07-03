@@ -12,8 +12,8 @@ public class searchVO {
 
 	private String vihicleId;		// 항공편명
 	private String airlineNm;		// 항공사명
-	private int depPlandTime;		// 출발시간
-	private int arrPlandTime;		// 도착시간
+	private long depPlandTime;		// 출발시간
+	private long arrPlandTime;		// 도착시간
 	private int economyCharge;		// 일반석운임
 	private int prestigeCharge;		// 비즈니스석운임
 	private String depAirportNm;	// 출발공항
@@ -22,7 +22,7 @@ public class searchVO {
 	
 	public searchVO() { }
 	
-	public searchVO(String vihicleId, String airlineNm, int depPlandTime, int arrPlandTime,
+	public searchVO(String vihicleId, String airlineNm, long depPlandTime, long arrPlandTime,
 			int economyCharge, int prestigeCharge, String depAirportNm, String arrAirportNm) {
 		
 		this.vihicleId = vihicleId;
