@@ -20,7 +20,8 @@
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="heading${count}">
 									<h4 class="panel-title">
-										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${count}" aria-expanded="true" aria-controls="collapse${count}">
+										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${count}" aria-expanded="true" aria-controls="collapse${count}"
+											style="text-decoration: none; color="#ffffff">
 											(${count}) ${list.depAirportNm}(${list.depPlandTime}) -> ${list.arrAirportNm}(${list.arrPlandTime})
 										</a>
 									</h4>
@@ -170,7 +171,7 @@
 				</div>
 				<div class="row row-bottom-padded-md">
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="${pageContext.request.contextPath}/resources/images/place-1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>New York</h3>
@@ -181,7 +182,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-2.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="${pageContext.request.contextPath}/resources/images/place-2.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>Philippines</h3>
@@ -192,7 +193,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="${pageContext.request.contextPath}/resources/images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>Hongkong</h3>
@@ -203,7 +204,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-4.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="${pageContext.request.contextPath}/resources/images/place-4.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>New York</h3>
@@ -214,7 +215,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-5.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="${pageContext.request.contextPath}/resources/images/place-5.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>Philippines</h3>
@@ -225,7 +226,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-6.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="${pageContext.request.contextPath}/resources/images/place-6.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>Hongkong</h3>
@@ -333,28 +334,28 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul id="fh5co-destination-list" class="animate-box">
-							<li class="one-forth text-center" style="background-image: url(images/place-1.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-1.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Los Angeles</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-2.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-2.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Hongkong</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-3.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-3.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Italy</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-4.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-4.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Philippines</h2>
@@ -362,7 +363,7 @@
 								</a>
 							</li>
 
-							<li class="one-forth text-center" style="background-image: url(images/place-5.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-5.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Japan</h2>
@@ -377,35 +378,35 @@
 									</div>
 								</div>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-6.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-6.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Paris</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-7.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-7.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Singapore</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-8.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-8.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Madagascar</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-9.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-9.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Egypt</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-10.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-10.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Indonesia</h2>

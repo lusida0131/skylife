@@ -41,7 +41,7 @@ public class BoardController {
 	// 게시글 목록
 	@GetMapping("/page/board")
 	public String boardList(BoardVO vo, Model model) {
-		log.info("제발...");
+		log.info("call board list");
 		List<BoardVO> list = service.list(vo);
 		model.addAttribute("list", list);
 		
@@ -51,36 +51,25 @@ public class BoardController {
 	// 게시글 작성
 	@GetMapping("/page/boardWrite")
 	public String write(@ModelAttribute skylifeVO vo) {
-		log.info("제바루ㅜㅜ");
+		log.info("board write button click");
 		return "/page/boardWrite";
 	}
 	@PostMapping("/page/boardWrite")
 	public String write1(@ModelAttribute BoardVO vo) {
-		log.info("들어갔니??");
 		service.insert(vo);
-		log.info("dld" + vo);
+		log.info("write success: " + vo);
 		
 		return "redirect:/page/board";
 	}
 	
-	// 게시글 작성 기능
-//	@RequestMapping(value="insert", method=RequestMethod.POST)
-//	public String insert(@ModelAttribute BoardVO vo) throws Exception {
-//		log.info("들어갔니??");
-//		service.insert(vo);
-//		
-//		return "redirect:/page/board";
-//	}
-	
+	// 게시글 조회
 	@GetMapping("/page/boardView")
 	public String view1(Model model, @RequestParam int b_num) throws Exception {
-		log.info("여긴가?");
 		BoardVO data = service.view(b_num);
 		model.addAttribute("data", data);
-		log.info("돌아가~ " + data);
+		log.info("board content: " + data);
 		return "/page/boardView";
 	}
-	
 	// 게시글 보기, 게시글 조회수 증가
 //	@PostMapping("/page/boardView")
 //	public ModelAndView view(@RequestParam int b_num, HttpSession session) throws Exception {
@@ -97,20 +86,20 @@ public class BoardController {
 //		return mav;
 //	}
 	
-//	
+
+	// 게시글 수정
+	@RequestMapping(value="/board/update", method=RequestMethod.POST)
+	public String update(@ModelAttribute BoardVO vo) throws Exception {
+		service.update(vo);
+		log.info("update success: " + vo);
+		
+		return "redirect:/page/board";
+	}
 //	@GetMapping("/page/boardUpdate")
 //	public String update1(@ModelAttribute skylifeVO vo) {
 //		log.info("수정전");
 //		return "/page/boardUpdate";
 //	}
-	// 게시글 수정
-	@RequestMapping(value="/board/update", method=RequestMethod.POST)
-	public String update(@ModelAttribute BoardVO vo) throws Exception {
-		log.info("수정");
-		service.update(vo);
-		
-		return "redirect:/page/board";
-	}
 	
 	// 게시글 삭제
 	@RequestMapping("board/delete")
