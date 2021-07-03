@@ -6,7 +6,7 @@
 
 	<insert id = "register">
 		insert into smem(id, pw, name, bday, email, phone)
-		values (#{id},#{pw},#{name}, #{bday}, #{email}, #{phone})
+		values (#{id}, #{pw}, #{name}, #{bday}, #{email}, #{phone})
 	</insert>
 	
 	<select id="idCheck" resultType="int">

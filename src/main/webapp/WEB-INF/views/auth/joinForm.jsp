@@ -25,16 +25,27 @@
                         <!--로고-->
                         <h1><img src="${pageContext.request.contextPath}/resources/images/sky.png" alt=""></h1>
                          <!--로고end-->
-                         <!-- ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ -->
+                         
                          <!--회원가입 인풋-->
                         <form class="login__input" action="/auth/joinForm" method="post"id="signFrm"name="signFrm">
                             <input type="text" name="id" placeholder="아이디" required="required" id="id">
                             <input type = "button" id="check" value = "중복체크">
                             <input type="password" name="pw" placeholder="패스워드" required="required"id="pw">
                             <input type="text" name="name" placeholder="이름" required="required"id="name">
-                               <input type="date" name="bday" placeholder="생년월일" required="required"id="bday">
-                            <input type="email" name="email" placeholder="이메일" required="required"id="email">
-                               <input type="text" name="phone" placeholder="전화번호" required="required"id="phone">
+                            <input type="date" name="bday" placeholder="생년월일" required="required"id="bday">
+                            <input class="mail_input" type="email" name="email" placeholder="이메일" required="required"id="email">
+                            <div class="mail_check_wrap">
+                            	<div class="mail_check_input_box" id="mail_check_input_box_false">
+                            		<input class="mail_check_input" id="mail_check_input" disabled="disabled">
+                            	</div>
+                            	<div class="mail_check_button">
+                            		<!-- <span class="mail_check_button">인증번호 전송</span> -->
+                            		<span>인증번호 전송</span>
+                            	</div>
+                            	<div class="clearfix"></div>
+                            	<span id="mail_check_input_box_warn"></span>
+                            </div>
+                            <input type="text" name="phone" placeholder="전화번호" required="required"id="phone">
                             <input type = "button" id = "signUp"value = "회원가입">
                             <input hidden="">
                         </form>
@@ -53,57 +64,102 @@
         </main>
     </div>
 </body>
+
 <script type="text/javascript">
+	var code = "";
+   
 	$(document).ready(function(e){
-		
+
 		var idx = false;
-		
+       
 		$('#signUp').click(function(){
-			if($.trim($('#id').val()) == ''){
-				alert("아이디 입력.");
-				$('#id').focus();
-				return;
-			}else if($.trim($('#pw').val()) == ''){
-				alert("패스워드 입력.");
-				$('#pw').focus();
-				return;
-			}else if($.trim($('#email').val()) == ''){
-				alert("이메일 입력.");
-				$('#email').focus();
-				return;
-			}else if($.trim($('#name').val()) == ''){
-				alert("이름 입력.");
-				$('#name').focus();
-				return;
-			}
-			if(idx==false){
-				alert("아이디 중복체크를 해주세요.");
-				return;
-			}else{
-				$('#signFrm').submit();
-			}
+	         if($.trim($('#id').val()) == ''){
+	            alert("아이디를 입력해주세요.");
+	            $('#id').focus();
+	            return;
+	         }else if($.trim($('#pw').val()) == ''){
+	            alert("패스워드를 입력해주세요.");
+	            $('#pw').focus();
+	            return;
+	         }else if($.trim($('#email').val()) == ''){
+	            alert("이메일을 입력해주세요.");
+	            $('#email').focus();
+	            return;
+	         }else if($.trim($('#name').val()) == ''){
+	            alert("이름을 입력 해주세요.");
+	            $('#name').focus();
+	            return;
+	         }else if($.trim($('#mail_check_input').val()) == ''){
+	            alert("인증번호를 입력 해주세요.");
+	            $('#mail_check_input').focus();
+	            return;
+	         }else if(idx==false){
+	            alert("아이디 중복체크를 해주세요.");
+	            return;
+	         }else if($.trim($('#mail_check_input').val()) != code) {
+	            alert("인증번호를 확인해주세요.")
+	            return;
+	         }
+	         else{
+	            $('#signFrm').submit();
+	         }
 		});
-		
+      
 		$('#check').click(function(){
-			$.ajax({
-				url: "${pageContext.request.contextPath}/idCheck",
-				type: "GET",
-				data:{
-					"id":$('#id').val()
-				},
-				success: function(data){
-					if(data == 0 && $.trim($('#id').val()) != '' ){
-						idx=true;
-						alert("사용 가능한 아이디 입니다.")
-					}else{
-						alert("사용 불가능한 아이디 입니다.")
-					}
-				},
-				error: function(){
-					alert("서버에러");
-				}
-			});
+	         $.ajax({
+	            url: "${pageContext.request.contextPath}/idCheck",
+	            type: "GET",
+	            data:{
+	               "id":$('#id').val()
+	            },
+	            success: function(data){
+	               if(data == 0 && $.trim($('#id').val()) != '' ){
+	                  idx=true;
+	                  alert("사용 가능한 아이디 입니다.")
+	               }else{
+	                  alert("사용 불가능한 아이디 입니다.")
+	               }
+	            },
+	            error: function(){
+	               alert("서버에러");
+	            }
+	         });
 		});
+      
+		/* 인증번호 이메일 전송*/
+        $(".mail_check_button").click(function() {
+           var email = $(".mail_input").val();    // 입력한 이메일
+           var cehckBox = $(".mail_check_input");   // 인증번호 입력란
+           var boxWrap = $(".mail_check_input_box"); // 인증번호 입력란 박스
+           
+           $.ajax({
+              type:"GET",
+              url:"mailCheck?email=" + email,
+              success:function(data) {
+                 console.log("data : " + data)
+                 cehckBox.attr("disabled",false);
+                 boxWrap.attr("id", "mail_check_input_box_true");
+                 code = data;
+              }
+           });
+        });
+		
+        /* 인증번호 비교 */
+        $(".mail_check_input").blur(function() {
+           var inputCode = $(".mail_check_input").val();      // 입력코드
+           var checkResult = $("#mail_check_input_box_warn");   // 비교 결과
+           
+           if(inputCode == code) {
+              checkResult.html("인증번호가 일치합니다.");
+              checkResult.attr("class", "correct");
+           } else {
+              checkResult.html("인증번호를 다시 확인해주세요.");
+              checkResult.attr("class", "incorrect");
+           } 
+		});
+        
 	});
+	
 </script>
+
 </html>
