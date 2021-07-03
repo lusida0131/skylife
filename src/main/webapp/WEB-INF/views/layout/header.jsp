@@ -87,46 +87,6 @@
 	<div id="fh5co-wrapper">
 	<div id="fh5co-page">
 
-<<<<<<< HEAD
-		<header id="fh5co-header-section" class="sticky-banner">
-			<div class="container">
-				<div class="nav-header">
-					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="/page/index"><i class="icon-airplane"></i>SkyLife</a></h1>
-					<!-- START #fh5co-menu-wrap -->
-					<nav id="fh5co-menu-wrap" role="navigation">
-						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li><a href="/page/index">Home</a></li>
-							<li><a href="/page/flight">항공편</a></li>
-							<li class="active"><a href="/page/hotel">호텔</a></li>
-							<li><a href="/page/board">게시판</a></li>
-							<li><a href="/page/public">공지사항</a></li>
-							<li><a href="contact.html" class="fh5co-sub-ddown">Contact</a>
-							<c:set var="name" value="${user.id}"/>
-								<ul class="fh5co-sub-menu">
-								<c:choose>
-								<c:when test="${name eq null}">
-									<li><a href="/auth/loginForm">로그인</a></li>
-									<li><a href="#">CSS3 &amp; HTML5</a></li>
-									<li><a href="#">Angular JS</a></li>
-									<li><a href="#">Node JS</a></li>
-									<li><a href="#">Django &amp; Python</a></li>
-								</c:when>	
-								<c:when test="${name ne null}">
-									<li><p>${user.id}님</p></li>
-									<li><a href="#">CSS3 &amp; HTML5</a></li>
-									<li><a href="#">Angular JS</a></li>
-									<li><a href="#">Node JS</a></li>
-									<li><a href="#">Django &amp; Python</a></li>
-									<li><a href="/logout">로그아웃</a></li>
-								</c:when>
-								</c:choose>
-								</ul>
-							</li>
-						</ul>
-					</nav>
-				</div>
-=======
 	<header id="fh5co-header-section" class="sticky-banner">
 		<div class="container">
 			<div class="nav-header">
@@ -151,10 +111,7 @@
 						</li>
 					</ul>
 				</nav>
->>>>>>> e31b9bb937da8388c760da022e20a71e2bcbb4bb
 			</div>
 		</div>
 	</header>
-
-	<!-- end:header-top -->
 	

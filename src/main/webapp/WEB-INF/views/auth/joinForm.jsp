@@ -70,9 +70,11 @@
 	$(document).ready(function(e){
 		
 		var idx = false;
-		var checkResult = false;
-		
+    	
+    	
+    	
 		$('#signUp').click(function(){
+			
 			if($.trim($('#id').val()) == ''){
 				alert("아이디를 입력해주세요.");
 				$('#id').focus();
@@ -93,10 +95,14 @@
 				alert("인증번호를 입력 해주세요.");
 				$('#mail_check_input').focus();
 				return;
-			}if(idx==false){
+			}else if(idx==false){
 				alert("아이디 중복체크를 해주세요.");
 				return;
-			} else{
+			}else if($.trim($('#mail_check_input').val()) != code) {
+				alert("인증번호를 확인해주세요.")
+				return;
+			}
+			else{
 				$('#signFrm').submit();
 			}
 		});
@@ -142,7 +148,7 @@
         $(".mail_check_input").blur(function() {
         	
         	var inputCode = $(".mail_check_input").val();		// 입력코드
-        	var checkResult = $("#mail_check_input_box_warn");	// 비교 결과 
+        	var checkResult = $("#mail_check_input_box_warn");	// 비교 결과
         	
         	if(inputCode == code) {
         		checkResult.html("인증번호가 일치합니다.");
