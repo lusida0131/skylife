@@ -17,6 +17,7 @@
          .tab input:checked ~ .tab-content {
          max-height: 100vh;
          }
+         
          /* Label formatting when open */
          .tab input:checked + label{
          /*@apply text-xl p-5 border-l-2 border-indigo-500 bg-gray-100 text-indigo*/

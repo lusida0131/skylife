@@ -30,5 +30,4 @@ public class skylifeServiceImpl implements skylifeService{
 		return mapper.login(skylifevo);
 	}
 
-
 }

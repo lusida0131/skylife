@@ -29,14 +29,6 @@ public class PubController {
 		log.info("list");
 		model.addAttribute("list", service.list());
 	}
-	@PostMapping("/modify")
-	public String modify(PubVO pub, RedirectAttributes rttr) {
-		log.info("modify" + pub);
-		if(service.modify(pub)) {
-			rttr.addFlashAttribute("result","success");
-		}
-		return "redirect:/pub/public";
-	}
 	@GetMapping("/register")
 	public void register() {
 		
@@ -48,15 +40,42 @@ public class PubController {
 		service.register(pub);
 		rttr.addFlashAttribute("result", pub.getPno());
 		return "redirect:/pub/public";
-	}
+	}	
 	@PostMapping("/remove")
 	public String remove(@RequestParam("pno") Integer pno, RedirectAttributes rttr) {
-		log.info("remove..." +pno);
+		log.info("remove..." + pno);
 		if(service.remove(pno)) {
 			rttr.addFlashAttribute("result","success");
+		} else {
+			System.out.println("���� ����");
 		}
 		return "redirect:/pub/public";
 	}
+	@GetMapping("/remove")
+	public void get12(@RequestParam("pno") Integer pno, Model model) {
+		log.info("/remove : ���� Ŭ��");
+		model.addAttribute("pub", service.get(pno));
+	}
+	
+	@PostMapping("/modify")
+	public String modify(PubVO pub, RedirectAttributes rttr) {
+		log.info("modify : �����ϱ� �Ϸ� Ŭ�� " + pub);
+		
+		if(service.modify(pub)) { //������ �Ǿ������� ���� Ȯ��
+			rttr.addFlashAttribute("result","success");
+		} else {
+			System.out.println("���� ����");
+		}
+		
+		return "redirect:/pub/public";
+	}
+	@GetMapping("/modify")
+	public void get(@RequestParam("pno") Integer pno, Model model) {
+		log.info("/modify : ���� Ŭ��");
+		model.addAttribute("pub", service.get(pno));
+//	    model.addAttribute("notice", service.get(notice_bno));
+	}
+	
 	/*
 	 * @RequestMapping(value="/public", method=RequestMethod.POST,
 	 * produces="application/text; charset=utf8") // @GetMapping("/loginForm")

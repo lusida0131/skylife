@@ -5,14 +5,20 @@
       <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet"> 
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/public.css">
       <div class="w-full md:w-3/5 mx-auto p-8">
-         <p>Open <strong>multiple</strong></p>
+         <h2>SkyLife의 공지사항</h2><br>			
+         <%-- <c:if test="${loginUser.num == 1}"> --%>
+         	<input type="button" value="공지사항 등록" onclick="location.href='/pub/register'" class="btn btn-secondary mb-3">
+         <%-- </c:if> --%>
          <div class="shadow-md">
             <c:forEach var="pub" items="${list }">
-         		<div class="tab w-full overflow-hidden border-t">
-               		<input class="absolute opacity-0 " id="tab-multi-one" type="checkbox" name="tabs">
-               		<label class="block p-5 leading-normal cursor-pointer" for="tab-multi-one">${pub.p_title } ${pub.p_time }</label>
-               		<div class="tab-content overflow-hidden border-l-2 bg-gray-100 border-indigo-500 leading-normal">
+         		<div class="tab w-full overflow-hidden border-t" style="margin-bottom:10px;">
+               		<input class="absolute opacity-0 " id="tab-multi-${pub.pno }" type="checkbox" name="tabs">
+               		<label class="block p-5 leading-normal cursor-pointer" for="tab-multi-${pub.pno }">${pub.p_title } ${pub.p_time }</label>
+               		<div class="tab-content overflow-hidden border-l-2 bg-gray-100 border-indigo-500 leading-normal ">
                   		<p class="p-5">${pub.p_content }</p>
+                  		<%-- <c:if test="${loginUser.num == 1}"> --%>
+                  		<input type="button" value="공지사항 수정/삭제" onclick="location.href='/pub/modify?pno=<c:out value="${pub.pno}" />'" class="btn btn-secondary mb-3">
+              	 		<%-- </c:if> --%>
               	 	</div>
              	</div>
          	</c:forEach>       
@@ -34,6 +40,10 @@
                   setCheck = null;
           }
           };
+<<<<<<< HEAD
       }
+=======
+      }    
+>>>>>>> soung
    </script>
 </html>

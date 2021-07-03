@@ -40,5 +40,10 @@ public class PubServiceImpl implements PubService{
 		log.info("getList...");
 		return mapper.list();
 	}
-		
+	
+	 @Override 
+	 public PubVO get(Integer pno) {
+	      log.info("��ȸ�� �������� ��ȣ : " + pno);
+	      return mapper.read(pno);
+	   }
 }
