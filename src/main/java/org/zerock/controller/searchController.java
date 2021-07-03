@@ -2,6 +2,7 @@ package org.zerock.controller;
 
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,8 +45,15 @@ public class searchController {
 		String startPortName = request.getParameter("from_place");
 		String endPortName = request.getParameter("to_place");
 		String startTime = request.getParameter("date_start");
+		String endTime = request.getParameter("date_end");
 		
-		log.info("startPortName: " + startPortName + " // endPortName: " + endPortName + " // startTime: " + startTime);
+		// data format change
+		//SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+		//endTime = simpleDateFormat.format(endTime);
+		
+		
+		log.info("startPortName: " + startPortName + " // endPortName: " + endPortName 
+				+ " // startTime: " + startTime + " // endTime: " + endTime);
 		
 		//ArrayList<searchVO> clist = service.airApi();
 		ArrayList<searchVO> clist = service.airApi(startPortName, endPortName, startTime);

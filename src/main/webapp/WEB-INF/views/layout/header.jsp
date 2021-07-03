@@ -85,11 +85,11 @@
 		<div class="container">
 			<div class="nav-header">
 				<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-				<h1 id="fh5co-logo"><a href="/page/index"><i class="icon-airplane"></i>SkyLife</a></h1>
+				<h1 id="fh5co-logo"><a href="/page/flight"><i class="icon-airplane"></i>SkyLife</a></h1>
 				<!-- START #fh5co-menu-wrap -->
 				<nav id="fh5co-menu-wrap" role="navigation">
 					<ul class="sf-menu" id="fh5co-primary-menu">
-						<li><a href="/page/index">Home</a></li>
+						<!-- <li><a href="/page/index">Home</a></li> -->
 						<li><a href="/page/flight">항공편</a></li>
 						<li class="active"><a href="/page/map">지도</a></li>
 						<li><a href="/page/board">게시판</a></li>
