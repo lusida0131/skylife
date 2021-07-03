@@ -531,6 +531,7 @@
 
 			</div>
 		</div>
+		
 		<!-- fh5co-blog-section -->
 		<div id="fh5co-testimonial" style="background-image:url(images/img_bg_1.jpg);">
 		<div class="container">
@@ -574,4 +575,6 @@
 			</div>
 		</div>
 	</div>
+	
+	
 	<%@ include file="../layout/footer.jsp"%>

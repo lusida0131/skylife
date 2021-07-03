@@ -1,141 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/accordions.css">
 <%@ include file="../layout/header.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+		<br><br>
+	<!-- ################ accordion toggle 적용 START ################ -->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>항공편 검색 목록</h1><hr>
+				</div>
+				
+				<div class="col-md-12">
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-		<div class="fh5co-hero">
-			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(/images/imagesair.jpg);">  <!-- 사진 왜 안뜨냐 해결좀요 -->
-				<div class="desc">
-					<div class="container">
-						<div class="row">
-							<div class="col-sm-5 col-md-5">
-								<!-- <a href="index.html" id="main-logo">Travel</a> -->
-								<div class="tabulation animate-box">
-
-									<!-- Nav tabs -->
-								    <ul class="nav nav-tabs" role="tablist">
-								    	<li role="presentation" class="active">
-								      		<a href="#flights" aria-controls="flights" role="tab" data-toggle="tab">Flights</a>
-								    	</li>
-								    	<!-- <li role="presentation">
-								    		<a href="#hotels" aria-controls="hotels" role="tab" data-toggle="tab">Hotels</a>
-								    	</li>
-								    	<li role="presentation">
-								    		<a href="#packages" aria-controls="packages" role="tab" data-toggle="tab">Packages</a>
-								    	</li> -->
-								    </ul>
-
-								    <!-- Tab panes -->
-									<div class="tab-content">
-									
-										<!-- ################################## FORM TAG HERE ################################## -->
-										<form id="flightFrm" name="flightFrm" action="/page/searchFlight" method="post">
-											 <div role="tabpanel" class="tab-pane active" id="flights">
-												<div class="row">
-													<div class="col-xxs-12 col-xs-6 mt">
-														<section>
-															<label for="from">출발지</label>
-															<select class="cs-select cs-skin-border" id="from_place" name="from_place">
-																<option value="" disabled selected>출발지 선택</option>
-						                                        <option value="NAARKJJ">광주</option>
-						                                        <option value="NAARKJK">군산</option>
-																<option value="NAARKSS">김포</option>
-						                                        <option value="NAARKPK">김해/부산</option>
-						                                        <option value="NAARKTN">대구</option>
-						                                        <option value="NAARKJB">무안</option>
-						                                        <option value="NAARKPS">사천</option>
-						                                        <option value="NAARKNY">양양</option>
-						                                        <option value="NAARKJY">여수</option>
-						                                        <option value="NAARKPU">울산</option>
-						                                        <option value="NAARKNW">원주</option>
-						                                        <option value="NAARKSI">인천</option>
-						                                        <option value="NAARKPC">제주</option>
-						                                        <option value="NAARKTU">청주</option>
-						                                        <option value="NAARKTH">포항</option>
-															</select>
-														</section>
-													</div>
-													<div class="col-xxs-12 col-xs-6 mt">
-														<section>
-															<label for="from">도착지</label>
-															<select class="cs-select cs-skin-border" id="to_place" name="to_place">
-																<option value="" disabled selected>도착지 선택</option>
-																<option value="NAARKJJ">광주</option>
-						                                        <option value="NAARKJK">군산</option>
-																<option value="NAARKSS">김포</option>
-						                                        <option value="NAARKPK">김해/부산</option>
-						                                        <option value="NAARKTN">대구</option>
-						                                        <option value="NAARKJB">무안</option>
-						                                        <option value="NAARKPS">사천</option>
-						                                        <option value="NAARKNY">양양</option>
-						                                        <option value="NAARKJY">여수</option>
-						                                        <option value="NAARKPU">울산</option>
-						                                        <option value="NAARKNW">원주</option>
-						                                        <option value="NAARKSI">인천</option>
-						                                        <option value="NAARKPC">제주</option>
-						                                        <option value="NAARKTU">청주</option>
-						                                        <option value="NAARKTH">포항</option>
-															</select>
-														</section>
-													</div>
-													<div class="col-xxs-12 col-xs-6 mt alternate">
-														<div class="input-field">
-															<label for="date-start">출발일</label>
-															<input type="text" class="form-control" id="date_start" name="date_start" placeholder="yyyymmdd"/>
-														</div>
-													</div>
-													<div class="col-xxs-12 col-xs-6 mt alternate">
-														<div class="input-field">
-															<label for="date-end">도착일</label>
-															<input type="text" class="form-control" id="date-end" name="date_end" placeholder="yyyymmdd"/>
-														</div>
-													</div>
-													<div class="col-sm-12 mt">
-														<section>
-															<label for="class">항공사</label>
-															<select class="cs-select cs-skin-border">
-																<option value="" disabled selected>항공사</option>
-																<option value="AAR">아시아나항공</option>
-																<option value="ABL">에어부산</option>
-																<option value="ASV">에어서울</option>
-																<option value="ESR">이스타항공</option>
-																<option value="FGW">플라이강원</option>
-																<option value="HGG">하이에어</option>
-																<option value="JJA">제주항공</option>
-																<option value="JNA">진에어</option>
-																<option value="KAL">대한항공</option>
-																<option value="TWB">티웨이항공</option>
-															</select>
-														</section>
-													</div>
-													<div class="col-xs-12">
-														<input type="button" id="flightBtn" class="btn btn-primary btn-block" value="Search Flight">
-													</div>
-												</div>
-											 </div>
-										 </form> <!-- ################################## FORM TAG HERE ################################## -->
-										 
+						<c:set var="count" value="0"/>
+						<c:forEach var="list" items="${clist}">
+						<c:set var="count" value="${count = count + 1}"/>
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="heading${count}">
+									<h4 class="panel-title">
+										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${count}" aria-expanded="true" aria-controls="collapse${count}">
+											(${count}) ${list.depAirportNm}(${list.depPlandTime}) -> ${list.arrAirportNm}(${list.arrPlandTime})
+										</a>
+									</h4>
+								</div>
+								<div id="collapse${count}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${count}">
+									<div class="panel-body">
+										<p>This is 간단한 내용.<br>write here. (1)</p>
+										<table class="table table-striped"> 
+											<thead> 
+												<tr> 
+													<th>항공편</th>
+													<th>항공사</th>
+													<th>출발공항</th>
+													<th>출발시간</th>
+													<th>도착공항</th>
+													<th>도착시간</th>
+													<th>일반석</th>
+													<th>비즈니스석</th>
+												</tr> 
+											</thead> 
+											<tbody> 
+												<tr> 
+													<!-- <th scope="row">#VEG1201</th> -->
+													<td>${list.vihicleId}</td> 
+													<td>${list.airlineNm}</td> 
+													<td>${list.depAirportNm}</td>
+													<td>${list.depPlandTime}</td>
+													<td>${list.arrAirportNm}</td>
+													<td>${list.arrPlandTime}</td>
+													<td>${list.economyCharge}</td>
+													<td>${list.prestigeCharge}</td>
+												</tr>
+											</tbody> 
+										</table>
 									</div>
-									
 								</div>
 							</div>
 							
-							<div class="desc2 animate-box">
-								<div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
-									<p>HandCrafted by <a href="https://github.com/lusida0131/skylife" target="_blank" class="fh5co-site-name">SkyLife.git</a></p>
-									<h2>이제 여행을 시작하세요</h2>
-									<h3>현재 최저가 항공권으로 갈 수 있는 여행지를 확인해보세요. 이 밖에도 평균보다 낮은 가격으로 여행할 수 있는 여행지가 많습니다.</h3>
-									<span class="price">$599</span>
-									<!-- <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p> -->
-								</div>
-							</div>
-							
-						</div>
+						</c:forEach>
+						
 					</div>
 				</div>
 			</div>
-		</div>
-		
+		</div><br>
+	<!-- ################ accordion toggle 적용 END ################ -->
+
 
 		<div id="fh5co-tours" class="fh5co-section-gray">
 			<div class="container">
@@ -239,8 +170,7 @@
 				</div>
 				<div class="row row-bottom-padded-md">
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#">
-							<img src="${pageContext.request.contextPath}/resources/images/place-1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="images/place-1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>New York</h3>
@@ -251,8 +181,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#">
-							<img src="${pageContext.request.contextPath}/resources/images/place-2.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="images/place-2.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>Philippines</h3>
@@ -263,8 +192,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#">
-							<img src="${pageContext.request.contextPath}/resources/images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>Hongkong</h3>
@@ -275,8 +203,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#">
-							<img src="${pageContext.request.contextPath}/resources/images/place-4.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="images/place-4.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>New York</h3>
@@ -287,8 +214,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#">
-							<img src="${pageContext.request.contextPath}/resources/images/place-5.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="images/place-5.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>Philippines</h3>
@@ -299,8 +225,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#">
-							<img src="${pageContext.request.contextPath}/resources/images/place-6.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="images/place-6.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>Hongkong</h3>
@@ -408,28 +333,28 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul id="fh5co-destination-list" class="animate-box">
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-1.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(images/place-1.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Los Angeles</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-2.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(images/place-2.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Hongkong</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-3.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(images/place-3.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Italy</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-4.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(images/place-4.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Philippines</h2>
@@ -437,7 +362,7 @@
 								</a>
 							</li>
 
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-5.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(images/place-5.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Japan</h2>
@@ -452,35 +377,35 @@
 									</div>
 								</div>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-6.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(images/place-6.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Paris</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-7.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(images/place-7.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Singapore</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-8.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(images/place-8.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Madagascar</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-9.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(images/place-9.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Egypt</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-10.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(images/place-10.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Indonesia</h2>
@@ -598,38 +523,6 @@
 			</div>
 		</div>
 		
-		
-		<script type="text/javascript">
-		
-			$(document).ready(function(e){
-				$('#flightBtn').click(function(){
-					if($.trim($('#from_place').val()) === "") {
-					    $('#from_place').focus();
-						alert("출발지를 입력해주세요.");
-					}
-					else if($.trim($('#to_place').val()) === "") {
-					    $('#to_place').focus();
-						alert("도착지를 입력해주세요.");
-					}
-					else if($.trim($('#date_start').val()) === "") {
-					    $('#date_start').focus();
-						alert("출발일을 입력해주세요.");
-					}
-					/* else if($.trim($('#date_end').val()) === "") {
-					    $('#date_end').focus();
-						alert("도착일을 입력해주세요.");
-					} */
-					else {
-						$('#flightFrm').submit();
-					}
-				});
-			});
-			
-		</script>
-		
-		<!-- <script>
-			$('#date-end').datepicker({ dateFormat: 'yymmdd', autoclose : true });
-		</script> -->
 
 <%@ include file="../layout/footer.jsp"%>
 

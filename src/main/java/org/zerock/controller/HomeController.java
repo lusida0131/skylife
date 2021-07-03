@@ -16,11 +16,15 @@ public class HomeController {
     }
     @GetMapping("/page/flight")
     public String flight() throws Exception {
-        return "page/flight";
+    	return "page/flight";
     }
-    @GetMapping("/page/hotel")
-    public String hotel() throws Exception {
-        return "page/hotel";
+//    @GetMapping("/page/hotel")
+//    public String hotel() throws Exception {
+//        return "page/hotel";
+//    }
+    @GetMapping("/page/map")
+    public String map() throws Exception {
+        return "page/map";
     }
 //    @GetMapping("/page/board")
 //    public String board() throws Exception {
