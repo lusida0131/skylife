@@ -29,18 +29,19 @@ public class PubController {
 		log.info("list");
 		model.addAttribute("list", service.list());
 	}
+	
 	@GetMapping("/register")
 	public void register() {
 		
 	}
-	
 	@PostMapping("/register")
 	public String register(PubVO pub, RedirectAttributes rttr) {
 		log.info("register: " + pub);
 		service.register(pub);
 		rttr.addFlashAttribute("result", pub.getPno());
 		return "redirect:/pub/public";
-	}	
+	}
+	
 	@PostMapping("/remove")
 	public String remove(@RequestParam("pno") Integer pno, RedirectAttributes rttr) {
 		log.info("remove..." + pno);
