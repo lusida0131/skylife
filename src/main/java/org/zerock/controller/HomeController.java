@@ -9,18 +9,17 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() throws Exception {
-      return "page/flight";
+      return "/page/flight";
 
     }
-    
-//    @GetMapping("/page/index")
-//    public String index() throws Exception {
-//        return "page/index";
-//    }
+    @GetMapping("/page/index")
+    public String index() throws Exception {
+        return "/page/flight";
+    }
     
     @GetMapping("/page/flight")
     public String flight() throws Exception {
-    	return "page/flight";
+        return "page/flight";
     }
     
 //    @GetMapping("/page/hotel")
@@ -45,6 +44,6 @@ public class HomeController {
 	 
     @GetMapping("/page/public")
     public String pub() throws Exception {
-        return "page/public";
+        return "redirect:/pub/public";
     }
 }

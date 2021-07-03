@@ -6,18 +6,12 @@
       <div id="map"
          style="width: 100%; height: 100vh; position: relative; overflow: hidden;"></div>
       <ul id="category">
-         <li id="BK9" data-order="0"><span class="category_bg bank"></span>
-            은행</li>
-         <li id="CS2" data-order="1"><span class="category_bg mart"></span>
-            마트</li>
-         <li id="PM9" data-order="2"><span class="category_bg pharmacy"></span>
-            약국</li>
-         <li id="CT1" data-order="3"><span class="category_bg fun"></span>
-            문화시설</li>
-         <li id="AT4" data-order="4"><span class="category_bg store"></span>
-            관광명소</li>
-         <li id="AD5" data-order="5"><span class="category_bg Attractions">
-         </span> 숙박</li>
+         <li id="BK9" data-order="0"><span class="category_bg bank"></span>은행</li>
+         <li id="CS2" data-order="1"><span class="category_bg mart"></span>마트</li>
+         <li id="PM9" data-order="2"><span class="category_bg pharmacy"></span>약국</li>
+         <li id="CT1" data-order="3"><span class="category_bg fun"></span>문화시설</li>
+         <li id="AT4" data-order="4"><span class="category_bg store"></span>관광명소</li>
+         <li id="AD5" data-order="5"><span class="category_bg Attractions"></span> 숙박</li>
       </ul>
    </div>
 

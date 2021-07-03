@@ -3,18 +3,14 @@
 <%@ include file="../layout/header.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>게시글 작성</title>
-</head>
-<body>
+
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css"/>
 <script src="${pageContext.request.contextPath}/resources/js/board.js"></script>
 <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+
+
 <div class="container">
 	<div class="row">
       <form name="form1" method="post" action="${pageContext.request.contextPath}/page/boardWrite">
@@ -37,7 +33,8 @@
 		</form>
 	</div>
 </div>
-</body>
+
+
 <script>
 	$(document).ready(function() {
 		$("#btnSave").click(function() {
@@ -66,5 +63,6 @@
 		});
 	});
 </script>
-</html>
+
+
 <%@ include file="../layout/footer.jsp"%>

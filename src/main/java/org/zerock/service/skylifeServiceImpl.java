@@ -30,6 +30,7 @@ public class skylifeServiceImpl implements skylifeService{
 		return mapper.login(skylifevo);
 	}
 
+<<<<<<< HEAD
 
 	@Override
 	public void memUpdate(skylifeVO vo) throws Exception {
@@ -39,4 +40,6 @@ public class skylifeServiceImpl implements skylifeService{
 	}
 
 
+=======
+>>>>>>> ab43326f0e0a83c579f61464bbcdb6489b375e48
 }
