@@ -12,5 +12,11 @@
 	</select>
 	<select id="login" resultType="org.zerock.domain.skylifeVO"> 
 		select * from smem where id=#{id} 
-	</select>	
+	</select>
+	
+	<update id="memUpdate">
+		update smem
+		set pw = #{pw}, phone = #{phone}
+		where id = #{id}
+	</update>
 </mapper>

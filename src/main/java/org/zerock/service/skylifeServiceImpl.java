@@ -30,4 +30,10 @@ public class skylifeServiceImpl implements skylifeService{
 		return mapper.login(skylifevo);
 	}
 
+	@Override
+	public void memUpdate(skylifeVO vo) throws Exception {
+		
+		//받은 vo를 mapper로 보내준다.
+		mapper.memUpdate(vo);
+	}
 }

@@ -158,4 +158,27 @@ public class skylifeJoinController {
 
 		return num;
 	}
+	////////////////////////////////////////////////////////
+	// 회원정보 수정
+	@RequestMapping(value="/page/memView", method = RequestMethod.GET)
+	public String memView() throws Exception {
+		return "/page/memView";
+	}
+	
+	@RequestMapping(value="/page/memUpdate", method = RequestMethod.GET)
+	public String memUpdateView() throws Exception {
+		return "/page/memUpdate";
+	}
+	
+	@RequestMapping(value="/memUpdate", method = RequestMethod.POST)
+	public String memUpdate(skylifeVO vo, HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
+		String hashedPw = BCrypt.hashpw(vo.getPw(), BCrypt.gensalt()); 
+		vo.setPw(hashedPw); 
+		service.memUpdate(vo);
+		redirectAttributes.addFlashAttribute("msg", "REGISTERED");
+		
+		session.invalidate();
+		
+		return "redirect:/";
+	}
 }

@@ -111,6 +111,7 @@
 									<c:when test="${name ne null}">
 										<li><a href="#">${user.id}님</a></li>
 										<li><a href="#">메뉴</a></li>
+										<li><a href="/page/memView">회원정보</a></li>
 										<li><a href="/logout">로그아웃</a></li>
 									</c:when>
 								</c:choose>

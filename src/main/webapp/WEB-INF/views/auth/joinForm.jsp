@@ -71,7 +71,6 @@
 	$(document).ready(function(e){
 
 		var idx = false;
-       
 		$('#signUp').click(function(){
 	         if($.trim($('#id').val()) == ''){
 	            alert("아이디를 입력해주세요.");
@@ -146,18 +145,18 @@
 		
         /* 인증번호 비교 */
         $(".mail_check_input").blur(function() {
-           var inputCode = $(".mail_check_input").val();      // 입력코드
-           var checkResult = $("#mail_check_input_box_warn");   // 비교 결과
-           
-           if(inputCode == code) {
-              checkResult.html("인증번호가 일치합니다.");
-              checkResult.attr("class", "correct");
-           } else {
-              checkResult.html("인증번호를 다시 확인해주세요.");
-              checkResult.attr("class", "incorrect");
-           } 
-		});
-        
+        	
+        	var inputCode = $(".mail_check_input").val();		// 입력코드
+        	var checkResult = $("#mail_check_input_box_warn");	// 비교 결과
+        	
+        	if(inputCode == code) {
+        		checkResult.html("인증번호가 일치합니다.");
+        		checkResult.attr("class", "correct");
+        	} else {
+        		checkResult.html("인증번호를 다시 확인해주세요.");
+        		checkResult.attr("class", "incorrect");
+        	} 
+        });
 	});
 	
 </script>

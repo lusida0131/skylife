@@ -8,4 +8,5 @@ public interface skylifeMapper {
 	public int idCheck(String id);
 	public skylifeVO login(skylifeVO skylifevo)throws Exception;
 	
+	public void memUpdate(skylifeVO vo) throws Exception;
 }
