@@ -138,8 +138,12 @@ public class skylifeJoinController {
 	}
 	////////////////////////////////////////////////////////
 	// 회원정보 수정
+	@RequestMapping(value="/page/memView", method = RequestMethod.GET)
+	public String memView() throws Exception {
+		return "/page/memView";
+	}
 	
-	@RequestMapping(value="/memUpdate", method = RequestMethod.GET)
+	@RequestMapping(value="/page/memUpdate", method = RequestMethod.GET)
 	public String memUpdateView() throws Exception {
 		return "/page/memUpdate";
 	}
