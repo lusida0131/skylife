@@ -36,10 +36,11 @@
                             <input class="mail_input" type="email" name="email" placeholder="이메일" required="required"id="email">
                             <div class="mail_check_wrap">
                             	<div class="mail_check_input_box" id="mail_check_input_box_false">
-                            		<input class="mail_check_input" disabled="disabled">
+                            		<input class="mail_check_input" id="mail_check_input" disabled="disabled">
                             	</div>
                             	<div class="mail_check_button">
-                            		<span class="mail_check_button">인증번호 전송</span>
+                            		<!-- <span class="mail_check_button">인증번호 전송</span> -->
+                            		<span>인증번호 전송</span>
                             	</div>
                             	<div class="clearfix"></div>
                             	<span id="mail_check_input_box_warn"></span>
@@ -69,29 +70,33 @@
 	$(document).ready(function(e){
 		
 		var idx = false;
+		var checkResult = false;
 		
 		$('#signUp').click(function(){
 			if($.trim($('#id').val()) == ''){
-				alert("아이디 입력.");
+				alert("아이디를 입력해주세요.");
 				$('#id').focus();
 				return;
 			}else if($.trim($('#pw').val()) == ''){
-				alert("패스워드 입력.");
+				alert("패스워드를 입력해주세요.");
 				$('#pw').focus();
 				return;
 			}else if($.trim($('#email').val()) == ''){
-				alert("이메일 입력.");
+				alert("이메일을 입력해주세요.");
 				$('#email').focus();
 				return;
 			}else if($.trim($('#name').val()) == ''){
-				alert("이름 입력.");
+				alert("이름을 입력 해주세요.");
 				$('#name').focus();
 				return;
-			}
-			if(idx==false){
+			}else if($.trim($('#mail_check_input').val()) == ''){
+				alert("인증번호를 입력 해주세요.");
+				$('#mail_check_input').focus();
+				return;
+			}if(idx==false){
 				alert("아이디 중복체크를 해주세요.");
 				return;
-			}else{
+			} else{
 				$('#signFrm').submit();
 			}
 		});
@@ -145,7 +150,7 @@
         	} else {
         		checkResult.html("인증번호를 다시 확인해주세요.");
         		checkResult.attr("class", "incorrect");
-        	}
+        	} 
         });
 	});
 </script>
