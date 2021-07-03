@@ -31,7 +31,7 @@
 										<!-- ################################## FORM TAG HERE ################################## -->
 										<form id="flightFrm" name="flightFrm" action="/page/searchFlight" method="post">
 											 <div role="tabpanel" class="tab-pane active" id="flights">
-												<div class="row">
+												<div class="row"><br>
 													<div class="col-xxs-12 col-xs-6 mt">
 														<section>
 															<label for="from">출발지</label>
