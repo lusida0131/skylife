@@ -12,7 +12,6 @@
 	</select>
 	<select id="login" resultType="org.zerock.domain.skylifeVO"> 
 		select * from smem where id=#{id} 
-<<<<<<< HEAD
 	</select>
 	
 	<update id="memUpdate">
@@ -20,8 +19,4 @@
 		set pw = #{pw}, phone = #{phone}
 		where id = #{id}
 	</update>
-	
-=======
-	</select>	
->>>>>>> ab43326f0e0a83c579f61464bbcdb6489b375e48
 </mapper>
