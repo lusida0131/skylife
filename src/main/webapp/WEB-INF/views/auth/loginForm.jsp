@@ -64,7 +64,7 @@ margin: 0 auto;
                     <!--계정이 없으신가요?-->
                     <div class="login__register">
                         <span>계정이 없으신가요?</span>
-                        <a href="../auth/joinForm">가입하기</a>
+                        <a href="../auth/joinAgree">가입하기</a>
                     </div>
                     <!--계정이 없으신가요?end-->
                 </article>

@@ -31,11 +31,23 @@
 			</div>
 			<div style="width:650px; text-align:center;">
 				<input type="hidden" name="b_num" value="${data.b_num}">
-				<button type="button" id="btnUpdate">수정</button>
-				<button type="button" id="btnDelete">삭제</button>
+				<c:if test="${user.id == data.id }">
+					<button type="button" id="btnUpdate">수정</button>
+					<button type="button" id="btnDelete">삭제</button>
+				</c:if>
 			</div>
 		</form>
 	</div>
+	<div style="width:650px; text-align:center;">
+		<br>
+		<c:if test="${user.id != null }">
+			<textarea rows="5" cols="80" id="replytext" placeholder="댓글을 작성해 주새요"></textarea>
+			<br>
+			<button type="button" id="btnReply">댓글 작성</button>	
+		</c:if>
+	</div>
+	<div id="listReply">
+</div>
 </div>
 
 
@@ -68,6 +80,37 @@
 			document.form1.submit();
 		});
 	});
+	
+	// 댓글 쓰기 버튼 클릭 이벤트 
+	$(document).ready(function() {
+		listReply();
+		$("#btnReply").click(function() {
+			var r_content = ("#r_content").val();
+			var b_num = "${data.b_num}"
+			var param = "r_content= " + r_content + "&b_num=" + b_num;
+			$.ajax({
+				type: "post",
+				url: "${pageContext.request.contextPath}/reply/insert",
+				data: param,
+				success: function() {
+					alert("댓글이 등록 되었습니다.");
+					listReply();
+				}
+			})
+		})
+		
+	})
+	
+	//댓글 목록
+	function listReply() {
+		$.ajax({
+			type: "get",
+			url: "${pageContext.request.contextPath}/reply/list?b_num=${data.b_num}",
+			success: function(result) {
+				$("#listReply").html(result);
+			}
+		});
+	}
 </script>
 
 

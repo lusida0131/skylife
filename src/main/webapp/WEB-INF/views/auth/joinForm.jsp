@@ -40,7 +40,7 @@
                             	</div>
                             	<div class="mail_check_button">
                             		<!-- <span class="mail_check_button">인증번호 전송</span> -->
-                            		<span>인증번호 전송</span>
+                            		<span>인증번호 전송</span> 		
                             	</div>
                             	<div class="clearfix"></div>
                             	<span id="mail_check_input_box_warn"></span>

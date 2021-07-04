@@ -49,7 +49,10 @@ public class skylifeJoinController {
 		return "/auth/loginForm";
 	}
 
-	
+	@GetMapping("/auth/joinAgree")
+	public String joinAgree() {
+		return"/auth/joinAgree";
+	}
 	@GetMapping("/auth/joinForm")
 	public String joinForm() {
 		return"/auth/joinForm";
@@ -133,15 +136,15 @@ public class skylifeJoinController {
 		logger.info("�씤利앸쾲�샇 " + checkNum);
 
 		/* �씠硫붿씪 蹂대궡湲� */
-		String setFrom = "SkyLifeKorea@gmail.com";
-		String toMail = email;
-		String title = "�쉶�썝媛��엯 �씤利� �씠硫붿씪 �엯�땲�떎.";
-		String content =
-						"�솃�럹�씠吏�瑜� 諛⑸Ц�빐二쇱뀛�꽌 媛먯궗�빀�땲�떎." +
-						"<br><br>" + 
-						"�씤利� 踰덊샇�뒗 " + checkNum + "�엯�땲�떎." +
-						"<br>" +
-						"�빐�떦 �씤利앸쾲�샇瑜� �씤利앸쾲�샇 �솗�씤移몄뿉 湲곗엯�븯�뿬 二쇱꽭�슂.";
+	      String setFrom = "SkyLifeKorea@gmail.com";
+	      String toMail = email;
+	      String title = "회원가입 인증메일입니다.";
+	      String content =
+	                  "홈페이지를 방문해주셔서 감사합니다." +
+	                  "<br><br>" + 
+	                  "인증 번호는 " + checkNum + "입니다." +
+	                  "<br>" +
+	                  "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
