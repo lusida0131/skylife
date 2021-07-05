@@ -40,10 +40,7 @@
                   setCheck = null;
           }
           };
-<<<<<<< HEAD
+
       }
-=======
-      }    
->>>>>>> soung
    </script>
 </html>
