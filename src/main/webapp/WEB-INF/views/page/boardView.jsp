@@ -40,6 +40,7 @@
 	</div>
 	<div style="width:650px; text-align:center;">
 		<br>
+		
 		<c:if test="${user.id != null }">
 			<textarea rows="5" cols="80" id="replytext" placeholder="댓글을 작성해 주새요"></textarea>
 			<br>
