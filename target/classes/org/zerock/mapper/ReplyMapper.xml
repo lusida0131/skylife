@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.ReplyMapper">
-	<insert id="create">
+	<insert id="insert">
 		insert into sco (b_num, r_content, id)
 		values (#{b_num}, #{r_content}, #{id})
 	</insert>
-	<select id="list" resultType="org.zerock.domain.ReplyVO">
-		select * from sco where c_num=#{c_num}
+	<select id="read" resultType="org.zerock.domain.ReplyVO">
+		select * from sco where r_num=#{r_num}
 	</select>
 	<delete id="delete">
 		delete from sco where r_num=#{r_num}
@@ -15,5 +15,8 @@
 	<update id="update">
 		update sco set r_content = #{r_content} where r_num = #{r_num}
 	</update>
-
+	<select id="getListWithPaging" resultType="org.zerock.domain.ReplyVO">
+		select r_num, b_num, r_content, id, time from sco
+		where b_num=#{b_num} order by r_num asc
+	</select>
 </mapper>

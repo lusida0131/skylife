@@ -7,6 +7,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css"/>
 <script src="${pageContext.request.contextPath}/resources/js/board.js"></script>
+
 <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
@@ -38,20 +39,71 @@
 			</div>
 		</form>
 	</div>
-	<div style="width:650px; text-align:center;">
+	<div class='row'>
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-comments fa=fw"></i>Reply
+					<button id="addReplyBtn" class='btn btn-primary btn-xs pull-right'>New Reply</button>
+				</div>
+				<div class="panel-body">
+					<ul class="chat">
+						<li class="left clearfix" data-rno='12'>
+							<div>
+								<div class="header">
+									<strong class="primary-font">user00</strong>
+									<small class="pull-right text-muted">2020-07-05 13:12</small>
+									</div>
+									<p>Good job!</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+	</div>
+
+	
+	<%-- <div style="width:650px; text-align:center;">
 		<br>
 		
 		<c:if test="${user.id != null }">
 			<textarea rows="5" cols="80" id="replytext" placeholder="댓글을 작성해 주새요"></textarea>
 			<br>
-			<button type="button" id="btnReply">댓글 작성</button>	
+			<button type="button" id="btnReply" class="btnReply">댓글 작성</button>	
 		</c:if>
 	</div>
-	<div id="listReply">
+	<div id="listReply"></div> --%>
 </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h4 class="modal-title" id="myModalLabel">REPLY MODAL</h4>
+		</div>
+		<div class="modal-body">
+			<div class="form-group">
+				<label>Reply</label>
+				<input class="form-control" name='reply' value='New Reply!!!!'>
+ 			</div>
+ 			<div class="form-group">
+ 				<label>Replyer</label>
+ 				<input class="form-control" name='id' value='id'>
+ 			</div>
+ 			<div class="form-group">
+ 				<label>Reply Date</label>
+ 				<input class="form-control" name='replyDate' value='2018-01-01 13:13'>
+ 			</div>
+		</div>
+		<div class="modal-footer">
+			<button id='modalModBtn' type="button" class="btn btn-warning">Modify</button>
+			<button id='modalRemoveBtn' type="button" class="btn btn-danger">Remove</button>
+			<button id='modalRegisterBtn' type="button" class="btn btn-primary">Register</button>
+			<button id='modalCloseBtn' type="button" class="btn btn-default">Close</button>
+		</div>
+	</div>
 </div>
-
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/reply.js"></script>
 <script>
 	$(document).ready(function() {
 		$("#btnDelete").click(function() {
@@ -82,36 +134,67 @@
 		});
 	});
 	
-	// 댓글 쓰기 버튼 클릭 이벤트 
+	// 댓글 이벤트 
 	$(document).ready(function() {
-		listReply();
-		$("#btnReply").click(function() {
-			var r_content = ("#r_content").val();
-			var b_num = "${data.b_num}"
-			var param = "r_content= " + r_content + "&b_num=" + b_num;
-			$.ajax({
-				type: "post",
-				url: "${pageContext.request.contextPath}/reply/insert",
-				data: param,
-				success: function() {
-					alert("댓글이 등록 되었습니다.");
-					listReply();
-				}
-			})
-		})
-		
-	})
+		var operForm = $("#operForm");
+		$("button[data-oper='mopdify']").on("click", function(e){
+			operForm.attr("action", "/board/modify").submit();	
+		});
+		console.log("Reply Module.....");
+		var replyService = (function() {
+			function getList(param, callback, error) {
+				var b_num = param.b_num;
+				var page = param.page || 1;
+				$.getJSON("/replies/pages/" + b_num + "/" +page + ".json",
+						function(data) {
+					if(callback) {
+						callback(data);
+					}
+				}).fail(function(xhr,status,err){
+					if(error) {
+						error();
+					}
+				});
+			}
+			return {
+				getList: getList
+			};
+		})();
+	}
+	var bnoValue ='<c:out value="${data.b_num}"/>';
+	var replyUL = $(".chat");
+	showList(1);
 	
-	//댓글 목록
-	function listReply() {
-		$.ajax({
-			type: "get",
-			url: "${pageContext.request.contextPath}/reply/list?b_num=${data.b_num}",
-			success: function(result) {
-				$("#listReply").html(result);
+	function showList(page) {
+		console.log("show list" + page);
+		replyService.getList({b_num:bnoValue, page:page|| 1}, function(list) {
+			console.log("list: " + list);
+			var str="";
+			if(list == null || list.length == 0) {
+				replyUL.html("");
+				return;
+			}
+			for(var i = 0; len = list.length || 0; i < len; i++) {
+				str += "<li class='left clearfix' data-r_num='" + list[i].r_num"'>";
+				str += "<div><div class='header'><strong class='primary-font'>[" + list[i].r_num +"]" +list[i].id + ",strong>";
+				str += "<small class='pull-right text-muted'>" +list[i].time +"</small></div>";
+				str += "<p>" + list[i].r_content +"</p></div></li>";
+			}
+			replyUL.html(str);
+		});
+	});
+	function get(r_num,callback, error) {
+		$.get("replies/" + r_num + ".json", function(result) {
+			if(callback) {
+				callback(result);
+			}
+		}).fail(function(xhr, status, err){
+			if(error) {
+				error();
 			}
 		});
 	}
+}
 </script>
 
 
