@@ -43,7 +43,7 @@ public class ReplyController {
 			@PathVariable("page") int page,
 			@PathVariable("b_num") Integer b_num) {
 			log.info("getList....");
-			Critetia cri = new Criteria(page,10);
+			Criteria cri = new Criteria(page,10);
 			log.info(cri);
 			return new ResponseEntity<List<ReplyVO>>(service.getList(cri, b_num), HttpStatus.OK);
 		

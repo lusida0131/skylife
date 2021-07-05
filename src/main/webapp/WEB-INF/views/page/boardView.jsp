@@ -43,7 +43,7 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<i class="fa fa-comments fa=fw"></i>Reply
+					<i class="fa fa-comments fa-fw"></i>Reply
 					<button id="addReplyBtn" class='btn btn-primary btn-xs pull-right'>New Reply</button>
 				</div>
 				<div class="panel-body">
@@ -76,6 +76,7 @@
 	<div id="listReply"></div> --%>
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
 	<div class="modal-content">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -88,7 +89,7 @@
  			</div>
  			<div class="form-group">
  				<label>Replyer</label>
- 				<input class="form-control" name='id' value='id'>
+ 				<input class="form-control" name='replyer' value='replyer'>
  			</div>
  			<div class="form-group">
  				<label>Reply Date</label>
@@ -103,8 +104,9 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/reply.js"></script>
-<script>
+</div>
+
+<script type="text/javascript">
 	$(document).ready(function() {
 		$("#btnDelete").click(function() {
 			if(confirm("삭제하시겠습니까?")) {
@@ -137,64 +139,106 @@
 	// 댓글 이벤트 
 	$(document).ready(function() {
 		var operForm = $("#operForm");
-		$("button[data-oper='mopdify']").on("click", function(e){
+		$("button[data-oper='modify']").on("click", function(e){
 			operForm.attr("action", "/board/modify").submit();	
 		});
-		console.log("Reply Module.....");
-		var replyService = (function() {
-			function getList(param, callback, error) {
-				var b_num = param.b_num;
-				var page = param.page || 1;
-				$.getJSON("/replies/pages/" + b_num + "/" +page + ".json",
-						function(data) {
-					if(callback) {
-						callback(data);
-					}
-				}).fail(function(xhr,status,err){
-					if(error) {
-						error();
-					}
-				});
-			}
-			return {
-				getList: getList
-			};
-		})();
-	}
+		$("button[data-oper='list']").on("click", function(e){
+			operForm.find("#b_num").remove();
+			operForm.attr("action", "/board/list").submit();
+			operForm.submit();
+		});
+
 	var bnoValue ='<c:out value="${data.b_num}"/>';
 	var replyUL = $(".chat");
 	showList(1);
 	
 	function showList(page) {
 		console.log("show list" + page);
-		replyService.getList({b_num:bnoValue, page:page|| 1}, function(list) {
+		replyService.getList({bno:bnoValue, page:page|| 1}, function(list) {
 			console.log("list: " + list);
 			var str="";
 			if(list == null || list.length == 0) {
 				replyUL.html("");
 				return;
 			}
-			for(var i = 0; len = list.length || 0; i < len; i++) {
-				str += "<li class='left clearfix' data-r_num='" + list[i].r_num"'>";
-				str += "<div><div class='header'><strong class='primary-font'>[" + list[i].r_num +"]" +list[i].id + ",strong>";
-				str += "<small class='pull-right text-muted'>" +list[i].time +"</small></div>";
-				str += "<p>" + list[i].r_content +"</p></div></li>";
+			for(var i = 0, len = list.length || 0; i < len; i++) {
+				str += "<li class='left clearfix' data-rno='" + list[i].rno"'>";
+				str += "<div><div class='header'><strong class='primary-font'>[" + list[i].rno +"]" +list[i].replyer + "</strong>";
+				str += "<small class='pull-right text-muted'>" +list[i].replyDate +"</small></div>";
+				str += "<p>" + list[i].reply +"</p></div></li>";
 			}
 			replyUL.html(str);
 		});
-	});
-	function get(r_num,callback, error) {
-		$.get("replies/" + r_num + ".json", function(result) {
-			if(callback) {
-				callback(result);
-			}
-		}).fail(function(xhr, status, err){
-			if(error) {
-				error();
-			}
-		});
 	}
-}
+	var modal = $(".modal");
+	var modalInputReply = modal.find("input[name='reply']");
+	var modalInputReplyer = modal.find("input[name='replyer']");
+	var modalInputReplyDate = modal.find("input[name='replyDate']");
+	
+	var modalModBtn = $("#modalModBtn");
+	var modalRemoveBtn = $("#modalRemoveBtn");
+	var modalRegisterBtn = $("#modalRegisterBtn");
+	
+	$("#addReplyBtn").on("click", function(e){
+		modal.find("input").val("");
+		modalInputReplyDate.closest("div").hide();
+		modal.find("button[id != 'modalCloseBtn']").hide();
+		modalRegisterBtn.show();
+		$(".modal").modal("show");
+	
+	});
+	modalRegisterBtn.on("click", function(e) {
+		var reply = {
+			reply: modalInputReply.val(),
+			replyer : modalInputReplyer.val(),
+			bno:bnoValue
+				
+		};
+		replyService.add(reply, function(result) {
+			alert(result);
+			modal.find("input").val("");
+			modal.modal("hide");
+			
+			showList(1);
+		});
+	});
+	$(".chat").on("click", "li", function(e) {
+		var rno = $(this),data("rno");
+		console.log(rno);
+		
+		replyService.get(rno, function(reply){
+			modalInputReply.val(reply.reply);
+			modalInputReplyer.val(reply.replyer);
+			modalInputReplyDate.val(replyService.displayTime(reply.replyDate))
+			.attr("readonly","readonly");
+			modal.data("rno", reply.rno);
+			
+			modal.find("button[id != 'modalClosebtn']").hide();
+			modalModBtn.show();
+			modalRemoveBtn.show();
+			
+			$(".modal").modal("show");
+			
+		});
+	});
+	modalModBtn.on("click", function(e) {
+		var reply = {rno:modal.data("rno"), reply:modalInputReply.val(),
+				replyer:modalInputReplyer.val()};
+		replyService.update(reply, function(result) {
+			alert(result);
+			modal.modal("hide");
+			showList(1);
+		});
+	});
+	modalRemoveBtn.on("click", function(e) {
+		var rno = modal.data("rno");
+		replyService.remove(rno, function(result){
+			alert(result);
+			modal.modal("hide");
+			showList(1);
+		});
+	});
+});	
 </script>
 
 
