@@ -19,4 +19,20 @@
 		set pw = #{pw}, phone = #{phone}
 		where id = #{id}
 	</update>
+	
+	<select id="findPw" parameterType="String" resultType="org.zerock.domain.skylifeVO">
+		select * from smem where email = #{email}
+	</select>
+	
+	<update id="updatePW" parameterType="org.zerock.domain.skylifeVO">
+		update smem set pw=#{pw} where email = #{email}
+	</update>
+	
+	<select id="findID" parameterType="String" resultType="String">
+		select * from smem where email = #{email}
+	</select>
+	
+	<select id="getID">
+		select * from smem where email = #{email}
+	</select>
 </mapper>

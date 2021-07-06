@@ -8,11 +8,11 @@ h1 {
 
 .panel-default > .panel-heading {
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2340ff+1,7c21f5+100 */
-    background: #2340ff; /* Old browsers */
-    background: -moz-linear-gradient(-45deg, #2340ff 1%, #7c21f5 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(-45deg, #2340ff 1%,#7c21f5 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(135deg, #2340ff 1%,#7c21f5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2340ff', endColorstr='#7c21f5', GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background: #87c6f1; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #87c6f1 1%, #d4b3e2 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #87c6f1 1%,#d4b3e2 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #87c6f1 1%,#d4b3e2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87c6f1', endColorstr='#d4b3e2', GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     color: #ffffff;
     padding: 18px;
 }
@@ -23,13 +23,13 @@ h1 {
 
 .panel-group .panel { 
     margin-bottom: 20px;
-    border: 1px solid #2340ff; 
+    border: 1px solid #ffffff; 
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2340ff+1,7c21f5+100 */
-    border-color: #2340ff; /* Old browsers */
-    border-color: -moz-linear-gradient(-45deg, #2340ff 1%, #7c21f5 100%); /* FF3.6-15 */
-    border-color: -webkit-linear-gradient(-45deg, #2340ff 1%,#7c21f5 100%); /* Chrome10-25,Safari5.1-6 */
-    border-color: linear-gradient(135deg, #2340ff 1%,#7c21f5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2340ff', endColorstr='#7c21f5', GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    border-color: #87c6f1; /* Old browsers */
+    border-color: -moz-linear-gradient(-45deg, #87c6f1 1%, #d4b3e2 100%); /* FF3.6-15 */
+    border-color: -webkit-linear-gradient(-45deg, #87c6f1 1%,#d4b3e2 100%); /* Chrome10-25,Safari5.1-6 */
+    border-color: linear-gradient(135deg, #87c6f1 1%,#d4b3e2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87c6f1', endColorstr='#d4b3e2', GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
 .panel-title {

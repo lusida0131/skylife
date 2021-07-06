@@ -1,15 +1,11 @@
-package org.zerock.domain;
+package org.pay.domain;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 
-@Setter
-@Getter
 @Data
-public class searchVO {
-
+public class OrderVO {
+    
 	private String vihicleId;		// 항공편명
 	private String airlineNm;		// 항공사명
 	private long depPlandTime;		// 출발시간
@@ -19,23 +15,17 @@ public class searchVO {
 	private String depAirportNm;	// 출발공항
 	private String arrAirportNm;	// 도착공항
 	
+	//private String pOrderID;	// partner_order_id		가맹점 주문번호, 최대 100자
+	//private String pUserID;	// partner_user_id		가맹점 회원 id, 최대 100자
+	//private String itemName;	// item_name			상품명, 최대 100자
+	//private String itemCode;	// item_code			상품코드, 최대 100자
+	//private int quantity;		// quantity				상품 수량
+	//private int totalAmount;	// total_amount			상품 총액
+	//private int taxFreeAmount;// tax_free_amount		상품 비과세 금액
+	//private int installMonth;	// install_month		카드 할부개월, 0~12
+   
 	
-	public searchVO() { }
-	
-	public searchVO(String vihicleId, String airlineNm, long depPlandTime, long arrPlandTime,
-			int economyCharge, int prestigeCharge, String depAirportNm, String arrAirportNm) {
-		
-		this.vihicleId = vihicleId;
-		this.airlineNm = airlineNm;
-		this.depPlandTime = depPlandTime;
-		this.arrPlandTime = arrPlandTime;
-		this.economyCharge = economyCharge;
-		this.prestigeCharge = prestigeCharge;
-		this.depAirportNm = depAirportNm;
-		this.arrAirportNm = arrAirportNm;
-		
-	}
-	public searchVO(String vihicleId, String airlineNm, String depPlandTime, String arrPlandTime,
+	public OrderVO(String vihicleId, String airlineNm, String depPlandTime, String arrPlandTime,
 			String economyCharge, String prestigeCharge, String depAirportNm, String arrAirportNm) {
 		
 		this.vihicleId = vihicleId;
@@ -48,5 +38,5 @@ public class searchVO {
 		this.arrAirportNm = arrAirportNm;
 		
 	}
-	
+    
 }

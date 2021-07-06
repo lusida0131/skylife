@@ -2,19 +2,18 @@ package org.zerock.controller;
 
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import org.zerock.domain.searchVO;
 import org.zerock.service.searchService;
@@ -40,7 +39,7 @@ public class searchController {
 	
 	
 	@RequestMapping(value="/page/searchFlight", method=RequestMethod.POST)
-	public String searchFlight(HttpServletRequest request, searchVO sVO, Model model) throws IOException {
+	public String searchFlight(HttpServletRequest request, Model model) throws IOException, ParseException {
 		
 		String startPortName = request.getParameter("from_place");
 		String endPortName = request.getParameter("to_place");
@@ -48,18 +47,21 @@ public class searchController {
 		String endTime = request.getParameter("date_end");
 		
 		// data format change
-		//SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-		//endTime = simpleDateFormat.format(endTime);
+		SimpleDateFormat before = new SimpleDateFormat("MM/dd/yyyy");
+		SimpleDateFormat after = new SimpleDateFormat("yyyyMMdd");
+		Date temp01 = before.parse(startTime);
+		Date temp02 = before.parse(endTime);
+		startTime = after.format(temp01);
+		endTime = after.format(temp02);
 		
 		
 		log.info("startPortName: " + startPortName + " // endPortName: " + endPortName 
 				+ " // startTime: " + startTime + " // endTime: " + endTime);
 		
-		//ArrayList<searchVO> clist = service.airApi();
 		ArrayList<searchVO> clist = service.airApi(startPortName, endPortName, startTime);
 		
 		model.addAttribute("clist", clist);
-		log.info("clist: " + clist);
+		//log.info("clist: " + clist);
 		
 		return "/page/flightList";
 		

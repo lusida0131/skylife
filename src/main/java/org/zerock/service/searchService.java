@@ -11,4 +11,6 @@ public interface searchService {
 	
 	public ArrayList<searchVO> airApi(String daID, String aaID, String dpTime) throws IOException;
 	
+	//public int airlinePrice();
+	
 }

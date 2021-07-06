@@ -15,11 +15,11 @@
       <form name="form1" method="post" action="${pageContext.request.contextPath}/board/update">
 		<div>
 			제목
-			<input name="b_title" id="b_title" placeholder="제목을 입력해주세요.">
+			<input name="b_title" id="b_title" value="${data.b_title}" placeholder="제목을 입력해주세요.">
 		</div>
 		<div>
 			내용
-			<textarea name="b_content" id="b_content" rows="4" cols="80" placeholder="내용을 입력해주세요"></textarea>
+			<textarea name="b_content" id="b_content" rows="4" cols="80" placeholder="내용을 입력해주세요">${data.b_content}</textarea>
 		</div>
 		<div>
 			이름

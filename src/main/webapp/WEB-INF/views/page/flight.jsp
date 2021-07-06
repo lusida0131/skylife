@@ -81,7 +81,7 @@
 													<div class="col-xxs-12 col-xs-6 mt alternate">
 														<div class="input-field">
 															<label for="date-start">출발일</label>
-															<input type="text" class="form-control" id="date_start" name="date_start" placeholder="yyyymmdd"/>
+															<input type="text" class="form-control" id="date-start" name="date_start" placeholder="yyyymmdd"/>
 														</div>
 													</div>
 													<div class="col-xxs-12 col-xs-6 mt alternate">
@@ -611,10 +611,10 @@
 					    $('#to_place').focus();
 						alert("도착지를 입력해주세요.");
 					}
-					else if($.trim($('#date_start').val()) === "") {
+					/* else if($.trim($('#date_start').val()) === "") {
 					    $('#date_start').focus();
 						alert("출발일을 입력해주세요.");
-					}
+					} */
 					/* else if($.trim($('#date_end').val()) === "") {
 					    $('#date_end').focus();
 						alert("도착일을 입력해주세요.");
