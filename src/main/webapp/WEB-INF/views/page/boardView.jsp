@@ -12,7 +12,6 @@
 
 
 <div class="container">
-<<<<<<< HEAD
    <div class="row">
       <form name="form1" method="post">
          <div>
@@ -64,37 +63,8 @@
        </c:forEach>
       </form>
    </div>
-=======
-	<div class="row">
-		<form name="form1" method="post">
-			<div>
-				작성일자: <fmt:formatDate value="${data.time}" pattern="yyy-MM-dd HH:mm:ss"/>
-			</div>
-			<div>
-				제목
-				<input name="b_title" id="b_title" value="${data.b_title}" placeholder="제목을 입력해주세요.">
-			</div>
-			<div>
-				내용
-				<textarea name="b_content" id="b_content" rows="4" cols="80" placeholder="내용을 입력해주세요">${data.b_content}</textarea>
-			</div>
-			<div>
-				이름
-				<input name="id" id="id" value="${data.id}" placeholder="이름을 입력해주세요">
-			</div>
-			<div style="width:650px; text-align:center;">
-				<input type="hidden" name="b_num" value="${data.b_num}">
-				<c:if test="${user.id == data.id}">
-				<button type="button" id="btnUpdate">수정</button>
-				<button type="button" id="btnDelete">삭제</button>
-				</c:if>
-			</div>
-		</form>
-	</div>
->>>>>>> e890ee0a28ff2f5b523bb6d2f351f17ed86efa4b
 </div>
 <script>
-<<<<<<< HEAD
    $(document).ready(function() {
       $("#btnDelete").click(function() {
          if(confirm("삭제하시겠습니까?")) {
@@ -159,23 +129,6 @@ $(function(){
       }
    });
 });
-=======
-	$(document).ready(function() {
-		$("#btnDelete").click(function() {
-			if(confirm("삭제하시겠습니까?")) {
-				document.form1.action = "${pageContext.request.contextPath}/board/delete"
-				document.form1.submit();
-			}
-		});
-		
-		$("#btnUpdate").click(function() {
-			if(confirm("수정하시겠습니까?")) {
-				document.form1.action = "/board/update"
-				document.form1.submit();
-			}
-		});
-	});
->>>>>>> e890ee0a28ff2f5b523bb6d2f351f17ed86efa4b
 </script>
 
 <%@ include file="../layout/footer.jsp"%>
