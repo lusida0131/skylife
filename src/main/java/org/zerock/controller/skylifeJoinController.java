@@ -55,24 +55,11 @@ public class skylifeJoinController {
       return "/auth/loginForm";
    }
 
-<<<<<<< HEAD
 	@GetMapping("/auth/joinAgree")
 	public String joinAgree() {
 		return"/auth/joinAgree";
 	}
-	@GetMapping("/auth/joinForm")
-	public String joinForm() {
-		return"/auth/joinForm";
-	}
-	
-	@PostMapping("/auth/joinForm")
-	public String joinForm(skylifeVO skylifevo,RedirectAttributes redirectAttributes) {
-		String hashedPw = BCrypt.hashpw(skylifevo.getPw(), BCrypt.gensalt()); 
-		skylifevo.setPw(hashedPw); 
-		service.register(skylifevo); 
-		redirectAttributes.addFlashAttribute("msg", "REGISTERED");
-=======
-   
+
    @GetMapping("/auth/joinForm")
    public String joinForm() {
       return"/auth/joinForm";
@@ -84,7 +71,7 @@ public class skylifeJoinController {
       skylifevo.setPw(hashedPw); 
       service.register(skylifevo); 
       redirectAttributes.addFlashAttribute("msg", "REGISTERED");
->>>>>>> e890ee0a28ff2f5b523bb6d2f351f17ed86efa4b
+
 
       return "redirect:/auth/loginForm";
    }
@@ -174,31 +161,8 @@ public class skylifeJoinController {
          e.printStackTrace();
       }
 
-<<<<<<< HEAD
-		/* �씠硫붿씪 蹂대궡湲� */
-	      String setFrom = "SkyLifeKorea@gmail.com";
-	      String toMail = email;
-	      String title = "회원가입 인증메일입니다.";
-	      String content =
-	                  "홈페이지를 방문해주셔서 감사합니다." +
-	                  "<br><br>" + 
-	                  "인증 번호는 " + checkNum + "입니다." +
-	                  "<br>" +
-	                  "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
-		try {
-			MimeMessage message = mailSender.createMimeMessage();
-			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-			helper.setFrom(setFrom);;
-			helper.setTo(toMail);
-			helper.setSubject(title);
-			helper.setText(content, true);
-			mailSender.send(message);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-=======
       String num = Integer.toString(checkNum);
->>>>>>> e890ee0a28ff2f5b523bb6d2f351f17ed86efa4b
+
 
       return num;
    }

@@ -67,14 +67,11 @@ public class BoardController {
 	public String view1(Model model, @RequestParam int b_num) throws Exception {
 		BoardVO data = service.view(b_num);
 		model.addAttribute("data", data);
-<<<<<<< HEAD
 		log.info("돌아가~ " + data);
 		List<ReplyVO> replyData = Replyservice.selectcomment(b_num);
 		model.addAttribute("replyData", replyData);
 		log.info("돌아가~ " + replyData);
-=======
-		log.info("board content: " + data);
->>>>>>> e890ee0a28ff2f5b523bb6d2f351f17ed86efa4b
+
 		return "/page/boardView";
 	}
 
