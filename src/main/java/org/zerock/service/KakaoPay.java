@@ -36,12 +36,12 @@ public class KakaoPay {
         
 //        String pOrderID = "SkyLife" + "orderID부여";
 //        String pUserID = "ovo.getUserID()세션값";
-//        String itemName = "SkyLife" + ovo.getAirlineNm() + ovo.getVihicleId();
-//        String itemCode = ovo.getVihicleId() + ovo.getArrPlandTime();
-//        int quantity = 1;
-//        int totalAmount = ovo.getEconomyCharge() * quantity;
-//        int taxFreeAmount = 100;
-//        int installMonth = 1;
+        String itemName = "SkyLife" + ovo.getAirlineNm() + ovo.getVihicleId();
+        String itemCode = ovo.getVihicleId() + ovo.getArrPlandTime();
+        int quantity = 1;
+        int totalAmount = ovo.getEconomyCharge() * quantity;
+        int taxFreeAmount = (int) (totalAmount * 0.1);
+        int installMonth = 1;
         
         // 서버로 요청할 Header
         HttpHeaders header = new HttpHeaders();
@@ -51,29 +51,29 @@ public class KakaoPay {
         
         // 서버로 요청할 Body
         MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();
-//        body.add("cid", "TC0ONETIME");										// (String) test code, 가맹점코드
-//        body.add("partner_order_id", pOrderID);								// (String) 가맹점 주문번호, 최대 100자
-//        body.add("partner_user_id", pUserID);								// (String) 가맹점 회원 id, 최대 100자
-//        body.add("item_name", itemName);									// (String) 상품명, 최대 100자
-//        body.add("item_code", itemCode);									// (String) 상품코드, 최대 100자
-//        body.add("quantity", Integer.toString(quantity));					// (int) 상품 수량
-//        body.add("total_amount", Integer.toString(totalAmount));			// (int) 상품 총액
-//        body.add("tax_free_amount", ""+taxFreeAmount);						// (int) 상품 비과세 금액
-//        body.add("approval_url", "http://localhost:8080/kakaoPaySuccess");	// (String) 결제 성공시 url
-//        body.add("cancel_url", "http://localhost:8080/kakaoPayCancel");		// (String) 결제 취소시 url
-//        body.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");	// (String) 결제 실패시 url
-//        body.add("install_month", ""+installMonth);							// (int) 카드 할부개월, 0~12
+        body.add("cid", "TC0ONETIME");										// (String) test code, 가맹점코드
+        body.add("partner_order_id", "pOrderID");								// (String) 가맹점 주문번호, 최대 100자
+        body.add("partner_user_id", "pUserID");								// (String) 가맹점 회원 id, 최대 100자
+        body.add("item_name", itemName);									// (String) 상품명, 최대 100자
+        body.add("item_code", itemCode);									// (String) 상품코드, 최대 100자
+        body.add("quantity", String.valueOf(quantity));					// (int) 상품 수량
+        body.add("total_amount", String.valueOf(totalAmount));			// (int) 상품 총액
+        body.add("tax_free_amount", String.valueOf(installMonth));						// (int) 상품 비과세 금액
+        body.add("approval_url", "http://localhost:8080/kakaoPaySuccess");	// (String) 결제 성공시 url
+        body.add("cancel_url", "http://localhost:8080/kakaoPayCancel");		// (String) 결제 취소시 url
+        body.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");	// (String) 결제 실패시 url
+        //body.add("install_month", ""+installMonth);							// (int) 카드 할부개월, 0~12
         
-        body.add("cid", "TC0ONETIME");
-        body.add("partner_order_id", "pOrderID");
-        body.add("partner_user_id", "pUserID");
-        body.add("item_name", "갤럭시S9");
-        body.add("quantity", "1");
-        body.add("total_amount", "2100");
-        body.add("tax_free_amount", "100");
-        body.add("approval_url", "http://localhost:8080/kakaoPaySuccess");
-        body.add("cancel_url", "http://localhost:8080/kakaoPayCancel");
-        body.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");
+//        body.add("cid", "TC0ONETIME");
+//        body.add("partner_order_id", "pOrderID");
+//        body.add("partner_user_id", "pUserID");
+//        body.add("item_name", "갤럭시S9");
+//        body.add("quantity", "1");
+//        body.add("total_amount", "2100");
+//        body.add("tax_free_amount", "100");
+//        body.add("approval_url", "http://localhost:8080/kakaoPaySuccess");
+//        body.add("cancel_url", "http://localhost:8080/kakaoPayCancel");
+//        body.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");
         
         // header와 body를 붙임
         HttpEntity<MultiValueMap<String, String>> param = new HttpEntity<MultiValueMap<String, String>>(body, header);
@@ -123,7 +123,7 @@ public class KakaoPay {
         body.add("partner_order_id", "pOrderID");
         body.add("partner_user_id", "pUserID");
         body.add("pg_token", pg_token);
-        body.add("total_amount", "2100");
+        //body.add("total_amount", "2100");
         
         HttpEntity<MultiValueMap<String, String>> param = new HttpEntity<MultiValueMap<String, String>>(body, header);
         
