@@ -97,7 +97,7 @@
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<!-- <li><a href="/page/index">Home</a></li> -->
 							<li class="active"><a href="/page/flight">항공편</a></li>
-							<li><a href="#" class="fh5co-sub-ddown">주변</a>
+							<li><a href="#" class="fh5co-sub-ddown">서비스</a>
 								<ul class="fh5co-sub-menu">
 									<li><a href="/page/map">지도</a></li>
 									<li><a href="/page/park">주차장</a></li>
