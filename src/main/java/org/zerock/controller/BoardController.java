@@ -63,6 +63,7 @@ public class BoardController {
 	}
 	
 	// 게시글 조회
+
 	@GetMapping("/page/boardView")
 	public String view1(Model model, @RequestParam int b_num) throws Exception {
 		BoardVO data = service.view(b_num);
@@ -70,24 +71,14 @@ public class BoardController {
 		log.info("board content: " + data);
 		return "/page/boardView";
 	}
-	// 게시글 보기, 게시글 조회수 증가
-//	@PostMapping("/page/boardView")
-//	public ModelAndView view(@RequestParam int b_num, HttpSession session) throws Exception {
-//		log.info("여기는??");
-//		// 조회수 증가 처리
-//		service.increaseViewcnt(b_num, session);
-//		// 모델(데이터) + 뷰(화면)을 함께 전달하는 객체
-//		ModelAndView mav = new ModelAndView();
-//		// 뷰의 이름
-//		mav.setViewName("/page/boardView");
-//		// 뷰에 전달할 데이터
-//		mav.addObject("vo", service.view(b_num));
-//		
-//		return mav;
-//	}
-	
 
-	// 게시글 수정
+	
+	@GetMapping("/board/update")
+	public String updatePage() throws Exception {
+		return "/page/boardUpdate";
+	}
+	
+	// 게시글 수정 (기능)
 	@RequestMapping(value="/board/update", method=RequestMethod.POST)
 	public String update(@ModelAttribute BoardVO vo) throws Exception {
 		service.update(vo);

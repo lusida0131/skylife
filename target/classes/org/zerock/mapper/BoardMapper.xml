@@ -8,6 +8,11 @@
 			*
 		from
 			sbs
+		where
+			DEL_CHK='N'
+		order by
+			b_num DESC
+		limit #{pageStart}, #{perPageNum}
 	</select>
 	
 	<!-- 게시글 작성 -->
