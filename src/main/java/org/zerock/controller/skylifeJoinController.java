@@ -40,8 +40,7 @@ public class skylifeJoinController {
 	private KakaoAPI kakao;
 	
 	//濡쒓퉭�쓣 �쐞�븳 蹂��닔
-	private static final Logger logger= 
-	LoggerFactory.getLogger(skylifeJoinController.class);
+	private static final Logger logger = LoggerFactory.getLogger(skylifeJoinController.class);
 	private static final String String = null;
 	
 	@GetMapping("/auth/loginForm")
@@ -74,11 +73,10 @@ public class skylifeJoinController {
 			return "redirect:/";
 		}
 		else {
-	
-			
 			return "redirect:/auth/loginForm";
 		}
 	}
+	
 	// 濡쒓렇�븘�썐
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {
@@ -88,18 +86,18 @@ public class skylifeJoinController {
 		return "redirect:/";
 	}
 
-	//카카占쏙옙 占싸깍옙占쏙옙 占쌀띰옙 占쏙옙占�
+	// 카카占쏙옙 占싸깍옙占쏙옙 占쌀띰옙 占쏙옙占�
 	@RequestMapping(value="/auth/loginForm")
 	public String login(@RequestParam("code") String code, HttpSession session) {
 	    String access_Token = kakao.getAccessToken(code);
 	    HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
-	    System.out.println("login Controller : " + userInfo);
+	    System.out.println("login Controller: " + userInfo);
 	    
-	    //    클占쏙옙占싱억옙트占쏙옙 占싱몌옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙 占쏙옙占실울옙 占쌔댐옙 占싱몌옙占싹곤옙 占쏙옙큰 占쏙옙占�
 	    if (userInfo.get("email") != null) {
 	        session.setAttribute("userId", userInfo.get("email"));
 	        session.setAttribute("access_Token", access_Token);
 	    }
+	    
 	    return "redirect:/page/index";
 	}
 	
@@ -119,29 +117,27 @@ public class skylifeJoinController {
 	}
 	
 
-// �씠硫붿씪 �씤利�
+	// 인증번호 체크 메일
 	@RequestMapping(value="/auth/mailCheck", method=RequestMethod.GET)
 	@ResponseBody
 	public String mailCheckGET(String email) throws Exception {
-		/* 酉�(view)濡쒕��꽣 �꽆�뼱�삩 �뜲�씠�꽣 �솗�씤 */
-		logger.info("�씠硫붿씪 �뜲�씠�꽣 �쟾�넚 �솗�씤");
-		logger.info("�씤利앸찓�씪 : " + email);
+		logger.info("이메일: " + email);
 
-		/* �씤利앸쾲�샇 (�궃�닔) �깮�꽦*/
+		/* 난수 생성 */
 		Random random = new Random();
 		int checkNum = random.nextInt(888888) + 111111;
-		logger.info("�씤利앸쾲�샇 " + checkNum);
+		logger.info("인증번호: " + checkNum);
 
-		/* �씠硫붿씪 蹂대궡湲� */
+		/* 메일 보내기 */
 		String setFrom = "SkyLifeKorea@gmail.com";
 		String toMail = email;
-		String title = "�쉶�썝媛��엯 �씤利� �씠硫붿씪 �엯�땲�떎.";
-		String content =
-						"�솃�럹�씠吏�瑜� 諛⑸Ц�빐二쇱뀛�꽌 媛먯궗�빀�땲�떎." +
-						"<br><br>" + 
-						"�씤利� 踰덊샇�뒗 " + checkNum + "�엯�땲�떎." +
-						"<br>" +
-						"�빐�떦 �씤利앸쾲�샇瑜� �씤利앸쾲�샇 �솗�씤移몄뿉 湲곗엯�븯�뿬 二쇱꽭�슂.";
+		String title = "회원가입 인증메일입니다.";
+	    String content =
+	                  "홈페이지를 방문해주셔서 감사합니다." +
+	                  "<br><br>" + 
+	                  "인증 번호는 " + checkNum + "입니다." +
+	                  "<br>" +
+	                  "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
@@ -158,7 +154,8 @@ public class skylifeJoinController {
 
 		return num;
 	}
-	////////////////////////////////////////////////////////
+	
+	
 	// 회원정보 수정
 	@RequestMapping(value="/page/memView", method = RequestMethod.GET)
 	public String memView() throws Exception {

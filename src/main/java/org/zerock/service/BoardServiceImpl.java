@@ -51,13 +51,6 @@ public class BoardServiceImpl implements BoardService {
 	// 게시글 수정
 	@Override
 	public void update(BoardVO vo) {
-//		String b_title = vo.getB_title();
-//		String b_content = vo.getB_content();
-//		String id = vo.getId();
-//		
-//		vo.setB_title(b_title);
-//		vo.setB_content(b_content);
-//		vo.setId(id);
 		mapper.update(vo);
 	}
 	

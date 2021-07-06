@@ -2,6 +2,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/accordions.css">
 <%@ include file="../layout/header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 		<br><br>
 	<!-- ################ accordion toggle 적용 START ################ -->
@@ -20,42 +22,55 @@
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="heading${count}">
 									<h4 class="panel-title">
-										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${count}" aria-expanded="true" aria-controls="collapse${count}"
-											style="text-decoration: none; color="#ffffff">
-											(${count}) ${list.depAirportNm}(${list.depPlandTime}) -> ${list.arrAirportNm}(${list.arrPlandTime})
+										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${count}" aria-expanded="true" aria-controls="collapse${count}">
+											(${count}) ${list.airlineNm}  ${list.depAirportNm}(${list.depPlandTime}) -> ${list.arrAirportNm}(${list.arrPlandTime})
 										</a>
 									</h4>
 								</div>
 								<div id="collapse${count}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${count}">
 									<div class="panel-body">
-										<p>This is 간단한 내용.<br>write here. (1)</p>
-										<table class="table table-striped"> 
-											<thead> 
-												<tr> 
-													<th>항공편</th>
-													<th>항공사</th>
-													<th>출발공항</th>
-													<th>출발시간</th>
-													<th>도착공항</th>
-													<th>도착시간</th>
-													<th>일반석</th>
-													<th>비즈니스석</th>
-												</tr> 
-											</thead> 
-											<tbody> 
-												<tr> 
-													<!-- <th scope="row">#VEG1201</th> -->
-													<td>${list.vihicleId}</td> 
-													<td>${list.airlineNm}</td> 
-													<td>${list.depAirportNm}</td>
-													<td>${list.depPlandTime}</td>
-													<td>${list.arrAirportNm}</td>
-													<td>${list.arrPlandTime}</td>
-													<td>${list.economyCharge}</td>
-													<td>${list.prestigeCharge}</td>
-												</tr>
-											</tbody> 
-										</table>
+										<p>This is 간단한 내용. write here. (${count})</p>
+										<form method="post" action="/kakaoPay" id="searchFrm">
+										    <button type="submit" style="border: 0px; background-color: rgba(0,0,0,0); float: right;">
+										    	<img src="${pageContext.request.contextPath}/resources/images/payment_icon_yellow_small.png">
+										    </button>
+											<table class="table table-striped"> 
+												<thead> 
+													<tr> 
+														<th>항공편</th>
+														<th>항공사</th>
+														<th>출발공항</th>
+														<th>출발시간</th>
+														<th>도착공항</th>
+														<th>도착시간</th>
+														<th>일반석</th>
+														<th>비즈니스석</th>
+													</tr> 
+												</thead> 
+												<tbody> 
+													<tr> 
+														<!-- <th scope="row">#VEG1201</th> -->
+														<td>${list.vihicleId}</td> 
+														<td>${list.airlineNm}</td> 
+														<td>${list.depAirportNm}</td>
+														<td>${list.depPlandTime}</td>
+														<td>${list.arrAirportNm}</td>
+														<td>${list.arrPlandTime}</td>
+														<td><fmt:formatNumber value="${list.economyCharge}" pattern="#,###,###" /></td>
+														<td><fmt:formatNumber value="${list.prestigeCharge}" pattern="#,###,###" /></td>
+													</tr>
+												</tbody> 
+											</table>
+											<input type="hidden" value="${list.vihicleId}" name="vihicleId"/>
+											<input type="hidden" value="${list.airlineNm}" name="airlineNm"/>
+											<input type="hidden" value="${list.depAirportNm}" name="depAirportNm"/>
+											<input type="hidden" value="${list.depPlandTime}" name="depPlandTime"/>
+											<input type="hidden" value="${list.arrAirportNm}" name="arrAirportNm"/>
+											<input type="hidden" value="${list.arrPlandTime}" name="arrPlandTime"/>
+											<input type="hidden" value="${list.economyCharge}" name="economyCharge"/>
+											<input type="hidden" value="${list.prestigeCharge}" name="prestigeCharge"/>
+										</form>
+										
 									</div>
 								</div>
 							</div>
