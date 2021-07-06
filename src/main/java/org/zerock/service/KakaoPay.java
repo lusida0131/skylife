@@ -3,12 +3,10 @@ package org.zerock.service;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
 import org.pay.domain.KakaoPayApprovalVO;
 import org.pay.domain.KakaoPayReadyVO;
 import org.pay.domain.OrderVO;
+
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -32,19 +30,18 @@ public class KakaoPay {
     
     
     // 결제 요청
-    //public String kakaoPayReady() {
     public String kakaoPayReady(OrderVO ovo) {
  
         RestTemplate restTemplate = new RestTemplate();
         
-        String pOrderID = "SkyLife" + "orderID부여";
-        String pUserID = "ovo.getUserID()세션값";
-        String itemName = "SkyLife" + ovo.getAirlineNm() + ovo.getVihicleId();
-        String itemCode = ovo.getVihicleId() + ovo.getArrPlandTime();
-        int quantity = 1;
-        int totalAmount = ovo.getEconomyCharge() * quantity;
-        int taxFreeAmount = 100;
-        int installMonth = 1;
+//        String pOrderID = "SkyLife" + "orderID부여";
+//        String pUserID = "ovo.getUserID()세션값";
+//        String itemName = "SkyLife" + ovo.getAirlineNm() + ovo.getVihicleId();
+//        String itemCode = ovo.getVihicleId() + ovo.getArrPlandTime();
+//        int quantity = 1;
+//        int totalAmount = ovo.getEconomyCharge() * quantity;
+//        int taxFreeAmount = 100;
+//        int installMonth = 1;
         
         // 서버로 요청할 Header
         HttpHeaders header = new HttpHeaders();
@@ -54,9 +51,9 @@ public class KakaoPay {
         
         // 서버로 요청할 Body
         MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();
-        body.add("cid", "TC0ONETIME");										// (String) test code, 가맹점코드
-        body.add("partner_order_id", pOrderID);								// (String) 가맹점 주문번호, 최대 100자
-        body.add("partner_user_id", pUserID);								// (String) 가맹점 회원 id, 최대 100자
+//        body.add("cid", "TC0ONETIME");										// (String) test code, 가맹점코드
+//        body.add("partner_order_id", pOrderID);								// (String) 가맹점 주문번호, 최대 100자
+//        body.add("partner_user_id", pUserID);								// (String) 가맹점 회원 id, 최대 100자
 //        body.add("item_name", itemName);									// (String) 상품명, 최대 100자
 //        body.add("item_code", itemCode);									// (String) 상품코드, 최대 100자
 //        body.add("quantity", Integer.toString(quantity));					// (int) 상품 수량
@@ -67,9 +64,9 @@ public class KakaoPay {
 //        body.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");	// (String) 결제 실패시 url
 //        body.add("install_month", ""+installMonth);							// (int) 카드 할부개월, 0~12
         
-//        body.add("cid", "TC0ONETIME");
-//        body.add("partner_order_id", pOrderID);
-//        body.add("partner_user_id", pUserID);
+        body.add("cid", "TC0ONETIME");
+        body.add("partner_order_id", "pOrderID");
+        body.add("partner_user_id", "pUserID");
         body.add("item_name", "갤럭시S9");
         body.add("quantity", "1");
         body.add("total_amount", "2100");
@@ -110,8 +107,8 @@ public class KakaoPay {
         
         RestTemplate restTemplate = new RestTemplate();
         
-        String pOrderID = "SkyLife" + "orderID부여";
-        String pUserID = "ovo.getPUserID()세션값";
+//        String pOrderID = "SkyLife" + "orderID부여";
+//        String pUserID = "ovo.getPUserID()세션값";
  
         // 서버로 요청할 Header
         HttpHeaders header = new HttpHeaders();
@@ -123,9 +120,10 @@ public class KakaoPay {
         MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();
         body.add("cid", "TC0ONETIME");
         body.add("tid", kakaoPayReadyVO.getTid());
-        body.add("partner_order_id", pOrderID);
-        body.add("partner_user_id", pUserID);
+        body.add("partner_order_id", "pOrderID");
+        body.add("partner_user_id", "pUserID");
         body.add("pg_token", pg_token);
+        body.add("total_amount", "2100");
         
         HttpEntity<MultiValueMap<String, String>> param = new HttpEntity<MultiValueMap<String, String>>(body, header);
         

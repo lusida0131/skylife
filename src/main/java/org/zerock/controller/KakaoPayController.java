@@ -1,11 +1,8 @@
 package org.zerock.controller;
 
-import org.zerock.domain.searchVO;
+import org.pay.domain.OrderVO;
 import org.zerock.service.KakaoPay;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.pay.domain.OrderVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

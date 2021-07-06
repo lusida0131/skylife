@@ -16,12 +16,12 @@ public class OrderVO {
 	private String arrAirportNm;	// 도착공항
 	
 	//private String pOrderID;	// partner_order_id		가맹점 주문번호, 최대 100자
-	//private String pUserID;		// partner_user_id		가맹점 회원 id, 최대 100자
+	//private String pUserID;	// partner_user_id		가맹점 회원 id, 최대 100자
 	//private String itemName;	// item_name			상품명, 최대 100자
 	//private String itemCode;	// item_code			상품코드, 최대 100자
 	//private int quantity;		// quantity				상품 수량
 	//private int totalAmount;	// total_amount			상품 총액
-	//private int taxFreeAmount;	// tax_free_amount		상품 비과세 금액
+	//private int taxFreeAmount;// tax_free_amount		상품 비과세 금액
 	//private int installMonth;	// install_month		카드 할부개월, 0~12
    
 	
