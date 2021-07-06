@@ -2,6 +2,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/accordions.css">
 <%@ include file="../layout/header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 		<br><br>
 	<!-- ################ accordion toggle 적용 START ################ -->
@@ -21,40 +23,54 @@
 								<div class="panel-heading" role="tab" id="heading${count}">
 									<h4 class="panel-title">
 										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${count}" aria-expanded="true" aria-controls="collapse${count}">
-											(${count}) ${list.depAirportNm}(${list.depPlandTime}) -> ${list.arrAirportNm}(${list.arrPlandTime})
+											(${count}) ${list.airlineNm}  ${list.depAirportNm}(${list.depPlandTime}) -> ${list.arrAirportNm}(${list.arrPlandTime})
 										</a>
 									</h4>
 								</div>
 								<div id="collapse${count}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${count}">
 									<div class="panel-body">
-										<p>This is 간단한 내용.<br>write here. (1)</p>
-										<table class="table table-striped"> 
-											<thead> 
-												<tr> 
-													<th>항공편</th>
-													<th>항공사</th>
-													<th>출발공항</th>
-													<th>출발시간</th>
-													<th>도착공항</th>
-													<th>도착시간</th>
-													<th>일반석</th>
-													<th>비즈니스석</th>
-												</tr> 
-											</thead> 
-											<tbody> 
-												<tr> 
-													<!-- <th scope="row">#VEG1201</th> -->
-													<td>${list.vihicleId}</td> 
-													<td>${list.airlineNm}</td> 
-													<td>${list.depAirportNm}</td>
-													<td>${list.depPlandTime}</td>
-													<td>${list.arrAirportNm}</td>
-													<td>${list.arrPlandTime}</td>
-													<td>${list.economyCharge}</td>
-													<td>${list.prestigeCharge}</td>
-												</tr>
-											</tbody> 
-										</table>
+										<p>This is 간단한 내용. write here. (${count})</p>
+										<form method="post" action="/kakaoPay" id="searchFrm">
+										    <button type="submit" style="border: 0px; background-color: rgba(0,0,0,0); float: right;">
+										    	<img src="${pageContext.request.contextPath}/resources/images/payment_icon_yellow_small.png">
+										    </button>
+											<table class="table table-striped"> 
+												<thead> 
+													<tr> 
+														<th>항공편</th>
+														<th>항공사</th>
+														<th>출발공항</th>
+														<th>출발시간</th>
+														<th>도착공항</th>
+														<th>도착시간</th>
+														<th>일반석</th>
+														<th>비즈니스석</th>
+													</tr> 
+												</thead> 
+												<tbody> 
+													<tr> 
+														<!-- <th scope="row">#VEG1201</th> -->
+														<td>${list.vihicleId}</td> 
+														<td>${list.airlineNm}</td> 
+														<td>${list.depAirportNm}</td>
+														<td>${list.depPlandTime}</td>
+														<td>${list.arrAirportNm}</td>
+														<td>${list.arrPlandTime}</td>
+														<td><fmt:formatNumber value="${list.economyCharge}" pattern="#,###,###" /></td>
+														<td><fmt:formatNumber value="${list.prestigeCharge}" pattern="#,###,###" /></td>
+													</tr>
+												</tbody> 
+											</table>
+											<input type="hidden" value="${list.vihicleId}" name="vihicleId"/>
+											<input type="hidden" value="${list.airlineNm}" name="airlineNm"/>
+											<input type="hidden" value="${list.depAirportNm}" name="depAirportNm"/>
+											<input type="hidden" value="${list.depPlandTime}" name="depPlandTime"/>
+											<input type="hidden" value="${list.arrAirportNm}" name="arrAirportNm"/>
+											<input type="hidden" value="${list.arrPlandTime}" name="arrPlandTime"/>
+											<input type="hidden" value="${list.economyCharge}" name="economyCharge"/>
+											<input type="hidden" value="${list.prestigeCharge}" name="prestigeCharge"/>
+										</form>
+										
 									</div>
 								</div>
 							</div>
@@ -170,7 +186,7 @@
 				</div>
 				<div class="row row-bottom-padded-md">
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="${pageContext.request.contextPath}/resources/images/place-1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>New York</h3>
@@ -181,7 +197,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-2.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="${pageContext.request.contextPath}/resources/images/place-2.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>Philippines</h3>
@@ -192,7 +208,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="${pageContext.request.contextPath}/resources/images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>Hongkong</h3>
@@ -203,7 +219,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-4.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="${pageContext.request.contextPath}/resources/images/place-4.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>New York</h3>
@@ -214,7 +230,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-5.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="${pageContext.request.contextPath}/resources/images/place-5.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>Philippines</h3>
@@ -225,7 +241,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-6.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="${pageContext.request.contextPath}/resources/images/place-6.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>Hongkong</h3>
@@ -333,28 +349,28 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul id="fh5co-destination-list" class="animate-box">
-							<li class="one-forth text-center" style="background-image: url(images/place-1.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-1.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Los Angeles</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-2.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-2.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Hongkong</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-3.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-3.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Italy</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-4.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-4.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Philippines</h2>
@@ -362,7 +378,7 @@
 								</a>
 							</li>
 
-							<li class="one-forth text-center" style="background-image: url(images/place-5.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-5.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Japan</h2>
@@ -377,35 +393,35 @@
 									</div>
 								</div>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-6.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-6.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Paris</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-7.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-7.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Singapore</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-8.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-8.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Madagascar</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-9.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-9.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Egypt</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-10.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-10.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
 										<h2>Indonesia</h2>
@@ -431,7 +447,7 @@
 				<div class="row row-bottom-padded-md">
 					<div class="col-lg-4 col-md-4 col-sm-6">
 						<div class="fh5co-blog animate-box">
-							<a href="#"><img class="img-responsive" src="images/place-1.jpg" alt=""></a>
+							<a href="#"><img class="img-responsive" src="${pageContext.request.contextPath}/resources/images/place-1.jpg" alt=""></a>
 							<div class="blog-text">
 								<div class="prod-title">
 									<h3><a href="#">30% Discount to Travel All Around the World</a></h3>
@@ -445,7 +461,7 @@
 					</div>
 					<div class="col-lg-4 col-md-4 col-sm-6">
 						<div class="fh5co-blog animate-box">
-							<a href="#"><img class="img-responsive" src="images/place-2.jpg" alt=""></a>
+							<a href="#"><img class="img-responsive" src="${pageContext.request.contextPath}/resources/images/place-2.jpg" alt=""></a>
 							<div class="blog-text">
 								<div class="prod-title">
 									<h3><a href="#">Planning for Vacation</a></h3>
@@ -460,7 +476,7 @@
 					<div class="clearfix visible-sm-block"></div>
 					<div class="col-lg-4 col-md-4 col-sm-6">
 						<div class="fh5co-blog animate-box">
-							<a href="#"><img class="img-responsive" src="images/place-3.jpg" alt=""></a>
+							<a href="#"><img class="img-responsive" src="${pageContext.request.contextPath}/resources/images/place-3.jpg" alt=""></a>
 							<div class="blog-text">
 								<div class="prod-title">
 									<h3><a href="#">Visit Tokyo Japan</a></h3>
@@ -482,7 +498,7 @@
 			</div>
 		</div>
 		
-		<div id="fh5co-testimonial" style="background-image:url(images/img_bg_1.jpg);">
+		<div id="fh5co-testimonial" style="background-image:url(${pageContext.request.contextPath}/resources/images/img_bg_1.jpg);">
 			<div class="container">
 				<div class="row animate-box">
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">

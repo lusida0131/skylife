@@ -4,7 +4,7 @@
 
 		<div class="fh5co-hero">
 			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(/images/imagesair.jpg);">  <!-- 사진 왜 안뜨냐 해결좀요 -->
+			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(${pageContext.request.contextPath}/resources/images/imagesair.jpg);">  <!-- 사진 왜 안뜨냐 해결좀요 -->
 				<div class="desc">
 					<div class="container">
 						<div class="row">
@@ -81,7 +81,7 @@
 													<div class="col-xxs-12 col-xs-6 mt alternate">
 														<div class="input-field">
 															<label for="date-start">출발일</label>
-															<input type="text" class="form-control" id="date_start" name="date_start" placeholder="yyyymmdd"/>
+															<input type="text" class="form-control" id="date-start" name="date_start" placeholder="yyyymmdd"/>
 														</div>
 													</div>
 													<div class="col-xxs-12 col-xs-6 mt alternate">
@@ -506,7 +506,7 @@
 				<div class="row row-bottom-padded-md">
 					<div class="col-lg-4 col-md-4 col-sm-6">
 						<div class="fh5co-blog animate-box">
-							<a href="#"><img class="img-responsive" src="images/place-1.jpg" alt=""></a>
+							<a href="#"><img class="img-responsive" src="${pageContext.request.contextPath}/resources/images/place-1.jpg" alt=""></a>
 							<div class="blog-text">
 								<div class="prod-title">
 									<h3><a href="#">30% Discount to Travel All Around the World</a></h3>
@@ -520,7 +520,7 @@
 					</div>
 					<div class="col-lg-4 col-md-4 col-sm-6">
 						<div class="fh5co-blog animate-box">
-							<a href="#"><img class="img-responsive" src="images/place-2.jpg" alt=""></a>
+							<a href="#"><img class="img-responsive" src="${pageContext.request.contextPath}/resources/images/place-2.jpg" alt=""></a>
 							<div class="blog-text">
 								<div class="prod-title">
 									<h3><a href="#">Planning for Vacation</a></h3>
@@ -535,7 +535,7 @@
 					<div class="clearfix visible-sm-block"></div>
 					<div class="col-lg-4 col-md-4 col-sm-6">
 						<div class="fh5co-blog animate-box">
-							<a href="#"><img class="img-responsive" src="images/place-3.jpg" alt=""></a>
+							<a href="#"><img class="img-responsive" src="${pageContext.request.contextPath}/resources/images/place-3.jpg" alt=""></a>
 							<div class="blog-text">
 								<div class="prod-title">
 									<h3><a href="#">Visit Tokyo Japan</a></h3>
@@ -557,7 +557,7 @@
 			</div>
 		</div>
 		
-		<div id="fh5co-testimonial" style="background-image:url(images/img_bg_1.jpg);">
+		<div id="fh5co-testimonial" style="background-image:url(${pageContext.request.contextPath}/resources/images/img_bg_1.jpg);">
 			<div class="container">
 				<div class="row animate-box">
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
@@ -611,10 +611,10 @@
 					    $('#to_place').focus();
 						alert("도착지를 입력해주세요.");
 					}
-					else if($.trim($('#date_start').val()) === "") {
+					/* else if($.trim($('#date_start').val()) === "") {
 					    $('#date_start').focus();
 						alert("출발일을 입력해주세요.");
-					}
+					} */
 					/* else if($.trim($('#date_end').val()) === "") {
 					    $('#date_end').focus();
 						alert("도착일을 입력해주세요.");

@@ -7,9 +7,9 @@ import org.zerock.domain.Criteria;
 import org.zerock.domain.ReplyVO;
 
 public interface ReplyMapper {
-	public int insert(ReplyVO vo);
-	public ReplyVO read(Integer r_num);
-	public int delete(Integer r_num);
-	public int update(ReplyVO r_content);
-	public List<ReplyVO> getListWithPaging(@Param("cri") Criteria cri, @Param("b_num") Integer bno);
+	public void comment(ReplyVO vo);
+	public List<ReplyVO> selectcomment(int vo);
+	public void commentdelete(ReplyVO vo);
+	public void commentupdate(ReplyVO vo);
+
 }

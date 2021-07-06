@@ -28,11 +28,11 @@
                          
                          <!--회원수정 인풋-->
                         <form class="login__input" action="${pageContext.request.contextPath}/page/memUpdate" method="get"id="loginFrm"name="loginFrm">
-                            <input type="text" name="id" id="id" value="${user.id}">
-                            <input type="text" name="name" id="name" value="${user.name}">
-                            <input type="date" name="bday" id="bday" value="${user.bday}">
-                            <input type="email" name="email" id="email" value="${user.email}">
-                            <input type="text" name="phone" id="phone" value="${user.phone}">
+                            <input type="text" name="id" id="id" value="${user.id}" readonly>
+                            <input type="text" name="name" id="name" value="${user.name}" readonly>
+                            <input type="date" name="bday" id="bday" value="${user.bday}" readonly>
+                            <input type="email" name="email" id="email" value="${user.email}" readonly>
+                            <input type="text" name="phone" id="phone" value="${user.phone}" readonly>
                             <input type = "submit" id = "loginUp" value = "수정 하기">
                         </form>
                         <!--회원수정 인풋end-->

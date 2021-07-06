@@ -2,8 +2,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../layout/header.jsp"%>
-      <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet"> 
+
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet"> 
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/public.css">
+
       <div class="w-full md:w-3/5 mx-auto p-8">
          <h2>SkyLife의 공지사항</h2><br>			
          <%-- <c:if test="${loginUser.num == 1}"> --%>
@@ -43,4 +45,5 @@
 
       }
    </script>
+   
 </html>

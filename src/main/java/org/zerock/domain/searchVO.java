@@ -35,5 +35,18 @@ public class searchVO {
 		this.arrAirportNm = arrAirportNm;
 		
 	}
+	public searchVO(String vihicleId, String airlineNm, String depPlandTime, String arrPlandTime,
+			String economyCharge, String prestigeCharge, String depAirportNm, String arrAirportNm) {
+		
+		this.vihicleId = vihicleId;
+		this.airlineNm = airlineNm;
+		this.depPlandTime = Long.valueOf(depPlandTime);
+		this.arrPlandTime = Long.valueOf(arrPlandTime);
+		this.economyCharge = Integer.valueOf(economyCharge);
+		this.prestigeCharge =Integer.valueOf(prestigeCharge);
+		this.depAirportNm = depAirportNm;
+		this.arrAirportNm = arrAirportNm;
+		
+	}
 	
 }

@@ -13,13 +13,13 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
+
 <body>
     <div class="container">
         <main class="loginMain">
            <!--회원가입섹션-->
             <section class="login">
                 <article class="login__form__container">
-                  <!-- 아아아아아 -->
                    <!--회원가입 폼-->
                     <div class="login__form">
                         <!--로고-->
@@ -30,23 +30,27 @@
                         <form class="login__input" action="/auth/joinForm" method="post"id="signFrm"name="signFrm">
                             <input type="text" name="id" placeholder="아이디" required="required" id="id">
                             <input type = "button" id="check" value = "중복체크">
-                            <input type="password" name="pw" placeholder="패스워드" required="required"id="pw">
-                            <input type="text" name="name" placeholder="이름" required="required"id="name">
-                            <input type="date" name="bday" placeholder="생년월일" required="required"id="bday">
-                            <input class="mail_input" type="email" name="email" placeholder="이메일" required="required"id="email">
+                            <input type="password" name="pw" placeholder="패스워드" required="required" id="pw">
+                            <input type="text" name="name" placeholder="이름" required="required" id="name">
+                            <input type="date" name="bday" placeholder="생년월일" required="required" id="bday">
+                            <input class="mail_input" type="email" name="email" placeholder="이메일" required="required" id="email">
                             <div class="mail_check_wrap">
                             	<div class="mail_check_input_box" id="mail_check_input_box_false">
                             		<input class="mail_check_input" id="mail_check_input" disabled="disabled">
                             	</div>
                             	<div class="mail_check_button">
+<<<<<<< HEAD
                             		<!-- <span class="mail_check_button">인증번호 전송</span> -->
                             		<span>인증번호 전송</span> 		
+=======
+                            		<input type="button" value="인증번호 전송">
+>>>>>>> e890ee0a28ff2f5b523bb6d2f351f17ed86efa4b
                             	</div>
                             	<div class="clearfix"></div>
                             	<span id="mail_check_input_box_warn"></span>
                             </div>
-                            <input type="text" name="phone" placeholder="전화번호" required="required"id="phone">
-                            <input type = "button" id = "signUp"value = "회원가입">
+                            <input type="text" name="phone" placeholder="전화번호" required="required" id="phone">
+                            <input type="button" id="signUp" value="회원가입">
                             <input hidden="">
                         </form>
                         <!--회원가입 인풋end-->

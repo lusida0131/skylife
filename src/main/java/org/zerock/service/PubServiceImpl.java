@@ -43,7 +43,7 @@ public class PubServiceImpl implements PubService{
 	
 	 @Override 
 	 public PubVO get(Integer pno) {
-	      log.info("��ȸ�� �������� ��ȣ : " + pno);
+	      log.info("public num: " + pno);
 	      return mapper.read(pno);
 	   }
 }

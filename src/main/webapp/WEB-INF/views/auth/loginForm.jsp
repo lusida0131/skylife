@@ -42,6 +42,8 @@ margin: 0 auto;
                        		<input type="password" name="pw" placeholder="비밀번호"id="pw">
                             <input type="submit" id = "signUp"value="로그인" >
                         </form>
+                        <button><a href="${pageContext.request.contextPath}/page/findID">ID 찾기</a></button>
+                        <button><a href="${pageContext.request.contextPath}/page/findPw">PW 찾기</a></button>
                         <!--로그인 인풋end-->
                         
                         <!-- 또는 -->
