@@ -27,6 +27,11 @@ public class HomeController {
 //        return "page/hotel";
 //    }
     
+    @GetMapping("/page/park")
+    public String park() throws Exception {
+        return "page/park";
+    }
+    
     @GetMapping("/page/map")
     public String map() throws Exception {
         return "page/map";
