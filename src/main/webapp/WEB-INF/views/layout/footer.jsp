@@ -106,6 +106,7 @@
 	<script src="${pageContext.request.contextPath}/resources/js/selectFx.js"></script>
 	
 	<!-- Main JS -->
-	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>	
+	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/reply.js"></script>	
 </body>
 </html>

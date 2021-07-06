@@ -2,10 +2,6 @@ package org.zerock.controller;
 
 import java.util.List;
 
-import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
-
-import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.ReplyVO;
 import org.zerock.domain.skylifeVO;
-import org.zerock.mapper.BoardMapper;
 import org.zerock.service.BoardService;
+import org.zerock.service.ReplyService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -37,6 +33,9 @@ public class BoardController {
 	
 	@Autowired
 	BoardService service;
+	
+	@Autowired
+	ReplyService Replyservice;
 	
 	// 게시글 목록
 	@GetMapping("/page/board")
@@ -78,6 +77,9 @@ public class BoardController {
 		BoardVO data = service.view(b_num);
 		model.addAttribute("data", data);
 		log.info("돌아가~ " + data);
+		List<ReplyVO> replyData = Replyservice.selectcomment(b_num);
+		model.addAttribute("replyData", replyData);
+		log.info("돌아가~ " + replyData);
 		return "/page/boardView";
 	}
 	

@@ -2,21 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.ReplyMapper">
-	<insert id="insert">
+	<insert id="comment">
 		insert into sco (b_num, r_content, id)
 		values (#{b_num}, #{r_content}, #{id})
 	</insert>
-	<select id="read" resultType="org.zerock.domain.ReplyVO">
-		select * from sco where r_num=#{r_num}
+	<select resultType="org.zerock.domain.ReplyVO" id="selectcomment">
+   		select * from sco where b_num=#{b_num} order by r_num asc 
 	</select>
-	<delete id="delete">
+	<delete id="commentDelete">
 		delete from sco where r_num=#{r_num}
 	</delete>
-	<update id="update">
+	<update id="commentUpdate">
 		update sco set r_content = #{r_content} where r_num = #{r_num}
 	</update>
-	<select id="getListWithPaging" resultType="org.zerock.domain.ReplyVO">
-		select r_num, b_num, r_content, id, time from sco
-		where b_num=#{b_num} order by r_num asc
-	</select>
 </mapper>
