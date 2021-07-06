@@ -31,8 +31,10 @@
 			</div>
 			<div style="width:650px; text-align:center;">
 				<input type="hidden" name="b_num" value="${data.b_num}">
+				<c:if test="${user.id == data.id}">
 				<button type="button" id="btnUpdate">수정</button>
 				<button type="button" id="btnDelete">삭제</button>
+				</c:if>
 			</div>
 		</form>
 	</div>
@@ -49,23 +51,10 @@
 		});
 		
 		$("#btnUpdate").click(function() {
-			var b_title = $("#b_title").val();
-			var b_content = $("#b_content").val();
-			var id = $("#id").val();
-			if(b_title == ""){
-				alert("제목을 입력하세요");
-				document.form1.b_title.focus();
-				
-				return;
+			if(confirm("수정하시겠습니까?")) {
+				document.form1.action = "/board/update"
+				document.form1.submit();
 			}
-			if(b_content == ""){
-				alert("내용을 입력하세요");
-				document.form1.b_title.focus();
-				
-				return;
-			}
-			document.form1.action="${pageContext.request.contextPath}/board/update"
-			document.form1.submit();
 		});
 	});
 </script>

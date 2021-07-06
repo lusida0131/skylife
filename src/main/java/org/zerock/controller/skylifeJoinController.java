@@ -1,10 +1,12 @@
 package org.zerock.controller;
 
 import java.util.Random;
+import java.io.IOException;
 import java.util.HashMap;
 import javax.mail.internet.MimeMessage;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -16,21 +18,25 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.skylifeVO;
 import org.zerock.service.KakaoAPI;
 import org.zerock.service.skylifeService;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 @Controller
 @RequestMapping
 @AllArgsConstructor
+@Log4j
 public class skylifeJoinController {
 	
 	@Autowired
@@ -100,7 +106,7 @@ public class skylifeJoinController {
 	        session.setAttribute("userId", userInfo.get("email"));
 	        session.setAttribute("access_Token", access_Token);
 	    }
-	    return "redirect:/page/index";
+	    return "redirect:/";
 	}
 	
 	@RequestMapping(value = "/idCheck",method = RequestMethod.GET, produces = "application/text; charset=utf8")
@@ -112,10 +118,10 @@ public class skylifeJoinController {
 		return Integer.toString(result);
 	}
 	
-	@RequestMapping(value="/auth/index")
+	@RequestMapping(value="/")
 	public String index() {
 	    System.out.println("auth/index : ");
-	    return "page/index";
+	    return "/";
 	}
 	
 
@@ -123,25 +129,21 @@ public class skylifeJoinController {
 	@RequestMapping(value="/auth/mailCheck", method=RequestMethod.GET)
 	@ResponseBody
 	public String mailCheckGET(String email) throws Exception {
-		/* 酉�(view)濡쒕��꽣 �꽆�뼱�삩 �뜲�씠�꽣 �솗�씤 */
-		logger.info("�씠硫붿씪 �뜲�씠�꽣 �쟾�넚 �솗�씤");
-		logger.info("�씤利앸찓�씪 : " + email);
-
-		/* �씤利앸쾲�샇 (�궃�닔) �깮�꽦*/
+		/* 난수 생성 */
 		Random random = new Random();
 		int checkNum = random.nextInt(888888) + 111111;
-		logger.info("�씤利앸쾲�샇 " + checkNum);
+		logger.info("인증번호" + checkNum);
 
-		/* �씠硫붿씪 蹂대궡湲� */
+		/* 메일 보내기 */
 		String setFrom = "SkyLifeKorea@gmail.com";
 		String toMail = email;
-		String title = "�쉶�썝媛��엯 �씤利� �씠硫붿씪 �엯�땲�떎.";
+		String title = "회원가입 인증메일입니다.";
 		String content =
-						"�솃�럹�씠吏�瑜� 諛⑸Ц�빐二쇱뀛�꽌 媛먯궗�빀�땲�떎." +
+						"홈페이지를 방문해주셔서 감사합니다." +
 						"<br><br>" + 
-						"�씤利� 踰덊샇�뒗 " + checkNum + "�엯�땲�떎." +
+						"인증 번호는 " + checkNum + "입니다." +
 						"<br>" +
-						"�빐�떦 �씤利앸쾲�샇瑜� �씤利앸쾲�샇 �솗�씤移몄뿉 湲곗엯�븯�뿬 二쇱꽭�슂.";
+						"해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
@@ -180,5 +182,64 @@ public class skylifeJoinController {
 		session.invalidate();
 		
 		return "redirect:/";
+	}
+	///////////////////////////////////////////////////////////
+	// 아이디/비밀번호 찾기
+	@GetMapping("/page/findPw")
+	public String findPw() throws Exception {
+		return "/page/findPw";
+	}
+	
+	@RequestMapping(value="page/emailPW", method=RequestMethod.GET)
+	@ResponseBody
+	public String FindEmail(String email, skylifeVO vo, RedirectAttributes redirectAttributes) throws Exception {
+		/* 난수 생성 */
+		Random random = new Random();
+		int newPW = random.nextInt(888888) + 111111;
+		logger.info("임시 비밀번호" + newPW);
+
+		/* 메일 보내기 */
+		String setFrom = "SkyLifeKorea@gmail.com";
+		String toMail = email;
+		String title = "[SkyLife] 비밀번호변경 인증 이메일 입니다";
+		String content =
+						"안녕하세요. 회원님 홈페이지를 방문해주셔서 감사합니다." +
+						"<br><br>" + 
+						"임시 비밀번호는 " + newPW + "입니다." +
+						"<br>" +
+						"해당 임시번호로 인증번호 로그인하여 비밀번호를 변경해주세요.";
+		try {
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+			helper.setFrom(setFrom);;
+			helper.setTo(toMail);
+			helper.setSubject(title);
+			helper.setText(content, true);
+			mailSender.send(message);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		String nPass = Integer.toString(newPW);
+		/////////////////////// 비밀번호 변경//////////////////////////
+		log.info("임시 비밀번호로 변경");
+		String changePW = BCrypt.hashpw(nPass, BCrypt.gensalt()); 
+		vo.setPw(changePW);
+		service.updatePW(vo);
+		redirectAttributes.addFlashAttribute("msg", "REGISTERED");
+		///////////////////////////////////////////////////////////
+		return nPass;
+	}
+	
+	// 아이디 찾기
+	@GetMapping("/page/findID")
+	public String findID() throws Exception {
+		return "/page/findID";
+	}
+	
+	@PostMapping("/page/getID")
+	public String getID(HttpServletResponse response, @RequestParam("email") String email, Model md) throws Exception {
+		md.addAttribute("id", service.findID(response, email));
+		return "/page/getID";
 	}
 }
