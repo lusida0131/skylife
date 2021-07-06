@@ -48,31 +48,31 @@ public class PubController {
 		if(service.remove(pno)) {
 			rttr.addFlashAttribute("result","success");
 		} else {
-			System.out.println("���� ����");
+			System.out.println("remove failed");
 		}
 		return "redirect:/pub/public";
 	}
 	@GetMapping("/remove")
 	public void get12(@RequestParam("pno") Integer pno, Model model) {
-		log.info("/remove : ���� Ŭ��");
+		log.info("/remove : remove click");
 		model.addAttribute("pub", service.get(pno));
 	}
 	
 	@PostMapping("/modify")
 	public String modify(PubVO pub, RedirectAttributes rttr) {
-		log.info("modify : �����ϱ� �Ϸ� Ŭ�� " + pub);
+		log.info("modify : modify complete click " + pub);
 		
-		if(service.modify(pub)) { //������ �Ǿ������� ���� Ȯ��
+		if(service.modify(pub)) { //구현이 되었는지 확인
 			rttr.addFlashAttribute("result","success");
 		} else {
-			System.out.println("���� ����");
+			System.out.println("modify failed");
 		}
 		
 		return "redirect:/pub/public";
 	}
 	@GetMapping("/modify")
 	public void get(@RequestParam("pno") Integer pno, Model model) {
-		log.info("/modify : ���� Ŭ��");
+		log.info("/modify : modify click");
 		model.addAttribute("pub", service.get(pno));
 //	    model.addAttribute("notice", service.get(notice_bno));
 	}
