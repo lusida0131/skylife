@@ -37,37 +37,66 @@
             </c:if>
          </div>
          <br>
-            <br>
+         <br>
          <div>
             <textarea rows="6px" cols="155px" name="r_content" id="r_content"></textarea>
             <input type="hidden" name="ided" id="ided" value="${user.id }">
             <input type="hidden" name="b_num" id="b_num" value="${data.b_num }">
             <%-- <input type="hidden" name="r_num" id="r_num" value="${data.r_num }"> --%>
-         	<input type="button"id="reply_btn" value="등록">
+         	<input type="button"id="reply_btn" name="commentInsertBtn" value="등록">
          </div>
          <c:set var="count" value="0"/>
         <c:forEach items="${replyData }" var="com" varStatus="i">
         <c:set var="count" value="${count = count + 1}"/>
         <br>
-            <br>
+        <br>
             <div id="book_reply">
                <ul>
-                  <li class=emptyReply>
+                  <li class="emptyReply">
+                  
                      <c:if test="${com.r_num != null }">
                      <p>(${count})${com.id } (${com.time}) : ${com.r_content}</p>
                         <input type="hidden" id="r_content" value="${com.r_content }">
                         <input type="hidden" name="r_num" id="r_num" value="${com.r_num }">
                         <input type="hidden" id="ider" value="${com.id }">
                         <input type="hidden" value="${com.r_num }">
+                        
                         <button type = "button" name="delete" id="delete" class="rplydelete" value="${com.r_num}">삭제</button>
-                        <button type="button" name="modify" value="${com.r_num}">수정</button>
-                     </c:if>
+                        
                      
+                        <button type="button" id="ReplyBtnUpdate" data-toggle="modal" data-target="#myModal" value="${com.r_num}" >수정</button>         
+                     </c:if>
+
                   </li>
                </ul>
             </div>
-       </c:forEach>
-   
+            <div class="modal fade" id="myModal" role="dialog">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <h4 class="modal-title">댓글 수정</h4>
+         </div>
+            <div class="modal-body">
+               <br/><br/>
+            <textarea rows="4px" cols="60px" name="r_contented" id="r_contented">${com.r_content }</textarea>
+         </div>
+            <div class="modal-footer">
+            <input type="hidden" name="r_numed" id="r_numed" value="${com.r_num }" class="r_num">
+            
+            
+            
+            <button type="button" class="btn btn-default" data-dismiss="modal" id="commentUpdate" value="${com.r_num}">수정</button> 
+            
+            
+            
+            
+            <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+         </div>
+      </div>
+   </div>
+</div>
+      </c:forEach>
       </form>
    </div>
 </div>
@@ -129,8 +158,36 @@ $(function(){
          alert('로그인 해주세요')
       }
    });
+   $(document).ready(function() {
+       $('#myModal').on('show.bs.modal', function(event) {
+          $('#commentUpdate').click(function(e){
+       
+          const r_numed=$('#r_numed').val();
+          const r_contented=$('#r_contented').val();
+          
+          console.log("r_numed : "+r_numed);
+          console.log("r_contented : "+r_contented);
+             $.ajax({
+                type:"POST",
+                url:"/replies/update",
+                data: {    
+                	r_num : r_numed,
+                	r_content : r_contented
+                },
+                dataType: "text",
+                success:function(result){
+                	const resultSet = $.trim(result); 
+                   location.reload();
+                }
+             });
+          });
+          
+       });
+    });
+
 });
 </script>
+
 <script>
 $("#replies").on("click", ".replyLi button", function () {
     var reply = $(this).parent();
@@ -153,7 +210,6 @@ $(".rplydelete").click(function(){
             success: function(result){
                 if(result == "success"){
                     alert("삭제되었습니다.");
-                    /* $("#delete").css("visibility", "hidden"); */
                     location.reload();
                     listReplyRest("1");
                 }
@@ -161,5 +217,8 @@ $(".rplydelete").click(function(){
         });
     }
 });
+</script>
+<script>
+
 </script>
 <%@ include file="../layout/footer.jsp"%>
