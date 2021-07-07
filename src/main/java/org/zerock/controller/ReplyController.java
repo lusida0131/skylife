@@ -28,13 +28,13 @@ public class ReplyController {
 	}
 	@RequestMapping(value = "/commentDelete", method = RequestMethod.GET)
 	@ResponseBody
-	public void commentDelete(ReplyVO vo) {
+	public void commentdelete(ReplyVO vo) {
 		log.info("vo : "+ vo);
 	    service.commentdelete(vo);
 	}
 	@RequestMapping(value = "/commentUpdate", method = RequestMethod.POST)
 	@ResponseBody
-	public void commentUpdate(ReplyVO vo) {
+	public void commentupdate(ReplyVO vo) {
 		log.info("vo : " + vo);
 	    service.commentupdate(vo);
 	   }
