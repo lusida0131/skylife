@@ -3,28 +3,53 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ticket.css">
 <title>결제 완료</title>
 </head>
+
 <body>
 
-<h3> 카카오페이 결제가 정상적으로 완료되었습니다. </h3><br>
-<button onClick="location.href='/'">Go to home</button>
+<br><h3 style="text-align: center;"> 카카오페이 결제가 정상적으로 완료되었습니다. </h3><br>
 
-<br> 
-결제일시:    [[${info.approved_at}]]<br/>
-주문번호:    [[${info.partner_order_id}]]<br/>
-상품명:     [[${info.item_name}]]<br/>
-상품수량:    [[${info.quantity}]]<br/>
-결제금액:    [[${info.amount.total}]]<br/>
-결제방법:    [[${info.payment_method_type}]]<br/>
+<div class="cardWrap">
 
+  <div class="card cardLeft">
+    <h1>SkyLife <span>Ticket</span></h1>
+    <div class="title">
+      <h2>${info.item_name}</h2>
+      <span>결제 상품</span>
+    </div>
+    <div class="name">
+      <h2>${info.approved_at}</h2>
+      <span>결제 일시</span>
+    </div>
+    <div class="name">
+      <h2>${info.item_code}</h2>
+      <span>name</span>
+    </div>
+<!--     <div class="seat">
+      <h2>156</h2>
+      <span>seat</span>
+    </div>
+    <div class="time">
+      <h2>12:00</h2>
+      <span>time</span>
+    </div> -->
+  </div>
+  
+  <div class="card cardRight">
+    <div class="eye"></div>
+    <div class="number">
+      <h3>SkyLife</h3>
+      <span>with fly</span>
+    </div>
+    <div class="barcode"></div>
+  </div>
 
-<h2>[[${info}]]</h2>
-
-
-<%-- <%@ include file="../layout/footer.jsp"%> --%>
+</div>
+<br>
+<button onClick="location.href='/'">메인으로</button>
 
 </body>
 </html>
 
- 
