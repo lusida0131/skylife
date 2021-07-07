@@ -33,9 +33,7 @@ public class KakaoPay {
     public String kakaoPayReady(OrderVO ovo, String userID) {
  
         RestTemplate restTemplate = new RestTemplate();
-        
-//        String pOrderID = "SkyLife" + "orderID부여";
-//        String pUserID = "ovo.getUserID()세션값";
+
         String itemName = "SkyLife_" + ovo.getAirlineNm() + ovo.getVihicleId()
         					+ "-" + ovo.getDepPlandTime();
         String itemCode = ovo.getVihicleId() + ovo.getDepPlandTime();
@@ -43,13 +41,11 @@ public class KakaoPay {
         int totalAmount = ovo.getEconomyCharge() * quantity;
         int installMonth = 1;
         
-        // 서버로 요청할 Header
         HttpHeaders header = new HttpHeaders();
         header.add("Authorization", "KakaoAK b13acc12ae82b6a10f628a48b0e3990d"); // admin key
         header.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
         header.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
         
-        // 서버로 요청할 Body
         MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();
         body.add("cid", "TC0ONETIME");										// (String) test code, 가맹점코드
         body.add("partner_order_id", "SkyLife_oi");							// (String) 가맹점 주문번호, 최대 100자
@@ -64,12 +60,10 @@ public class KakaoPay {
         body.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");	// (String) 결제 실패시 url
         body.add("install_month", String.valueOf(installMonth));			// (int) 카드 할부개월, 0~12
         
-        
-        // header와 body를 붙임
         HttpEntity<MultiValueMap<String, String>> param = new HttpEntity<MultiValueMap<String, String>>(body, header);
  
         try {
-        	// RestTemplate을 이용해 카카오페이에 데이터를 보내고, KakaoPayReadyVO.clas를 응답받는 객체로 설정
+        	// RestTemplate을 이용해 카카오페이에 데이터를 보내고, KakaoPayReadyVO.class를 응답받는 객체로 설정
             kakaoPayReadyVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/ready"), param, KakaoPayReadyVO.class);
             log.info("kakaoPayReadyVO: " + kakaoPayReadyVO);
             
@@ -86,33 +80,20 @@ public class KakaoPay {
         return "/pay";
         
     }
-    
-    
-    private String subString(String valueOf, int i, int j) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 	// 결제 완료 후 정보를 받아옴
     public KakaoPayApprovalVO kakaoPayInfo(String pg_token, String userID) {
     	 
-        System.out.println("KakaoPayInfoVO............................................");
-        System.out.println("KakaoPayReadyVO: " + kakaoPayReadyVO);
-        log.info("----------------------------------------");
+        System.out.println("KakaoPayInfo............................................");
         
         RestTemplate restTemplate = new RestTemplate();
         
-//        String pOrderID = "SkyLife" + "orderID부여";
-//        String pUserID = "ovo.getPUserID()세션값";
- 
-        // 서버로 요청할 Header
         HttpHeaders header = new HttpHeaders();
         header.add("Authorization", "KakaoAK b13acc12ae82b6a10f628a48b0e3990d");	// admin key
         header.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
         header.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
- 
-        // 서버로 요청할 Body
+        
         MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();
         body.add("cid", "TC0ONETIME");
         body.add("tid", kakaoPayReadyVO.getTid());
@@ -122,12 +103,11 @@ public class KakaoPay {
         
         HttpEntity<MultiValueMap<String, String>> param = new HttpEntity<MultiValueMap<String, String>>(body, header);
         
-        System.out.println("Approval Info param: " + param);
+        //System.out.println("Approval Info param: " + param);
         
         try {
         	// 응답정보를 받는 KakaoPayApprovalVO 클래스
             kakaoPayApprovalVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/approve"), param, KakaoPayApprovalVO.class);
-            log.info("kakaoPayApprovalVO: " + kakaoPayApprovalVO);
             System.out.println("kakaoPayApprovalVO: " + kakaoPayApprovalVO);
           
             return kakaoPayApprovalVO;
