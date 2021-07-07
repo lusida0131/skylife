@@ -39,12 +39,7 @@
                             		<input class="mail_check_input" id="mail_check_input" disabled="disabled">
                             	</div>
                             	<div class="mail_check_button">
-<<<<<<< HEAD
-                            		<!-- <span class="mail_check_button">인증번호 전송</span> -->
-                            		<span>인증번호 전송</span> 		
-=======
                             		<input type="button" value="인증번호 전송">
->>>>>>> e890ee0a28ff2f5b523bb6d2f351f17ed86efa4b
                             	</div>
                             	<div class="clearfix"></div>
                             	<span id="mail_check_input_box_warn"></span>
@@ -73,7 +68,6 @@
 	var code = "";
    
 	$(document).ready(function(e){
-
 		var idx = false;
 		$('#signUp').click(function(){
 	         if($.trim($('#id').val()) == ''){
