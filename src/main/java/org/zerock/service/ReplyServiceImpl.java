@@ -12,7 +12,6 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Service
-@Log4j
 public class ReplyServiceImpl implements ReplyService{
 	@Setter(onMethod_ = {@Autowired})
 	private ReplyMapper mapper;
@@ -29,11 +28,11 @@ public class ReplyServiceImpl implements ReplyService{
 		return mapper.selectcomment(vo);
 	}
 	@Override
-	public void commentdelete(ReplyVO vo) {
-		mapper.commentdelete(vo);      
+	public int delete(int r_num) {
+		return mapper.delete(r_num);      
 	}
 	@Override
-	public void commentupdate(ReplyVO vo) {
-		mapper.commentupdate(vo);   
+	public int update(ReplyVO vo) {
+		return mapper.update(vo);   
 	}
 }

@@ -36,6 +36,8 @@
             <button type="button" id="btnDelete">삭제</button>
             </c:if>
          </div>
+         <br>
+            <br>
          <div>
             <textarea rows="6px" cols="155px" name="r_content" id="r_content"></textarea>
             <input type="hidden" name="ided" id="ided" value="${user.id }">
@@ -46,50 +48,31 @@
          <c:set var="count" value="0"/>
         <c:forEach items="${replyData }" var="com" varStatus="i">
         <c:set var="count" value="${count = count + 1}"/>
+        <br>
+            <br>
             <div id="book_reply">
                <ul>
                   <li class=emptyReply>
                      <c:if test="${com.r_num != null }">
                      <p>(${count})${com.id } (${com.time}) : ${com.r_content}</p>
                         <input type="hidden" id="r_content" value="${com.r_content }">
+                        <input type="hidden" name="r_num" id="r_num" value="${com.r_num }">
                         <input type="hidden" id="ider" value="${com.id }">
                         <input type="hidden" value="${com.r_num }">
-                        <button type = "button" name="delete" value="${com.r_num}">삭제</button>
-                        <button type="button" data-toggle="modal" data-target="#modifyModal"
-                        name="modify" value="${com.r_num}">수정</button>
+                        <button type = "button" name="delete" id="delete" class="rplydelete" value="${com.r_num}">삭제</button>
+                        <button type="button" name="modify" value="${com.r_num}">수정</button>
                      </c:if>
+                     
                   </li>
                </ul>
             </div>
        </c:forEach>
+   
       </form>
    </div>
 </div>
-<div class="modal fade" id="modifyModal" role="dialog">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">댓글 수정창</h4>
-			</div>
-			<div class="modal-body">
-				<div class="form-group">
-					<label for="replyText">댓글 내용</label>
-					<input class="form-control" id="r_content" name="r_content">
-				</div>
-				<div class="form-group">
-					<label for="replyWriter">댓글 작성자</label>
-					<input class="form-control" id="ider" name="ider" readonly>
-				</div>
-			</div>
-			 <div class="modal-footer">
-              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">닫기</button>
-              <button type="button" class="btn btn-success modalModBtn">수정</button>
-              <button type="button" class="btn btn-danger modalDelBtn" >삭제</button>
-          </div>
-		</div>
-	</div>
-</div>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/reply.js"></script>
 <script>
    $(document).ready(function() {
       $("#btnDelete").click(function() {
@@ -132,8 +115,10 @@ $(function(){
                },
                dataType: "text",
                success:function(result){
-                  const resultSet = $.trim(result);                  
+                  const resultSet = $.trim(result); 
+                  location.reload();
                }
+               
             });
          }
          else{
@@ -160,26 +145,21 @@ $("#replies").on("click", ".replyLi button", function () {
 });
 </script>
 <script>
-$.ajax({
-    type : "post",
-    url : "/replies",
-    headers : {
-        "Content-type" : "application/json",
-        "X-HTTP-Method-Override" : "POST"
-    },
-    dataType : "text",
-    data : JSON.stringify({
-    	r_num : r_num,
-        r_content : r_content,
-        ider : ider
-    }),
-    success : function (result) {
-        
-        getReplies(); // 댓글 목록 출력 함수 호출
-        replyText.val(""); // 댓글 내용 초기화
-        replyWriter.val(""); // 댓글 작성자 초기화
+$(".rplydelete").click(function(){
+    if(confirm("삭제하시겠습니까?")){
+        $.ajax({
+            type: "delete",
+            url: "${pageContext.request.contextPath}/reply/delete/" + Number($(this).val()),
+            success: function(result){
+                if(result == "success"){
+                    alert("삭제되었습니다.");
+                    /* $("#delete").css("visibility", "hidden"); */
+                    location.reload();
+                    listReplyRest("1");
+                }
+            }
+        });
     }
 });
 </script>
-
 <%@ include file="../layout/footer.jsp"%>

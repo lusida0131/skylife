@@ -9,10 +9,10 @@
 	<select resultType="org.zerock.domain.ReplyVO" id="selectcomment">
    		select * from sco where b_num=#{b_num} order by r_num asc 
 	</select>
-	<delete id="commentdelete">
+	<delete id="delete">
 		delete from sco where r_num=#{r_num}
 	</delete>
-	<update id="commentupdate">
+	<update id="update">
 		update sco set r_content = #{r_content} where r_num = #{r_num}
 	</update>
 </mapper>
