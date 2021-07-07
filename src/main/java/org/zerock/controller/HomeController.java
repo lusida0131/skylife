@@ -27,9 +27,9 @@ public class HomeController {
 //        return "page/hotel";
 //    }
     
-    @GetMapping("/page/park")
+    @GetMapping("/Park/park")
     public String park() throws Exception {
-        return "page/park";
+        return "Park/park";
     }
     
     @GetMapping("/page/map")

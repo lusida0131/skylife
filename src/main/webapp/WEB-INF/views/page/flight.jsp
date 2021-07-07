@@ -408,82 +408,92 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul id="fh5co-destination-list" class="animate-box">
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-1.jpg); ">
-								<a href="#">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/GMP.jpg); border: 1px solid;">
+								<a href="/Park/GMPList">
 									<div class="case-studies-summary">
-										<h2>Los Angeles</h2>
+										<br><br><br><br><br>
+										<span>실시간 주차정보 >></span>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-2.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/PUS.jpg); border: 1px solid;">
 								<a href="#">
 									<div class="case-studies-summary">
-										<h2>Hongkong</h2>
+										<br><br><br><br><br>
+										<span>실시간 주차정보 >></span>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-3.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/CJU.jpg); border: 1px solid;">
 								<a href="#">
 									<div class="case-studies-summary">
-										<h2>Italy</h2>
+										<br><br><br><br><br>
+										<span>실시간 주차정보 >></span>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-4.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/TAE.jpg); border: 1px solid;">
 								<a href="#">
 									<div class="case-studies-summary">
-										<h2>Philippines</h2>
+										<br><br><br><br><br>
+										<span>실시간 주차정보 >></span>
 									</div>
 								</a>
 							</li>
 
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-5.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/CJJ.jpg); border: 1px solid;">
 								<a href="#">
 									<div class="case-studies-summary">
-										<h2>Japan</h2>
+										<br><br><br><br><br>
+										<span>실시간 주차정보 >></span>
 									</div>
 								</a>
 							</li>
-							<li class="one-half text-center">
-								<div class="title-bg">
-									<div class="case-studies-summary">
-										<h2>Most Popular Destinations</h2>
-										<span><a href="#">View All Destinations</a></span>
-									</div>
-								</div>
-							</li>
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-6.jpg); ">
+							<li class="one-half text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/ICN.jpg); border: 1px solid;">
 								<a href="#">
 									<div class="case-studies-summary">
-										<h2>Paris</h2>
+									<br><br><br><br><br>
+										<span>해당 공항의 주차정보를 알고싶으면 클릭해주세요</span>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-7.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/KWJ.jpg); border: 1px solid;">
 								<a href="#">
 									<div class="case-studies-summary">
-										<h2>Singapore</h2>
+										<br><br><br><br><br>
+										<span>실시간 주차정보 >></span>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-8.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/RCU.jpg); border: 1px solid;">
 								<a href="#">
 									<div class="case-studies-summary">
-										<h2>Madagascar</h2>
+										<br><br><br><br><br>
+										<span>실시간 주차정보 >></span>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-9.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/USN.jpg); border: 1px solid;">
 								<a href="#">
 									<div class="case-studies-summary">
-										<h2>Egypt</h2>
+										<br><br><br><br><br>
+										<span>실시간 주차정보 >></span>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/place-10.jpg); ">
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/KUV.jpg); border: 1px solid;">
 								<a href="#">
 									<div class="case-studies-summary">
-										<h2>Indonesia</h2>
+										<br><br><br><br><br>
+										<span>실시간 주차정보 >></span>
+									</div>
+								</a>
+							</li>
+							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/WJU.jpg); border: 1px solid;">
+								<a href="#">
+									<div class="case-studies-summary">
+										<br><br><br><br><br><br>
+										<span>실시간 주차정보 >></span>
 									</div>
 								</a>
 							</li>
