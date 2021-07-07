@@ -37,7 +37,9 @@ public class KakaoPayController {
         log.info("kakaoPay post start..........");
         log.info("ovo: " + ovo);
         
-        return "redirect:" + kakaopay.kakaoPayReady(ovo);
+        String userID = "daseul";
+        
+        return "redirect:" + kakaopay.kakaoPayReady(ovo, userID);
     }
     
     
@@ -46,7 +48,9 @@ public class KakaoPayController {
         log.info("kakaoPaySuccess get..........");
         log.info("pg_token: " + pg_token);
         
-        model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token));
+        String userID = "daseul";
+        
+        model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token, userID));
     }
 	
 }
