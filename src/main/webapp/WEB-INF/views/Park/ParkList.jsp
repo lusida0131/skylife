@@ -28,7 +28,6 @@
       <td>${plist.parkingFullSpace}</td>
       <td>
       <c:if test="${(plist.parkingFullSpace - plist.parkingIstay) <= 0}">만차</c:if>
-     
       <c:if test="${(plist.parkingFullSpace - plist.parkingIstay) > 0}"> ${plist.parkingFullSpace - plist.parkingIstay}</c:if>
       </td>
       <td>${plist.parkingGettime}</td>

@@ -40,7 +40,7 @@
          <br>
          <br>
          <div>
-            <textarea rows="6px" cols="155px" name="r_content" id="r_contented"></textarea>
+            <textarea rows="6px" cols="155px" name="r_contented" id="r_contented"></textarea>
             <input type="hidden" name="ided" id="ided" value="${user.id }">
             <input type="hidden" name="b_num" id="b_num" value="${data.b_num }">
             <%-- <input type="hidden" name="r_num" id="r_num" value="${data.r_num }"> --%>
@@ -130,27 +130,26 @@ $(function(){
    $("#reply_btn").click(function(e){
    const id =$('#ided').val();
    const b_num=$('#b_num').val();
-   const r_content=$('#r_content').val();
-   const r_num=$('#r_num').val();
+   const r_contented = $('#r_contented').val();
+  
    
    console.log("id : "+ id);
    console.log("b_num : "+ b_num);
-   console.log("r_content : "+r_content);
-   console.log("r_num : "+r_num);
+   console.log("r_content : " + r_contented);
+   
       if(id != null && id != "" && id != 0){
-         if(r_content != null && r_content != ""){
+         if(r_contented != null && r_contented != ""){
             $.ajax({
                type:"POST",
                url:"/comment",
                data: {
-                  r_num : r_num,
                   id : id,
                   b_num : b_num,
-                  r_content : r_content
+                  r_content : r_contented
                },
                dataType: "text",
                success:function(result){
-                  const resultSet = $.trim(result); 
+                 // const resultSet = $.trim(result); 
                   location.reload();
                }
                
@@ -196,17 +195,18 @@ $(function(){
 </script>
 
 <script>
+<%--
 $("#replies").on("click", ".replyLi button", function () {
     var reply = $(this).parent();
 
-    var r_content = reply.find(".r_content").text();
+    var r_contented = reply.find(".r_contented").text();
     var ider = reply.find(".ider").text();
 
 
-    $("#r_content").val(r_content);
+    $("#r_contented").val(r_contented);
     $("#ider").val(ider);
 
-});
+}); --%>
 </script>
 <script>
 $(".rplydelete").click(function(){
