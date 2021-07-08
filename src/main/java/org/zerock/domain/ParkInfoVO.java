@@ -1,4 +1,4 @@
-package org.pay.domain;
+package org.zerock.domain;
 
 import lombok.Data;
 
@@ -7,7 +7,7 @@ public class ParkInfoVO {
 	
 	private String aprEng;
 	private String aprKor;
-	private String parkingName;
+	private String parkingAirportCodeName;
 	private int parkingFullSpace;
 	private String parkingGetdate;
 	private String parkingGettime;

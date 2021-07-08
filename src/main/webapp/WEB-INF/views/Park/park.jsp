@@ -19,7 +19,7 @@
 								</a>
 							</li>
 							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/PUS.jpg); border: 1px solid;">
-								<a href="#">
+								<a href="/Park/PUSList">
 									<div class="case-studies-summary">
 										<br><br><br><br><br>
 										<span>실시간 주차정보 >></span>
@@ -27,7 +27,7 @@
 								</a>
 							</li>
 							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/CJU.jpg); border: 1px solid;">
-								<a href="#">
+								<a href="/Park/CJUList">
 									<div class="case-studies-summary">
 										<br><br><br><br><br>
 										<span>실시간 주차정보 >></span>
@@ -35,7 +35,7 @@
 								</a>
 							</li>
 							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/TAE.jpg); border: 1px solid;">
-								<a href="#">
+								<a href="/Park/TAEList">
 									<div class="case-studies-summary">
 										<br><br><br><br><br>
 										<span>실시간 주차정보 >></span>
@@ -44,7 +44,7 @@
 							</li>
 
 							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/CJJ.jpg); border: 1px solid;">
-								<a href="#">
+								<a href="/Park/CJJList">
 									<div class="case-studies-summary">
 										<br><br><br><br><br>
 										<span>실시간 주차정보 >></span>
@@ -52,7 +52,7 @@
 								</a>
 							</li>
 							<li class="one-half text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/ICN.jpg); border: 1px solid;">
-								<a href="#">
+								<a href="/Park/List">
 									<div class="case-studies-summary">
 									<br><br><br><br><br>
 										<span>해당 공항의 주차정보를 알고싶으면 클릭해주세요</span>
@@ -60,7 +60,7 @@
 								</a>
 							</li>
 							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/KWJ.jpg); border: 1px solid;">
-								<a href="#">
+								<a href="/Park/KWJList">
 									<div class="case-studies-summary">
 										<br><br><br><br><br>
 										<span>실시간 주차정보 >></span>
@@ -68,7 +68,7 @@
 								</a>
 							</li>
 							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/RCU.jpg); border: 1px solid;">
-								<a href="#">
+								<a href="/Park/RSUList">
 									<div class="case-studies-summary">
 										<br><br><br><br><br>
 										<span>실시간 주차정보 >></span>
@@ -76,7 +76,7 @@
 								</a>
 							</li>
 							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/USN.jpg); border: 1px solid;">
-								<a href="#">
+								<a href="/Park/USNList">
 									<div class="case-studies-summary">
 										<br><br><br><br><br>
 										<span>실시간 주차정보 >></span>
@@ -84,7 +84,7 @@
 								</a>
 							</li>
 							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/KUV.jpg); border: 1px solid;">
-								<a href="#">
+								<a href="/Park/KUVList">
 									<div class="case-studies-summary">
 										<br><br><br><br><br>
 										<span>실시간 주차정보 >></span>
@@ -92,7 +92,7 @@
 								</a>
 							</li>
 							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/WJU.jpg); border: 1px solid;">
-								<a href="#">
+								<a href="/Park/WJUList">
 									<div class="case-studies-summary">
 										<br><br><br><br><br><br>
 										<span>실시간 주차정보 >></span>
