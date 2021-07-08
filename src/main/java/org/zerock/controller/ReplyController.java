@@ -2,13 +2,11 @@ package org.zerock.controller;
 
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.zerock.domain.ReplyVO;
@@ -49,28 +47,15 @@ public class ReplyController {
         // 삭제 처리 HTTP 상태 메시지 리턴
         return entity;
     }
+	@RequestMapping(value="/replies/update", method=RequestMethod.POST) //댓글 수정  
+    @ResponseBody
+    private int mCommentServiceUpdateProc(@RequestParam int r_num, @RequestParam String r_content) throws Exception{
+        
+        ReplyVO comment = new ReplyVO();
+        comment.setR_num(r_num);
+        comment.setR_content(r_content);
+        
+        return service.update(comment);
+    }
 }
 	
-	/*
-	 * @RequestMapping(value = "/comment/delete", method = RequestMethod.GET)
-	 * 
-	 * @ResponseBody public void commentdelete(ReplyVO vo) { log.info("vo : "+ vo);
-	 * service.commentdelete(vo); }
-	 */
-	
-	/*
-	 * @DeleteMapping(value="/{r_num}", produces =
-	 * {MediaType.APPLICATION_XML_VALUE}) public ResponseEntity<String>
-	 * remove(@PathVariable("r_num") int r_num) { log.info("remove" + r_num);
-	 * 
-	 * return service.delete(r_num) == 1 ? new ResponseEntity<>("success",
-	 * HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); }
-	 * 
-	 * @RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH},
-	 * value="/{r_num}", consumes = "application/json", produces =
-	 * {MediaType.TEXT_PLAIN_VALUE})
-	 *//*
-	 * @ResponseBody public void update(ReplyVO vo) { log.info("vo : " + vo);
-	 * service. update(vo); }
-	 */
-
