@@ -12,18 +12,20 @@
 
 <div class="container">
 	<div class="row">
-      <form name="form1" method="post" action="${pageContext.request.contextPath}/board/update">
+      <%-- <form name="form1" method="post" action="${pageContext.request.contextPath}/board/update?"> --%>
+      <form name="form1" method="post" action="/board/update">
+      	<input type="hidden" name="b_num" value="${blist.b_num}" />
 		<div>
 			제목
-			<input name="b_title" id="b_title" value="${data.b_title}" placeholder="제목을 입력해주세요.">
+			<input name="b_title" id="b_title" value="${blist.b_title}">
 		</div>
 		<div>
 			내용
-			<textarea name="b_content" id="b_content" rows="4" cols="80" placeholder="내용을 입력해주세요">${data.b_content}</textarea>
+			<textarea name="b_content" id="b_content" rows="4" cols="80">${blist.b_content}</textarea>
 		</div>
 		<div>
 			이름
-			<input name="id" id="id" value="${user.id}">
+			<input name="id" id="id" value="${blist.id}" readonly>
 		</div>
 		<div style="width:650px; text-align:center;">
 			<button type="button" id="btnUpdate">수정</button>
@@ -60,6 +62,13 @@
 			}
 			document.form1.submit();
 		});
+	
+		$("#btnUpdate").click(function() {
+	         if(confirm("수정하시겠습니까?")) {
+	            document.form1.action = "${pageContext.request.contextPath}/board/update"
+	            document.form1.submit();
+	         }
+	      });
 	});
 </script>
 
