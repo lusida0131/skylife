@@ -9,7 +9,7 @@ import org.zerock.domain.ReplyVO;
 public interface ReplyMapper {
 	public void comment(ReplyVO vo);
 	public List<ReplyVO> selectcomment(int vo);
-	public void commentdelete(ReplyVO vo);
-	public void commentupdate(ReplyVO vo);
+	public int delete(int r_num);
+	public int update(ReplyVO vo);
 
 }

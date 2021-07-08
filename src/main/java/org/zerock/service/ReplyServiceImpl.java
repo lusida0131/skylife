@@ -29,11 +29,13 @@ public class ReplyServiceImpl implements ReplyService{
 		return mapper.selectcomment(vo);
 	}
 	@Override
-	public void commentdelete(ReplyVO vo) {
-		mapper.commentdelete(vo);      
+	public int delete(int r_num) {
+		return mapper.delete(r_num);      
 	}
 	@Override
-	public void commentupdate(ReplyVO vo) {
-		mapper.commentupdate(vo);   
+	public int update(ReplyVO vo) {
+		
+		
+		return mapper.update(vo);   
 	}
 }

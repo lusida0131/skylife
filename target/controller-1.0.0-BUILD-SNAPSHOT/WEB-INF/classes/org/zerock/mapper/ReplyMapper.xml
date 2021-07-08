@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.ReplyMapper">
+	<insert id="comment">
+		insert into sco (b_num, r_content, id)
+		values (#{b_num}, #{r_content}, #{id})
+	</insert>
+	<select resultType="org.zerock.domain.ReplyVO" id="selectcomment">
+   		select * from sco where b_num=#{b_num} order by r_num asc 
+	</select>
+	<delete id="commentdelete">
+		delete from sco where r_num=#{r_num}
+	</delete>
+	<update id="commentupdate">
+		update sco set r_content = #{r_content} where r_num = #{r_num}
+	</update>
+</mapper>
