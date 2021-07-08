@@ -402,7 +402,14 @@
 			</div>
 		</div>
 
-		
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box" style="margin-bottom: 25px;">
+					<h3>주차장 목록</h3>
+					<p style="margin-bottom: 15px;">실시간 주차장 정보를 조회할 수 있습니다.</p>
+				</div>
+			</div>
+		</div>
 		<div id="fh5co-destination">
 			<div class="tour-fluid">
 				<div class="row">
