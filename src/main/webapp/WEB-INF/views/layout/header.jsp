@@ -111,12 +111,12 @@
 								<c:choose>
 									<c:when test="${name eq null}">
 										<li><a href="/auth/loginForm">로그인</a></li>
-										<li><a href="#">메뉴</a></li>
+										<li><a href="/auth/joinAgree">회원가입</a></li>
 									</c:when>	
 									<c:when test="${name ne null}">
 										<li><a href="#">${user.id}님</a></li>
-										<li><a href="#">메뉴</a></li>
 										<li><a href="/page/memView">회원정보</a></li>
+										<li><a href="/page/wish">wishlist</a></li>
 										<li><a href="/logout">로그아웃</a></li>
 									</c:when>
 								</c:choose>

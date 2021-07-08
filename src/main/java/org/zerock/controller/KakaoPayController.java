@@ -1,6 +1,9 @@
 package org.zerock.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.pay.domain.OrderVO;
+import org.zerock.mapper.OrderMapper;
 import org.zerock.service.KakaoPay;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +30,8 @@ public class KakaoPayController {
 	@Setter(onMethod_ = @Autowired)
     private KakaoPay kakaopay;
     
+	@Setter(onMethod_ = {@Autowired})
+	private OrderMapper om;
     
 //    @GetMapping("/kakaoPay")
 //    public void kakaoPayGet() {
@@ -37,20 +42,20 @@ public class KakaoPayController {
         log.info("kakaoPay post start..........");
         log.info("ovo: " + ovo);
         
-        String userID = "daseul";
-        
-        return "redirect:" + kakaopay.kakaoPayReady(ovo, userID);
+        return "redirect:" + kakaopay.kakaoPayReady(ovo);
     }
     
-    
     @GetMapping("/kakaoPaySuccess")
-    public void kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model) {
+    public void kakaoPaySuccess(@RequestParam("pg_token") String pg_token, HttpSession session, Model model) {
         log.info("kakaoPaySuccess get..........");
         log.info("pg_token: " + pg_token);
         
-        String userID = "daseul";
+        String str = String.valueOf(session.getAttribute("user"));
+    	String[] arr = str.split(", ");
+    	String id = arr[1].substring(3);
+        log.info("session id: " + id);
         
-        model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token, userID));
+        model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token, id));
     }
 	
 }
