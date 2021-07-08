@@ -29,7 +29,7 @@
 									<div class="tab-content">
 									
 										<!-- ################################## FORM TAG HERE ################################## -->
-										<form id="flightFrm" name="flightFrm" action="/page/searchFlight" method="post">
+										<form id="flightFrm" name="flightFrm" action="/fs/searchFlight" method="post">
 											 <div role="tabpanel" class="tab-pane active" id="flights">
 												<div class="row">
 													<div class="col-xxs-12 col-xs-6 mt">
@@ -402,7 +402,14 @@
 			</div>
 		</div>
 
-		
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box" style="margin-bottom: 25px;">
+					<h3>주차장 목록</h3>
+					<p style="margin-bottom: 15px;">실시간 주차장 정보를 조회할 수 있습니다.</p>
+				</div>
+			</div>
+		</div>
 		<div id="fh5co-destination">
 			<div class="tour-fluid">
 				<div class="row">
@@ -637,9 +644,6 @@
 			
 		</script>
 		
-		<!-- <script>
-			$('#date-end').datepicker({ dateFormat: 'yymmdd', autoclose : true });
-		</script> -->
 
 <%@ include file="../layout/footer.jsp"%>
 
