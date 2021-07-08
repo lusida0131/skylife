@@ -2,23 +2,32 @@ package org.zerock.controller;
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.RequestParam;
+import org.json.JSONObject;
+import org.pay.domain.OrderVO;
 import org.zerock.domain.searchVO;
+import org.zerock.mapper.OrderMapper;
 import org.zerock.service.searchService;
 
 import lombok.AllArgsConstructor;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 
@@ -31,6 +40,8 @@ public class searchController {
 	
 	private searchService service;
 	
+	@Setter(onMethod_ = {@Autowired})
+	private OrderMapper om;
 	
 	@PostMapping("/page/flightList")
 	public String flightViewTest() {
@@ -67,7 +78,33 @@ public class searchController {
 		
 	}
 	
-	
-	
+    @PostMapping("/addwish")
+    public void sWish(OrderVO ovo, HttpServletResponse response) throws IOException {
+        log.info("your wish get..........");
+        log.info("ovo: " + ovo);
+        
+        om.WishInsert(ovo);
+        
+        response.setContentType("text/html; charset=euc-kr");
+        PrintWriter out = response.getWriter();
+        out.println("<script>alert('wish list에 추가되었습니다.'); </script>");
+        out.flush();
+    }
+    
+    @GetMapping("/page/wish")
+    public String wish(HttpSession session, Model model) {
+
+    	String str = String.valueOf(session.getAttribute("user"));
+    	String[] arr = str.split(", ");
+    	String id = arr[1].substring(3);
+    	
+    	ArrayList<OrderVO> wlist = om.WishList(id);
+    	
+    	model.addAttribute("wlist", wlist);
+    	
+    	log.info("wlist: " + wlist);
+    	
+    	return "/page/wish";
+    }
 
 }
