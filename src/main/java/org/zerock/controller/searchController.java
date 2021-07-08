@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.json.JSONObject;
 import org.pay.domain.OrderVO;
 import org.zerock.domain.searchVO;
 import org.zerock.mapper.OrderMapper;
@@ -43,13 +41,13 @@ public class searchController {
 	@Setter(onMethod_ = {@Autowired})
 	private OrderMapper om;
 	
-	@PostMapping("/page/flightList")
+	@PostMapping("/fs/flightList")
 	public String flightViewTest() {
-		return"/page/flightList";
+		return"/fs/flightList";
 	}
 	
 	
-	@RequestMapping(value="/page/searchFlight", method=RequestMethod.POST)
+	@RequestMapping(value="/fs/searchFlight", method=RequestMethod.POST)
 	public String searchFlight(HttpServletRequest request, Model model) throws IOException, ParseException {
 		
 		String startPortName = request.getParameter("from_place");
@@ -74,7 +72,7 @@ public class searchController {
 		model.addAttribute("clist", clist);
 		//log.info("clist: " + clist);
 		
-		return "/page/flightList";
+		return "/fs/flightList";
 		
 	}
 	
@@ -91,7 +89,7 @@ public class searchController {
         out.flush();
     }
     
-    @GetMapping("/page/wish")
+    @GetMapping("/fs/wish")
     public String wish(HttpSession session, Model model) {
 
     	String str = String.valueOf(session.getAttribute("user"));
@@ -104,7 +102,7 @@ public class searchController {
     	
     	log.info("wlist: " + wlist);
     	
-    	return "/page/wish";
+    	return "/fs/wish";
     }
 
 }

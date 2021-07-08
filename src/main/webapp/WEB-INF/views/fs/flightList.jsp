@@ -33,10 +33,6 @@
 										<form method="post" action="/addwish" id="wishFrm" target="param">
 											<iframe id="if" name="param" style="width: 0px; height: 0px; border: 0px;"></iframe>
 											<input type="submit" id="wishBtn" name="wishBtn" value="찜">
-										<!-- <form method="post" action="/kakaoPay" id="searchFrm">
-										    <button type="submit" style="border: 0px; background-color: rgba(0,0,0,0); float: right;">
-										    	<img src="${pageContext.request.contextPath}/resources/images/payment_icon_yellow_small.png">
-										    </button> -->
 											<table class="table table-striped"> 
 												<thead> 
 													<tr> 

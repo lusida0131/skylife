@@ -29,7 +29,7 @@
 									<div class="tab-content">
 									
 										<!-- ################################## FORM TAG HERE ################################## -->
-										<form id="flightFrm" name="flightFrm" action="/page/searchFlight" method="post">
+										<form id="flightFrm" name="flightFrm" action="/fs/searchFlight" method="post">
 											 <div role="tabpanel" class="tab-pane active" id="flights">
 												<div class="row">
 													<div class="col-xxs-12 col-xs-6 mt">
@@ -644,9 +644,6 @@
 			
 		</script>
 		
-		<!-- <script>
-			$('#date-end').datepicker({ dateFormat: 'yymmdd', autoclose : true });
-		</script> -->
 
 <%@ include file="../layout/footer.jsp"%>
 
