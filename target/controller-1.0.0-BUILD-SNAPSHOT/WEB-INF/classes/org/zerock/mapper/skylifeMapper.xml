@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.skylifeMapper">
+	<insert id = "register">
+		insert into smem(id, pw, name, bday, email, phone)
+		values (#{id}, #{pw}, #{name}, #{bday}, #{email}, #{phone})
+	</insert>
+	<select id="idCheck" resultType="int">
+		select count(*) from smem
+		where id=#{id}
+	</select>
+	<select id="login" resultType="org.zerock.domain.skylifeVO"> 
+		select * from smem where id=#{id} 
+	</select>
+	
+	<update id="memUpdate">
+		update smem
+		set pw = #{pw}, phone = #{phone}
+		where id = #{id}
+	</update>
+	
+	<select id="findPw" parameterType="String" resultType="org.zerock.domain.skylifeVO">
+		select * from smem where email = #{email}
+	</select>
+	
+	<update id="updatePW" parameterType="org.zerock.domain.skylifeVO">
+		update smem set pw=#{pw} where email = #{email}
+	</update>
+	
+	<select id="findID" parameterType="String" resultType="String">
+		select * from smem where email = #{email}
+	</select>
+	
+	<select id="getID">
+		select * from smem where email = #{email}
+	</select>
+</mapper>
