@@ -23,7 +23,9 @@
 								<div class="panel-heading" role="tab" id="heading${count}">
 									<h4 class="panel-title">
 										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${count}" aria-expanded="true" aria-controls="collapse${count}">
-											(${count}) ${list.airlineNm}  ${list.depAirportNm}(${list.depPlandTime}) -> ${list.arrAirportNm}(${list.arrPlandTime})
+											<fmt:parseDate value="${list.depPlandTime}" var="depTime" pattern="yyyyMMddHHmm" />
+											<fmt:parseDate value="${list.arrPlandTime}" var="arrTime" pattern="yyyyMMddHHmm" />
+											(${count}) ${list.airlineNm} -  ${list.depAirportNm} (<fmt:formatDate value="${depTime}" pattern="yyyy년MM월dd일 HH시mm분" />) -> ${list.arrAirportNm} (<fmt:formatDate value="${arrTime}" pattern="yyyy년MM월dd일 HH시mm분" />)
 										</a>
 									</h4>
 								</div>
@@ -32,16 +34,16 @@
 										<p>This is 간단한 내용. write here. (${count})</p>
 										<form method="post" action="/addwish" id="wishFrm" target="param">
 											<iframe id="if" name="param" style="width: 0px; height: 0px; border: 0px;"></iframe>
-											<input type="submit" id="wishBtn" name="wishBtn" value="찜">
+											<button name="wishBtn">찜</button>
 											<table class="table table-striped"> 
 												<thead> 
 													<tr> 
 														<th>항공편</th>
 														<th>항공사</th>
 														<th>출발공항</th>
-														<th>출발시간</th>
+														<th>출발시각</th>
 														<th>도착공항</th>
-														<th>도착시간</th>
+														<th>도착시각</th>
 														<th>일반석</th>
 														<th>비즈니스석</th>
 													</tr> 
@@ -52,9 +54,9 @@
 														<td>${list.vihicleId}</td> 
 														<td>${list.airlineNm}</td> 
 														<td>${list.depAirportNm}</td>
-														<td>${list.depPlandTime}</td>
+														<td><fmt:formatDate value="${depTime}" pattern="MM월dd일 HH시mm분" /> </td>
 														<td>${list.arrAirportNm}</td>
-														<td>${list.arrPlandTime}</td>
+														<td><fmt:formatDate value="${arrTime}" pattern="MM월dd일 HH시mm분" /> </td>
 														<td><fmt:formatNumber value="${list.economyCharge}" pattern="#,###,###" /></td>
 														<td><fmt:formatNumber value="${list.prestigeCharge}" pattern="#,###,###" /></td>
 													</tr>
@@ -70,7 +72,6 @@
 											<input type="hidden" value="${list.economyCharge}" name="economyCharge" id="economyCharge"/>
 											<input type="hidden" value="${list.prestigeCharge}" name="prestigeCharge" id="prestigeCharge"/>
 										</form>
-										<!-- </form> -->
 									</div>
 								</div>
 							</div>
@@ -541,45 +542,20 @@
 		
 		
 											
-	<!-- <script type="text/javascript">
-		$(document).on('click', '#wishBtn', function(){
-				//alert("click.");
-				var id = $("#id").val();
-				var vihicleId = $("#vihicleId").val();
-				var airlineNm = $("#airlineNm").val();
-				var depAirportNm = $("#depAirportNm").val();
-				var depPlandTime = $("#depPlandTime").val();
-				var arrAirportNm = $("#arrAirportNm").val();
-				var arrPlandTime = $("#arrPlandTime").val();
-				var economyCharge = $("#economyCharge").val();
-				var prestigeCharge = $("#prestigeCharge").val();
-				alert("cnt: " + cnt + " id: " + id + " vihicleId: " + vihicleId);
-				
-				$.ajax({
-					url : "/swish", 
-					type : "POST",
-					data : {
-						id : id
-						/* vihicleId : vihicleId,
-						airlineNm : airlineNm,
-						depAirportNm : depAirportNm,
-						depPlandTime : depPlandTime,
-						arrAirportNm : arrAirportNm,
-						arrPlandTime : arrPlandTime,
-						economyCharge : economyCharge,
-						prestigeCharge : prestigeCharge */
-					},
-					success : function(){
-						alert("장바구니에 추가되었습니다.");
-		                location.reload();
-					},
-					error: function() {
-						alert("뭔가 문제가 생겼습니다.");
-					}
-		        });
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#wishBtn').click(function(){
+				console.log("wish clicked");
+				if($.trim($('#id').val()) === "") {
+					alert("로그인이 필요한 서비스입니다.");
+					location.href="/auth/loginForm";
+				}
+				else {
+					$('#wishFrm').submit();
+				}
 			});
-		//});
-	</script> -->
+		});
+	</script>
 
 <%@ include file="../layout/footer.jsp"%>
 
