@@ -3,6 +3,8 @@ package org.zerock.controller;
 import java.util.Random;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
+
 import javax.mail.internet.MimeMessage;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.domain.BoardVO;
 import org.zerock.domain.skylifeVO;
 import org.zerock.service.KakaoAPI;
 import org.zerock.service.skylifeService;
@@ -40,12 +43,11 @@ import lombok.extern.log4j.Log4j;
 public class skylifeJoinController {
    
    @Autowired
-   private JavaMailSender mailSender;   // 硫붿씪  꽌鍮꾩뒪瑜   궗 슜 븯湲   쐞 빐  쓽議댁꽦 쓣 二쇱엯 븿.
+   private JavaMailSender mailSender;   
    
    private skylifeService service;
    private KakaoAPI kakao;
    
-   //濡쒓퉭 쓣  쐞 븳 蹂  닔
    private static final Logger logger= 
    LoggerFactory.getLogger(skylifeJoinController.class);
    private static final String String = null;
@@ -90,7 +92,6 @@ public class skylifeJoinController {
          return "redirect:/auth/loginForm";
       }
    }
-   // 濡쒓렇 븘 썐
    @RequestMapping(value = "/logout", method = RequestMethod.GET)
    public String logout(HttpSession session) throws Exception {
 
@@ -99,14 +100,12 @@ public class skylifeJoinController {
       return "redirect:/";
    }
 
-   //카카占쏙옙 占싸깍옙占쏙옙 占쌀띰옙 占쏙옙占 
    @RequestMapping(value="/auth/loginForm")
    public String login(@RequestParam("code") String code, HttpSession session) {
        String access_Token = kakao.getAccessToken(code);
        HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
        System.out.println("login Controller : " + userInfo);
        
-       //    클占쏙옙占싱억옙트占쏙옙 占싱몌옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙 占쏙옙占실울옙 占쌔댐옙 占싱몌옙占싹곤옙 占쏙옙큰 占쏙옙占 
        if (userInfo.get("email") != null) {
            session.setAttribute("userId", userInfo.get("email"));
            session.setAttribute("access_Token", access_Token);
@@ -130,7 +129,6 @@ public class skylifeJoinController {
    }
    
 
-//  씠硫붿씪  씤利 
    @RequestMapping(value="/auth/mailCheck", method=RequestMethod.GET)
    @ResponseBody
    public String mailCheckGET(String email) throws Exception {
@@ -248,4 +246,17 @@ public class skylifeJoinController {
       md.addAttribute("id", service.findID(response, email));
       return "/page/getID";
    }
+   
+
+	// 회원 목록
+	@GetMapping("/admin/member_list")
+	public String boardList(skylifeVO mvo, Model model) {
+		log.info("call board list");
+		List<skylifeVO> list = service.list(mvo);
+		model.addAttribute("list", list);
+		
+		return "/admin/member_list";
+	}
+	
+	
 }
