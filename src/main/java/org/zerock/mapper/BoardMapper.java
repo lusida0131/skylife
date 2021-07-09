@@ -3,7 +3,7 @@ package org.zerock.mapper;
 import java.util.List;
 
 import org.zerock.domain.BoardVO;
-import org.zerock.domain.skylifeVO;
+import org.zerock.domain.Criteria;
 
 public interface BoardMapper {
 	// 게시글 작성
@@ -23,4 +23,6 @@ public interface BoardMapper {
 	
 	// 게시글 조회수
 	public void increaseViewcnt(int b_num);
+	
+	public List<BoardVO> getListWithPaging(Criteria cri);
 }
