@@ -77,13 +77,15 @@ public class BoardController {
 
 	
 	@GetMapping("/board/update")
-	public String updatePage() throws Exception {
-		return "/page/boardUpdate";
+	public void updatePage(@RequestParam("b_num") Integer b_num, Model model) throws Exception {
+		model.addAttribute("blist", service.view(b_num));
+//		return "redirect:/page/boardUpdate";
 	}
 	
 	// 게시글 수정 (기능)
 	@RequestMapping(value="/board/update", method=RequestMethod.POST)
 	public String update(@ModelAttribute BoardVO vo) throws Exception {
+		log.info("들어왔니?");
 		service.update(vo);
 		log.info("update success: " + vo);
 		

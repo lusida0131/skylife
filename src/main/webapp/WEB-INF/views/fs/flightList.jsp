@@ -32,11 +32,7 @@
 										<p>This is 간단한 내용. write here. (${count})</p>
 										<form method="post" action="/addwish" id="wishFrm" target="param">
 											<iframe id="if" name="param" style="width: 0px; height: 0px; border: 0px;"></iframe>
-											<input type="submit" id="wishBtn" name="wishBtn" value="찜">
-										<!-- <form method="post" action="/kakaoPay" id="searchFrm">
-										    <button type="submit" style="border: 0px; background-color: rgba(0,0,0,0); float: right;">
-										    	<img src="${pageContext.request.contextPath}/resources/images/payment_icon_yellow_small.png">
-										    </button> -->
+											<input type="button" id="wishBtn" name="wishBtn" value="찜">
 											<table class="table table-striped"> 
 												<thead> 
 													<tr> 
@@ -74,7 +70,6 @@
 											<input type="hidden" value="${list.economyCharge}" name="economyCharge" id="economyCharge"/>
 											<input type="hidden" value="${list.prestigeCharge}" name="prestigeCharge" id="prestigeCharge"/>
 										</form>
-										<!-- </form> -->
 									</div>
 								</div>
 							</div>
@@ -545,45 +540,19 @@
 		
 		
 											
-	<!-- <script type="text/javascript">
-		$(document).on('click', '#wishBtn', function(){
-				//alert("click.");
-				var id = $("#id").val();
-				var vihicleId = $("#vihicleId").val();
-				var airlineNm = $("#airlineNm").val();
-				var depAirportNm = $("#depAirportNm").val();
-				var depPlandTime = $("#depPlandTime").val();
-				var arrAirportNm = $("#arrAirportNm").val();
-				var arrPlandTime = $("#arrPlandTime").val();
-				var economyCharge = $("#economyCharge").val();
-				var prestigeCharge = $("#prestigeCharge").val();
-				alert("cnt: " + cnt + " id: " + id + " vihicleId: " + vihicleId);
-				
-				$.ajax({
-					url : "/swish", 
-					type : "POST",
-					data : {
-						id : id
-						/* vihicleId : vihicleId,
-						airlineNm : airlineNm,
-						depAirportNm : depAirportNm,
-						depPlandTime : depPlandTime,
-						arrAirportNm : arrAirportNm,
-						arrPlandTime : arrPlandTime,
-						economyCharge : economyCharge,
-						prestigeCharge : prestigeCharge */
-					},
-					success : function(){
-						alert("장바구니에 추가되었습니다.");
-		                location.reload();
-					},
-					error: function() {
-						alert("뭔가 문제가 생겼습니다.");
-					}
-		        });
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#wishBtn').click(function(){
+				if($.trim($('#id').val()) === "") {
+					alert("로그인이 필요한 서비스입니다.");
+					location.href="/auth/loginForm";
+				}
+				else {
+					$('#wishFrm').submit();
+				}
 			});
-		//});
-	</script> -->
+		});
+	</script>
 
 <%@ include file="../layout/footer.jsp"%>
 

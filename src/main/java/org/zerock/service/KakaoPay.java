@@ -17,14 +17,12 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
  
 
 @Service
 @Log4j
-//@AllArgsConstructor
 public class KakaoPay {
  
     private static final String HOST = "https://kapi.kakao.com";
@@ -41,8 +39,7 @@ public class KakaoPay {
  
         RestTemplate restTemplate = new RestTemplate();
 
-        String itemName = "SkyLife_" + ovo.getAirlineNm() + ovo.getVihicleId()
-        					+ "-" + ovo.getDepPlandTime();
+        String itemName = "SkyLife_" + ovo.getAirlineNm() + ovo.getVihicleId() + "-" + ovo.getDepPlandTime();
         String itemCode = ovo.getVihicleId() + ovo.getDepPlandTime();
         int quantity = 1;
         int totalAmount = ovo.getEconomyCharge() * quantity;
@@ -56,8 +53,7 @@ public class KakaoPay {
         MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();
         body.add("cid", "TC0ONETIME");										// (String) test code, 가맹점코드
         body.add("partner_order_id", "SkyLife_oi");							// (String) 가맹점 주문번호, 최대 100자
-        // body.add("partner_user_id", userID);								// (String) 가맹점 회원 id, 최대 100자
-        body.add("partner_user_id", ovo.getId());
+        body.add("partner_user_id", ovo.getId());							// (String) 가맹점 회원 id, 최대 100자
         body.add("item_name", itemName);									// (String) 상품명, 최대 100자
         body.add("item_code", itemCode);									// (String) 상품코드, 최대 100자
         body.add("quantity", String.valueOf(quantity));						// (int) 상품 수량
@@ -88,7 +84,7 @@ public class KakaoPay {
             e.printStackTrace();
         }
         
-        System.out.println("pay ready 완료, 리턴넘김");
+        System.out.println("pay ready 완료 중 에러, 리턴넘김");
         return "/pay";
         
     }
@@ -98,11 +94,9 @@ public class KakaoPay {
     public KakaoPayApprovalVO kakaoPayInfo(String pg_token, String id) {
     	 
         System.out.println("KakaoPayInfo............................................");
+        System.out.println("kakaoPayInfo String id: " + id);
         
         RestTemplate restTemplate = new RestTemplate();
-        
-        //String userID = ovo.getId();
-        System.out.println("kakaoPayInfo String id: " + id);
         
         HttpHeaders header = new HttpHeaders();
         header.add("Authorization", "KakaoAK b13acc12ae82b6a10f628a48b0e3990d");	// admin key
@@ -117,8 +111,6 @@ public class KakaoPay {
         body.add("pg_token", pg_token);
         
         HttpEntity<MultiValueMap<String, String>> param = new HttpEntity<MultiValueMap<String, String>>(body, header);
-        
-        //System.out.println("Approval Info param: " + param);
         
         try {
         	// 응답정보를 받는 KakaoPayApprovalVO 클래스

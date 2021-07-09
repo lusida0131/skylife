@@ -31,7 +31,7 @@
 									<div class="panel-body">
 										<p>This is 간단한 내용. write here. (${count})</p>
 										<form method="post" action="/kakaoPay" id="searchFrm">
-										    <button type="submit" style="border: 0px; background-color: rgba(0,0,0,0); float: right;">
+										    <button name="payBtn" style="border: 0px; background-color: rgba(0,0,0,0); float: right;">
 										    	<img src="${pageContext.request.contextPath}/resources/images/payment_icon_yellow_small.png">
 										    </button>
 											<table class="table table-striped"> 
@@ -185,6 +185,21 @@
 				</div>
 			</div>
 		</div>
+		
+		
+		<script type="text/javascript">
+			$(document).ready(function(e){
+				$('#payBtn').click(function(){
+					if($.trim($('#id').val()) === "") {
+						alert("로그인이 필요한 서비스입니다.");
+						location.href="/auth/loginForm";
+					}
+					else {
+						$('#searchFrm').submit();
+					}
+				});
+			});
+		</script>
 		
 
 <%@ include file="../layout/footer.jsp"%>

@@ -19,7 +19,7 @@
                		<div class="tab-content overflow-hidden border-l-2 bg-gray-100 border-indigo-500 leading-normal ">
                   		<p class="p-5">${pub.p_content }</p>
                   		<%-- <c:if test="${loginUser.num == 1}"> --%>
-                  		<input type="button" value="공지사항 수정/삭제" onclick="location.href='/pub/modify?pno=<c:out value="${pub.pno}" />'" class="btn btn-secondary mb-3">
+                  		<input type="button" value="공지사항 수정/삭제" onclick="location.href='/pub/modify?pno=<c:out value="${pub.pno}"/>'" class="btn btn-secondary mb-3">
               	 		<%-- </c:if> --%>
               	 	</div>
              	</div>
