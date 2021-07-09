@@ -63,8 +63,8 @@ public class searchController {
 		startTime = after.format(temp01);
 		//endTime = after.format(temp02);
 		
-		
-		log.info("startPortName: " + startPortName + " // endPortName: " + endPortName + " // startTime: " + startTime);
+		log.info("filght schedule search >>>> startPortName: " 
+					+ startPortName + " // endPortName: " + endPortName + " // startTime: " + startTime);
 		
 		ArrayList<searchVO> clist = service.airApi(startPortName, endPortName, startTime);
 		
@@ -101,7 +101,7 @@ public class searchController {
     	
     	model.addAttribute("wlist", wlist);
     	
-    	log.info("wlist: " + wlist);
+    	log.info("movement wish list: " + wlist);
     	
     	return "/fs/wish";
     }
