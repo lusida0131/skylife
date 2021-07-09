@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.zerock.domain.ICNVO;
 import org.zerock.domain.ParkInfoVO;
 import org.zerock.service.parkService;
 
@@ -35,7 +36,7 @@ public class ParkController {
 
 		String schAirportCode = "GMP";
 		
-		String pname = "김포국제공항";
+		String pname = "김포 국제 공항";
 		
 		ArrayList<ParkInfoVO> plist = service.parkApi(schAirportCode);
 		model.addAttribute("plist", plist);
@@ -49,7 +50,7 @@ public class ParkController {
 
 		String schAirportCode = "PUS";
 		
-		String pname = "김해국제공항";
+		String pname = "김해/부산 국제 공항";
 		
 		ArrayList<ParkInfoVO> plist = service.parkApi(schAirportCode);
 		model.addAttribute("plist", plist);
@@ -63,7 +64,7 @@ public class ParkController {
 
 		String schAirportCode = "CJU";
 		
-		String pname = "제주국제공항";
+		String pname = "제주 국제 공항";
 		
 		ArrayList<ParkInfoVO> plist = service.parkApi(schAirportCode);
 		model.addAttribute("plist", plist);
@@ -77,7 +78,7 @@ public class ParkController {
 
 		String schAirportCode = "TAE";
 		
-		String pname = "대구국제공항";
+		String pname = "대구 국제 공항";
 		
 		ArrayList<ParkInfoVO> plist = service.parkApi(schAirportCode);
 		model.addAttribute("plist", plist);
@@ -91,7 +92,7 @@ public class ParkController {
 
 		String schAirportCode = "CJJ";
 		
-		String pname = "청주국제공항";
+		String pname = "청주 국제 공항";
 		
 		ArrayList<ParkInfoVO> plist = service.parkApi(schAirportCode);
 		model.addAttribute("plist", plist);
@@ -105,7 +106,7 @@ public class ParkController {
 
 		String schAirportCode = "KWJ";
 		
-		String pname = "광주공항";
+		String pname = "광주 공항";
 		
 		ArrayList<ParkInfoVO> plist = service.parkApi(schAirportCode);
 		model.addAttribute("plist", plist);
@@ -118,7 +119,7 @@ public class ParkController {
 
 		String schAirportCode = "RSU";
 		
-		String pname = "여수공항";
+		String pname = "여수 공항";
 		
 		ArrayList<ParkInfoVO> plist = service.parkApi(schAirportCode);
 		model.addAttribute("plist", plist);
@@ -132,7 +133,7 @@ public class ParkController {
 
 		String schAirportCode = "USN";
 		
-		String pname = "울산공항";
+		String pname = "울산 공항";
 		
 		ArrayList<ParkInfoVO> plist = service.parkApi1(schAirportCode);
 		model.addAttribute("plist", plist);
@@ -146,7 +147,7 @@ public class ParkController {
 
 		String schAirportCode = "KUV";
 		
-		String pname = "군산공항";
+		String pname = "군산 공항";
 		
 		ArrayList<ParkInfoVO> plist = service.parkApi1(schAirportCode);
 		model.addAttribute("plist", plist);
@@ -160,11 +161,24 @@ public class ParkController {
 
 		String schAirportCode = "WJU";
 		
-		String pname = "원주공항";
+		String pname = "원주 공항";
 		
 		ArrayList<ParkInfoVO> plist = service.parkApi1(schAirportCode);
 		model.addAttribute("plist", plist);
 		model.addAttribute("pname", pname);
 		return "/Park/ParkList";
+	}
+	
+	@GetMapping("/Park/ICNList")
+	public String ICNList(Model model) throws Exception {
+		
+		String pname = "인천 국제 공항";
+		
+		ArrayList<ICNVO> plist = service.icnInfo();
+		model.addAttribute("plist", plist);
+		model.addAttribute("pname", pname);
+		
+		System.out.println(plist);
+		return "/Park/ParkICN";
 	}
 }

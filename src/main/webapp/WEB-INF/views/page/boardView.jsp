@@ -20,27 +20,32 @@
          </div>
          <div>
             제목
-            <input name="b_title" id="b_title" value="${data.b_title}" placeholder="제목을 입력해주세요.">
+            <input name="b_title" id="b_title" value="${data.b_title}" readonly>
          </div>
          <div>
             내용
-            <textarea name="b_content" id="b_content" rows="4" cols="80" placeholder="내용을 입력해주세요">${data.b_content}</textarea>
+            <textarea name="b_content" id="b_content" rows="4" cols="80" readonly>${data.b_content}</textarea>
          </div>
          <div>
             이름
-            <input name="id" id="id" value="${data.id}" placeholder="이름을 입력해주세요">
+            <input name="id" id="id" value="${data.id}" readonly>
          </div>
          <div style="width:650px; text-align:center;">
             <input type="hidden" name="b_num" value="${data.b_num}">
+<<<<<<< HEAD
             <c:if test="${user.id == data.id || user.id == 'admin'}">
             <button type="button" id="btnUpdate">수정</button>
+=======
+            <c:if test="${user.id == data.id}">
+            <input type="button" id="btnUpdate" onclick="location.href='/board/update?b_num=<c:out value="${data.b_num}"/>'" value="수정">
+>>>>>>> 52960cdd0604f482b913c353289ea725c4f63136
             <button type="button" id="btnDelete">삭제</button>
             </c:if>
          </div>
          <br>
          <br>
          <div>
-            <textarea rows="6px" cols="155px" name="r_content" id="r_contented"></textarea>
+            <textarea rows="6px" cols="155px" name="r_contented" id="r_contented"></textarea>
             <input type="hidden" name="ided" id="ided" value="${user.id }">
             <input type="hidden" name="b_num" id="b_num" value="${data.b_num }">
             <%-- <input type="hidden" name="r_num" id="r_num" value="${data.r_num }"> --%>
@@ -106,8 +111,6 @@
       </form>
    </div>
 </div>
-
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/reply.js"></script>
 <script>
    $(document).ready(function() {
       $("#btnDelete").click(function() {
@@ -116,13 +119,7 @@
             document.form1.submit();
          }
       });
-      
-      $("#btnUpdate").click(function() {
-         if(confirm("수정하시겠습니까?")) {
-            document.form1.action = "/board/update"
-            document.form1.submit();
-         }
-      });
+     
    });
 </script>
 <script>
@@ -130,27 +127,26 @@ $(function(){
    $("#reply_btn").click(function(e){
    const id =$('#ided').val();
    const b_num=$('#b_num').val();
-   const r_content=$('#r_content').val();
-   const r_num=$('#r_num').val();
+   const r_contented = $('#r_contented').val();
+  
    
    console.log("id : "+ id);
    console.log("b_num : "+ b_num);
-   console.log("r_content : "+r_content);
-   console.log("r_num : "+r_num);
+   console.log("r_content : " + r_contented);
+   
       if(id != null && id != "" && id != 0){
-         if(r_content != null && r_content != ""){
+         if(r_contented != null && r_contented != ""){
             $.ajax({
                type:"POST",
                url:"/comment",
                data: {
-                  r_num : r_num,
                   id : id,
                   b_num : b_num,
-                  r_content : r_content
+                  r_content : r_contented
                },
                dataType: "text",
                success:function(result){
-                  const resultSet = $.trim(result); 
+                 // const resultSet = $.trim(result); 
                   location.reload();
                }
                
@@ -196,17 +192,18 @@ $(function(){
 </script>
 
 <script>
+<%--
 $("#replies").on("click", ".replyLi button", function () {
     var reply = $(this).parent();
 
-    var r_content = reply.find(".r_content").text();
+    var r_contented = reply.find(".r_contented").text();
     var ider = reply.find(".ider").text();
 
 
-    $("#r_content").val(r_content);
+    $("#r_contented").val(r_contented);
     $("#ider").val(ider);
 
-});
+}); --%>
 </script>
 <script>
 $(".rplydelete").click(function(){

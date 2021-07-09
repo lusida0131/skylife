@@ -8,28 +8,27 @@
 				<div class="desc">
 					<div class="container">
 						<div class="row">
-							<div class="col-sm-5 col-md-5">
-								<!-- <a href="index.html" id="main-logo">Travel</a> -->
+							<div class="col-sm-5 col-md-5" style="margin-top: 60px;">
 								<div class="tabulation animate-box">
 
 									<!-- Nav tabs -->
-								    <ul class="nav nav-tabs" role="tablist">
+								    <!-- <ul class="nav nav-tabs" role="tablist">
 								    	<li role="presentation" class="active">
 								      		<a href="#flights" aria-controls="flights" role="tab" data-toggle="tab">Flights</a>
 								    	</li>
-								    	<!-- <li role="presentation">
+								    	<li role="presentation">
 								    		<a href="#hotels" aria-controls="hotels" role="tab" data-toggle="tab">Hotels</a>
 								    	</li>
 								    	<li role="presentation">
 								    		<a href="#packages" aria-controls="packages" role="tab" data-toggle="tab">Packages</a>
-								    	</li> -->
-								    </ul>
+								    	</li>
+								    </ul> -->
 
 								    <!-- Tab panes -->
 									<div class="tab-content">
 									
 										<!-- ################################## FORM TAG HERE ################################## -->
-										<form id="flightFrm" name="flightFrm" action="/page/searchFlight" method="post">
+										<form id="flightFrm" name="flightFrm" action="/fs/searchFlight" method="post">
 											 <div role="tabpanel" class="tab-pane active" id="flights">
 												<div class="row">
 													<div class="col-xxs-12 col-xs-6 mt">
@@ -78,19 +77,21 @@
 															</select>
 														</section>
 													</div>
-													<div class="col-xxs-12 col-xs-6 mt alternate">
-														<div class="input-field">
-															<label for="date-start">출발일</label>
-															<input type="text" class="form-control" id="date-start" name="date_start" placeholder="yyyymmdd"/>
+													<div class="date_div">
+														<div class="col-xxs-12 col-xs-6 mt alternate" id="datetimepicker_start">
+															<div class="input-field">
+																<label for="date-start">출발일</label>
+																<input type="text" class="form-control date_controll" id="date-start" name="date_start" placeholder="yyyymmdd"/>
+															</div>
 														</div>
-													</div>
-													<div class="col-xxs-12 col-xs-6 mt alternate">
-														<div class="input-field">
-															<label for="date-end">도착일</label>
-															<input type="text" class="form-control" id="date-end" name="date_end" placeholder="yyyymmdd"/>
+														<div class="col-xxs-12 col-xs-6 mt alternate" id="datetimepicker_end">
+															<div class="input-field">
+																<label for="date-end">도착일</label>
+																<input type="text" class="form-control date_controll" id="date-end" name="date_end" placeholder="yyyymmdd"/>
+															</div>
 														</div>
-													</div>
-													<div class="col-sm-12 mt">
+													</div> -->
+													<div class="col-sm-12 mt" style="margin-bottom: 60px;">
 														<section>
 															<label for="class">항공사</label>
 															<select class="cs-select cs-skin-border">
@@ -402,7 +403,14 @@
 			</div>
 		</div>
 
-		
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box" style="margin-bottom: 25px;">
+					<h3>주차장 목록</h3>
+					<p style="margin-bottom: 15px;">실시간 주차장 정보를 조회할 수 있습니다.</p>
+				</div>
+			</div>
+		</div>
 		<div id="fh5co-destination">
 			<div class="tour-fluid">
 				<div class="row">
@@ -450,7 +458,7 @@
 								</a>
 							</li>
 							<li class="one-half text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/ICN.jpg); border: 1px solid;">
-								<a href="/Park/List">
+								<a href="/Park/ICNList">
 									<div class="case-studies-summary">
 									<br><br><br><br><br>
 										<span>해당 공항의 주차정보를 알고싶으면 클릭해주세요</span>
@@ -613,6 +621,60 @@
 		
 			$(document).ready(function(e){
 				$('#flightBtn').click(function(){
+					
+					
+					/* var now = new Date(); // 현재시간 
+					var year = now.getYear(); // 년 
+					var mon = (now.getMonth()+1); //월 
+					var date = now.getDate(); //일 
+					var day = now.getDay(); //요일 
+					var hour = now.getHours(); //시간 
+					var min = now.getMinutes(); //분 
+					var sec = now.getSeconds(); //초 
+					var milsec = now.getMilliseconds(); //밀리초
+
+					
+					
+					
+					var date_start = document.getElementById('date_start'); //시작일 
+					var date_end = document.getElementById('date_end'); //종료일 
+					var today = new Date(); //오늘 날짜
+					
+					
+					date_start = new Date(date_start.value); 
+					var fromYear = date_start.getFullYear(); 
+					var fromMonth = date_start.getMonth() + 1; 
+					var fromDay = date_start.getDate();
+					
+					if (isNaN(fromYear) || isNaN(fromMonth) || isNaN(fromDay)){ fromYear = 0; fromMonth = 0; fromDay = 0; } date_start = fromYear + fromMonth + fromDay;
+
+
+					date_end = new Date(date_end.value); 
+					var toYear = date_end.getFullYear(); 
+					var toMonth = date_end.getMonth() + 1; 
+					var toDay = date_end.getDate();
+
+					if (isNaN(toYear) || isNaN(toMonth) || isNaN(toDay)){ toYear = 0; toMonth = 0; toDay = 0; } date_end = toYear + toMonth + toDay;
+
+					
+					var todayYear = today.getFullYear(); //2020 
+					var todayMonth = today.getMonth() + 1; //06 
+					var todayDay = today.getDate();
+					today = todayYear + todayMonth + todayDay;
+
+					
+					if(date_start >= today && date_end >= date_start){
+						return true; 
+					} else { alert("해당 기간의 조회가 불가능합니다."); } */
+
+					
+					/* $('#datetimepicker').datetimepicker({  
+				         minDate:new Date()
+				      }*/
+ 
+ 
+ 
+ 
 					if($.trim($('#from_place').val()) === "") {
 					    $('#from_place').focus();
 						alert("출발지를 입력해주세요.");
@@ -629,6 +691,7 @@
 					    $('#date_end').focus();
 						alert("도착일을 입력해주세요.");
 					} */
+			
 					else {
 						$('#flightFrm').submit();
 					}
@@ -637,8 +700,12 @@
 			
 		</script>
 		
+		
 		<!-- <script>
-			$('#date-end').datepicker({ dateFormat: 'yymmdd', autoclose : true });
+		$('#datetimepicker').datetimepicker({  
+	         minDate:new Date()
+	      });
+
 		</script> -->
 
 <%@ include file="../layout/footer.jsp"%>

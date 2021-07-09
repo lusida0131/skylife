@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.json.JSONObject;
 import org.pay.domain.OrderVO;
 import org.zerock.domain.searchVO;
 import org.zerock.mapper.OrderMapper;
@@ -43,55 +41,56 @@ public class searchController {
 	@Setter(onMethod_ = {@Autowired})
 	private OrderMapper om;
 	
-	@PostMapping("/page/flightList")
+	@PostMapping("/fs/flightList")
 	public String flightViewTest() {
-		return"/page/flightList";
+		return"/fs/flightList";
 	}
 	
 	
-	@RequestMapping(value="/page/searchFlight", method=RequestMethod.POST)
+	@RequestMapping(value="/fs/searchFlight", method=RequestMethod.POST)
 	public String searchFlight(HttpServletRequest request, Model model) throws IOException, ParseException {
 		
 		String startPortName = request.getParameter("from_place");
 		String endPortName = request.getParameter("to_place");
 		String startTime = request.getParameter("date_start");
-		String endTime = request.getParameter("date_end");
+		//String endTime = request.getParameter("date_end");
 		
 		// data format change
 		SimpleDateFormat before = new SimpleDateFormat("MM/dd/yyyy");
 		SimpleDateFormat after = new SimpleDateFormat("yyyyMMdd");
 		Date temp01 = before.parse(startTime);
-		Date temp02 = before.parse(endTime);
+		//Date temp02 = before.parse(endTime);
 		startTime = after.format(temp01);
-		endTime = after.format(temp02);
+		//endTime = after.format(temp02);
 		
-		
-		log.info("startPortName: " + startPortName + " // endPortName: " + endPortName 
-				+ " // startTime: " + startTime + " // endTime: " + endTime);
+		log.info("filght schedule search >>>> startPortName: " 
+					+ startPortName + " // endPortName: " + endPortName + " // startTime: " + startTime);
 		
 		ArrayList<searchVO> clist = service.airApi(startPortName, endPortName, startTime);
 		
 		model.addAttribute("clist", clist);
 		//log.info("clist: " + clist);
 		
-		return "/page/flightList";
+		return "/fs/flightList";
 		
 	}
 	
     @PostMapping("/addwish")
     public void sWish(OrderVO ovo, HttpServletResponse response) throws IOException {
+
         log.info("your wish get..........");
         log.info("ovo: " + ovo);
         
         om.WishInsert(ovo);
         
-        response.setContentType("text/html; charset=euc-kr");
+        response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
         out.println("<script>alert('wish list에 추가되었습니다.'); </script>");
         out.flush();
+        
     }
     
-    @GetMapping("/page/wish")
+    @GetMapping("/fs/wish")
     public String wish(HttpSession session, Model model) {
 
     	String str = String.valueOf(session.getAttribute("user"));
@@ -102,9 +101,9 @@ public class searchController {
     	
     	model.addAttribute("wlist", wlist);
     	
-    	log.info("wlist: " + wlist);
+    	log.info("movement wish list: " + wlist);
     	
-    	return "/page/wish";
+    	return "/fs/wish";
     }
 
 }
