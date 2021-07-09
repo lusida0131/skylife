@@ -46,17 +46,6 @@ public class KakaoPayController {
         log.info("kakaoPay post start..........");
         log.info("ovo: " + ovo);
         
-        if(ovo.getId()==null) {
-        	log.info("user session is null. redirect loginForm");
-        	
-        	resp.setContentType("text/html; charset=UTF-8");
-            PrintWriter out = resp.getWriter();
-            out.println("<script>alert('로그인이 필요한 서비스입니다.'); location.href='/';</script>");
-            out.flush();
-        	
-        	return "/auth/loginForm";
-        }
-        
         return "redirect:" + kakaopay.kakaoPayReady(ovo);
     }
     

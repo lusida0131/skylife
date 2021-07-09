@@ -53,19 +53,18 @@ public class searchController {
 		String startPortName = request.getParameter("from_place");
 		String endPortName = request.getParameter("to_place");
 		String startTime = request.getParameter("date_start");
-		String endTime = request.getParameter("date_end");
+		//String endTime = request.getParameter("date_end");
 		
 		// data format change
 		SimpleDateFormat before = new SimpleDateFormat("MM/dd/yyyy");
 		SimpleDateFormat after = new SimpleDateFormat("yyyyMMdd");
 		Date temp01 = before.parse(startTime);
-		Date temp02 = before.parse(endTime);
+		//Date temp02 = before.parse(endTime);
 		startTime = after.format(temp01);
-		endTime = after.format(temp02);
+		//endTime = after.format(temp02);
 		
 		
-		log.info("startPortName: " + startPortName + " // endPortName: " + endPortName 
-				+ " // startTime: " + startTime + " // endTime: " + endTime);
+		log.info("startPortName: " + startPortName + " // endPortName: " + endPortName + " // startTime: " + startTime);
 		
 		ArrayList<searchVO> clist = service.airApi(startPortName, endPortName, startTime);
 		
@@ -78,15 +77,17 @@ public class searchController {
 	
     @PostMapping("/addwish")
     public void sWish(OrderVO ovo, HttpServletResponse response) throws IOException {
+
         log.info("your wish get..........");
         log.info("ovo: " + ovo);
         
         om.WishInsert(ovo);
         
-        response.setContentType("text/html; charset=euc-kr");
+        response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
         out.println("<script>alert('wish list에 추가되었습니다.'); </script>");
         out.flush();
+        
     }
     
     @GetMapping("/fs/wish")
