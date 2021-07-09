@@ -23,17 +23,22 @@
 								<div class="panel-heading" role="tab" id="heading${count}">
 									<h4 class="panel-title">
 										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${count}" aria-expanded="true" aria-controls="collapse${count}">
-											(${count}) ${list.airlineNm}  ${list.depAirportNm}(${list.depPlandTime}) -> ${list.arrAirportNm}(${list.arrPlandTime})
+											<fmt:parseDate value="${list.depPlandTime}" var="depTime" pattern="yyyyMMddHHmm" />
+											<fmt:parseDate value="${list.arrPlandTime}" var="arrTime" pattern="yyyyMMddHHmm" />
+											(${count}) ${list.airlineNm} -  ${list.depAirportNm} (<fmt:formatDate value="${depTime}" pattern="yyyy년MM월dd일 HH시mm분" />) -> ${list.arrAirportNm} (<fmt:formatDate value="${arrTime}" pattern="yyyy년MM월dd일 HH시mm분" />)
 										</a>
+										<button name=deleteBtn style="float: right; margin-top: 0px;">삭제</button>
 									</h4>
 								</div>
 								<div id="collapse${count}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${count}">
 									<div class="panel-body">
-										<p>This is 간단한 내용. write here. (${count})</p>
 										<form method="post" action="/kakaoPay" id="searchFrm">
-										    <button name="payBtn" style="border: 0px; background-color: rgba(0,0,0,0); float: right;">
-										    	<img src="${pageContext.request.contextPath}/resources/images/payment_icon_yellow_small.png">
-										    </button>
+											<p>This is 간단한 내용. write here. (${count})</p>
+											<div style="float: right; margin-bottom: 30px;">
+												<button name="payBtn" style="border: 0px; background-color: rgba(0,0,0,0);">
+											    	<img src="${pageContext.request.contextPath}/resources/images/payment_icon_yellow_small.png">
+											    </button>
+											</div>
 											<table class="table table-striped"> 
 												<thead> 
 													<tr> 
@@ -48,20 +53,19 @@
 													</tr> 
 												</thead> 
 												<tbody> 
-													<tr> 
-														<!-- <th scope="row">#VEG1201</th> -->
+													<tr>
 														<td>${list.vihicleId}</td> 
 														<td>${list.airlineNm}</td> 
 														<td>${list.depAirportNm}</td>
-														<td>${list.depPlandTime}</td>
+														<td><fmt:formatDate value="${depTime}" pattern="MM월dd일 HH시mm분" /> </td>
 														<td>${list.arrAirportNm}</td>
-														<td>${list.arrPlandTime}</td>
+														<td><fmt:formatDate value="${arrTime}" pattern="MM월dd일 HH시mm분" /> </td>
 														<td><fmt:formatNumber value="${list.economyCharge}" pattern="#,###,###" /></td>
 														<td><fmt:formatNumber value="${list.prestigeCharge}" pattern="#,###,###" /></td>
 													</tr>
 												</tbody> 
 											</table>
-											<input type="text" value="${user.id}" name="id" id="id"/>
+											<input type="hidden" value="${user.id}" name="id" id="id"/>
 											<input type="hidden" value="${list.vihicleId}" name="vihicleId" id="vihicleId"/>
 											<input type="hidden" value="${list.airlineNm}" name="airlineNm" id="airlineNm"/>
 											<input type="hidden" value="${list.depAirportNm}" name="depAirportNm" id="depAirportNm"/>
@@ -71,7 +75,6 @@
 											<input type="hidden" value="${list.economyCharge}" name="economyCharge" id="economyCharge"/>
 											<input type="hidden" value="${list.prestigeCharge}" name="prestigeCharge" id="prestigeCharge"/>
 										</form>
-										<!-- </form> -->
 									</div>
 								</div>
 							</div>
