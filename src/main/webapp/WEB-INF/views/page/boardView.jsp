@@ -20,20 +20,20 @@
          </div>
          <div>
             제목
-            <input name="b_title" id="b_title" value="${data.b_title}" placeholder="제목을 입력해주세요.">
+            <input name="b_title" id="b_title" value="${data.b_title}" readonly>
          </div>
          <div>
             내용
-            <textarea name="b_content" id="b_content" rows="4" cols="80" placeholder="내용을 입력해주세요">${data.b_content}</textarea>
+            <textarea name="b_content" id="b_content" rows="4" cols="80" readonly>${data.b_content}</textarea>
          </div>
          <div>
             이름
-            <input name="id" id="id" value="${data.id}" placeholder="이름을 입력해주세요">
+            <input name="id" id="id" value="${data.id}" readonly>
          </div>
          <div style="width:650px; text-align:center;">
             <input type="hidden" name="b_num" value="${data.b_num}">
             <c:if test="${user.id == data.id}">
-            <button type="button" id="btnUpdate">수정</button>
+            <input type="button" id="btnUpdate" onclick="location.href='/board/update?b_num=<c:out value="${data.b_num}"/>'" value="수정">
             <button type="button" id="btnDelete">삭제</button>
             </c:if>
          </div>
@@ -106,8 +106,6 @@
       </form>
    </div>
 </div>
-
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/reply.js"></script>
 <script>
    $(document).ready(function() {
       $("#btnDelete").click(function() {
@@ -116,13 +114,7 @@
             document.form1.submit();
          }
       });
-      
-      $("#btnUpdate").click(function() {
-         if(confirm("수정하시겠습니까?")) {
-            document.form1.action = "/board/update"
-            document.form1.submit();
-         }
-      });
+     
    });
 </script>
 <script>
