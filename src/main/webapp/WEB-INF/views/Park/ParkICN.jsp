@@ -24,15 +24,15 @@
   <tbody>
   <c:forEach var="plist" items="${plist}">
     <tr class="table-info">
-      <th scope="row">${plist.parkingAirportCodeName}</th>
-      <td>${plist.parkingFullSpace}</td>
+      <th scope="row">${plist.floor}</th>
+      <td>${plist.parkingarea}</td>
       <td>
-      <c:if test="${(plist.parkingFullSpace - plist.parkingIstay) <= 0}">만차</c:if>
-      <c:if test="${(plist.parkingFullSpace - plist.parkingIstay) > 0}"> ${plist.parkingFullSpace - plist.parkingIstay}</c:if>
+      <c:if test="${(plist.parkingarea - plist.parking) <= 0}">만차</c:if>
+      <c:if test="${(plist.parkingarea - plist.parking) > 0}"> ${plist.parkingarea - plist.parking}</c:if>
       </td>
-      <fmt:parseDate value="${plist.parkingGettime}" var="dateTime" pattern="HH:mm:ss" />
-      <%-- <td>${plist.parkingGettime}</td> --%>
-      <td><fmt:formatDate value="${dateTime}" pattern="HH시mm분"/></td>
+      <fmt:parseDate value="${plist.datetm}" var="dateTime" pattern="yyyyMMddHHmmss" />
+      <%-- <td>${plist.datetm}</td> --%>
+      <td><fmt:formatDate value="${dateTime}" pattern="MM월dd일 HH시mm분"/></td>
     </tr>
   </c:forEach>
   </tbody>

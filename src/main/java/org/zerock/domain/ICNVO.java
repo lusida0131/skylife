@@ -8,9 +8,9 @@ public class ICNVO {
 	private String resultMsg;
 	private int numOfRows;
 	private int pageNo;
-	private String totalCount;
+	private int totalCount;
 	private String floor;
-	private String parking;
-	private String parkingarea;
+	private int parking;
+	private int parkingarea;
 	private String datetm;
 }

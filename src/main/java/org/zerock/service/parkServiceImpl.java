@@ -8,6 +8,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.zerock.domain.ICNVO;
 import org.zerock.domain.ParkInfoVO;
 import org.zerock.domain.searchVO;
 import org.zerock.mapper.parkMapper;
@@ -101,7 +102,7 @@ public class parkServiceImpl implements parkService {
 	    
 	 // (response -> body -> items -> item(node 2개이상))  세번째 JSONObject를 가져와서 key-value를 읽습니다.
 	    JSONArray itemArray = itemsObject.getJSONArray("item");
-for (int i = 0; i < itemArray.length(); i++) {
+	    for (int i = 0; i < itemArray.length(); i++) {
 	    	
 	    	ParkInfoVO pvo = new ParkInfoVO();
 	    	JSONObject iobj = itemArray.getJSONObject(i);
@@ -219,4 +220,92 @@ for (int i = 0; i < itemArray.length(); i++) {
 		/* return list; */
 	}
 	
+	/************************************ 인천 국제 공항 *********************************************/
+	@Override
+	public ArrayList<ICNVO> icnInfo() throws IOException {
+		
+		ArrayList<ICNVO> list = new ArrayList<ICNVO>();
+		
+		StringBuilder urlBuilder = new StringBuilder("http://openapi.airport.kr/openapi/service/StatusOfParking/getTrackingParking"); /*URL*/
+        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=c1sNS0F8dzRRFujphkwtO4hhp5OmOL%2FM8ZD31ri59F0wB%2B3CtmKCGRzhXc43qEHoEvIdMERNztk0vvVjdNKOFA%3D%3D"); /*Service Key*/
+        urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode("-", "UTF-8")); /*공공데이터포털에서 받은 인증키*/
+        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
+        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*한 페이지 결과 수*/
+        urlBuilder.append("&" + URLEncoder.encode("_type","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
+        
+        URL url = new URL(urlBuilder.toString());
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Content-type", "application/json");
+        System.out.println("Response code: " + conn.getResponseCode());
+        BufferedReader rd;
+        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        } else {
+            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+        }
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = rd.readLine()) != null) {
+            sb.append(line);
+        }
+        rd.close();
+        conn.disconnect();
+        System.out.println(sb.toString());
+        
+		/***************************************** list code *********************************************/
+        String jsonString = sb.toString();
+	    // 가장 큰 JSONObject를 가져옵니다.
+	    JSONObject jObject = new JSONObject(jsonString);
+	    
+	    // (response)  0번째 JSONObject를 가져옵니다.
+	    JSONObject responseObject = jObject.getJSONObject("response");
+	    
+	    // (response -> header)  1번째 JSONObject를 가져와서 key-value를 읽습니다.
+	    JSONObject headerObject = responseObject.getJSONObject("header");
+	    String resultCode = headerObject.getString("resultCode");
+	    String resultMsg = headerObject.getString("resultMsg");
+	    log.info("(header)resultCode: " + resultCode);
+	    log.info("(header)resultMsg: " + resultMsg);
+	    
+	    JSONObject bodyObject = responseObject.getJSONObject("body");
+	    JSONObject itemsObject = bodyObject.getJSONObject("items");
+	    String numOfRows = Integer.toString(bodyObject.getInt("numOfRows"));
+	    String pageNo = Integer.toString(bodyObject.getInt("pageNo"));
+	    String totalCount = Integer.toString(bodyObject.getInt("totalCount"));
+	    log.info("(body)totalCount: " + totalCount);
+	    
+	 // (response -> body -> items -> item(node 2개이상))  세번째 JSONObject를 가져와서 key-value를 읽습니다.
+	    JSONArray itemArray = itemsObject.getJSONArray("item");
+	    for (int i = 0; i < itemArray.length(); i++) {
+	    	
+			ICNVO ivo = new ICNVO();
+	    	JSONObject iobj = itemArray.getJSONObject(i);
+	    	//log.info("iobj(" + i + "): " + iobj.toString());
+	        
+//	        // 공항명
+//	        ivo.setAprKor(iobj.getString("aprKor"));
+	        // 주차장명
+	        ivo.setFloor(iobj.getString("floor"));
+	        // 총 주차구역
+	        ivo.setParkingarea(iobj.getInt("parkingarea"));
+	        // 주차된 차
+	        ivo.setParking(iobj.getInt("parking"));
+	        // 업데이트 시간
+	        ivo.setDatetm(iobj.getString("datetm"));
+	        
+	        
+	        
+	        log.info(i + "번째 item: " + ivo);
+	        
+	        
+	        list.add(ivo);
+	        
+	       
+	    }
+	    
+		System.out.println("list: " + list);
+		return list;
+		/* return list; */
+	}
 }

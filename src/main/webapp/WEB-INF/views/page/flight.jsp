@@ -456,7 +456,7 @@
 								</a>
 							</li>
 							<li class="one-half text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/ICN.jpg); border: 1px solid;">
-								<a href="/Park/List">
+								<a href="/Park/ICNList">
 									<div class="case-studies-summary">
 									<br><br><br><br><br>
 										<span>해당 공항의 주차정보를 알고싶으면 클릭해주세요</span>
