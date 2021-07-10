@@ -23,26 +23,27 @@
 								<div class="panel-heading" role="tab" id="heading${count}">
 									<h4 class="panel-title">
 										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${count}" aria-expanded="true" aria-controls="collapse${count}">
-											(${count}) ${list.airlineNm}  ${list.depAirportNm}(${list.depPlandTime}) -> ${list.arrAirportNm}(${list.arrPlandTime})
+											<fmt:parseDate value="${list.depPlandTime}" var="depTime" pattern="yyyyMMddHHmm" />
+											<fmt:parseDate value="${list.arrPlandTime}" var="arrTime" pattern="yyyyMMddHHmm" />
+											(${count}) ${list.airlineNm} -  ${list.depAirportNm} (<fmt:formatDate value="${depTime}" pattern="yyyy년MM월dd일 HH시mm분" />) -> ${list.arrAirportNm} (<fmt:formatDate value="${arrTime}" pattern="yyyy년MM월dd일 HH시mm분" />)
 										</a>
 									</h4>
 								</div>
 								<div id="collapse${count}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${count}">
 									<div class="panel-body">
 										<p>This is 간단한 내용. write here. (${count})</p>
-										<form method="post" action="/kakaoPay" id="searchFrm">
-										    <button type="submit" style="border: 0px; background-color: rgba(0,0,0,0); float: right;">
-										    	<img src="${pageContext.request.contextPath}/resources/images/payment_icon_yellow_small.png">
-										    </button>
+										<form method="post" action="/addwish" id="wishFrm" target="param">
+											<iframe id="if" name="param" style="width: 0px; height: 0px; border: 0px;"></iframe>
+											<button name="wishBtn">찜</button>
 											<table class="table table-striped"> 
 												<thead> 
 													<tr> 
 														<th>항공편</th>
 														<th>항공사</th>
 														<th>출발공항</th>
-														<th>출발시간</th>
+														<th>출발시각</th>
 														<th>도착공항</th>
-														<th>도착시간</th>
+														<th>도착시각</th>
 														<th>일반석</th>
 														<th>비즈니스석</th>
 													</tr> 
@@ -53,24 +54,24 @@
 														<td>${list.vihicleId}</td> 
 														<td>${list.airlineNm}</td> 
 														<td>${list.depAirportNm}</td>
-														<td>${list.depPlandTime}</td>
+														<td><fmt:formatDate value="${depTime}" pattern="MM월dd일 HH시mm분" /> </td>
 														<td>${list.arrAirportNm}</td>
-														<td>${list.arrPlandTime}</td>
+														<td><fmt:formatDate value="${arrTime}" pattern="MM월dd일 HH시mm분" /> </td>
 														<td><fmt:formatNumber value="${list.economyCharge}" pattern="#,###,###" /></td>
 														<td><fmt:formatNumber value="${list.prestigeCharge}" pattern="#,###,###" /></td>
 													</tr>
 												</tbody> 
 											</table>
-											<input type="hidden" value="${list.vihicleId}" name="vihicleId"/>
-											<input type="hidden" value="${list.airlineNm}" name="airlineNm"/>
-											<input type="hidden" value="${list.depAirportNm}" name="depAirportNm"/>
-											<input type="hidden" value="${list.depPlandTime}" name="depPlandTime"/>
-											<input type="hidden" value="${list.arrAirportNm}" name="arrAirportNm"/>
-											<input type="hidden" value="${list.arrPlandTime}" name="arrPlandTime"/>
-											<input type="hidden" value="${list.economyCharge}" name="economyCharge"/>
-											<input type="hidden" value="${list.prestigeCharge}" name="prestigeCharge"/>
+											<input type="hidden" value="${user.id}" name="id" id="id"/>
+											<input type="hidden" value="${list.vihicleId}" name="vihicleId" id="vihicleId"/>
+											<input type="hidden" value="${list.airlineNm}" name="airlineNm" id="airlineNm"/>
+											<input type="hidden" value="${list.depAirportNm}" name="depAirportNm" id="depAirportNm"/>
+											<input type="hidden" value="${list.depPlandTime}" name="depPlandTime" id="depPlandTime"/>
+											<input type="hidden" value="${list.arrAirportNm}" name="arrAirportNm" id="arrAirportNm"/>
+											<input type="hidden" value="${list.arrPlandTime}" name="arrPlandTime" id="arrPlandTime"/>
+											<input type="hidden" value="${list.economyCharge}" name="economyCharge" id="economyCharge"/>
+											<input type="hidden" value="${list.prestigeCharge}" name="prestigeCharge" id="prestigeCharge"/>
 										</form>
-										
 									</div>
 								</div>
 							</div>
@@ -539,6 +540,22 @@
 			</div>
 		</div>
 		
+		
+											
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#wishBtn').click(function(){
+				console.log("wish clicked");
+				if($.trim($('#id').val()) === "") {
+					alert("로그인이 필요한 서비스입니다.");
+					location.href="/auth/loginForm";
+				}
+				else {
+					$('#wishFrm').submit();
+				}
+			});
+		});
+	</script>
 
 <%@ include file="../layout/footer.jsp"%>
 

@@ -13,38 +13,38 @@
 
 <div class="cardWrap">
 
-  <div class="card cardLeft">
-    <h1>SkyLife <span>Ticket</span></h1>
-    <div class="title">
-      <h2>${info.item_name}</h2>
-      <span>결제 상품</span>
-    </div>
-    <div class="name">
-      <h2>${info.approved_at}</h2>
-      <span>결제 일시</span>
-    </div>
-    <div class="name">
-      <h2>${info.item_code}</h2>
-      <span>name</span>
-    </div>
-<!--     <div class="seat">
-      <h2>156</h2>
-      <span>seat</span>
-    </div>
-    <div class="time">
-      <h2>12:00</h2>
-      <span>time</span>
-    </div> -->
-  </div>
+	<div class="card cardLeft">
+		<h1>SkyLife <span>Ticket</span></h1>
+		<div class="title">
+			<h2>${info.item_name}</h2>
+			<span>결제 상품</span>
+		</div>
+		<div class="name">
+			<h2>${info.approved_at}</h2>
+			<span>결제 일시</span>
+		</div>
+<%-- 		<div class="name">
+			<h2>${info.item_code}</h2>
+			<span>name</span>
+		</div> --%>
+		<div class="seat">
+			<h2>${info.item_code}</h2>
+			<span>code</span>
+		</div>
+		<div class="time">
+			<h2>${user.name}</h2>
+			<span>name</span>
+		</div>
+	</div>
   
-  <div class="card cardRight">
-    <div class="eye"></div>
-    <div class="number">
-      <h3>SkyLife</h3>
-      <span>with fly</span>
-    </div>
-    <div class="barcode"></div>
-  </div>
+	<div class="card cardRight">
+		<div class="eye"></div>
+		<div class="number">
+			<h3>SkyLife</h3>
+			<span>with fly</span>
+		</div>
+		<div class="barcode"></div>
+	</div>
 
 </div>
 <br>

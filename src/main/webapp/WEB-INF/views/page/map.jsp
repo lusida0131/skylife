@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 
+<a href="/page/map2">이동</a>
 <p style="margin-top: -12px"></p>
    <div class="map_wrap">
       <div id="map"
-         style="width: 100%; height: 100vh; position: relative; overflow: hidden;"></div>
+         style="width: 100%; height: 90vh; position: relative; overflow: hidden;"></div>
       <ul id="category">
          <li id="BK9" data-order="0"><span class="category_bg bank"></span>은행</li>
          <li id="CS2" data-order="1"><span class="category_bg mart"></span>마트</li>

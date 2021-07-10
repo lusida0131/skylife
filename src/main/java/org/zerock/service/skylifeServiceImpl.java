@@ -1,6 +1,7 @@
 package org.zerock.service;
 
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,7 +16,7 @@ import lombok.AllArgsConstructor;
 public class skylifeServiceImpl implements skylifeService{
 	
 	private skylifeMapper mapper;
-	
+
 	@Override
 	public void register(skylifeVO skylifevo) {
 		mapper.register(skylifevo);
@@ -68,4 +69,14 @@ public class skylifeServiceImpl implements skylifeService{
 			return id;
 		}
 	}
+
+
+	//회원 리스트
+	@Override
+	public List<skylifeVO> list(skylifeVO mvo) {
+		return mapper.list(mvo);
+	}
+
+
+
 }

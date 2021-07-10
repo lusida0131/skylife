@@ -19,6 +19,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @AllArgsConstructor
 public class ReplyController {
+	
 	private ReplyService service;
 	
 	@RequestMapping(value="/comment", method=RequestMethod.POST)
@@ -50,7 +51,8 @@ public class ReplyController {
 	@RequestMapping(value="/replies/update", method=RequestMethod.POST) //댓글 수정  
     @ResponseBody
     private int mCommentServiceUpdateProc(@RequestParam int r_num, @RequestParam String r_content) throws Exception{
-        
+		
+		
         ReplyVO comment = new ReplyVO();
         comment.setR_num(r_num);
         comment.setR_content(r_content);

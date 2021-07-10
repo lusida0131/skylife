@@ -9,7 +9,10 @@
       <div class="w-full md:w-3/5 mx-auto p-8">
          <h2>SkyLife의 공지사항</h2><br>			
          <%-- <c:if test="${loginUser.num == 1}"> --%>
+         <br><br>
+     	<c:if test="${user.id == 'admin'}" >						
          	<input type="button" value="공지사항 등록" onclick="location.href='/pub/register'" class="btn btn-secondary mb-3">
+		</c:if>
          <%-- </c:if> --%>
          <div class="shadow-md">
             <c:forEach var="pub" items="${list }">
@@ -19,7 +22,13 @@
                		<div class="tab-content overflow-hidden border-l-2 bg-gray-100 border-indigo-500 leading-normal ">
                   		<p class="p-5">${pub.p_content }</p>
                   		<%-- <c:if test="${loginUser.num == 1}"> --%>
+<<<<<<< HEAD
+                  			<c:if test="${user.id == 'admin'}" >	
                   		<input type="button" value="공지사항 수정/삭제" onclick="location.href='/pub/modify?pno=<c:out value="${pub.pno}" />'" class="btn btn-secondary mb-3">
+              	 		</c:if>
+=======
+                  		<input type="button" value="공지사항 수정/삭제" onclick="location.href='/pub/modify?pno=<c:out value="${pub.pno}"/>'" class="btn btn-secondary mb-3">
+>>>>>>> 52960cdd0604f482b913c353289ea725c4f63136
               	 		<%-- </c:if> --%>
               	 	</div>
              	</div>

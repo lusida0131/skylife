@@ -100,7 +100,7 @@
 							<li><a href="#" class="fh5co-sub-ddown">서비스</a>
 								<ul class="fh5co-sub-menu">
 									<li><a href="/page/map">지도</a></li>
-									<li><a href="/page/park">주차장</a></li>
+									<li><a href="/Park/park">주차장</a></li>
 								</ul>
 							</li>
 							<li><a href="/page/board">게시판</a></li>
@@ -111,12 +111,12 @@
 								<c:choose>
 									<c:when test="${name eq null}">
 										<li><a href="/auth/loginForm">로그인</a></li>
-										<li><a href="#">메뉴</a></li>
+										<li><a href="/auth/joinAgree">회원가입</a></li>
 									</c:when>	
 									<c:when test="${name ne null}">
 										<li><a href="#">${user.id}님</a></li>
-										<li><a href="#">메뉴</a></li>
 										<li><a href="/page/memView">회원정보</a></li>
+										<li><a href="/fs/wish">wishlist</a></li>
 										<li><a href="/logout">로그아웃</a></li>
 									</c:when>
 								</c:choose>

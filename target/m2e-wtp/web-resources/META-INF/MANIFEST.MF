@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
-Built-By: USER-PC
+<<<<<<< HEAD
+Built-By: 404-13
 Build-Jdk: 1.8.0_291
+=======
+Built-By: 404-23
+Build-Jdk: 1.8.0_281
+>>>>>>> 52960cdd0604f482b913c353289ea725c4f63136
 Created-By: Maven Integration for Eclipse
 

@@ -23,7 +23,7 @@
                    <!--회원가입 폼-->
                     <div class="login__form">
                         <!--로고-->
-                        <h1><img src="${pageContext.request.contextPath}/resources/images/sky.png" alt=""></h1>
+                        <h1><a href="/page/index" ><img src="${pageContext.request.contextPath}/resources/images/sky.png" alt=""></a></h1>
                          <!--로고end-->
                          
                          <!--회원가입 인풋-->

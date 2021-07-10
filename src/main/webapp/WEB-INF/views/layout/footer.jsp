@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<footer>
 			<div id="footer">
 				<div class="container">
@@ -18,6 +18,9 @@
 								<li><a href="#">Tokyo Flight</a></li>
 								<li><a href="#">New York Flights</a></li>
 							</ul>
+								<c:if test="${user.id == 'admin'}" >
+							<a href="/auth/anonymous" style="color: rgb(57,62,70);">관리자 페이지</a>
+						</c:if>
 						</div>
 						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
 							<h3>Top Hotels</h3>
