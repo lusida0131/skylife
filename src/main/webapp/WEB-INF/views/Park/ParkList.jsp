@@ -30,7 +30,9 @@
       <c:if test="${(plist.parkingFullSpace - plist.parkingIstay) <= 0}">만차</c:if>
       <c:if test="${(plist.parkingFullSpace - plist.parkingIstay) > 0}"> ${plist.parkingFullSpace - plist.parkingIstay}</c:if>
       </td>
-      <td>${plist.parkingGettime}</td>
+      <fmt:parseDate value="${plist.parkingGettime}" var="dateTime" pattern="HH:mm:ss" />
+      <%-- <td>${plist.parkingGettime}</td> --%>
+      <td><fmt:formatDate value="${dateTime}" pattern="HH시mm분"/></td>
     </tr>
   </c:forEach>
   </tbody>

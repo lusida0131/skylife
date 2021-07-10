@@ -1,6 +1,7 @@
 package org.zerock.service;
 
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,4 +19,7 @@ public interface skylifeService {
 	
 	// 아이디 찾기
 	public String findID(HttpServletResponse response, String email) throws Exception;
+	public List<skylifeVO> list(skylifeVO mvo);
+	
+
 }
