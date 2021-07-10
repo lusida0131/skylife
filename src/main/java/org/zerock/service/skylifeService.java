@@ -19,12 +19,10 @@ public interface skylifeService {
 	
 	// 아이디 찾기
 	public String findID(HttpServletResponse response, String email) throws Exception;
-<<<<<<< HEAD
+
 	// 이메일 중복체크
 	public int emailhave(String email);
-=======
-	public List<skylifeVO> list(skylifeVO mvo);
-	
 
->>>>>>> c80962bb11a369538e77d7cb4e8dc7056e247a58
+	public List<skylifeVO> list(skylifeVO mvo);
+
 }

@@ -41,18 +41,13 @@
 	<select id="getID">
 		select * from smem where email = #{email}
 	</select>
-<<<<<<< HEAD
-	
+
 	<select id="emailhave" resultType="int">
 		select count(*) from smem
 		where email=#{email}
 	</select>
-=======
 
 	<select id="list" resultType="org.zerock.domain.skylifeVO">
 		select * from smem
 	</select>
-
-
->>>>>>> c80962bb11a369538e77d7cb4e8dc7056e247a58
 </mapper>
