@@ -9,6 +9,8 @@ public class OrderVO {
 	private String id;
 	private String tid;
 	
+	private int w_num;
+	
 	private String vihicleId;		// 항공편명
 	private String airlineNm;		// 항공사명
 	private long depPlandTime;		// 출발시간

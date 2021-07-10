@@ -31,7 +31,7 @@
 								</div>
 								<div id="collapse${count}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${count}">
 									<div class="panel-body">
-										<p>This is 간단한 내용. write here. (${count})</p>
+										<%-- <p>This is 간단한 내용. write here. (${count})</p> --%>
 										<form method="post" action="/addwish" id="wishFrm" target="param">
 											<iframe id="if" name="param" style="width: 0px; height: 0px; border: 0px;"></iframe>
 											<button name="wishBtn">찜</button>

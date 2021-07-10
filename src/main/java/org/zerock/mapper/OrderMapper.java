@@ -17,4 +17,7 @@ public interface OrderMapper {
 	public void WishInsert(OrderVO ovo);
 	
 	public ArrayList<OrderVO> WishList(String uid);
+	
+	public int WishDelete(int w_num);
+	
 }
