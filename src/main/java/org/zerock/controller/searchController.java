@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.pay.domain.OrderVO;
 import org.zerock.domain.searchVO;
 import org.zerock.mapper.OrderMapper;
@@ -104,6 +105,21 @@ public class searchController {
     	log.info("movement wish list: " + wlist);
     	
     	return "/fs/wish";
+    }
+    
+    @RequestMapping(value="/fs/wishDelete", method=RequestMethod.POST, produces="application/text; charset=utf8")
+	@ResponseBody
+    public String wishDelete(int w_num) {
+    	log.info("delete wishlist item (w_num) :" + w_num);
+    	
+    	Integer result = om.WishDelete(w_num);
+    	log.info("result : " + result);
+    	
+    	if(result == 0) { // delete fail
+    		return "fail";
+    	}
+    	
+    	return "success";
     }
 
 }
