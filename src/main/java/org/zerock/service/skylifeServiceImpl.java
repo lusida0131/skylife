@@ -71,20 +71,16 @@ public class skylifeServiceImpl implements skylifeService{
 	}
 
 
-<<<<<<< HEAD
 	@Override
 	public int emailhave(String email) {
 		int result = mapper.emailhave(email);
 		return result;
 	}
-=======
+
 	//회원 리스트
 	@Override
 	public List<skylifeVO> list(skylifeVO mvo) {
 		return mapper.list(mvo);
 	}
 
-
-
->>>>>>> c80962bb11a369538e77d7cb4e8dc7056e247a58
 }
