@@ -70,7 +70,7 @@ public class skylifeServiceImpl implements skylifeService{
 		}
 	}
 
-
+	// 이메일 중복확인
 	@Override
 	public int emailhave(String email) {
 		int result = mapper.emailhave(email);
