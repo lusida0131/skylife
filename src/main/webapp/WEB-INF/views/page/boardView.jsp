@@ -32,8 +32,10 @@
          </div>
          <div style="width:650px; text-align:center;">
             <input type="hidden" name="b_num" value="${data.b_num}">
-            <c:if test="${user.id == data.id}">
-            <input type="button" id="btnUpdate" onclick="location.href='/board/update?b_num=<c:out value="${data.b_num}"/>'" value="수정">
+			<c:if test="${user.id == data.id || user.id == 'admin'}">
+            <button type="button" id="btnUpdate">수정</button>
+            <%-- <c:if test="${user.id == data.id}">
+            <input type="button" id="btnUpdate" onclick="location.href='/board/update?b_num=<c:out value="${data.b_num}"/>'" value="수정"> --%>
             <button type="button" id="btnDelete">삭제</button>
             </c:if>
          </div>

@@ -36,17 +36,39 @@ public class HomeController {
     public String map() throws Exception {
         return "page/map";
     }
+    @GetMapping("/page/map2")
+    public String map2() throws Exception {
+        return "page/map2";
+    }
+    @GetMapping("/page/map3")
+    public String map3() throws Exception {
+        return "page/map3";
+    }
+    // 관리자 페이지 이동
+    @GetMapping("/auth/anonymous")
+    public String admin() {
+    	return "auth/anonymous";
+    }
+    @GetMapping("/auth/admin")
+    public String admin1() {
+    	return "/auth/admin";
+    }
+    //회원 매출 조회
+    @GetMapping("/admin/money_list")
+    public String money_list() {
+    	return "/admin/money_list";
+    }
+    //게시판 수정
+    @GetMapping("/admin/publicup")
+    public String public1() {
+    	return "/admin/publicup";
+    }
+    //댓글 수정
+    @GetMapping("/admin/product_list")
+    public String product() {
+    	return "/admin/product_list";
+    }
     
-//    @GetMapping("/page/board")
-//    public String board() throws Exception {
-//        return "page/board";
-//    }
-	
-//	 @GetMapping("/page/blog")
-//	 public String blog() throws Exception {
-//		 return "page/blog";
-//	 }
-	 
     @GetMapping("/page/public")
     public String pub() throws Exception {
         return "redirect:/pub/public";
