@@ -68,4 +68,11 @@ public class skylifeServiceImpl implements skylifeService{
 			return id;
 		}
 	}
+
+
+	@Override
+	public int emailhave(String email) {
+		int result = mapper.emailhave(email);
+		return result;
+	}
 }

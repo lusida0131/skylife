@@ -104,4 +104,9 @@ public class BoardController {
 		
 		return "redirect:/page/board";
 	}
+	
+	@RequestMapping("/testjsp/rrrr")
+	public String sadf() throws Exception {
+		return "/testjsp/rrrr";
+	}
 }

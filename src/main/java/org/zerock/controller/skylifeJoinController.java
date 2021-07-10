@@ -122,6 +122,15 @@ public class skylifeJoinController {
       int result=service.idCheck(id);
       return Integer.toString(result);
    }
+   /******************이메일 중복체크***********************/
+   @RequestMapping(value = "/emailhave",method = RequestMethod.GET, produces = "application/text; charset=utf8")
+   @ResponseBody
+   public String emailhave(HttpServletRequest request) {
+      
+      String email = request.getParameter("email");
+      int result=service.emailhave(email);
+      return Integer.toString(result);
+   }
    
    @RequestMapping(value="/")
    public String index() {

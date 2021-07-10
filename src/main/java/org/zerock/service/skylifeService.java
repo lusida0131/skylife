@@ -18,4 +18,6 @@ public interface skylifeService {
 	
 	// 아이디 찾기
 	public String findID(HttpServletResponse response, String email) throws Exception;
+	// 이메일 중복체크
+	public int emailhave(String email);
 }

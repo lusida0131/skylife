@@ -35,4 +35,9 @@
 	<select id="getID">
 		select * from smem where email = #{email}
 	</select>
+	
+	<select id="emailhave" resultType="int">
+		select count(*) from smem
+		where email=#{email}
+	</select>
 </mapper>
