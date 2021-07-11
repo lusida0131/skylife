@@ -46,6 +46,10 @@
 		where tid = #{tid}
 	</update>
 	
+	<select id="PaymentList" resultType="org.pay.domain.KakaoPayApprovalVO">
+		select * from spayment where partner_user_id = #{id}
+	</select>
+	
 	<insert id="WishInsert">
 		insert into swish(id, vihicleId, airlineNm, depAirportNm, depPlandTime, 
 				arrAirportNm, arrPlandTime, economyCharge, prestigeCharge)
