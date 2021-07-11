@@ -23,6 +23,7 @@ public interface BoardMapper {
 	public List<BoardVO> list(BoardVO vo);
 	
 	// 게시글 조회수
+<<<<<<< HEAD
 	public void increaseViewcnt(int b_num);
 	
 <<<<<<< HEAD
@@ -37,4 +38,7 @@ public interface BoardMapper {
 =======
 	public List<BoardVO> getListWithPaging(Criteria cri);
 >>>>>>> 7072013cbb2f31018919d4c176d1c18a78121639
+=======
+	public boolean increaseViewcnt(int b_num);
+>>>>>>> 537b8d91b189d832a8c293bcc7214602b3c412eb
 }

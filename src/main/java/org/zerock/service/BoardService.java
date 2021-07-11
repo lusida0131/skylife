@@ -25,10 +25,14 @@ public interface BoardService {
 //		public List<BoardVO> list(BoardVO vo);
 		
 		// 게시글 조회수
+<<<<<<< HEAD
 		public void increaseViewcnt(int b_num, HttpSession session) throws Exception;
 		
 		
 		public List<BoardVO> list(Criteria cri);			// 게시글 목록 보기
 		public int getTotal(Criteria cri);
 
+=======
+		public boolean increaseViewcnt(int b_num) throws Exception;
+>>>>>>> 537b8d91b189d832a8c293bcc7214602b3c412eb
 }

@@ -78,19 +78,19 @@
 														</section>
 													</div>
 													<div class="date_div">
-														<div class="col-xxs-12 col-xs-6 mt alternate" id="datetimepicker_start">
+														<div class="col-sm-12 mt" id="datetimepicker_start">
 															<div class="input-field">
 																<label for="date-start">출발일</label>
 																<input type="text" class="form-control date_controll" id="date-start" name="date_start" placeholder="yyyymmdd"/>
 															</div>
 														</div>
-														<div class="col-xxs-12 col-xs-6 mt alternate" id="datetimepicker_end">
+														<!-- <div class="col-xxs-12 col-xs-6 mt alternate" id="datetimepicker_end">
 															<div class="input-field">
 																<label for="date-end">도착일</label>
 																<input type="text" class="form-control date_controll" id="date-end" name="date_end" placeholder="yyyymmdd"/>
 															</div>
-														</div>
-													</div> -->
+														</div> -->
+													</div>
 													<div class="col-sm-12 mt" style="margin-bottom: 60px;">
 														<section>
 															<label for="class">항공사</label>

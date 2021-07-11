@@ -93,6 +93,9 @@ public class BoardController {
 		List<ReplyVO> replyData = Replyservice.selectcomment(cri, b_num);
 		model.addAttribute("replyData", replyData);
 		log.info("돌아가~ " + replyData);
+		
+		// 조회수
+		service.increaseViewcnt(b_num);
 
 		return "/page/boardView";
 	}
@@ -151,5 +154,10 @@ public class BoardController {
 		service.delete(b_num);
 		
 		return "redirect:/page/board";
+	}
+	
+	@RequestMapping("/testjsp/rrrr")
+	public String sadf() throws Exception {
+		return "/testjsp/rrrr";
 	}
 }

@@ -48,8 +48,7 @@ public class skylifeJoinController {
    private skylifeService service;
    private KakaoAPI kakao;
    
-   private static final Logger logger= 
-   LoggerFactory.getLogger(skylifeJoinController.class);
+   private static final Logger logger = LoggerFactory.getLogger(skylifeJoinController.class);
    private static final String String = null;
    
    @GetMapping("/auth/loginForm")
@@ -87,11 +86,10 @@ public class skylifeJoinController {
          return "redirect:/";
       }
       else {
-   
-         
          return "redirect:/auth/loginForm";
       }
    }
+   
    @RequestMapping(value = "/logout", method = RequestMethod.GET)
    public String logout(HttpSession session) throws Exception {
 
@@ -119,6 +117,15 @@ public class skylifeJoinController {
       
       String id = request.getParameter("id");
       int result=service.idCheck(id);
+      return Integer.toString(result);
+   }
+   /******************이메일 중복체크***********************/
+   @RequestMapping(value = "/emailhave",method = RequestMethod.GET, produces = "application/text; charset=utf8")
+   @ResponseBody
+   public String emailhave(HttpServletRequest request) {
+      
+      String email = request.getParameter("email");
+      int result=service.emailhave(email);
       return Integer.toString(result);
    }
    
@@ -257,6 +264,17 @@ public class skylifeJoinController {
 		
 		return "/admin/member_list";
 	}
-	
+	//회원 삭제
+	@GetMapping("/remove")
+	public String remove(@RequestParam("id") String id, RedirectAttributes rttr) {
+		log.info("remove..." + id);
+		if(service.remove(id)) {
+			rttr.addFlashAttribute("result","success");
+		} else {
+			System.out.println("remove failed");
+		}
+		return "redirect:/admin/member_list";
+	}
+
 	
 }

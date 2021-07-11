@@ -34,6 +34,7 @@
                             <input type="text" name="name" placeholder="이름" required="required" id="name">
                             <input type="date" name="bday" placeholder="생년월일" required="required" id="bday">
                             <input class="mail_input" type="email" name="email" placeholder="이메일" required="required" id="email">
+                            <input type = "button" id="echeck" value = "중복체크">
                             <div class="mail_check_wrap">
                             	<div class="mail_check_input_box" id="mail_check_input_box_false">
                             		<input class="mail_check_input" id="mail_check_input" disabled="disabled">
@@ -69,6 +70,7 @@
    
 	$(document).ready(function(e){
 		var idx = false;
+		var emx = false;
 		$('#signUp').click(function(){
 	         if($.trim($('#id').val()) == ''){ 
 	            alert("아이디를 입력해주세요.");
@@ -93,6 +95,9 @@
 	         }else if(idx==false){
 	            alert("아이디 중복체크를 해주세요.");
 	            return;
+	         }else if(emx==false){
+		            alert("이메일 중복체크를 해주세요.");
+		            return;
 	         }else if($.trim($('#mail_check_input').val()) != code) {
 	            alert("인증번호를 확인해주세요.")
 	            return;
@@ -115,6 +120,27 @@
 	                  alert("사용 가능한 아이디 입니다.")
 	               }else{
 	                  alert("사용 불가능한 아이디 입니다.")
+	               }
+	            },
+	            error: function(){
+	               alert("서버에러");
+	            }
+	         });
+		});
+		// 이메일 중복 체크
+		$('#echeck').click(function(){
+	         $.ajax({
+	            url: "${pageContext.request.contextPath}/emailhave",
+	            type: "GET",
+	            data:{
+	               "email":$('#email').val()
+	            },
+	            success: function(data){
+	               if(data == 0 && $.trim($('#email').val()) != '' ){
+	                  emx=true;
+	                  alert("사용 가능한 이메일 입니다.")
+	               }else{
+	                  alert("이미 가입된 이메일 입니다.")
 	               }
 	            },
 	            error: function(){

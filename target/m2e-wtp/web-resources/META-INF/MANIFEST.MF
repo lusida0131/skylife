@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: USER-PC
+=======
+Built-By: lsc34
+>>>>>>> 537b8d91b189d832a8c293bcc7214602b3c412eb
 Build-Jdk: 1.8.0_291
 Created-By: Maven Integration for Eclipse
 

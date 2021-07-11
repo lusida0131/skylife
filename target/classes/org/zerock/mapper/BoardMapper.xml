@@ -84,7 +84,7 @@ limit #{pageStart}, #{amount}
 	</select>
 	
 	<!-- 게시글  조회수 -->
-	<update id="increaseViewcnt">
+	<update id="increaseViewcnt" parameterType="int">
 		update sbs set rcount = rcount + 1
 		where b_num = #{b_num}
 	</update>

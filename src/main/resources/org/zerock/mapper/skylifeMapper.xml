@@ -42,9 +42,15 @@
 		select * from smem where email = #{email}
 	</select>
 
+	<select id="emailhave" resultType="int">
+		select count(*) from smem
+		where email=#{email}
+	</select>
+
 	<select id="list" resultType="org.zerock.domain.skylifeVO">
 		select * from smem
 	</select>
-
-
+	<delete id="delete">
+	delete from smem where id = #{id} 
+	</delete>
 </mapper>
