@@ -9,6 +9,8 @@ import org.zerock.domain.FlightVO;
 
 public interface FlightService {
 	
-	public ArrayList<FlightVO> airApi(String daID, String aaID, String dpTime) throws IOException;
+	public String nameset(String name);
+	
+	public ArrayList<FlightVO> airApi(String daID, String aaID, String dpTime, String pageNum) throws IOException;
 	
 }

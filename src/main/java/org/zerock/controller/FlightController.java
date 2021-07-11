@@ -28,7 +28,7 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping
 @AllArgsConstructor
 @Log4j
-public class SearchController {
+public class FlightController {
 	
 	private FlightService service;
 	
@@ -46,6 +46,7 @@ public class SearchController {
 		String startPortName = request.getParameter("from_place");
 		String endPortName = request.getParameter("to_place");
 		String startTime = request.getParameter("date_start");
+		String pageNum = "1";
 		
 		// data format change
 		SimpleDateFormat before = new SimpleDateFormat("MM/dd/yyyy");
@@ -57,7 +58,7 @@ public class SearchController {
 					+ startPortName + " // endPortName: " + endPortName + " // startTime: " + startTime);
 		
 		
-		ArrayList<FlightVO> clist = service.airApi(startPortName, endPortName, startTime);
+		ArrayList<FlightVO> clist = service.airApi(startPortName, endPortName, startTime, pageNum);
 		
 		if (clist.isEmpty()) {
 			response.setContentType("text/html; charset=UTF-8");
@@ -68,6 +69,8 @@ public class SearchController {
 			return "/fs/flight";
 		}
 		
+		model.addAttribute("endPortName", service.nameset(endPortName));
+		model.addAttribute("startTime", startTime);
 		model.addAttribute("clist", clist);
 		
 		return "/fs/flightList";

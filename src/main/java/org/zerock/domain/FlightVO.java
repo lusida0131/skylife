@@ -19,7 +19,8 @@ public class FlightVO {
 	private String depAirportNm;	// 출발공항
 	private String arrAirportNm;	// 도착공항
 	
-	private String itemCheck;		// 항공편 item check
+	private String pageNo;			// 페이지 번호
+	private String totalCount;		// item count
 	
 	
 	public FlightVO() { }

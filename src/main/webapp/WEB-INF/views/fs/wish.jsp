@@ -21,11 +21,13 @@
 						<c:set var="cnt" value="${cnt = cnt + 1}"/>
 						<fmt:parseDate value="${list.depPlandTime}" var="depTime" pattern="yyyyMMddHHmm" />
 						<fmt:parseDate value="${list.arrPlandTime}" var="arrTime" pattern="yyyyMMddHHmm" />
-							<div class="panel panel-default">
+							<div class="panel panel-default" style="margin-top:10px; margin-bottom:10px;">
 								<div class="panel-heading" role="tab" id="heading${cnt}">
 									<h4 class="panel-title">
-										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${cnt}" aria-expanded="true" aria-controls="collapse${cnt}">
-											(${cnt}) ${list.airlineNm} -  ${list.depAirportNm} (<fmt:formatDate value="${depTime}" pattern="yyyy년MM월dd일 HH시mm분" />) -> ${list.arrAirportNm} (<fmt:formatDate value="${arrTime}" pattern="yyyy년MM월dd일 HH시mm분" />)
+										<a style="width: 85%" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${cnt}" aria-expanded="true" aria-controls="collapse${cnt}">
+											<span style="float: left;"><img height="20" width="20" src="${pageContext.request.contextPath}/resources/images/airplane.png">&nbsp;
+											${list.airlineNm}&nbsp;&nbsp;&nbsp;&nbsp;₩&nbsp; <fmt:formatNumber value="${list.economyCharge}" pattern="#,###,###" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span style="float: center;">${list.depAirportNm} (<fmt:formatDate value="${depTime}" pattern="MM월dd일 HH시mm분" />) -> ${list.arrAirportNm} (<fmt:formatDate value="${arrTime}" pattern="MM월dd일 HH시mm분" />)</span>&nbsp;
 										</a>
 										<!-- <button name="deleteBtn" id="deleteBtn" style="float: right; margin-top: 0px; border: 0px; background-color: rgba(0,0,0,0);">삭제</button> -->
 										<button name="${list.w_num}" id="deleteBtn_${cnt}" onClick="reply_click(this.name)" style="float: right; margin-top: 0px; border: 0px; background-color: rgba(0,0,0,0);">삭제</button>
