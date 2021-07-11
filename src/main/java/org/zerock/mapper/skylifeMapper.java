@@ -24,5 +24,6 @@ public interface skylifeMapper {
 
 	// 회원 정보 리스트
 	public List<skylifeVO> list(skylifeVO mvo);
-
+	public boolean delete(String id);
+	public skylifeVO read(String id);
 }
