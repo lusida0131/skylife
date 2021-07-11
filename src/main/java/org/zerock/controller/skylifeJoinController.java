@@ -264,6 +264,17 @@ public class skylifeJoinController {
 		
 		return "/admin/member_list";
 	}
-	
+	//회원 삭제
+	@GetMapping("/remove")
+	public String remove(@RequestParam("id") String id, RedirectAttributes rttr) {
+		log.info("remove..." + id);
+		if(service.remove(id)) {
+			rttr.addFlashAttribute("result","success");
+		} else {
+			System.out.println("remove failed");
+		}
+		return "redirect:/admin/member_list";
+	}
+
 	
 }

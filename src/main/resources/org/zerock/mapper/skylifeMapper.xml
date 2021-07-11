@@ -50,4 +50,7 @@
 	<select id="list" resultType="org.zerock.domain.skylifeVO">
 		select * from smem
 	</select>
+	<delete id="delete">
+	delete from smem where id = #{id} 
+	</delete>
 </mapper>

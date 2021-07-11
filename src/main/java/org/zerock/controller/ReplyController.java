@@ -1,14 +1,20 @@
 package org.zerock.controller;
 
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.zerock.domain.Criteria;
+import org.zerock.domain.ReplyPageDTO;
 import org.zerock.domain.ReplyVO;
 import org.zerock.service.ReplyService;
 
@@ -22,10 +28,24 @@ public class ReplyController {
 	
 	private ReplyService service;
 	
+	
+	@GetMapping(value = "/replies/pages/{b_num}/{page}", produces = { MediaType.APPLICATION_XML_VALUE,
+			MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity<ReplyPageDTO> getList(
+			@PathVariable("page") int page, @PathVariable("b_num") Integer b_num) {
+
+		log.info("getList............");
+		Criteria cri = new Criteria(page, 10);
+		log.info(cri);
+		
+		return new ResponseEntity<ReplyPageDTO>(service.getListPage(cri, b_num), HttpStatus.OK);
+	}
+	
+
 	@RequestMapping(value="/comment", method=RequestMethod.POST)
 	@ResponseBody
 	public String comment(ReplyVO vo) {
-		log.info(vo);
+		log.info("vo=" + vo);
 		String result = null;
 		service.comment(vo);
 		result="order";
