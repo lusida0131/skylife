@@ -21,5 +21,5 @@ public interface BoardMapper {
 	public List<BoardVO> list(BoardVO vo);
 	
 	// 게시글 조회수
-	public void increaseViewcnt(int b_num);
+	public boolean increaseViewcnt(int b_num);
 }

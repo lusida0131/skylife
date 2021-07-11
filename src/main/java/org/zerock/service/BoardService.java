@@ -27,5 +27,5 @@ public interface BoardService {
 		public List<BoardVO> list(BoardVO vo);
 		
 		// 게시글 조회수
-		public void increaseViewcnt(int b_num, HttpSession session) throws Exception;
+		public boolean increaseViewcnt(int b_num) throws Exception;
 }

@@ -71,6 +71,9 @@ public class BoardController {
 		List<ReplyVO> replyData = Replyservice.selectcomment(b_num);
 		model.addAttribute("replyData", replyData);
 		log.info("돌아가~ " + replyData);
+		
+		// 조회수
+		service.increaseViewcnt(b_num);
 
 		return "/page/boardView";
 	}
