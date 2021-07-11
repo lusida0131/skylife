@@ -622,6 +622,7 @@
 			$(document).ready(function(e){
 				$('#flightBtn').click(function(){
 					
+<<<<<<< HEAD
 					
 					/* var now = new Date(); // 현재시간 
 					var year = now.getYear(); // 년 
@@ -674,6 +675,8 @@
  
  
  
+=======
+>>>>>>> 7072013cbb2f31018919d4c176d1c18a78121639
  
 					if($.trim($('#from_place').val()) === "") {
 					    $('#from_place').focus();
@@ -683,14 +686,18 @@
 					    $('#to_place').focus();
 						alert("도착지를 입력해주세요.");
 					}
-					/* else if($.trim($('#date_start').val()) === "") {
+					else if($.trim($('#date_start').val()) === "") {
 					    $('#date_start').focus();
 						alert("출발일을 입력해주세요.");
-					} */
-					/* else if($.trim($('#date_end').val()) === "") {
+					} 
+					else if($.trim($('#date_end').val()) === "") {
 					    $('#date_end').focus();
 						alert("도착일을 입력해주세요.");
+<<<<<<< HEAD
 					} */
+=======
+					} 
+>>>>>>> 7072013cbb2f31018919d4c176d1c18a78121639
 			
 					else {
 						$('#flightFrm').submit();
@@ -698,6 +705,7 @@
 				});
 			});
 			
+<<<<<<< HEAD
 		</script>
 		
 		
@@ -707,6 +715,8 @@
 	      });
 
 		</script> -->
+=======
+>>>>>>> 7072013cbb2f31018919d4c176d1c18a78121639
 
 <%@ include file="../layout/footer.jsp"%>
 

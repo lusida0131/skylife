@@ -1,7 +1,10 @@
 package org.zerock.domain;
 
+<<<<<<< HEAD
 import org.springframework.web.util.UriComponentsBuilder;
 
+=======
+>>>>>>> 7072013cbb2f31018919d4c176d1c18a78121639
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -9,11 +12,21 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+<<<<<<< HEAD
 public class Criteria {		// 페이징 처리를 위해서 데이터베이스에서 게시글을 가져올 때 사용
 	private int pageNum;	// 보여줄 페이지 번호
 	private int amount;		// 한 페이지에 보여줄 게시글의 수
 	private String type;	// 검색 유형(TCW: Title, Content, Writer의 조합)
 	private String keyword;	// 검색어
+=======
+public class Criteria {
+	private int page;
+	private int perPageNum;
+	
+	public int getPageStart() {
+		return (this.page-1)*perPageNum;
+	}
+>>>>>>> 7072013cbb2f31018919d4c176d1c18a78121639
 	
 	// default 생성자 : 페이지를 지정하지 않을 경우 1페이지를 말하며, 보여줄 게시글의 수를 10으로 지정
 	public Criteria() {

@@ -59,6 +59,11 @@ limit #{pageStart}, #{amount}
 			sbs
 	</select>
 	
+	<!-- 페이징 처리 -->
+	<select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
+		select b_num, b_title, b_content, id, time from sbs order by b_num desc limit 0, 10
+	</select>
+	
 	<!-- 게시글 작성 -->
 	<insert id="insert">
 		insert into sbs (
