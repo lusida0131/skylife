@@ -70,7 +70,7 @@
 	$(document).ready(function(e){
 		var idx = false;
 		$('#signUp').click(function(){
-	         if($.trim($('#id').val()) == ''){
+	         if($.trim($('#id').val()) == ''){ 
 	            alert("아이디를 입력해주세요.");
 	            $('#id').focus();
 	            return;

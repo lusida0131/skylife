@@ -15,4 +15,13 @@
 	<update id="update">
 		update sco set r_content = #{r_content} where r_num = #{r_num}
 	</update>
+	<select id ="getListWithPaging" resultType="org.zerock.domain.ReplyVO">
+		<![CDATA[
+		select * from sco where b_num = #{b_num} order by r_num asc limit #{cri.pageStart}, #{cri.amount}
+		]]>	
+	</select>
+	<select id ="getCountByBno" resultType="int">
+		select count(r_num) from sco where b_num = #{b_num}
+	</select>
 </mapper>
+

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 import org.zerock.domain.BoardVO;
-import org.zerock.domain.skylifeVO;
+import org.zerock.domain.Criteria;
 import org.zerock.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
@@ -61,11 +61,27 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	// 게시글 리스트
+//	@Override
+//	public List<BoardVO> list(BoardVO vo) {
+//		log.info("get list..");
+//		return mapper.list(vo);
+//	}
+	
+	
 	@Override
-	public List<BoardVO> list(BoardVO vo) {
-		log.info("get list..");
-		return mapper.list(vo);
+	public int getTotal(Criteria cri) {
+		log.info("get total count");
+		return mapper.getTotalCount(cri);
 	}
+	@Override
+	public List<BoardVO> list(Criteria cri) {
+		log.info("getList with Paging..." + cri);
+		return mapper.getListWithPaging(cri);
+	}
+
+	
+	
+	
 	
 	// 게시글 조회수
 	@Override

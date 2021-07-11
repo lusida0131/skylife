@@ -32,13 +32,9 @@
          </div>
          <div style="width:650px; text-align:center;">
             <input type="hidden" name="b_num" value="${data.b_num}">
-<<<<<<< HEAD
-            <c:if test="${user.id == data.id || user.id == 'admin'}">
-            <button type="button" id="btnUpdate">수정</button>
-=======
             <c:if test="${user.id == data.id}">
             <input type="button" id="btnUpdate" onclick="location.href='/board/update?b_num=<c:out value="${data.b_num}"/>'" value="수정">
->>>>>>> 52960cdd0604f482b913c353289ea725c4f63136
+
             <button type="button" id="btnDelete">삭제</button>
             </c:if>
          </div>
@@ -57,7 +53,7 @@
         <br>
         <br>
             <div id="book_reply">
-               <ul>
+               <ul class="chat">
                   <li class="emptyReply">
                   <c:forEach items="${replyData }" var="com" varStatus="i">
                   
@@ -85,9 +81,12 @@
 						
 						</script>
 					</c:forEach>
+					
                   </li>
                </ul>
+               <div class="panel-footer"></div>
             </div>
+            
             <div class="modal fade" id="myModal" role="dialog">
    				<div class="modal-dialog">
       				<div class="modal-content">
@@ -109,6 +108,7 @@
 			</div>
       
       </form>
+      
    </div>
 </div>
 <script>
@@ -146,7 +146,8 @@ $(function(){
                },
                dataType: "text",
                success:function(result){
-                 // const resultSet = $.trim(result); 
+                 // const resultSet = $.trim(result);
+                
                   location.reload();
                }
                
@@ -180,6 +181,7 @@ $(function(){
                 dataType: "text",
                 success:function(result){
                 	const resultSet = $.trim(result); 
+                	showList(-1);  // 페이지 계산하여 나중에 추가된 댓글을 보여준다.
                    location.reload();
                 }
              });
@@ -222,7 +224,93 @@ $(".rplydelete").click(function(){
     }
 });
 </script>
+<script src="${pageContext.request.contextPath}/resources/js/reply.js"></script>
 <script>
 
+var bnoValue = '<c:out value="${data.b_num}" />';
+var replyUL = $(".chat");
+
+showList(1);
+function showList(page) {   // 댓글 페이지를 보여주는 함수
+	 
+   console.log("show list " + page);
+   replyService.getList({b_num:bnoValue, page: page || 1}, function(replyCnt, list) {
+	   console.log("list: " + list);
+      console.log("replyCnt: " + replyCnt);
+      
+      if(page == -1) {   // -1 page -> 마지막 페이지를 계산해서 마지막 페이지를 요청
+         pageNum = Math.ceil(replyCnt / 10.0);    // ceil(올림) : 마지막 페이지
+         showList(pageNum);                  // 마지막 페이지를 보여주도록 요청
+         return;
+      }
+         
+      var str = "";
+      if(list == null || list.length == 0) {
+         replyUL.html("");
+         return;
+      }
+      for(var i = 0, len = list.length || 0;i < len;i++) {
+         str +="<li class='left clearfix' data-r_num='"+list[i].r_num+"'>";
+         str +="  <div><div class='header'><strong class='primary-font'>["
+            + list[i].r_num+"] "+list[i].id+"</strong>"; 
+          str +="    <small class='pull-right text-muted'>"
+             + "</small></div>";
+          str +="    <p>"+list[i].r_content+"</p></div></li>";
+      }
+      
+      replyUL.html(str);         // 댓글 목록을 보여주기
+      
+      // 페이징 처리하는 부분을 call
+      showReplyPage(replyCnt);   // 페이징 처리하는 부분을 출력
+      
+   });
+  }
+
 </script>
+<script>
+
+var pageNum = 1;
+var replyPageFooter = $(".panel-footer");
+
+function showReplyPage(replyCnt){
+    var endNum = Math.ceil(pageNum / 10.0) * 10;  
+    var startNum = endNum - 9;       
+    var prev = startNum != 1;
+    var next = false;
+    
+    if(endNum * 10 >= replyCnt){
+      endNum = Math.ceil(replyCnt/10.0);
+    }
+    if(endNum * 10 < replyCnt){
+      next = true;
+    }
+    var str = "<ul class='pagination pull-right'>";
+    if(prev){
+      str+= "<li class='page-item'><a class='page-link' href='"+(startNum -1)+"'>Previous</a></li>";
+    }
+    for(var i = startNum ; i <= endNum; i++){
+      var active = pageNum == i? "active":"";
+      str+= "<li class='page-item "+active+" '><a class='page-link' href='"+i+"'>"+i+"</a></li>";
+    }
+    if(next){
+      str+= "<li class='page-item'><a class='page-link' href='"+(endNum + 1)+"'>Next</a></li>";
+    }
+    str += "</ul></div>";
+    console.log(str);
+    replyPageFooter.html(str);
+}
+	replyPageFooter.on("click","li a", function(e){
+     	e.preventDefault();
+     	console.log("page click");
+     	var targetPageNum = $(this).attr("href");
+     	console.log("targetPageNum: " + targetPageNum);
+     	pageNum = targetPageNum;
+     	
+     	showList(pageNum);      // 해당 페이지로 이동
+
+	});
+	
+
+</script>
+
 <%@ include file="../layout/footer.jsp"%>
