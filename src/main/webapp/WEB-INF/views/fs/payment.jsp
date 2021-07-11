@@ -28,7 +28,7 @@
 											(${cnt}) ${list.airlineNm} -  ${list.depAirportNm} (<fmt:formatDate value="${depTime}" pattern="yyyy년MM월dd일 HH시mm분" />) -> ${list.arrAirportNm} (<fmt:formatDate value="${arrTime}" pattern="yyyy년MM월dd일 HH시mm분" />)
 										</a>
 										<!-- <button name="deleteBtn" id="deleteBtn" style="float: right; margin-top: 0px; border: 0px; background-color: rgba(0,0,0,0);">삭제</button> -->
-										<button name="${list.w_num}" id="deleteBtn_${cnt}" onClick="reply_click(this.name)" style="float: right; margin-top: 0px; border: 0px; background-color: rgba(0,0,0,0);">삭제</button>
+										<%-- <button name="${list.w_num}" id="deleteBtn_${cnt}" onClick="reply_click(this.name)" style="float: right; margin-top: 0px; border: 0px; background-color: rgba(0,0,0,0);">삭제</button> --%>
 									</h4>
 								</div>
 								<div id="collapse${cnt}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${cnt}">

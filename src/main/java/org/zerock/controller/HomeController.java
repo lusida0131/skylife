@@ -9,17 +9,17 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() throws Exception {
-      return "/page/flight";
+      return "/fs/flight";
 
     }
     @GetMapping("/page/index")
     public String index() throws Exception {
-        return "/page/flight";
+        return "/fs/flight";
     }
     
     @GetMapping("/page/flight")
     public String flight() throws Exception {
-        return "page/flight";
+        return "fs/flight";
     }
     
 //    @GetMapping("/page/hotel")
