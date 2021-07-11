@@ -17,7 +17,7 @@
 					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
 						<c:set var="cnt" value="0"/>
-						<c:forEach var="list" items="${wlist}" varStatus="status">
+						<c:forEach var="list" items="${pmlist}" varStatus="status">
 						<c:set var="cnt" value="${cnt = cnt + 1}"/>
 						<fmt:parseDate value="${list.depPlandTime}" var="depTime" pattern="yyyyMMddHHmm" />
 						<fmt:parseDate value="${list.arrPlandTime}" var="arrTime" pattern="yyyyMMddHHmm" />
@@ -35,11 +35,11 @@
 									<div class="panel-body">
 										<form method="post" action="/kakaoPay" id="searchFrm">
 											<%-- <p>This is 간단한 내용. write here. (${count})</p> --%>
-											<div style="float: right; margin-bottom: 30px; margin-top: 10px;">
+											<%-- <div style="float: right; margin-bottom: 30px; margin-top: 10px;">
 												<button name="payBtn" style="border: 0px; background-color: rgba(0,0,0,0);">
 											    	<img src="${pageContext.request.contextPath}/resources/images/payment_icon_yellow_small.png">
 											    </button>
-											</div>
+											</div> --%>
 											<input type="hidden" value="${user.id}" name="id" id="id"/>
 											<input type="hidden" value="${list.w_num}" name="w_num" id="w_num"/>
 											<input type="hidden" value="${list.vihicleId}" name="vihicleId" id="vihicleId"/>

@@ -16,7 +16,6 @@
 				<div class="col-md-12">
 					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-						<input type="hidden" value="${user.id}" name="id" id="id"/>
 						<c:set var="idCheck" value="${user.id}"/>
 						<c:if test="${idCheck eq null}"><c:set var="idCheck" value="none"/></c:if>
 						<c:set var="count" value="0"/>
@@ -38,7 +37,7 @@
 										<form method="post" action="/addwish" id="wishFrm" target="param">
 											<iframe id="if" name="param" style="width: 0px; height: 0px; border: 0px;"></iframe>
 											<c:if test="${user.id ne null}"><button name="wishBtn" style="float: right; margin: 8px 10px 15px 10px;">찜</button></c:if>
-											<%-- <input type="hidden" value="${user.id}" name="id" id="id"/> --%>
+											<input type="hidden" value="${user.id}" name="id" id="id"/>
 											<input type="hidden" value="${list.vihicleId}" name="vihicleId" id="vihicleId"/>
 											<input type="hidden" value="${list.airlineNm}" name="airlineNm" id="airlineNm"/>
 											<input type="hidden" value="${list.depAirportNm}" name="depAirportNm" id="depAirportNm"/>

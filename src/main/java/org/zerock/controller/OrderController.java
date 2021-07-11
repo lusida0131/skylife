@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.pay.domain.KakaoPayApprovalVO;
 import org.pay.domain.OrderVO;
 import org.zerock.mapper.OrderMapper;
 
@@ -74,7 +73,6 @@ public class OrderController {
     	log.info("delete wishlist item (w_num) :" + w_num);
     	
     	Integer result = om.WishDelete(w_num);
-    	log.info("result : " + result);
     	
     	if(result == 0) { // delete fail
     		return "fail";
@@ -89,12 +87,10 @@ public class OrderController {
     	String str = String.valueOf(session.getAttribute("user"));
     	String[] arr = str.split(", ");
     	String id = arr[1].substring(3);
-
-    	ArrayList<OrderVO> wlist = om.WishList(id);
-    	model.addAttribute("wlist", wlist);
-    	ArrayList<KakaoPayApprovalVO> pmlist = om.PaymentList(id);
+    	
+    	ArrayList<OrderVO> pmlist = om.PaymentList(id);
     	model.addAttribute("pmlist", pmlist);
-    	log.info("movement payment list: " + pmlist );
+    	log.info("movement payment list: " + pmlist);
     	
     	return "/fs/payment";
     }
