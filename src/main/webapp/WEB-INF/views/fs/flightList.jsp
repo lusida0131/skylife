@@ -16,15 +16,17 @@
 				<div class="col-md-12">
 					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
+						<c:set var="idCheck" value="${user.id}"/>
+						<c:if test="${idCheck eq null}"><c:set var="idCheck" value="none"/></c:if>
 						<c:set var="count" value="0"/>
 						<c:forEach var="list" items="${clist}">
-						<c:set var="count" value="${count = count + 1}"/>
+							<c:set var="count" value="${count = count + 1}"/>
+							<fmt:parseDate value="${list.depPlandTime}" var="depTime" pattern="yyyyMMddHHmm" />
+							<fmt:parseDate value="${list.arrPlandTime}" var="arrTime" pattern="yyyyMMddHHmm" />
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="heading${count}">
 									<h4 class="panel-title">
 										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${count}" aria-expanded="true" aria-controls="collapse${count}">
-											<fmt:parseDate value="${list.depPlandTime}" var="depTime" pattern="yyyyMMddHHmm" />
-											<fmt:parseDate value="${list.arrPlandTime}" var="arrTime" pattern="yyyyMMddHHmm" />
 											(${count}) ${list.airlineNm} -  ${list.depAirportNm} (<fmt:formatDate value="${depTime}" pattern="yyyy년MM월dd일 HH시mm분" />) -> ${list.arrAirportNm} (<fmt:formatDate value="${arrTime}" pattern="yyyy년MM월dd일 HH시mm분" />)
 										</a>
 									</h4>
@@ -34,8 +36,17 @@
 										<%-- <p>This is 간단한 내용. write here. (${count})</p> --%>
 										<form method="post" action="/addwish" id="wishFrm" target="param">
 											<iframe id="if" name="param" style="width: 0px; height: 0px; border: 0px;"></iframe>
-											<button name="wishBtn">찜</button>
-											<table class="table table-striped"> 
+											<c:if test="${user.id ne null}"><button name="wishBtn" style="float: right; margin: 8px 10px 15px 10px;">찜</button></c:if>
+											<input type="hidden" value="${user.id}" name="id" id="id"/>
+											<input type="hidden" value="${list.vihicleId}" name="vihicleId" id="vihicleId"/>
+											<input type="hidden" value="${list.airlineNm}" name="airlineNm" id="airlineNm"/>
+											<input type="hidden" value="${list.depAirportNm}" name="depAirportNm" id="depAirportNm"/>
+											<input type="hidden" value="${list.depPlandTime}" name="depPlandTime" id="depPlandTime"/>
+											<input type="hidden" value="${list.arrAirportNm}" name="arrAirportNm" id="arrAirportNm"/>
+											<input type="hidden" value="${list.arrPlandTime}" name="arrPlandTime" id="arrPlandTime"/>
+											<input type="hidden" value="${list.economyCharge}" name="economyCharge" id="economyCharge"/>
+											<input type="hidden" value="${list.prestigeCharge}" name="prestigeCharge" id="prestigeCharge"/>
+											<table class="table table-striped" style="margin-top:10px;"> 
 												<thead> 
 													<tr> 
 														<th>항공편</th>
@@ -50,7 +61,6 @@
 												</thead> 
 												<tbody> 
 													<tr> 
-														<!-- <th scope="row">#VEG1201</th> -->
 														<td>${list.vihicleId}</td> 
 														<td>${list.airlineNm}</td> 
 														<td>${list.depAirportNm}</td>
@@ -62,15 +72,6 @@
 													</tr>
 												</tbody> 
 											</table>
-											<input type="hidden" value="${user.id}" name="id" id="id"/>
-											<input type="hidden" value="${list.vihicleId}" name="vihicleId" id="vihicleId"/>
-											<input type="hidden" value="${list.airlineNm}" name="airlineNm" id="airlineNm"/>
-											<input type="hidden" value="${list.depAirportNm}" name="depAirportNm" id="depAirportNm"/>
-											<input type="hidden" value="${list.depPlandTime}" name="depPlandTime" id="depPlandTime"/>
-											<input type="hidden" value="${list.arrAirportNm}" name="arrAirportNm" id="arrAirportNm"/>
-											<input type="hidden" value="${list.arrPlandTime}" name="arrPlandTime" id="arrPlandTime"/>
-											<input type="hidden" value="${list.economyCharge}" name="economyCharge" id="economyCharge"/>
-											<input type="hidden" value="${list.prestigeCharge}" name="prestigeCharge" id="prestigeCharge"/>
 										</form>
 									</div>
 								</div>
@@ -543,10 +544,10 @@
 		
 											
 	<script type="text/javascript">
+	
 		$(document).ready(function(){
 			$('#wishBtn').click(function(){
-				console.log("wish clicked");
-				if($.trim($('#id').val()) === "") {
+				if(${idCheck} === 'none') {
 					alert("로그인이 필요한 서비스입니다.");
 					location.href="/auth/loginForm";
 				}
@@ -555,6 +556,7 @@
 				}
 			});
 		});
+		
 	</script>
 
 <%@ include file="../layout/footer.jsp"%>

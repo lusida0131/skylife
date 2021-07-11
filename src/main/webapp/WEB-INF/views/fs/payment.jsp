@@ -10,14 +10,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<h1>WISH LIST</h1><hr>
+					<h1>PAYMENT LIST</h1><hr>
 				</div>
 				
 				<div class="col-md-12">
 					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
 						<c:set var="cnt" value="0"/>
-						<c:forEach var="list" items="${wlist}" varStatus="status">
+						<c:forEach var="list" items="${pmlist}" varStatus="status">
 						<c:set var="cnt" value="${cnt = cnt + 1}"/>
 						<fmt:parseDate value="${list.depPlandTime}" var="depTime" pattern="yyyyMMddHHmm" />
 						<fmt:parseDate value="${list.arrPlandTime}" var="arrTime" pattern="yyyyMMddHHmm" />
@@ -28,18 +28,18 @@
 											(${cnt}) ${list.airlineNm} -  ${list.depAirportNm} (<fmt:formatDate value="${depTime}" pattern="yyyy년MM월dd일 HH시mm분" />) -> ${list.arrAirportNm} (<fmt:formatDate value="${arrTime}" pattern="yyyy년MM월dd일 HH시mm분" />)
 										</a>
 										<!-- <button name="deleteBtn" id="deleteBtn" style="float: right; margin-top: 0px; border: 0px; background-color: rgba(0,0,0,0);">삭제</button> -->
-										<button name="${list.w_num}" id="deleteBtn_${cnt}" onClick="reply_click(this.name)" style="float: right; margin-top: 0px; border: 0px; background-color: rgba(0,0,0,0);">삭제</button>
+										<%-- <button name="${list.w_num}" id="deleteBtn_${cnt}" onClick="reply_click(this.name)" style="float: right; margin-top: 0px; border: 0px; background-color: rgba(0,0,0,0);">삭제</button> --%>
 									</h4>
 								</div>
 								<div id="collapse${cnt}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${cnt}">
 									<div class="panel-body">
 										<form method="post" action="/kakaoPay" id="searchFrm">
 											<%-- <p>This is 간단한 내용. write here. (${count})</p> --%>
-											<div style="float: right; margin-bottom: 30px; margin-top: 10px;">
+											<%-- <div style="float: right; margin-bottom: 30px; margin-top: 10px;">
 												<button name="payBtn" style="border: 0px; background-color: rgba(0,0,0,0);">
 											    	<img src="${pageContext.request.contextPath}/resources/images/payment_icon_yellow_small.png">
 											    </button>
-											</div>
+											</div> --%>
 											<input type="hidden" value="${user.id}" name="id" id="id"/>
 											<input type="hidden" value="${list.w_num}" name="w_num" id="w_num"/>
 											<input type="hidden" value="${list.vihicleId}" name="vihicleId" id="vihicleId"/>
@@ -235,40 +235,6 @@
 						$('#searchFrm').submit();
 					}
 				});
-				
-				/* $('#deleteBtn').click(function(){ 			 /* $("button[id^='deleteBtn_']").on('click',function(){
-					if($.trim($('#id').val()) === "") {
-						alert("로그인이 필요한 서비스입니다.");
-						location.href="/auth/loginForm";
-					}
-					else {
-						var check = confirm("wishlist에서 삭제하시겠습니까?");
-						if(check) {
-							$.ajax({
-								url: "${pageContext.request.contextPath}/fs/wishDelete",
-								type: "post",
-								data:{
-									w_num : $('#w_num').val()
-								},
-								dataType: "text",
-								success: function(data){
-									if(data === "success"){ 
-										alert("삭제되었습니다.");
-										location.reload();
-									} else {
-										alert("삭제에 실패하였습니다. 관리자에게 문의하세요.");
-									}
-								},
-					            error: function() {
-					                alert("서버에러");
-					             }
-							});
-						} else {
-							alert("취소하였습니다.")
-							return false;
-						}
-					}
-				}); */
 				
 			});
 				

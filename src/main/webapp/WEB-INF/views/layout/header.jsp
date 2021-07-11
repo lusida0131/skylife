@@ -117,6 +117,7 @@
 										<li><a href="#">${user.id}님</a></li>
 										<li><a href="/page/memView">회원정보</a></li>
 										<li><a href="/fs/wish">wishlist</a></li>
+										<li><a href="/fs/payment">paymentlist</a></li>
 										<li><a href="/logout">로그아웃</a></li>
 									</c:when>
 								</c:choose>

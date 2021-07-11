@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- <configuration>
-	<typeAliases>
-	    <typeAliase alias="amount" type="org.pay.domain.AmountVO"/>
-	    <typeAliase alias="card" type="org.pay.domain.CardVO"/>
-	</typeAliases>
-</configuration>
- -->
 
 <mapper namespace="org.zerock.mapper.OrderMapper">
+
+<!-- 	<resultMap type="org.pay.domain.KakaoPayApprovalVO" id="PaymentList">
+	    <id column="PNO" property="no" />
+	    <result column="PNAME" property="title" />
+	</resultMap> -->
 
 	<!-- <insert id="AddOrder">
 		insert into spayment(vihicleId, airlineNm, depAirportNm, depPlandTime, 
@@ -45,6 +43,12 @@
 			approved_at = #{approved_at}
 		where tid = #{tid}
 	</update>
+	
+	<select id="PaymentList" resultType="org.pay.domain.OrderVO">
+		select * from spayment where partner_user_id = #{id}
+	</select>
+	
+	
 	
 	<insert id="WishInsert">
 		insert into swish(id, vihicleId, airlineNm, depAirportNm, depPlandTime, 

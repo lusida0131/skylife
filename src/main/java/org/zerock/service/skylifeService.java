@@ -24,4 +24,5 @@ public interface skylifeService {
 	public int emailhave(String email);
 
 	public List<skylifeVO> list(skylifeVO mvo);
+
 }

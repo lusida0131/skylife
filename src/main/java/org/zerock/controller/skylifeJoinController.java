@@ -48,8 +48,7 @@ public class skylifeJoinController {
    private skylifeService service;
    private KakaoAPI kakao;
    
-   private static final Logger logger= 
-   LoggerFactory.getLogger(skylifeJoinController.class);
+   private static final Logger logger = LoggerFactory.getLogger(skylifeJoinController.class);
    private static final String String = null;
    
    @GetMapping("/auth/loginForm")
@@ -87,11 +86,10 @@ public class skylifeJoinController {
          return "redirect:/";
       }
       else {
-   
-         
          return "redirect:/auth/loginForm";
       }
    }
+   
    @RequestMapping(value = "/logout", method = RequestMethod.GET)
    public String logout(HttpSession session) throws Exception {
 
