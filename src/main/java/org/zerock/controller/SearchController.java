@@ -16,8 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.zerock.domain.SearchVO;
-import org.zerock.service.SearchService;
+import org.zerock.domain.FlightVO;
+import org.zerock.service.FlightService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -30,7 +30,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class SearchController {
 	
-	private SearchService service;
+	private FlightService service;
 	
 
 	
@@ -57,7 +57,7 @@ public class SearchController {
 					+ startPortName + " // endPortName: " + endPortName + " // startTime: " + startTime);
 		
 		
-		ArrayList<SearchVO> clist = service.airApi(startPortName, endPortName, startTime);
+		ArrayList<FlightVO> clist = service.airApi(startPortName, endPortName, startTime);
 		
 		if (clist.isEmpty()) {
 			response.setContentType("text/html; charset=UTF-8");

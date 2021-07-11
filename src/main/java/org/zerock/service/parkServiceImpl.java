@@ -10,7 +10,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.zerock.domain.ICNVO;
 import org.zerock.domain.ParkInfoVO;
-import org.zerock.domain.SearchVO;
+import org.zerock.domain.FlightVO;
 import org.zerock.mapper.parkMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;

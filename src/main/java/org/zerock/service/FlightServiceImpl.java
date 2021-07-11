@@ -14,7 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import org.springframework.stereotype.Service;
-import org.zerock.domain.SearchVO;
+import org.zerock.domain.FlightVO;
 //import org.zerock.mapper.skylifeMapper;
 
 import lombok.AllArgsConstructor;
@@ -24,13 +24,13 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Service
 @AllArgsConstructor
-public class SearchServiceImpl implements SearchService{
+public class FlightServiceImpl implements FlightService{
 	
 	@Override
-	public ArrayList<SearchVO> airApi(String daID, String aaID, String dpTime) throws IOException {
+	public ArrayList<FlightVO> airApi(String daID, String aaID, String dpTime) throws IOException {
 		
-		ArrayList<SearchVO> list = new ArrayList<SearchVO>();
-		SearchVO csvo = new SearchVO();
+		ArrayList<FlightVO> list = new ArrayList<FlightVO>();
+		FlightVO csvo = new FlightVO();
 		
 		// URL
 		StringBuilder urlBuilder = new StringBuilder("http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList");
@@ -108,7 +108,7 @@ public class SearchServiceImpl implements SearchService{
 	    JSONArray itemArray = itemsObject.getJSONArray("item");
 	    for (int i = 0; i < itemArray.length(); i++) {
 	    	
-	    	SearchVO svo = new SearchVO();
+	    	FlightVO svo = new FlightVO();
 	    	JSONObject iobj = itemArray.getJSONObject(i);
 	    	//System.out.println("iobj(" + i + "): " + iobj.toString());
 	        

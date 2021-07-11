@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Data
-public class SearchVO {
+public class FlightVO {
 
 	private String vihicleId;		// 항공편명
 	private String airlineNm;		// 항공사명
@@ -22,9 +22,9 @@ public class SearchVO {
 	private String itemCheck;		// 항공편 item check
 	
 	
-	public SearchVO() { }
+	public FlightVO() { }
 	
-	public SearchVO(String vihicleId, String airlineNm, long depPlandTime, long arrPlandTime,
+	public FlightVO(String vihicleId, String airlineNm, long depPlandTime, long arrPlandTime,
 			int economyCharge, int prestigeCharge, String depAirportNm, String arrAirportNm) {
 		
 		this.vihicleId = vihicleId;
@@ -37,7 +37,7 @@ public class SearchVO {
 		this.arrAirportNm = arrAirportNm;
 		
 	}
-	public SearchVO(String vihicleId, String airlineNm, String depPlandTime, String arrPlandTime,
+	public FlightVO(String vihicleId, String airlineNm, String depPlandTime, String arrPlandTime,
 			String economyCharge, String prestigeCharge, String depAirportNm, String arrAirportNm) {
 		
 		this.vihicleId = vihicleId;
