@@ -13,9 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.zerock.domain.FlightVO;
 import org.zerock.service.FlightService;
 
@@ -32,35 +34,31 @@ public class FlightController {
 	
 	private FlightService service;
 	
-
-	
-	@PostMapping("/fs/flightList")
-	public String flightViewTest() {
-		return"/fs/flightList";
-	}
 	
 	
 	@RequestMapping(value="/fs/searchFlight", method=RequestMethod.POST)
 	public String searchFlight(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException, ParseException {
 		
+		log.info("@@@@@@@@@@@@@@@@ flight Search Start @@@@@@@@@@@@@@@@");
+		
 		String startPortName = request.getParameter("from_place");
 		String endPortName = request.getParameter("to_place");
-		String startTime = request.getParameter("date_start");
-		String pageNum = "1";
+		String startDate = request.getParameter("date_start");
+		Integer pageNum = 1;
 		
 		// data format change
 		SimpleDateFormat before = new SimpleDateFormat("MM/dd/yyyy");
 		SimpleDateFormat after = new SimpleDateFormat("yyyyMMdd");
-		Date temp = before.parse(startTime);
-		startTime = after.format(temp);
+		Date temp = before.parse(startDate);
+		startDate = after.format(temp);
 		
-		log.info("filght schedule search >>>> startPortName: " 
-					+ startPortName + " // endPortName: " + endPortName + " // startTime: " + startTime);
+		log.info("filght schedule search >>>> startPortName: " + startPortName + " // endPortName: " + endPortName 
+				+ " // startDate: " + startDate + " // pageNum: " + pageNum);
 		
 		
-		ArrayList<FlightVO> clist = service.airApi(startPortName, endPortName, startTime, pageNum);
+		ArrayList<FlightVO> flist = service.airApi(startPortName, endPortName, startDate, pageNum);
 		
-		if (clist.isEmpty()) {
+		if (flist.isEmpty()) {
 			response.setContentType("text/html; charset=UTF-8");
 	        PrintWriter out = response.getWriter();
 	        out.println("<script>alert('해당 항공편은 존재하지 않습니다.'); </script>");
@@ -69,13 +67,93 @@ public class FlightController {
 			return "/fs/flight";
 		}
 		
-		model.addAttribute("endPortName", service.nameset(endPortName));
-		model.addAttribute("startTime", startTime);
-		model.addAttribute("clist", clist);
+		FlightVO fhlist = new FlightVO();
+		fhlist.setStartPortName(startPortName);
+		fhlist.setEndPortName(endPortName);
+		fhlist.setStartDate(startDate);
+		fhlist.setPageNo(pageNum);
+		fhlist.setTotalCount(flist.get(0).getTotalCount());
+		fhlist.setEndPN_ko(service.nameset(endPortName));
+		
+		model.addAttribute("flist", flist);
+		model.addAttribute("fhlist", fhlist);
 		
 		return "/fs/flightList";
 		
 	}
-
+	
+	
+	@RequestMapping(value="/fs/flightPage", method=RequestMethod.POST)
+	public String flightNext(HttpServletRequest request, Model model) throws IOException, ParseException {
+		
+		log.info("@@@@@@@@@@@@@@@@ flight Next Start @@@@@@@@@@@@@@@@");
+		
+		String startPortName = request.getParameter("spn");
+		String endPortName = request.getParameter("epn");
+		String startDate = request.getParameter("sd");
+		Integer pageNum = Integer.parseInt(request.getParameter("pNum"));
+		
+		log.info("NextPage schedule search >>>> startPortName: " + startPortName + " // endPortName: " + endPortName 
+				+ " // startDate: " + startDate + " // pageNum: " + pageNum);
+		
+		ArrayList<FlightVO> flist = service.airApi(startPortName, endPortName, startDate, pageNum);
+		
+		FlightVO fhlist = new FlightVO();
+		fhlist.setStartPortName(startPortName);
+		fhlist.setEndPortName(endPortName);
+		fhlist.setStartDate(startDate);
+		fhlist.setPageNo(pageNum);
+		fhlist.setTotalCount(flist.get(0).getTotalCount());
+		fhlist.setEndPN_ko(service.nameset(endPortName));
+		
+		log.info("fhlist: " + fhlist);
+		
+		model.addAttribute("flist", flist);
+		model.addAttribute("fhlist", fhlist);
+		
+		log.info("@@@@@@@@@@@@@@@@ flight Next End @@@@@@@@@@@@@@@@");
+		
+		return "/fs/flightList";
+		
+	}
+//	@ResponseBody
+//	@RequestMapping(value="/fs/flightNext", method=RequestMethod.POST)
+//	public String flightNext(String spn, String epn, String sd, String pNum, Model model) throws IOException, ParseException {
+//		
+//		log.info("@@@@@@@@@@@@@@@@ flight Next Start @@@@@@@@@@@@@@@@");
+//		
+//		String startPortName = spn;
+//		String endPortName = epn;
+//		String startDate = sd;
+//		Integer pageNum = Integer.parseInt(pNum) + 1;
+//		
+//		log.info("NextPage schedule search >>>> startPortName: " + startPortName + " // endPortName: " + endPortName 
+//				+ " // startDate: " + startDate + " // pageNum: " + pageNum);
+//		
+//		ArrayList<FlightVO> flist = service.airApi(startPortName, endPortName, startDate, pageNum);
+//		
+//		FlightVO fhlist = new FlightVO();
+//		fhlist.setStartPortName(startPortName);
+//		fhlist.setEndPortName(endPortName);
+//		fhlist.setStartDate(startDate);
+//		fhlist.setPageNo(pageNum);
+//		fhlist.setTotalCount(flist.get(0).getTotalCount());
+//		fhlist.setEndPN_ko(service.nameset(endPortName));
+//		
+//		log.info("fhlist: " + fhlist);
+//		
+//		model.addAttribute("flist", flist);
+//		model.addAttribute("fhlist", fhlist);
+//		
+//		log.info("@@@@@@@@@@@@@@@@ flight Next End @@@@@@@@@@@@@@@@");
+//		
+//		return "/fs/flightList";
+//		
+//	}
+	
+//	@GetMapping("/fs/flightList")
+//	public String flightList() {
+//		return "/fs/flightList";
+//	}
 
 }

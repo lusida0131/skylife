@@ -11,9 +11,9 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h1>항공편 검색 목록</h1>
-					<fmt:parseDate value="${startTime}" var="stime" pattern="yyyyMMdd" />
+					<fmt:parseDate value="${fhlist.startDate}" var="sdate" pattern="yyyyMMdd" />
 					<h3 style="text-align: center;">
-						검색 일자 : &nbsp;&nbsp;<fmt:formatDate value="${stime}" pattern="yyyy년 MM월 dd일 (E)" />&nbsp;&nbsp;&nbsp;${endPortName}행
+						검색 일자 : &nbsp;&nbsp;<fmt:formatDate value="${sdate}" pattern="yyyy년 MM월 dd일 (E)" />&nbsp;&nbsp;&nbsp;${fhlist.endPN_ko}행
 					</h3>
 					
 					<c:set var="idCheck" value="${user.id}"/>
@@ -27,7 +27,7 @@
 					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
 						<c:set var="count" value="0"/>
-						<c:forEach var="list" items="${clist}">
+						<c:forEach var="list" items="${flist}">
 							<c:set var="count" value="${count = count + 1}"/>
 							<fmt:parseDate value="${list.depPlandTime}" var="depTime" pattern="yyyyMMddHHmm" />
 							<fmt:parseDate value="${list.arrPlandTime}" var="arrTime" pattern="yyyyMMddHHmm" />
@@ -90,6 +90,34 @@
 							</div>
 							
 						</c:forEach>
+						
+						
+						<div style="text-align: center; margin-top: 30px;">
+							<c:set var="pNum" value="${fhlist.pageNo}"/>
+							<c:set var="toCnt" value="${fhlist.totalCount}"/>
+							<form method="post" action="/fs/flightPage" id="pbFrm" style="display:inline;">
+								<input type="hidden" value="${fhlist.startPortName}" name="spn" id="spn"/>
+								<input type="hidden" value="${fhlist.endPortName}" name="epn" id="epn"/>
+								<input type="hidden" value="${fhlist.startDate}" name="sd" id="sd"/>
+								<input type="hidden" value="${fhlist.pageNo - 1}" name="pNum" id="pNum"/>
+								<input type="hidden" value="${fhlist.totalCount}" name="spn" id="toCnt"/>
+								<c:if test="${pNum > 1}"><%-- <c:if test="${(pNum+1)*30 > toCnt - pNum*30}"> --%>
+									<input type="submit" name="backBtn" style="margin:10px;" value="이전"/>
+								</c:if><%-- </c:if> --%>
+							</form>
+							<fmt:parseNumber var="tCnt" integerOnly="true" value="${(toCnt/30)+(1-((toCnt/30)%1))%1}"/>
+							<span> ${pNum} / ${tCnt} </span>
+							<form method="post" action="/fs/flightPage" id="pnFrm" style="display:inline;">
+								<input type="hidden" value="${fhlist.startPortName}" name="spn" id="spn"/>
+								<input type="hidden" value="${fhlist.endPortName}" name="epn" id="epn"/>
+								<input type="hidden" value="${fhlist.startDate}" name="sd" id="sd"/>
+								<input type="hidden" value="${fhlist.pageNo + 1}" name="pNum" id="pNum"/>
+								<input type="hidden" value="${fhlist.totalCount}" name="spn" id="toCnt"/>
+								<c:if test="${pNum*30 < toCnt}">
+									<input type="submit" name="nextBtn" style="margin:10px;" value="다음"/>
+								</c:if>
+							</form>
+						</div>
 						
 					</div>
 				</div>

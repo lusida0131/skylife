@@ -76,7 +76,7 @@ public class FlightServiceImpl implements FlightService{
 	}
 	
 	@Override
-	public ArrayList<FlightVO> airApi(String daID, String aaID, String dpTime, String pageNum) throws IOException {
+	public ArrayList<FlightVO> airApi(String daID, String aaID, String dpTime, Integer pageNum) throws IOException {
 		
 		ArrayList<FlightVO> list = new ArrayList<FlightVO>();
 		
@@ -87,7 +87,7 @@ public class FlightServiceImpl implements FlightService{
 		// 한 페이지 결과 수
 		urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("30", "UTF-8"));
 		// 페이지 번호
-		urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(pageNum, "UTF-8"));
+		urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(String.valueOf(pageNum), "UTF-8"));
 		// 출발공항ID
 		urlBuilder.append("&" + URLEncoder.encode("depAirportId","UTF-8") + "=" + URLEncoder.encode(daID, "UTF-8"));
 		// 도착공항ID
@@ -186,8 +186,8 @@ public class FlightServiceImpl implements FlightService{
 	        // 도착공항
 	        svo.setArrAirportNm(iobj.getString("arrAirportNm"));
 	        
-	        svo.setPageNo(pageNo);
-	        svo.setTotalCount(totalCount);
+	        svo.setPageNo(Integer.parseInt(pageNo));
+	        svo.setTotalCount(Integer.parseInt(totalCount));
 	        
 	        //System.out.println(i + "번째 item: " + svo);
 	        

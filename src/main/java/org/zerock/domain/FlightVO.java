@@ -19,8 +19,13 @@ public class FlightVO {
 	private String depAirportNm;	// 출발공항
 	private String arrAirportNm;	// 도착공항
 	
-	private String pageNo;			// 페이지 번호
-	private String totalCount;		// item count
+	private String startPortName;	// input 출발공항
+	private String endPortName;		// input 도착공
+	private String startDate;		// 조회 날짜 - 출발
+	private String endPN_ko;		// 도착공항 한글이름
+	private Integer pageNo;			// 페이지 번호
+	private int totalCount;			// item count
+	
 	
 	
 	public FlightVO() { }
