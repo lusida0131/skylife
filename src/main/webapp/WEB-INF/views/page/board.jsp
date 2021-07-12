@@ -13,7 +13,7 @@
 
 
 <div class="container">
-	<div class="row">
+	<div class="table-responsive">
 		<div class="col-md-3" style="float: right">
 			<form action="#" method="get">
 				<div class="input-group">
@@ -27,7 +27,7 @@
 				</div>
 			</form>
 		</div>
-		<button type="button" id="btnWrite" style="float: right">글쓰기</button>
+		<button type="button" id="btnWrite" style="float: right" class="btn btn-sm btn-primary">글쓰기</button>
 		<div class="col-md-9">
 			<table class="table table-list-search">
 				<thead>

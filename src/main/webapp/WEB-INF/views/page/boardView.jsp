@@ -13,40 +13,36 @@
 
 
 <div class="container">
-   <div class="row">
+   <div class="card" style="padding: 20px; border-radius: 15px; margin: 20px auto;">
       <form name="form1" method="post">
-         <div>
-            작성일자: <fmt:formatDate value="${data.time}" pattern="yyy-MM-dd HH:mm:ss"/>
+         <div class="form-group">
+            	이름: <input name="id" id="id" value="${data.id}" readonly class="form-control" style="width:120px; display:inline">&nbsp;&nbsp;작성일자: <fmt:formatDate value="${data.time}" pattern="yyy-MM-dd HH:mm:ss"/></input>
+            	
          </div>
-         <div>
-            제목
-            <input name="b_title" id="b_title" value="${data.b_title}" readonly>
+         <div class="form-group">
+            	<p>제목<input name="b_title" id="b_title" value="${data.b_title}" readonly class="form-control"></p>
          </div>
-         <div>
-            내용
-            <textarea name="b_content" id="b_content" rows="4" cols="80" readonly>${data.b_content}</textarea>
+        <div class="form-group">
+            	<p>내용<textarea name="b_content" id="b_content" rows="4" cols="80" readonly class="form-control">${data.b_content}</textarea></p>
          </div>
-         <div>
-            이름
-            <input name="id" id="id" value="${data.id}" readonly>
+         <div class="form-group">
+            	<p>이름<input name="id" id="id" value="${data.id}" readonly class="form-control"></p>
          </div>
          <div style="width:650px; text-align:center;">
             <input type="hidden" name="b_num" value="${data.b_num}">
 			<c:if test="${user.id == data.id || user.id == 'admin'}">
-            <button type="button" id="btnUpdate">수정</button>
-            <%-- <c:if test="${user.id == data.id}">
-            <input type="button" id="btnUpdate" onclick="location.href='/board/update?b_num=<c:out value="${data.b_num}"/>'" value="수정"> --%>
-            <button type="button" id="btnDelete">삭제</button>
+            <input type="button" id="btnUpdate" onclick="location.href='/board/update?b_num=<c:out value="${data.b_num}"/>'" value="수정" class="btn btn-sm btn-primary">
+            <button type="button" id="btnDelete" class="btn btn-sm btn-primary">삭제</button>
             </c:if>
          </div>
          <br>
          <br>
          <div>
-            <textarea rows="6px" cols="155px" name="r_contented" id="r_contented"></textarea>
+            <textarea rows="6px" cols="155px" name="r_contented" id="r_contented" placeholder="댓글을 작성해주세요"></textarea>
             <input type="hidden" name="ided" id="ided" value="${user.id }">
             <input type="hidden" name="b_num" id="b_num" value="${data.b_num }">
             <%-- <input type="hidden" name="r_num" id="r_num" value="${data.r_num }"> --%>
-         	<input type="button"id="reply_btn" name="commentInsertBtn" value="등록">
+         	<input type="button"id="reply_btn" name="commentInsertBtn" value="등록" class="btn btn-sm btn-primary">
          </div>
          <c:set var="count" value="0"/>
         
@@ -57,7 +53,7 @@
                <ul class="chat">
                   <li class="emptyReply">
                   <c:forEach items="${replyData }" var="com" varStatus="i">
-                  
+                  		
                      <c:if test="${com.r_num != null }">
                      <p>(${count})${com.id } (${com.time}) : ${com.r_content}</p>
                         <input type="hidden" id="r_contents${i.getIndex()}" value="${com.r_content }">
@@ -85,7 +81,6 @@
 					
                   </li>
                </ul>
-               <div class="panel-footer"></div>
             </div>
             
             <div class="modal fade" id="myModal" role="dialog">
@@ -236,7 +231,7 @@ function showList(page) {   // 댓글 페이지를 보여주는 함수
 	 
    console.log("show list " + page);
    replyService.getList({b_num:bnoValue, page: page || 1}, function(replyCnt, list) {
-	   console.log("list: " + list);
+	  console.log("list: " + list);
       console.log("replyCnt: " + replyCnt);
       
       if(page == -1) {   // -1 page -> 마지막 페이지를 계산해서 마지막 페이지를 요청
@@ -251,12 +246,12 @@ function showList(page) {   // 댓글 페이지를 보여주는 함수
          return;
       }
       for(var i = 0, len = list.length || 0;i < len;i++) {
-         str +="<li class='left clearfix' data-r_num='"+list[i].r_num+"'>";
-         str +="  <div><div class='header'><strong class='primary-font'>["
-            + list[i].r_num+"] "+list[i].id+"</strong>"; 
-          str +="    <small class='pull-right text-muted'>"
+         str +="<li class='left clearfix'>";
+         str +="  <div><div class='header'><strong class='primary-font'>작성자: "+list[i].id+"</strong>"; 
+         str +="    <small class='pull-right text-muted'>"
              + "</small></div>";
-          str +="    <p>"+list[i].r_content+"</p></div></li>";
+         str +="    <p>"+list[i].r_content+"</p></div></li>";
+         
       }
       
       replyUL.html(str);         // 댓글 목록을 보여주기
