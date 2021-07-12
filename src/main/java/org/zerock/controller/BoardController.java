@@ -92,10 +92,10 @@ public class BoardController {
 		
 		BoardVO data = service.view(b_num);
 		model.addAttribute("data", data);
-		log.info("돌아가~ " + data);
+		log.info("board: " + data);
 		List<ReplyVO> replyData = Replyservice.selectcomment(cri, b_num);
 		model.addAttribute("replyData", replyData);
-		log.info("돌아가~ " + replyData);;
+		log.info("reply: " + replyData);;
 
 		return "/page/boardView";
 	}
@@ -136,7 +136,7 @@ public class BoardController {
 	// 게시글 수정 (기능)
 	@RequestMapping(value="/board/update", method=RequestMethod.POST)
 	public String update(@ModelAttribute BoardVO vo) throws Exception {
-		log.info("들어왔니?");
+		log.info("board update success");
 		service.update(vo);
 		log.info("update success: " + vo);
 		
