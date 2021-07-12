@@ -10,21 +10,6 @@
 						<div class="row">
 							<div class="col-sm-5 col-md-5" style="margin-top: 60px;">
 								<div class="tabulation animate-box">
-
-									<!-- Nav tabs -->
-								    <!-- <ul class="nav nav-tabs" role="tablist">
-								    	<li role="presentation" class="active">
-								      		<a href="#flights" aria-controls="flights" role="tab" data-toggle="tab">Flights</a>
-								    	</li>
-								    	<li role="presentation">
-								    		<a href="#hotels" aria-controls="hotels" role="tab" data-toggle="tab">Hotels</a>
-								    	</li>
-								    	<li role="presentation">
-								    		<a href="#packages" aria-controls="packages" role="tab" data-toggle="tab">Packages</a>
-								    	</li>
-								    </ul> -->
-
-								    <!-- Tab panes -->
 									<div class="tab-content">
 									
 										<!-- ################################## FORM TAG HERE ################################## -->

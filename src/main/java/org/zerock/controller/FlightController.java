@@ -13,11 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.zerock.domain.FlightVO;
 import org.zerock.service.FlightService;
 
@@ -38,8 +35,6 @@ public class FlightController {
 	
 	@RequestMapping(value="/fs/searchFlight", method=RequestMethod.POST)
 	public String searchFlight(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException, ParseException {
-		
-		log.info("@@@@@@@@@@@@@@@@ flight Search Start @@@@@@@@@@@@@@@@");
 		
 		String startPortName = request.getParameter("from_place");
 		String endPortName = request.getParameter("to_place");
@@ -86,8 +81,6 @@ public class FlightController {
 	@RequestMapping(value="/fs/flightPage", method=RequestMethod.POST)
 	public String flightNext(HttpServletRequest request, Model model) throws IOException, ParseException {
 		
-		log.info("@@@@@@@@@@@@@@@@ flight Next Start @@@@@@@@@@@@@@@@");
-		
 		String startPortName = request.getParameter("spn");
 		String endPortName = request.getParameter("epn");
 		String startDate = request.getParameter("sd");
@@ -111,49 +104,8 @@ public class FlightController {
 		model.addAttribute("flist", flist);
 		model.addAttribute("fhlist", fhlist);
 		
-		log.info("@@@@@@@@@@@@@@@@ flight Next End @@@@@@@@@@@@@@@@");
-		
 		return "/fs/flightList";
 		
 	}
-//	@ResponseBody
-//	@RequestMapping(value="/fs/flightNext", method=RequestMethod.POST)
-//	public String flightNext(String spn, String epn, String sd, String pNum, Model model) throws IOException, ParseException {
-//		
-//		log.info("@@@@@@@@@@@@@@@@ flight Next Start @@@@@@@@@@@@@@@@");
-//		
-//		String startPortName = spn;
-//		String endPortName = epn;
-//		String startDate = sd;
-//		Integer pageNum = Integer.parseInt(pNum) + 1;
-//		
-//		log.info("NextPage schedule search >>>> startPortName: " + startPortName + " // endPortName: " + endPortName 
-//				+ " // startDate: " + startDate + " // pageNum: " + pageNum);
-//		
-//		ArrayList<FlightVO> flist = service.airApi(startPortName, endPortName, startDate, pageNum);
-//		
-//		FlightVO fhlist = new FlightVO();
-//		fhlist.setStartPortName(startPortName);
-//		fhlist.setEndPortName(endPortName);
-//		fhlist.setStartDate(startDate);
-//		fhlist.setPageNo(pageNum);
-//		fhlist.setTotalCount(flist.get(0).getTotalCount());
-//		fhlist.setEndPN_ko(service.nameset(endPortName));
-//		
-//		log.info("fhlist: " + fhlist);
-//		
-//		model.addAttribute("flist", flist);
-//		model.addAttribute("fhlist", fhlist);
-//		
-//		log.info("@@@@@@@@@@@@@@@@ flight Next End @@@@@@@@@@@@@@@@");
-//		
-//		return "/fs/flightList";
-//		
-//	}
-	
-//	@GetMapping("/fs/flightList")
-//	public String flightList() {
-//		return "/fs/flightList";
-//	}
 
 }

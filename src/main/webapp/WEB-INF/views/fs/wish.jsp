@@ -238,40 +238,6 @@
 					}
 				});
 				
-				/* $('#deleteBtn').click(function(){ 			 /* $("button[id^='deleteBtn_']").on('click',function(){
-					if($.trim($('#id').val()) === "") {
-						alert("로그인이 필요한 서비스입니다.");
-						location.href="/auth/loginForm";
-					}
-					else {
-						var check = confirm("wishlist에서 삭제하시겠습니까?");
-						if(check) {
-							$.ajax({
-								url: "${pageContext.request.contextPath}/fs/wishDelete",
-								type: "post",
-								data:{
-									w_num : $('#w_num').val()
-								},
-								dataType: "text",
-								success: function(data){
-									if(data === "success"){ 
-										alert("삭제되었습니다.");
-										location.reload();
-									} else {
-										alert("삭제에 실패하였습니다. 관리자에게 문의하세요.");
-									}
-								},
-					            error: function() {
-					                alert("서버에러");
-					             }
-							});
-						} else {
-							alert("취소하였습니다.")
-							return false;
-						}
-					}
-				}); */
-				
 			});
 				
 		</script>
