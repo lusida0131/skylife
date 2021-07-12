@@ -8,7 +8,6 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/board.css" />
 <script src="${pageContext.request.contextPath}/resources/js/board.js"></script>
-<!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 
@@ -39,7 +38,6 @@
 						<th>조회수</th>
 					</tr>
 				</thead>
-				<%-- <td><a href="${pageContext.request.contextPath}/page/boardView?b_num=${BoardVO.b_num}">${BoardVO.b_title}</a></td> --%>
 				<c:forEach var="BoardVO" items="${list}">
 					<tr>
 						<td>${BoardVO.b_num}</td>

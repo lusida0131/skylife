@@ -7,7 +7,6 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css"/>
 <script src="${pageContext.request.contextPath}/resources/js/board.js"></script>
-<!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -56,13 +55,10 @@
                   		
                      <c:if test="${com.r_num != null }">
                      <p>(${count})${com.id } (${com.time}) : ${com.r_content}</p>
-                        <input type="hidden" id="r_contents${i.getIndex()}" value="${com.r_content }">
-                        <%-- <textarea id="r_contents${i.getIndex()}" rows="" cols="">${com.r_content }</textarea> --%>
-                        
+                        <input type="hidden" id="r_contents${i.getIndex()}" value="${com.r_content }">             
                         <input type="hidden" name="r_num" id="r_num${i.getIndex()}" value="${com.r_num }">
                         <input type="hidden" id="ider" value="${com.id }">
-                        <input type="hidden" value="${com.r_num }">
-                        
+                        <input type="hidden" value="${com.r_num }">                
                         <button type = "button" name="delete" id="delete" class="rplydelete" value="${com.r_num}">삭제</button>
                         <button type="button" id="replyBtnUpdate${i.getIndex()}" data-toggle="modal" data-target="#myModal" value="${com.r_num}" >수정</button>         
                      </c:if>
@@ -76,7 +72,7 @@
 						 });
 						
 						
-						</script>
+					</script>
 					</c:forEach>
 					
                   </li>
@@ -142,8 +138,6 @@ $(function(){
                },
                dataType: "text",
                success:function(result){
-                 // const resultSet = $.trim(result);
-                
                   location.reload();
                }
                
@@ -187,21 +181,6 @@ $(function(){
     });
 
 });
-</script>
-
-<script>
-<%--
-$("#replies").on("click", ".replyLi button", function () {
-    var reply = $(this).parent();
-
-    var r_contented = reply.find(".r_contented").text();
-    var ider = reply.find(".ider").text();
-
-
-    $("#r_contented").val(r_contented);
-    $("#ider").val(ider);
-
-}); --%>
 </script>
 <script>
 $(".rplydelete").click(function(){
@@ -305,8 +284,6 @@ function showReplyPage(replyCnt){
      	showList(pageNum);      // 해당 페이지로 이동
 
 	});
-	
-
 </script>
 
 <%@ include file="../layout/footer.jsp"%>
