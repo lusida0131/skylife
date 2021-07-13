@@ -37,6 +37,7 @@
    				dateFormat: 'yy-mm-dd', 
    				autoclose : true ,
    				startDate :  new Date(),
+ 
    				
    }).on("changeDate", function(e) {
         
@@ -47,7 +48,7 @@
  $('#date-end').datepicker({ 
    				dateFormat: 'yy-mm-dd', 
    				autoclose : true ,
-   				startDate :  new Date()
+   				endDate :  new Date()
    				
    				
 }).on("changeDate", function(e) {
