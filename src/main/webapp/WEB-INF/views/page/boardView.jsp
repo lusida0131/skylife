@@ -24,9 +24,7 @@
         <div class="form-group">
             	<p>내용<textarea name="b_content" id="b_content" rows="4" cols="80" readonly class="form-control">${data.b_content}</textarea></p>
          </div>
-         <div class="form-group">
-            	<p>이름<input name="id" id="id" value="${data.id}" readonly class="form-control"></p>
-         </div>
+        
          <div style="width:650px; text-align:center;">
             <input type="hidden" name="b_num" value="${data.b_num}">
 			<c:if test="${user.id == data.id || user.id == 'admin'}">
@@ -51,36 +49,12 @@
             <div id="book_reply">
                <ul class="chat">
                   <li class="emptyReply">
-                  <c:forEach items="${replyData }" var="com" varStatus="i">
-                  		
-                     <c:if test="${com.r_num != null }">
-                     <p>(${count})${com.id } (${com.time}) : ${com.r_content}</p>
-                        <input type="hidden" id="r_contents${i.getIndex()}" value="${com.r_content }">             
-                        <input type="hidden" name="r_num" id="r_num${i.getIndex()}" value="${com.r_num }">
-                        <input type="hidden" id="ider" value="${com.id }">
-                        <input type="hidden" value="${com.r_num }">                
-                        <button type = "button" name="delete" id="delete" class="rplydelete" value="${com.r_num}">삭제</button>
-                        <button type="button" id="replyBtnUpdate${i.getIndex()}" data-toggle="modal" data-target="#myModal" value="${com.r_num}" >수정</button>         
-                     </c:if>
-                     
-                     <script>
-						$('#replyBtnUpdate${i.getIndex()}').click(function(e){
-						    const valuenum = $('#replyBtnUpdate${i.getIndex()}').val();
-						    const valuecom = $('#r_contents${i.getIndex()}').val();
-						    $('#r_num').val(valuenum);
-						    $("#r_content_text").text(valuecom);
-						 });
-						
-						
-					</script>
-					</c:forEach>
-					
                   </li>
                </ul>
             </div>
-            
+            <div class="panel-footer"></div>
             <div class="modal fade" id="myModal" role="dialog">
-   				<div class="modal-dialog">
+   				<div class="modal-dialog" style="z-index: 9999;">
       				<div class="modal-content">
          				<div class="modal-header">
             				<button type="button" class="close" data-dismiss="modal">×</button>
@@ -183,20 +157,24 @@ $(function(){
 });
 </script>
 <script>
-$(".rplydelete").click(function(){
-    if(confirm("삭제하시겠습니까?")){
-        $.ajax({
-            type: "delete",
-            url: "${pageContext.request.contextPath}/reply/delete/" + Number($(this).val()),
-            success: function(result){
-                if(result == "success"){
-                    alert("삭제되었습니다.");
-                    location.reload();
-                    listReplyRest("1");
-                }
-            }
-        });
-    }
+$(document).ready(function() {
+
+	$(".rplydelete").click(function(){
+		
+	    if(confirm("삭제하시겠습니까?")){
+	        $.ajax({
+	            type: "delete",
+	            url: "${pageContext.request.contextPath}/reply/delete/" + Number($(this).val()),
+	            success: function(result){
+	                if(result == "success"){
+	                    alert("삭제되었습니다.");
+	                    location.reload();
+	                    listReplyRest("1");
+	                }
+	            }
+	        });
+	    }
+	});
 });
 </script>
 <script src="${pageContext.request.contextPath}/resources/js/reply.js"></script>
@@ -224,13 +202,26 @@ function showList(page) {   // 댓글 페이지를 보여주는 함수
          replyUL.html("");
          return;
       }
-      for(var i = 0, len = list.length || 0;i < len;i++) {
-         str +="<li class='left clearfix'>";
+      for(var i = 0, len = list.length || 0 ; i < len ; i++) {
+         str +="<li class='left clearfix emptyReply'>";
          str +="  <div><div class='header'><strong class='primary-font'>작성자: "+list[i].id+"</strong>"; 
          str +="    <small class='pull-right text-muted'>"
              + "</small></div>";
-         str +="    <p>"+list[i].r_content+"</p></div></li>";
-         
+         str +="    <p>"+list[i].r_content+"</p>";
+         str +=" <button type = 'button' name='delete' id='delete' class='btn btn-sm btn-primary rplydelete' value='" + list[i].r_num + "'>삭제</button>";
+         str +=" <button type='button' id='replyBtnUpdate" + i + "' data-toggle='modal' data-target='#myModal' value='" + list[i].r_num + "' class='btn btn-sm btn-primary'>수정</button>";
+         str +=" <input type='hidden' id='r_contents" + i + "' value='" + list[i].r_content + "'>  ";
+         str +=" </div></li>";
+         str +="<script>";
+         str +=" $(document).ready(function() {";
+         str +=" $('#replyBtnUpdate" + i + "').click(function(e){";
+         str +=" const valuenum = $('#replyBtnUpdate" + i + "').val();";
+         str +=" const valuecom = $('#r_contents" + i + "').val();";
+         str +=" $('#r_num').val(valuenum);";
+         str +=" $('#r_content_text').text(valuecom);";
+         str +=" });";
+         str +="});";
+         str +="</"+"script>";     
       }
       
       replyUL.html(str);         // 댓글 목록을 보여주기

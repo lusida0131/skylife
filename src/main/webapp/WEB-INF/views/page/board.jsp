@@ -26,7 +26,9 @@
 				</div>
 			</form>
 		</div>
+		<c:if test="${user.id != null || user.id == 'admin'}">
 		<button type="button" id="btnWrite" style="float: right" class="btn btn-sm btn-primary">글쓰기</button>
+		</c:if>
 		<div class="col-md-9">
 			<table class="table table-list-search">
 				<thead>

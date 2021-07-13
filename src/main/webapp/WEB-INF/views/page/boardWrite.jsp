@@ -60,12 +60,6 @@
 				
 				return;
 			}
-			if(id == ""){
-				alert("이름을 입력하세요");
-				document.form1.id.focus();
-				
-				return;
-			}
 			document.form1.submit();
 		});
 	});
