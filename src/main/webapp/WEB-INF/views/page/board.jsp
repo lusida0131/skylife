@@ -8,12 +8,11 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/board.css" />
 <script src="${pageContext.request.contextPath}/resources/js/board.js"></script>
-<!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 
 <div class="container">
-	<div class="row">
+	<div class="table-responsive">
 		<div class="col-md-3" style="float: right">
 			<form action="#" method="get">
 				<div class="input-group">
@@ -27,7 +26,9 @@
 				</div>
 			</form>
 		</div>
-		<button type="button" id="btnWrite" style="float: right">글쓰기</button>
+		<c:if test="${user.id != null || user.id == 'admin'}">
+		<button type="button" id="btnWrite" style="float: right" class="btn btn-sm btn-primary">글쓰기</button>
+		</c:if>
 		<div class="col-md-9">
 			<table class="table table-list-search">
 				<thead>
@@ -39,7 +40,6 @@
 						<th>조회수</th>
 					</tr>
 				</thead>
-				<%-- <td><a href="${pageContext.request.contextPath}/page/boardView?b_num=${BoardVO.b_num}">${BoardVO.b_title}</a></td> --%>
 				<c:forEach var="BoardVO" items="${list}">
 					<tr>
 						<td>${BoardVO.b_num}</td>

@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.zerock.domain.FlightVO;
@@ -32,12 +31,6 @@ public class FlightController {
 	
 	private FlightService service;
 	
-
-	
-	@PostMapping("/fs/flightList")
-	public String flightViewTest() {
-		return"/fs/flightList";
-	}
 	
 	
 	@RequestMapping(value="/fs/searchFlight", method=RequestMethod.POST)
@@ -45,22 +38,28 @@ public class FlightController {
 		
 		String startPortName = request.getParameter("from_place");
 		String endPortName = request.getParameter("to_place");
-		String startTime = request.getParameter("date_start");
-		String pageNum = "1";
+		String startDate = request.getParameter("date_start");
+		String airline = "";
+		Integer pageNum = 1;
 		
 		// data format change
 		SimpleDateFormat before = new SimpleDateFormat("MM/dd/yyyy");
 		SimpleDateFormat after = new SimpleDateFormat("yyyyMMdd");
-		Date temp = before.parse(startTime);
-		startTime = after.format(temp);
+		Date temp = before.parse(startDate);
+		startDate = after.format(temp);
+		// 항공사 선택옵션 null값 처리
+		if ("".equals(request.getParameter("airline")) || (request.getParameter("airline")) == null) {
+			airline = "";
+		} else {
+			airline = request.getParameter("airline");
+		}
 		
-		log.info("filght schedule search >>>> startPortName: " 
-					+ startPortName + " // endPortName: " + endPortName + " // startTime: " + startTime);
+		log.info("filght schedule search >>>> startPortName: " + startPortName + " // endPortName: " + endPortName 
+				+ " // startDate: " + startDate + " // airline: " + airline + " // pageNum: " + pageNum);
 		
+		ArrayList<FlightVO> flist = service.airApi(startPortName, endPortName, startDate, airline, pageNum);
 		
-		ArrayList<FlightVO> clist = service.airApi(startPortName, endPortName, startTime, pageNum);
-		
-		if (clist.isEmpty()) {
+		if (flist.isEmpty()) {
 			response.setContentType("text/html; charset=UTF-8");
 	        PrintWriter out = response.getWriter();
 	        out.println("<script>alert('해당 항공편은 존재하지 않습니다.'); </script>");
@@ -69,13 +68,52 @@ public class FlightController {
 			return "/fs/flight";
 		}
 		
-		model.addAttribute("endPortName", service.nameset(endPortName));
-		model.addAttribute("startTime", startTime);
-		model.addAttribute("clist", clist);
+		FlightVO fhlist = new FlightVO();
+		fhlist.setStartPortName(startPortName);
+		fhlist.setEndPortName(endPortName);
+		fhlist.setStartDate(startDate);
+		fhlist.setAirline(airline);
+		fhlist.setPageNo(pageNum);
+		fhlist.setTotalCount(flist.get(0).getTotalCount());
+		fhlist.setEndPN_ko(service.nameset(endPortName));
+		
+		model.addAttribute("flist", flist);
+		model.addAttribute("fhlist", fhlist);
 		
 		return "/fs/flightList";
 		
 	}
-
+	
+	
+	@RequestMapping(value="/fs/flightPage", method=RequestMethod.POST)
+	public String flightNext(HttpServletRequest request, Model model) throws IOException, ParseException {
+		
+		String startPortName = request.getParameter("spn");
+		String endPortName = request.getParameter("epn");
+		String startDate = request.getParameter("sd");
+		String airline = request.getParameter("al");
+		Integer pageNum = Integer.parseInt(request.getParameter("pNum"));
+		
+		log.info("filght schedule search >>>> startPortName: " + startPortName + " // endPortName: " + endPortName 
+				+ " // startDate: " + startDate + " // airline: " + airline + " // pageNum: " + pageNum);
+		
+		ArrayList<FlightVO> flist = service.airApi(startPortName, endPortName, startDate, airline, pageNum);
+		
+		FlightVO fhlist = new FlightVO();
+		fhlist.setStartPortName(startPortName);
+		fhlist.setEndPortName(endPortName);
+		fhlist.setStartDate(startDate);
+		fhlist.setPageNo(pageNum);
+		fhlist.setTotalCount(flist.get(0).getTotalCount());
+		fhlist.setEndPN_ko(service.nameset(endPortName));
+		
+		log.info("fhlist: " + fhlist);
+		
+		model.addAttribute("flist", flist);
+		model.addAttribute("fhlist", fhlist);
+		
+		return "/fs/flightList";
+		
+	}
 
 }

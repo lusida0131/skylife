@@ -16,7 +16,6 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class PubServiceImpl implements PubService{
 	
-//	@Setter(onMethod_ = @Autowired)
 	private PubMapper mapper;
 	
 	@Override
