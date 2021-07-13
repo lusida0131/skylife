@@ -53,7 +53,7 @@ public class skylifeServiceImpl implements skylifeService{
 	public void updatePW(skylifeVO skylifevo) {
 		mapper.updatePW(skylifevo);
 	}
-
+	
 	@Override
 	public String findID(HttpServletResponse response, String email) throws Exception {
 		response.setContentType("texk/html;charset=ftf-8");
@@ -79,17 +79,19 @@ public class skylifeServiceImpl implements skylifeService{
 		return result;
 	}
 
-	//회원 리스트
+	// 회원 리스트
 	@Override
 	public List<skylifeVO> list(skylifeVO mvo) {
 		return mapper.list(mvo);
 	}
+	// 회원 삭제
 	@Override
 	public boolean remove(String id) {
 		log.info("remove..." + id);
 		return mapper.delete(id);
 	}
 	 
+	// 회원 목록 뷰
 	 @Override 
 	 public skylifeVO get(String id) {
 	      log.info("public num: " + id);

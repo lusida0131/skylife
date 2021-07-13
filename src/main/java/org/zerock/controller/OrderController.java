@@ -36,7 +36,7 @@ public class OrderController {
 	private OrderMapper om;
 	
 
-	
+	// 장바구니 추가 기능
     @PostMapping("/addwish")
     public void sWish(OrderVO ovo, HttpServletResponse response) throws IOException {
 
@@ -52,6 +52,7 @@ public class OrderController {
         
     }
     
+	// wish 폼
     @GetMapping("/fs/wish")
     public String wish(HttpSession session, Model model) {
 
@@ -67,6 +68,7 @@ public class OrderController {
     	return "/fs/wish";
     }
     
+    // 찜 삭제 기능
     @RequestMapping(value="/fs/wishDelete", method=RequestMethod.POST, produces="application/text; charset=utf8")
 	@ResponseBody
     public String wishDelete(int w_num) {
@@ -81,6 +83,7 @@ public class OrderController {
     	return "success";
     }
     
+    // 결제 목록 폼
     @GetMapping("/fs/payment")
     public String paymentList(HttpSession session, Model model) {
 
