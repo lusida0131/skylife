@@ -49,6 +49,8 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="shortcut icon" href="favicon.ico">
 	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
 	<!-- 합쳐지고 최소화된 최신 CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<!-- 부가적인 테마 -->
@@ -78,9 +80,9 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">	
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/map.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/accordions.css">
 	
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<!-- Modernizr JS -->
 	<script src=""${pageContext.request.contextPath}/resources/js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
