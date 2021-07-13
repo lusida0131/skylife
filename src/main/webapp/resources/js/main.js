@@ -37,6 +37,7 @@
    				dateFormat: 'yy-mm-dd', 
    				autoclose : true ,
    				startDate :  new Date(),
+   				endDate : '+30d'
  
    				
    }).on("changeDate", function(e) {

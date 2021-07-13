@@ -66,7 +66,7 @@
 														<div class="col-sm-12 mt" id="datetimepicker_start">
 															<div class="input-field">
 																<label for="date-start" style="margin-bottom: 10px;">출발일 (필수)</label>
-																<input type="text" class="form-control date_controll" id="date-start" name="date_start" placeholder="yyyymmdd" data-date-end-date="30+0d"/>
+																<input type="text" class="form-control date_controll" id="date-start" name="date_start" placeholder="yyyymmdd"/>
 																
 															</div>
 														</div>
