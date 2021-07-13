@@ -14,31 +14,80 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import org.springframework.stereotype.Service;
-import org.zerock.domain.searchVO;
-//import org.zerock.mapper.skylifeMapper;
+import org.zerock.domain.FlightVO;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j;
 
 
-@Log4j
 @Service
 @AllArgsConstructor
-public class searchServiceImpl implements searchService{
+public class FlightServiceImpl implements FlightService{
 	
 	@Override
-	public ArrayList<searchVO> airApi(String daID, String aaID, String dpTime) throws IOException {
+	public String nameset(String startPortName) {
 		
-		ArrayList<searchVO> list = new ArrayList<searchVO>();
+		if(startPortName.equals("NAARKJJ")) {
+			return "광주";
+		}
+		else if(startPortName.equals("NAARKJK")) {
+			return "군산";
+		}
+		else if(startPortName.equals("NAARKSS")) {
+			return "김포";
+		}
+		else if(startPortName.equals("NAARKPK")) {
+			return "김해/부산";
+		}
+		else if(startPortName.equals("NAARKTN")) {
+			return "대구";
+		}
+		else if(startPortName.equals("NAARKJB")) {
+			return "무안";
+		}
+		else if(startPortName.equals("NAARKPS")) {
+			return "사천";
+		}
+		else if(startPortName.equals("NAARKNY")) {
+			return "양양";
+		}
+		else if(startPortName.equals("NAARKJY")) {
+			return "여수";
+		}
+		else if(startPortName.equals("NAARKPU")) {
+			return "울산";
+		}
+		else if(startPortName.equals("NAARKNW")) {
+			return "원주";
+		}
+		else if(startPortName.equals("NAARKSI")) {
+			return "인천";
+		}
+		else if(startPortName.equals("NAARKPC")) {
+			return "제주";
+		}
+		else if(startPortName.equals("NAARKTU")) {
+			return "청주";
+		}
+		else if(startPortName.equals("NAARKTH")) {
+			return "포항";
+		}
+		
+		return "error";
+	}
+	
+	@Override
+	public ArrayList<FlightVO> airApi(String daID, String aaID, String dpTime, Integer pageNum) throws IOException {
+		
+		ArrayList<FlightVO> list = new ArrayList<FlightVO>();
 		
 		// URL
 		StringBuilder urlBuilder = new StringBuilder("http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList");
 		// Service Key
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=E7TR7GkGB3YlWwOR8BSGYwtixVpS2cWRFjy4QGwrUCYwfQDoxoiNyg8jBvpJaBL4li1G1zDarq9S%2BZpgqa8KZg%3D%3D");
 		// 한 페이지 결과 수
-		urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("100", "UTF-8"));
+		urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("30", "UTF-8"));
 		// 페이지 번호
-		urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8"));
+		urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(String.valueOf(pageNum), "UTF-8"));
 		// 출발공항ID
 		urlBuilder.append("&" + URLEncoder.encode("depAirportId","UTF-8") + "=" + URLEncoder.encode(daID, "UTF-8"));
 		// 도착공항ID
@@ -54,7 +103,6 @@ public class searchServiceImpl implements searchService{
 	    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	    conn.setRequestMethod("GET");
 	    conn.setRequestProperty("Content-type", "application/json");
-	    log.info("api URL Response code: " + conn.getResponseCode());
 	    System.out.println("api URL Response code: " + conn.getResponseCode());
 	    
 	    BufferedReader rd;
@@ -86,24 +134,31 @@ public class searchServiceImpl implements searchService{
 	    JSONObject headerObject = responseObject.getJSONObject("header");
 	    String resultCode = headerObject.getString("resultCode");
 	    String resultMsg = headerObject.getString("resultMsg");
-	    log.info("(header)resultCode: " + resultCode);
-	    log.info("(header)resultMsg: " + resultMsg);
+	    System.out.println("(header)resultCode: " + resultCode);
+	    System.out.println("(header)resultMsg: " + resultMsg);
 	    
 	    // (response -> body)  두번째 JSONObject를 가져와서 key-value를 읽습니다.
 	    JSONObject bodyObject = responseObject.getJSONObject("body");
-	    JSONObject itemsObject = bodyObject.getJSONObject("items");
 	    String numOfRows = Integer.toString(bodyObject.getInt("numOfRows"));
 	    String pageNo = Integer.toString(bodyObject.getInt("pageNo"));
 	    String totalCount = Integer.toString(bodyObject.getInt("totalCount"));
-	    log.info("(body)totalCount: " + totalCount);
+	    System.out.println("(body)numOfRows: " + numOfRows + 
+	    					"  (body)pageNo: " + pageNo + "  (body)totalCount: " + totalCount);
+	    
+	    if(totalCount.equals("0")) {
+	    	System.out.println("존재하지 않는 항공편. 항공편 개수: " + totalCount);
+	    	return list;
+	    }
+	    
+	    JSONObject itemsObject = bodyObject.getJSONObject("items");
 	    
 	    // (response -> body -> items -> item(node 2개이상))  세번째 JSONObject를 가져와서 key-value를 읽습니다.
 	    JSONArray itemArray = itemsObject.getJSONArray("item");
 	    for (int i = 0; i < itemArray.length(); i++) {
 	    	
-	    	searchVO svo = new searchVO();
+	    	FlightVO svo = new FlightVO();
 	    	JSONObject iobj = itemArray.getJSONObject(i);
-	    	//log.info("iobj(" + i + "): " + iobj.toString());
+	    	//System.out.println("iobj(" + i + "): " + iobj.toString());
 	        
 	    	// 항공편명
 	        svo.setVihicleId(iobj.getString("vihicleId"));
@@ -131,7 +186,10 @@ public class searchServiceImpl implements searchService{
 	        // 도착공항
 	        svo.setArrAirportNm(iobj.getString("arrAirportNm"));
 	        
-	        log.info(i + "번째 item: " + svo);
+	        svo.setPageNo(Integer.parseInt(pageNo));
+	        svo.setTotalCount(Integer.parseInt(totalCount));
+	        
+	        //System.out.println(i + "번째 item: " + svo);
 	        
 	        list.add(svo);
 	        
@@ -140,12 +198,5 @@ public class searchServiceImpl implements searchService{
 	    return list;
 	}
 
-//	@Override
-//	public int airlinePrice() {
-//		
-//		
-//		
-//		return 0;
-//	}
 	
 }

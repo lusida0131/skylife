@@ -1,5 +1,7 @@
 package org.zerock.mapper;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.zerock.domain.skylifeVO;
@@ -17,4 +19,11 @@ public interface skylifeMapper {
 	public void updatePW(skylifeVO skylifevo);
 	// 아이디 찾기
 	public String findID(String email) throws Exception;
+	
+	public int emailhave(String email);
+
+	// 회원 정보 리스트
+	public List<skylifeVO> list(skylifeVO mvo);
+	public boolean delete(String id);
+	public skylifeVO read(String id);
 }

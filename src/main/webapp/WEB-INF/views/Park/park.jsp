@@ -6,7 +6,7 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 
-		<div class="container" style="margin-top: 25px;">
+		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box" style="margin-bottom: 25px;">
 					<h3>주차장 목록</h3>
@@ -61,7 +61,7 @@
 								</a>
 							</li>
 							<li class="one-half text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/ICN.jpg); border: 1px solid;">
-								<a href="/Park/List">
+								<a href="/Park/ICNList">
 									<div class="case-studies-summary">
 									<br><br><br><br><br>
 										<span>해당 공항의 주차정보를 알고싶으면 클릭해주세요</span>

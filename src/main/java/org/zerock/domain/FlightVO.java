@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Data
-public class searchVO {
+public class FlightVO {
 
 	private String vihicleId;		// 항공편명
 	private String airlineNm;		// 항공사명
@@ -19,10 +19,18 @@ public class searchVO {
 	private String depAirportNm;	// 출발공항
 	private String arrAirportNm;	// 도착공항
 	
+	private String startPortName;	// input 출발공항
+	private String endPortName;		// input 도착공
+	private String startDate;		// 조회 날짜 - 출발
+	private String endPN_ko;		// 도착공항 한글이름
+	private Integer pageNo;			// 페이지 번호
+	private int totalCount;			// item count
 	
-	public searchVO() { }
 	
-	public searchVO(String vihicleId, String airlineNm, long depPlandTime, long arrPlandTime,
+	
+	public FlightVO() { }
+	
+	public FlightVO(String vihicleId, String airlineNm, long depPlandTime, long arrPlandTime,
 			int economyCharge, int prestigeCharge, String depAirportNm, String arrAirportNm) {
 		
 		this.vihicleId = vihicleId;
@@ -35,7 +43,7 @@ public class searchVO {
 		this.arrAirportNm = arrAirportNm;
 		
 	}
-	public searchVO(String vihicleId, String airlineNm, String depPlandTime, String arrPlandTime,
+	public FlightVO(String vihicleId, String airlineNm, String depPlandTime, String arrPlandTime,
 			String economyCharge, String prestigeCharge, String depAirportNm, String arrAirportNm) {
 		
 		this.vihicleId = vihicleId;

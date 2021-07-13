@@ -2,6 +2,55 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.BoardMapper">
+
+<sql id="criteria">
+	<trim prefix=" AND (" suffix=") " prefixOverrides="OR">
+	  <foreach item='type' collection="typeArr">
+	    <trim prefix="OR">
+	      <choose>
+		    <when test="type == 'T'.toString()">
+	 		  title like CONCAT('%', #{keyword}, '%')
+	 		</when>
+	        <when test="type == 'C'.toString()">
+			  content like CONCAT('%', #{keyword}, '%')
+	 		</when>
+	        <when test="type == 'W'.toString()">
+			  writer like CONCAT('%', #{keyword}, '%')
+			</when>
+	      </choose>
+	    </trim>
+	  </foreach>
+	</trim>
+</sql>
+
+<!-- 방법 2 -->
+<select id="getList" resultType="org.zerock.domain.BoardVO">
+<![CDATA[
+select * from sbs where b_num > 0 order by bno desc
+]]>
+</select>
+
+<!-- 페이징만 처리하는 SQL 문 -->
+<!-- <select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
+select * from tbl_board order by bno desc limit #{pageStart}, #{amount}
+</select> -->
+
+<!-- 페이징 + 검색을 처리하는 SQL문
+SQL문 작성시 AND와 OR가 섞여 있으면 AND가 우선권이 있음
+OR를 먼저 수행하려면 OR 좌우에 '(' A OR B ')' 괄호를 붙여주어야 함
+ -->
+<select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
+<![CDATA[
+select * from sbs where b_num > 0
+]]>
+<include refid="criteria"></include>
+order by b_num desc
+limit #{pageStart}, #{amount}
+</select>
+
+
+
+
 	<!-- 게시글 리스트 -->
 	<select id="list" resultType="org.zerock.domain.BoardVO">
 		select
@@ -11,9 +60,9 @@
 	</select>
 	
 	<!-- 페이징 처리 -->
-	<select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
+	<!-- <select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
 		select b_num, b_title, b_content, id, time from sbs order by b_num desc limit 0, 10
-	</select>
+	</select> -->
 	
 	<!-- 게시글 작성 -->
 	<insert id="insert">
@@ -35,7 +84,7 @@
 	</select>
 	
 	<!-- 게시글  조회수 -->
-	<update id="increaseViewcnt">
+	<update id="increaseViewcnt" parameterType="int">
 		update sbs set rcount = rcount + 1
 		where b_num = #{b_num}
 	</update>
@@ -54,5 +103,17 @@
 		delete from sbs
 		where b_num = #{b_num}
 	</delete>
+	
+	
+<select id="getTotalCount" resultType="int">
+<![CDATA[
+select count(b_num) from sbs where b_num > 0
+]]>
+<include refid="criteria"></include>
+</select>
+
+<update id="updateReplyCnt">
+	update sbs set replyCnt = replyCnt + #{amount} where b_num = #{b_num}
+</update>
 	
 </mapper>

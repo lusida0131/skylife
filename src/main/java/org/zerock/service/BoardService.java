@@ -5,9 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.zerock.domain.BoardVO;
-import org.zerock.domain.skylifeVO;
-
-import lombok.AllArgsConstructor;
+import org.zerock.domain.Criteria;
 
 
 public interface BoardService {
@@ -24,8 +22,12 @@ public interface BoardService {
 		public void delete(int b_num);
 		
 		// 게시글 리스트
-		public List<BoardVO> list(BoardVO vo);
-		
+//		public List<BoardVO> list(BoardVO vo);
+				
+		public List<BoardVO> list(Criteria cri);			// 게시글 목록 보기
+		public int getTotal(Criteria cri);
+
 		// 게시글 조회수
-		public void increaseViewcnt(int b_num, HttpSession session) throws Exception;
+		public boolean increaseViewcnt(int b_num) throws Exception;
+
 }

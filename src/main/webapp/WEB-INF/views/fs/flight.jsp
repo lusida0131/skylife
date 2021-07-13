@@ -10,21 +10,6 @@
 						<div class="row">
 							<div class="col-sm-5 col-md-5" style="margin-top: 60px;">
 								<div class="tabulation animate-box">
-
-									<!-- Nav tabs -->
-								    <!-- <ul class="nav nav-tabs" role="tablist">
-								    	<li role="presentation" class="active">
-								      		<a href="#flights" aria-controls="flights" role="tab" data-toggle="tab">Flights</a>
-								    	</li>
-								    	<li role="presentation">
-								    		<a href="#hotels" aria-controls="hotels" role="tab" data-toggle="tab">Hotels</a>
-								    	</li>
-								    	<li role="presentation">
-								    		<a href="#packages" aria-controls="packages" role="tab" data-toggle="tab">Packages</a>
-								    	</li>
-								    </ul> -->
-
-								    <!-- Tab panes -->
 									<div class="tab-content">
 									
 										<!-- ################################## FORM TAG HERE ################################## -->
@@ -78,19 +63,19 @@
 														</section>
 													</div>
 													<div class="date_div">
-														<div class="col-xxs-12 col-xs-6 mt alternate" id="datetimepicker_start">
+														<div class="col-sm-12 mt" id="datetimepicker_start">
 															<div class="input-field">
 																<label for="date-start">출발일</label>
 																<input type="text" class="form-control date_controll" id="date-start" name="date_start" placeholder="yyyymmdd"/>
 															</div>
 														</div>
-														<div class="col-xxs-12 col-xs-6 mt alternate" id="datetimepicker_end">
+														<!-- <div class="col-xxs-12 col-xs-6 mt alternate" id="datetimepicker_end">
 															<div class="input-field">
 																<label for="date-end">도착일</label>
 																<input type="text" class="form-control date_controll" id="date-end" name="date_end" placeholder="yyyymmdd"/>
 															</div>
-														</div>
-													</div> -->
+														</div> -->
+													</div>
 													<div class="col-sm-12 mt" style="margin-bottom: 60px;">
 														<section>
 															<label for="class">항공사</label>
@@ -622,7 +607,6 @@
 			$(document).ready(function(e){
 				$('#flightBtn').click(function(){
 					
- 
 					if($.trim($('#from_place').val()) === "") {
 					    $('#from_place').focus();
 						alert("출발지를 입력해주세요.");
@@ -631,21 +615,23 @@
 					    $('#to_place').focus();
 						alert("도착지를 입력해주세요.");
 					}
-					else if($.trim($('#date_start').val()) === "") {
+					/* else if($.trim($('#date_start').val()) === "") {
 					    $('#date_start').focus();
 						alert("출발일을 입력해주세요.");
 					} 
 					else if($.trim($('#date_end').val()) === "") {
 					    $('#date_end').focus();
 						alert("도착일을 입력해주세요.");
-					} 
-			
+					} */
 					else {
 						$('#flightFrm').submit();
 					}
 				});
 			});
-			
+
+		</script>
+		
+
 
 <%@ include file="../layout/footer.jsp"%>
 
