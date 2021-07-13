@@ -18,8 +18,7 @@
 				<!-- 글제목 -->
 				<%-- <input name="b_title" id="b_title" value="${data.b_title}" disabled class="form-control"
 						style="margin:5px; font-size:23pt; font-weight:400; color:blue; border-size:0px; border-color:rgba(0,0,0,0); background-color:rgba(0,0,0,0); box-shadow: none;"> --%>
-				<span id="b_title" class="form-control"
-						style="margin:5px; font-size:23pt; font-weight:400; color:blue; border-size:0px; border-color:rgba(0,0,0,0); background-color:rgba(0,0,0,0); box-shadow: none;">
+				<span id="b_title" class="form-control" style="margin:5px; font-size:23pt; font-weight:400; color:blue; border-size:0px; border-color:rgba(0,0,0,0); background-color:rgba(0,0,0,0); box-shadow: none;">
 						${data.b_title}</span>
 			</div>
 			<div class="form-group">
