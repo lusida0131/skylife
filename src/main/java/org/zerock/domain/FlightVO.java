@@ -58,4 +58,15 @@ public class FlightVO {
 		
 	}
 	
+	public FlightVO(String startPortName, String endPortName, String startDate, String airline, 
+			Integer pageNo, int totalCount, String endPN_ko) {
+		this.startPortName = startPortName;
+		this.endPortName = endPortName;
+		this.startDate = startDate;
+		this.airline = airline;
+		this.pageNo = pageNo;
+		this.totalCount = totalCount;
+		this.endPN_ko = endPN_ko;
+		
+	}
 }
