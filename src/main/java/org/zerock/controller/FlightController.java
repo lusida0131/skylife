@@ -33,20 +33,30 @@ public class FlightController {
 	
 	
 	
+	// 항공편 스케줄 조회
 	@RequestMapping(value="/fs/searchFlight", method=RequestMethod.POST)
 	public String searchFlight(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException, ParseException {
+		
+		// 출발날짜 미지정 조회시
+		if ("".equals(request.getParameter("date_start")) || (request.getParameter("date_start")) == null) {
+			response.setContentType("text/html; charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>alert('출발 날짜를 선택해주세요.'); </script>");
+	        out.flush();
+			return "/fs/flight";
+		}
 		
 		String startPortName = request.getParameter("from_place");
 		String endPortName = request.getParameter("to_place");
 		String startDate = request.getParameter("date_start");
 		String airline = "";
 		Integer pageNum = 1;
-		
 		// data format change
 		SimpleDateFormat before = new SimpleDateFormat("MM/dd/yyyy");
 		SimpleDateFormat after = new SimpleDateFormat("yyyyMMdd");
 		Date temp = before.parse(startDate);
 		startDate = after.format(temp);
+		
 		// 항공사 선택옵션 null값 처리
 		if ("".equals(request.getParameter("airline")) || (request.getParameter("airline")) == null) {
 			airline = "";
@@ -59,7 +69,7 @@ public class FlightController {
 		
 		ArrayList<FlightVO> flist = service.airApi(startPortName, endPortName, startDate, airline, pageNum);
 		
-		if (flist.isEmpty()) {
+		if (flist.isEmpty()) { // api 조회 결과가 없을 때 = 항공편 미존재
 			response.setContentType("text/html; charset=UTF-8");
 	        PrintWriter out = response.getWriter();
 	        out.println("<script>alert('해당 항공편은 존재하지 않습니다.'); </script>");
@@ -68,15 +78,10 @@ public class FlightController {
 			return "/fs/flight";
 		}
 		
-		FlightVO fhlist = new FlightVO();
-		fhlist.setStartPortName(startPortName);
-		fhlist.setEndPortName(endPortName);
-		fhlist.setStartDate(startDate);
-		fhlist.setAirline(airline);
-		fhlist.setPageNo(pageNum);
-		fhlist.setTotalCount(flist.get(0).getTotalCount());
-		fhlist.setEndPN_ko(service.nameset(endPortName));
+		FlightVO fhlist = new FlightVO(startPortName, endPortName, startDate, airline, pageNum, 
+				flist.get(0).getTotalCount(), service.nameset(endPortName));
 		
+		// flist : api요청 결과		fhlist : api요청 정보
 		model.addAttribute("flist", flist);
 		model.addAttribute("fhlist", fhlist);
 		
@@ -84,7 +89,7 @@ public class FlightController {
 		
 	}
 	
-	
+	// 항공편 스케줄 조회 페이지이동
 	@RequestMapping(value="/fs/flightPage", method=RequestMethod.POST)
 	public String flightNext(HttpServletRequest request, Model model) throws IOException, ParseException {
 		
@@ -97,18 +102,11 @@ public class FlightController {
 		log.info("filght schedule search >>>> startPortName: " + startPortName + " // endPortName: " + endPortName 
 				+ " // startDate: " + startDate + " // airline: " + airline + " // pageNum: " + pageNum);
 		
+		// flist : api요청 결과		fhlist : api요청 정보
 		ArrayList<FlightVO> flist = service.airApi(startPortName, endPortName, startDate, airline, pageNum);
-		
-		FlightVO fhlist = new FlightVO();
-		fhlist.setStartPortName(startPortName);
-		fhlist.setEndPortName(endPortName);
-		fhlist.setStartDate(startDate);
-		fhlist.setPageNo(pageNum);
-		fhlist.setTotalCount(flist.get(0).getTotalCount());
-		fhlist.setEndPN_ko(service.nameset(endPortName));
-		
-		log.info("fhlist: " + fhlist);
-		
+		FlightVO fhlist = new FlightVO(startPortName, endPortName, startDate, airline, pageNum, 
+								flist.get(0).getTotalCount(), service.nameset(endPortName));
+
 		model.addAttribute("flist", flist);
 		model.addAttribute("fhlist", fhlist);
 		

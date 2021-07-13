@@ -23,6 +23,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class FlightServiceImpl implements FlightService{
 	
+	// 항공코드 한공한글명 변경
 	@Override
 	public String nameset(String startPortName) {
 		
@@ -61,6 +62,7 @@ public class FlightServiceImpl implements FlightService{
 		return "error";
 	}
 	
+	// 항공 스케쥴 조회 api 요청
 	@Override
 	public ArrayList<FlightVO> airApi(String daID, String aaID, String dpTime, String airline, Integer pageNum) throws IOException {
 		

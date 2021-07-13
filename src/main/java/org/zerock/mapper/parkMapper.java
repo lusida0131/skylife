@@ -11,7 +11,9 @@ import org.zerock.domain.ParkInfoVO;
 @Mapper
 public interface parkMapper {
 
+	// 주차장 목록
 	public ArrayList<ParkInfoVO> parkInfo() throws Exception;
 	
+	// 인천 주차장 목록
 	public ArrayList<ICNVO> icnInfo() throws Exception;
 }

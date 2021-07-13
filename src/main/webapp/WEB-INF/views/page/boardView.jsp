@@ -157,14 +157,11 @@ $(function(){
 });
 </script>
 <script>
-$(document).ready(function() {
-
-	$(".rplydelete").click(function(){
-		
+function rplydelete(rNum) {
 	    if(confirm("삭제하시겠습니까?")){
 	        $.ajax({
 	            type: "delete",
-	            url: "${pageContext.request.contextPath}/reply/delete/" + Number($(this).val()),
+	            url: "${pageContext.request.contextPath}/reply/delete/" + Number(rNum),
 	            success: function(result){
 	                if(result == "success"){
 	                    alert("삭제되었습니다.");
@@ -174,8 +171,7 @@ $(document).ready(function() {
 	            }
 	        });
 	    }
-	});
-});
+}
 </script>
 <script src="${pageContext.request.contextPath}/resources/js/reply.js"></script>
 <script>
@@ -208,7 +204,7 @@ function showList(page) {   // 댓글 페이지를 보여주는 함수
          str +="    <small class='pull-right text-muted'>"
              + "</small></div>";
          str +="    <p>"+list[i].r_content+"</p>";
-         str +=" <button type = 'button' name='delete' id='delete' class='btn btn-sm btn-primary rplydelete' value='" + list[i].r_num + "'>삭제</button>";
+         str +=" <button type = 'button' name='delete' id='delete' class='btn btn-sm btn-primary rplydelete' value='" + list[i].r_num + "' onClick='rplydelete("+ list[i].r_num +")'>삭제</button>";
          str +=" <button type='button' id='replyBtnUpdate" + i + "' data-toggle='modal' data-target='#myModal' value='" + list[i].r_num + "' class='btn btn-sm btn-primary'>수정</button>";
          str +=" <input type='hidden' id='r_contents" + i + "' value='" + list[i].r_content + "'>  ";
          str +=" </div></li>";

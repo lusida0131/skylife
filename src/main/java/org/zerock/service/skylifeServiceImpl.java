@@ -19,41 +19,45 @@ public class skylifeServiceImpl implements skylifeService{
 	
 	private skylifeMapper mapper;
 
+	// 회원가입
 	@Override
 	public void register(skylifeVO skylifevo) {
 		mapper.register(skylifevo);
 	}
 
-
+	// 아이디 중복
 	@Override
 	public int idCheck(String id) {
 		int result = mapper.idCheck(id);
 		return result;
 	}
 
-
+	// 로그인 
 	@Override
 	public skylifeVO Login(skylifeVO skylifevo) throws Exception {
 		return mapper.login(skylifevo);
 	}
 
+	// 회원 수정
 	@Override
 	public void memUpdate(skylifeVO vo) throws Exception {
 		//받은 vo를 mapper로 보내준다.
 		mapper.memUpdate(vo);
 	}
-
+	
+	// 비밀번호 찾기
 	@Override
 	public skylifeVO findPw(String email) throws Exception {
 		return mapper.findPw(email);
 	}
 
-
+	// 비밀번호 수정
 	@Override
 	public void updatePW(skylifeVO skylifevo) {
 		mapper.updatePW(skylifevo);
 	}
-
+	
+	// 아이디 찾기
 	@Override
 	public String findID(HttpServletResponse response, String email) throws Exception {
 		response.setContentType("texk/html;charset=ftf-8");
@@ -79,17 +83,19 @@ public class skylifeServiceImpl implements skylifeService{
 		return result;
 	}
 
-	//회원 리스트
+	// 회원 리스트
 	@Override
 	public List<skylifeVO> list(skylifeVO mvo) {
 		return mapper.list(mvo);
 	}
+	// 회원 삭제
 	@Override
 	public boolean remove(String id) {
 		log.info("remove..." + id);
 		return mapper.delete(id);
 	}
 	 
+	// 회원 목록 뷰
 	 @Override 
 	 public skylifeVO get(String id) {
 	      log.info("public num: " + id);

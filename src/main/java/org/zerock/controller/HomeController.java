@@ -16,16 +16,15 @@ public class HomeController {
     public String index() throws Exception {
         return "/fs/flight";
     }
+    @GetMapping("/auth/index")
+    public String index1() throws Exception {
+        return "/fs/flight";
+    }
     
     @GetMapping("/page/flight")
     public String flight() throws Exception {
         return "fs/flight";
     }
-    
-//    @GetMapping("/page/hotel")
-//    public String hotel() throws Exception {
-//        return "page/hotel";
-//    }
     
     @GetMapping("/Park/park")
     public String park() throws Exception {
@@ -49,6 +48,7 @@ public class HomeController {
     public String admin() {
     	return "auth/anonymous";
     }
+    // 관리자 페이지
     @GetMapping("/auth/admin")
     public String admin1() {
     	return "/auth/admin";
@@ -68,5 +68,9 @@ public class HomeController {
     @GetMapping("/page/public")
     public String pub() throws Exception {
         return "redirect:/pub/public";
+    }
+    @GetMapping("/page/map4")
+    public String map4() throws Exception {
+        return "page/map4";
     }
 }

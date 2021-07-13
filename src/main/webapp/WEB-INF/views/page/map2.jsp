@@ -2,9 +2,18 @@
 <%@ include file="../layout/header.jsp"%>
 <!DOCTYPE html>
 <html>
+<!-- 부트스트랩 이용을 위한 jQuery와 CDN -->
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<button type="button" class="btn btn-lg btn-primary" id="getMyPositionBtn" onclick="getCurrentPosBtn()">내 위치 가져오기</button>
 <head>
+
     <meta charset="utf-8">
     <title>키워드로 장소검색하고 목록으로 표출하기</title>
+    <!-- 부트스트랩 primary 버튼 -->
+
+
     <style>
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
@@ -45,6 +54,7 @@
 </style>
 </head>
 <body>
+
 <div class="map_wrap">
     <div id="map" style="width:100%;height:100vh;position:relative;overflow:hidden;"></div>
 
@@ -63,7 +73,7 @@
     </div>
 </div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fd8866ad623c48904091d8acb42a7829&libraries&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fd8866ad623c48904091d8acb42a7829&libraries=services,clusterer,drawing"></script>
 <script>
 // 마커를 담을 배열입니다
 var markers = [];
@@ -85,6 +95,7 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
 // 키워드로 장소를 검색합니다
 searchPlaces();
+//HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 
 // 키워드 검색을 요청하는 함수입니다
 function searchPlaces() {
@@ -100,6 +111,33 @@ function searchPlaces() {
     ps.keywordSearch( keyword, placesSearchCB); 
 }
 
+
+
+function locationLoadSuccess(pos){
+// 현재 위치 받아오기
+var currentPos = new kakao.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
+
+// 지도 이동(기존 위치와 가깝다면 부드럽게 이동)
+map.panTo(currentPos);
+
+// 마커 생성
+var marker = new kakao.maps.Marker({
+    position: currentPos
+});
+
+// 기존에 마커가 있다면 제거
+marker.setMap(null);
+marker.setMap(map);
+};
+
+function locationLoadError(pos){
+alert('위치 정보를 가져오는데 실패했습니다.');
+};
+
+//위치 가져오기 버튼 클릭시
+function getCurrentPosBtn(){
+navigator.geolocation.getCurrentPosition(locationLoadSuccess,locationLoadError);
+};
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearchCB(data, status, pagination) {
     if (status === kakao.maps.services.Status.OK) {
