@@ -40,7 +40,7 @@ public class KakaoPayController {
     
 	
 	
-	
+	// 카카오페이 결제 1
     @RequestMapping(value="/kakaoPay", method=RequestMethod.POST)
     public String kakaoPay(OrderVO ovo, HttpServletResponse resp) throws IOException {
         log.info("kakaoPay post start..........");
@@ -49,6 +49,7 @@ public class KakaoPayController {
         return "redirect:" + kakaopay.kakaoPayReady(ovo);
     }
     
+    // 카카오페이 결제 2
     @GetMapping("/kakaoPaySuccess")
     public void kakaoPaySuccess(@RequestParam("pg_token") String pg_token, HttpSession session, Model model) {
         log.info("kakaoPaySuccess get..........");
@@ -62,6 +63,7 @@ public class KakaoPayController {
         model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token, id));
     }
     
+    // 카카오페이 결제 취소
     @GetMapping("/kakaoPayCancel")
     @ResponseBody
     public void kakaoPayCancel(HttpServletResponse resp) throws IOException {
@@ -75,6 +77,7 @@ public class KakaoPayController {
         out.flush();
     }
     
+    // 카카오페이 결제 1 -> 실패
     @PostMapping("/kakaoPaySuccessFail")
     @ResponseBody
     public void kakaoPaySuccessFail(HttpServletResponse resp) throws IOException {
