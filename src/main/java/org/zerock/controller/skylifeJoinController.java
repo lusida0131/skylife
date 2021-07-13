@@ -56,21 +56,21 @@ public class skylifeJoinController {
 	private static final Logger logger = LoggerFactory.getLogger(skylifeJoinController.class);
 	private static final String String = null;
 
-	@GetMapping("/auth/loginForm")
-	public String login() {
-		return "/auth/loginForm";
-	}
-
+	
+	
+	// 약관동의 폼
 	@GetMapping("/auth/joinAgree")
 	public String joinAgree() {
 		return "/auth/joinAgree";
 	}
-
+	
+	// 회원 가입 폼
 	@GetMapping("/auth/joinForm")
 	public String joinForm() {
 		return "/auth/joinForm";
 	}
-
+	
+	// 회원 가입 폼
 	@PostMapping("/auth/joinForm")
 	public String joinForm(skylifeVO skylifevo, RedirectAttributes redirectAttributes) {
 		String hashedPw = BCrypt.hashpw(skylifevo.getPw(), BCrypt.gensalt());
@@ -80,7 +80,14 @@ public class skylifeJoinController {
 
 		return "redirect:/auth/loginForm";
 	}
-
+	
+	// 로그인 폼
+		@GetMapping("/auth/loginForm")
+		public String login() {
+			return "/auth/loginForm";
+		}
+		
+	// 로그인 폼
 	@PostMapping("/auth/loginForm")
 	public String loginForm(HttpSession session, skylifeVO skylifevo, Model model) throws Exception {
 		skylifeVO user = service.Login(skylifevo);
@@ -92,7 +99,8 @@ public class skylifeJoinController {
 			return "redirect:/auth/loginForm";
 		}
 	}
-
+	
+	// 로그아웃 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {
 
@@ -101,6 +109,7 @@ public class skylifeJoinController {
 		return "redirect:/";
 	}
 
+	// 카카오 로그인 폼
 	@RequestMapping(value = "/auth/loginForm")
 	public String login(@RequestParam("code") String code, HttpSession session) {
 		String access_Token = kakao.getAccessToken(code);
@@ -114,6 +123,7 @@ public class skylifeJoinController {
 		return "redirect:/";
 	}
 
+	// 아이디 중복 체크
 	@RequestMapping(value = "/idCheck", method = RequestMethod.GET, produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String idCheck(HttpServletRequest request) {
@@ -132,13 +142,14 @@ public class skylifeJoinController {
 		int result = service.emailhave(email);
 		return Integer.toString(result);
 	}
-
+ 
 	@RequestMapping(value = "/")
 	public String index() {
 		System.out.println("auth/index : ");
 		return "/";
 	}
 
+	// 회원 가입 이메일 전송
 	@RequestMapping(value = "/auth/mailCheck", method = RequestMethod.GET)
 	@ResponseBody
 	public String mailCheckGET(String email) throws Exception {
@@ -172,17 +183,19 @@ public class skylifeJoinController {
 	}
 
 	////////////////////////////////////////////////////////
-	// 회원정보 수정
+	// 회원 목록
 	@RequestMapping(value = "/page/memView", method = RequestMethod.GET)
 	public String memView() throws Exception {
 		return "/page/memView";
 	}
 
+	// 회원 수정폼
 	@RequestMapping(value = "/page/memUpdate", method = RequestMethod.GET)
 	public String memUpdateView() throws Exception {
 		return "/page/memUpdate";
 	}
 
+	// 회원 수정 기능
 	@RequestMapping(value = "/memUpdate", method = RequestMethod.POST)
 	public String memUpdate(skylifeVO vo, HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
 		String hashedPw = BCrypt.hashpw(vo.getPw(), BCrypt.gensalt());
@@ -202,6 +215,7 @@ public class skylifeJoinController {
 		return "/page/findPw";
 	}
 
+	// 임시 비밀번호 전송 폼
 	@RequestMapping(value = "page/emailPW", method = RequestMethod.GET)
 	@ResponseBody
 	public String FindEmail(String email, skylifeVO vo, RedirectAttributes redirectAttributes) throws Exception {
@@ -246,13 +260,14 @@ public class skylifeJoinController {
 		return "/page/findID";
 	}
 
+	// 아이디 찾기
 	@PostMapping("/page/getID")
 	public String getID(HttpServletResponse response, @RequestParam("email") String email, Model md) throws Exception {
 		md.addAttribute("id", service.findID(response, email));
 		return "/page/getID";
 	}
 
-	// 회원 목록
+	// 관리회원 목록
 	@GetMapping("/admin/member_list")
 	public String boardList(skylifeVO mvo, Model model) {
 		log.info("call board list");
@@ -274,13 +289,9 @@ public class skylifeJoinController {
 		return "redirect:/admin/member_list";
 	}
 
+	// 회원 매출 조회
 	@GetMapping("/admin/money_list")
 	public String paymentList(HttpSession session, Model model) {
-
-		@SuppressWarnings("static-access")
-		String str = String.valueOf(session.getAttribute("user"));
-		String[] arr = str.split(", ");
-		String id = arr[1].substring(3);
 
 		ArrayList<OrderVO> plist = om.moneylist();
 		model.addAttribute("pmlist", plist);

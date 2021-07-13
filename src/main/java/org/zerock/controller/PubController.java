@@ -24,16 +24,18 @@ import lombok.extern.log4j.Log4j;
 public class PubController {
 	private PubService service;
 	
+	// 공지사항 목록
 	@GetMapping("/public")
 	public void list(Model model) {
 		log.info("list");
 		model.addAttribute("list", service.list());
 	}
 	
+	// 공지사항 등록
 	@GetMapping("/register")
-	public void register() {
-		
+	public void register() {	
 	}
+	// 공지사항 기능
 	@PostMapping("/register")
 	public String register(PubVO pub, RedirectAttributes rttr) {
 		log.info("register: " + pub);
@@ -42,6 +44,7 @@ public class PubController {
 		return "redirect:/pub/public";
 	}
 	
+	// 공지사항 삭제
 	@PostMapping("/remove")
 	public String remove(@RequestParam("pno") Integer pno, RedirectAttributes rttr) {
 		log.info("remove..." + pno);
@@ -52,12 +55,15 @@ public class PubController {
 		}
 		return "redirect:/pub/public";
 	}
+	
+	// 공지사항 삭제
 	@GetMapping("/remove")
 	public void get12(@RequestParam("pno") Integer pno, Model model) {
 		log.info("/remove : remove click");
 		model.addAttribute("pub", service.get(pno));
 	}
 	
+	// 공지사항 수정
 	@PostMapping("/modify")
 	public String modify(PubVO pub, RedirectAttributes rttr) {
 		log.info("modify : modify complete click " + pub);
@@ -70,18 +76,12 @@ public class PubController {
 		
 		return "redirect:/pub/public";
 	}
+	
+	// 공지사항 수정
 	@GetMapping("/modify")
 	public void get(@RequestParam("pno") Integer pno, Model model) {
 		log.info("/modify : modify click");
 		model.addAttribute("pub", service.get(pno));
-//	    model.addAttribute("notice", service.get(notice_bno));
 	}
 	
-	/*
-	 * @RequestMapping(value="/public", method=RequestMethod.POST,
-	 * produces="application/text; charset=utf8") // @GetMapping("/loginForm")
-	 * // @PostMapping("/loginForm") public String loginForm(PubVO pub, Model model,
-	 * HttpSession session) throws Exception { PubVO pvo = service.insert(pub);
-	 * session.setAttribute("list", pvo); return "redirect:/pub/public"; }
-	 */
 }

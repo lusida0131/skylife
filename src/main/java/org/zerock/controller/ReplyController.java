@@ -28,7 +28,7 @@ public class ReplyController {
 	
 	private ReplyService service;
 	
-	
+	// 댓글 페이징
 	@GetMapping(value = "/replies/pages/{b_num}/{page}", produces = { MediaType.APPLICATION_XML_VALUE,
 			MediaType.APPLICATION_JSON_UTF8_VALUE })
 	public ResponseEntity<ReplyPageDTO> getList(
@@ -41,7 +41,7 @@ public class ReplyController {
 		return new ResponseEntity<ReplyPageDTO>(service.getListPage(cri, b_num), HttpStatus.OK);
 	}
 	
-
+	// 댓글 등록
 	@RequestMapping(value="/comment", method=RequestMethod.POST)
 	@ResponseBody
 	public String comment(ReplyVO vo) {
@@ -51,6 +51,8 @@ public class ReplyController {
 		result="order";
 		return result;
 	}
+	
+	// 댓글 삭제
 	@RequestMapping(value="/reply/delete/{r_num}")
     public ResponseEntity<String> replyDelete(@PathVariable("r_num") Integer r_num){
        
@@ -68,6 +70,8 @@ public class ReplyController {
         // 삭제 처리 HTTP 상태 메시지 리턴
         return entity;
     }
+	
+	// 댓글 수정
 	@RequestMapping(value="/replies/update", method=RequestMethod.POST) //댓글 수정  
     @ResponseBody
     private int mCommentServiceUpdateProc(@RequestParam int r_num, @RequestParam String r_content) throws Exception{
