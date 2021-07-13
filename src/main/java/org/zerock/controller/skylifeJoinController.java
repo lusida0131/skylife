@@ -312,4 +312,16 @@ public class skylifeJoinController {
 		}
 		return "redirect:/admin/member_list";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -3,6 +3,7 @@ package org.zerock.service;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 @Log4j
 public class skylifeServiceImpl implements skylifeService{
-	
+	@Inject
 	private skylifeMapper mapper;
 
 	// 회원가입
@@ -100,6 +101,9 @@ public class skylifeServiceImpl implements skylifeService{
 	 public skylifeVO get(String id) {
 	      log.info("public num: " + id);
 	      return mapper.read(id);
-	   }
+	 }
+	 
+	 
+	 
 
 }

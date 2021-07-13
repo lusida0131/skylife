@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: willi
-=======
 Built-By: USER-PC
->>>>>>> 2087d9dc3115ef52dc6b8bea5e42096a3a929dc3
 Build-Jdk: 1.8.0_291
 Created-By: Maven Integration for Eclipse
 
