@@ -1,16 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: 404-23
-Build-Jdk: 1.8.0_281
-=======
-<<<<<<< HEAD
-Built-By: daseulkim
-Build-Jdk: 15.0.2
->>>>>>> 1c5b29349617307b046e45b5286fa92669d1461f
-=======
 Built-By: 404-13
 Build-Jdk: 1.8.0_291
->>>>>>> e422c938b4c83a646ada204327ee7d97940a67e9
->>>>>>> soung
 Created-By: Maven Integration for Eclipse
 

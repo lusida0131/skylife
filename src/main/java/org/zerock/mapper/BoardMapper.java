@@ -22,8 +22,10 @@ public interface BoardMapper {
 	// 게시글 리스트
 	public List<BoardVO> list(BoardVO vo);
 	
+	// 게시글 목록(페이징)
 	public List<BoardVO> getListWithPaging(Criteria cri);
 
+	// 게시글 총수
 	public int getTotalCount(Criteria cri);
 	
 	
