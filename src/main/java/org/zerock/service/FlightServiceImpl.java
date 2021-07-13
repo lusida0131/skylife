@@ -28,47 +28,33 @@ public class FlightServiceImpl implements FlightService{
 		
 		if(startPortName.equals("NAARKJJ")) {
 			return "광주";
-		}
-		else if(startPortName.equals("NAARKJK")) {
+		} else if(startPortName.equals("NAARKJK")) {
 			return "군산";
-		}
-		else if(startPortName.equals("NAARKSS")) {
+		} else if(startPortName.equals("NAARKSS")) {
 			return "김포";
-		}
-		else if(startPortName.equals("NAARKPK")) {
+		} else if(startPortName.equals("NAARKPK")) {
 			return "김해/부산";
-		}
-		else if(startPortName.equals("NAARKTN")) {
+		} else if(startPortName.equals("NAARKTN")) {
 			return "대구";
-		}
-		else if(startPortName.equals("NAARKJB")) {
+		} else if(startPortName.equals("NAARKJB")) {
 			return "무안";
-		}
-		else if(startPortName.equals("NAARKPS")) {
+		} else if(startPortName.equals("NAARKPS")) {
 			return "사천";
-		}
-		else if(startPortName.equals("NAARKNY")) {
+		} else if(startPortName.equals("NAARKNY")) {
 			return "양양";
-		}
-		else if(startPortName.equals("NAARKJY")) {
+		} else if(startPortName.equals("NAARKJY")) {
 			return "여수";
-		}
-		else if(startPortName.equals("NAARKPU")) {
+		} else if(startPortName.equals("NAARKPU")) {
 			return "울산";
-		}
-		else if(startPortName.equals("NAARKNW")) {
+		} else if(startPortName.equals("NAARKNW")) {
 			return "원주";
-		}
-		else if(startPortName.equals("NAARKSI")) {
+		} else if(startPortName.equals("NAARKSI")) {
 			return "인천";
-		}
-		else if(startPortName.equals("NAARKPC")) {
+		} else if(startPortName.equals("NAARKPC")) {
 			return "제주";
-		}
-		else if(startPortName.equals("NAARKTU")) {
+		} else if(startPortName.equals("NAARKTU")) {
 			return "청주";
-		}
-		else if(startPortName.equals("NAARKTH")) {
+		} else if(startPortName.equals("NAARKTH")) {
 			return "포항";
 		}
 		
@@ -76,7 +62,7 @@ public class FlightServiceImpl implements FlightService{
 	}
 	
 	@Override
-	public ArrayList<FlightVO> airApi(String daID, String aaID, String dpTime, Integer pageNum) throws IOException {
+	public ArrayList<FlightVO> airApi(String daID, String aaID, String dpTime, String airline, Integer pageNum) throws IOException {
 		
 		ArrayList<FlightVO> list = new ArrayList<FlightVO>();
 		
@@ -95,7 +81,7 @@ public class FlightServiceImpl implements FlightService{
 		// 출발일
 		urlBuilder.append("&" + URLEncoder.encode("depPlandTime","UTF-8") + "=" + URLEncoder.encode(dpTime, "UTF-8"));
 		// 항공사ID
-		urlBuilder.append("&" + URLEncoder.encode("airlineId","UTF-8") + "=" + URLEncoder.encode("", "UTF-8"));
+		urlBuilder.append("&" + URLEncoder.encode("airlineId","UTF-8") + "=" + URLEncoder.encode(airline, "UTF-8"));
 		// json type return
 		urlBuilder.append("&" + URLEncoder.encode("_type","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
 	    

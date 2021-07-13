@@ -18,7 +18,7 @@
 												<div class="row">
 													<div class="col-xxs-12 col-xs-6 mt">
 														<section>
-															<label for="from">출발지</label>
+															<label for="from" style="margin-bottom: 10px;">출발지 (필수)</label>
 															<select class="cs-select cs-skin-border" id="from_place" name="from_place">
 																<option value="" disabled selected>출발지 선택</option>
 						                                        <option value="NAARKJJ">광주</option>
@@ -41,7 +41,7 @@
 													</div>
 													<div class="col-xxs-12 col-xs-6 mt">
 														<section>
-															<label for="from">도착지</label>
+															<label for="from" style="margin-bottom: 10px;">도착지 (필수)</label>
 															<select class="cs-select cs-skin-border" id="to_place" name="to_place">
 																<option value="" disabled selected>도착지 선택</option>
 																<option value="NAARKJJ">광주</option>
@@ -65,7 +65,7 @@
 													<div class="date_div">
 														<div class="col-sm-12 mt" id="datetimepicker_start">
 															<div class="input-field">
-																<label for="date-start">출발일</label>
+																<label for="date-start" style="margin-bottom: 10px;">출발일 (필수)</label>
 																<input type="text" class="form-control date_controll" id="date-start" name="date_start" placeholder="yyyymmdd"/>
 															</div>
 														</div>
@@ -78,9 +78,9 @@
 													</div>
 													<div class="col-sm-12 mt" style="margin-bottom: 60px;">
 														<section>
-															<label for="class">항공사</label>
-															<select class="cs-select cs-skin-border">
-																<option value="" disabled selected>항공사</option>
+															<label for="class" style="margin-bottom: 10px;">항공사 (선택)</label>
+															<select class="cs-select cs-skin-border" id="airline" name="airline">
+																<option value="N" disabled selected>항공사</option>
 																<option value="AAR">아시아나항공</option>
 																<option value="ABL">에어부산</option>
 																<option value="ASV">에어서울</option>
