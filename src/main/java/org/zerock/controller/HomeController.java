@@ -53,11 +53,7 @@ public class HomeController {
     public String admin1() {
     	return "/auth/admin";
     }
-    //회원 매출 조회
-    @GetMapping("/admin/money_list")
-    public String money_list() {
-    	return "/admin/money_list";
-    }
+  
     //게시판 수정
     @GetMapping("/admin/publicup")
     public String public1() {

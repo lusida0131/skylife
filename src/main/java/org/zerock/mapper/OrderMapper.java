@@ -15,7 +15,8 @@ public interface OrderMapper {
 	public void AddOrderApproval(KakaoPayApprovalVO kvo);
 	
 	public ArrayList<OrderVO> PaymentList(String id);
-	
+
+	public ArrayList<OrderVO> moneylist();
 	
 	// wishlist
 	public void WishInsert(OrderVO ovo);
