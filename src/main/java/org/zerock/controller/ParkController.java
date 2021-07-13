@@ -25,6 +25,7 @@ import lombok.extern.log4j.Log4j;
 public class ParkController {
 	parkService service;
 	
+	// 주차장 목록
 	@GetMapping("/page/Park")
 	public List<ParkInfoVO> allPark() throws Exception {
 		
@@ -169,6 +170,7 @@ public class ParkController {
 		return "/Park/ParkList";
 	}
 	
+	// 인천(ICN)
 	@GetMapping("/Park/ICNList")
 	public String ICNList(Model model) throws Exception {
 		

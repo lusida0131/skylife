@@ -26,16 +26,6 @@ public class BoardServiceImpl implements BoardService {
 		String b_title = vo.getB_title();
 		String b_content = vo.getB_content();
 		String id = vo.getId();
-		
-//		b_title = b_title.replace("<", "&lt;");
-//		b_title = b_title.replace("<", "&gt;");
-//		id = id.replace("<", "&gt;");
-//		id = id.replace("<", "&gt;");
-//		
-//		b_title = b_title.replace(" ", "&nbsp;&nbsp;");
-//		id = id.replace(" ", "&nbsp;&nbsp;");
-//		
-//		b_content = b_content.replace("\n", "<br>");
 		vo.setB_title(b_title);
 		vo.setB_content(b_content);
 		vo.setId(id);
@@ -60,19 +50,14 @@ public class BoardServiceImpl implements BoardService {
 		mapper.delete(b_num);
 	}
 	
-	// 게시글 리스트
-//	@Override
-//	public List<BoardVO> list(BoardVO vo) {
-//		log.info("get list..");
-//		return mapper.list(vo);
-//	}
-	
-	
+
+	// 게시글 총수
 	@Override
 	public int getTotal(Criteria cri) {
 		log.info("get total count");
 		return mapper.getTotalCount(cri);
 	}
+	// 게시글 목록
 	@Override
 	public List<BoardVO> list(Criteria cri) {
 		log.info("getList with Paging..." + cri);

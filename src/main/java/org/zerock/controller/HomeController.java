@@ -22,11 +22,6 @@ public class HomeController {
         return "fs/flight";
     }
     
-//    @GetMapping("/page/hotel")
-//    public String hotel() throws Exception {
-//        return "page/hotel";
-//    }
-    
     @GetMapping("/Park/park")
     public String park() throws Exception {
         return "Park/park";
@@ -49,6 +44,7 @@ public class HomeController {
     public String admin() {
     	return "auth/anonymous";
     }
+    // 관리자 페이지
     @GetMapping("/auth/admin")
     public String admin1() {
     	return "/auth/admin";

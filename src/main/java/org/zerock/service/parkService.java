@@ -17,9 +17,10 @@ import lombok.AllArgsConstructor;
 
 
 public interface parkService {
-	
+	// 주차장 목록 1
 	public ArrayList<ParkInfoVO> parkApi(String schAirportCode) throws IOException;
 	
+	// 주차장 목록 2
 	public ArrayList<ParkInfoVO> parkApi1(String schAirportCode) throws IOException;
 
 	/************************************ 인천 국제 공항 *********************************************/

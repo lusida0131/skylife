@@ -22,8 +22,10 @@ public interface skylifeService {
 
 	// 이메일 중복체크
 	public int emailhave(String email);
-
+	// 회원 리스트
 	public List<skylifeVO> list(skylifeVO mvo);
+		
+	// 회원 삭제
 	public boolean remove(String id);
 	public skylifeVO get(String id);
 	
