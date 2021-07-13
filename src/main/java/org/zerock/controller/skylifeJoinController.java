@@ -207,6 +207,19 @@ public class skylifeJoinController {
 
 		return "redirect:/";
 	}
+	
+	// 회원 탈퇴
+	@GetMapping("/memRemove")
+	public String remove1(@RequestParam("id") String id, HttpSession session, RedirectAttributes rttr) {
+		log.info("remove..." + id);
+		if (service.remove(id)) {
+			rttr.addFlashAttribute("result", "success");
+		} else {
+			System.out.println("remove failed");
+		}
+		session.invalidate();
+		return "redirect:/";
+	}
 
 	///////////////////////////////////////////////////////////
 	// 아이디/비밀번호 찾기
@@ -277,18 +290,6 @@ public class skylifeJoinController {
 		return "/admin/member_list";
 	}
 
-	// 회원 삭제
-	@GetMapping("/remove")
-	public String remove(@RequestParam("id") String id, RedirectAttributes rttr) {
-		log.info("remove..." + id);
-		if (service.remove(id)) {
-			rttr.addFlashAttribute("result", "success");
-		} else {
-			System.out.println("remove failed");
-		}
-		return "redirect:/admin/member_list";
-	}
-
 	// 회원 매출 조회
 	@GetMapping("/admin/money_list")
 	public String paymentList(HttpSession session, Model model) {
@@ -298,5 +299,17 @@ public class skylifeJoinController {
 		log.info("movement payment list: " + plist);
 
 		return "/admin/money_list";
+	}
+	
+	//회원 삭제
+	@GetMapping("/remove")
+	public String remove(@RequestParam("id") String id, RedirectAttributes rttr) {
+		log.info("remove..." + id);
+		if (service.remove(id)) {
+			rttr.addFlashAttribute("result", "success");
+		} else {
+			System.out.println("remove failed");
+		}
+		return "redirect:/admin/member_list";
 	}
 }

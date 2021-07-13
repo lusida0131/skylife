@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 
 <head>
 <script
@@ -17,6 +17,7 @@
 	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
 	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
 	crossorigin="anonymous" />
+	
 </head>
 <body>
 	<div class="container">
@@ -36,19 +37,22 @@
 						<!--로고end-->
 
 						<!--회원수정 인풋-->
+						
 						<form class="login__input"
 							action="${pageContext.request.contextPath}/page/memUpdate"
 							method="get" id="loginFrm" name="loginFrm">
-							<input type="text" name="id" id="id" value="${user.id}" readonly>
+							<input type="text" name="id" id="id" value="${user.id}" readonly> 
 							<input type="text" name="name" id="name" value="${user.name}"
-								readonly> <input type="date" name="bday" id="bday"
-								value="${user.bday}" readonly> <input type="email"
-								name="email" id="email" value="${user.email}" readonly>
-							<input type="text" name="phone" id="phone" value="${user.phone}"
-								readonly> <input type="submit" id="loginUp"
-								value="수정 하기">
+								readonly> 
+							<input type="date" name="bday" id="bday" value="${user.bday}" readonly> 
+							<input type="email" name="email" id="email" value="${user.email}" readonly> 
+							<input type="text" name="phone" id="phone" value="${user.phone}" readonly> 
+							<input type="submit" id="loginUp" value="수정 하기">
 						</form>
-
+						<form action="/memRemove" name="form1" method="get" class="login__input" >
+							<td><input type="hidden" name="id" value="${user.id}"></td>
+							<input type="button" value="회원 탈퇴" onclick="location.href='/memRemove?id=<c:out value="${user.id}" />' " id="danger">
+						</form>
 						<!--회원수정 인풋end-->
 					</div>
 					<!--회원수정 폼end-->
