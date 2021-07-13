@@ -39,6 +39,7 @@ public class FlightController {
 		String startPortName = request.getParameter("from_place");
 		String endPortName = request.getParameter("to_place");
 		String startDate = request.getParameter("date_start");
+		String airline = "";
 		Integer pageNum = 1;
 		
 		// data format change
@@ -46,12 +47,17 @@ public class FlightController {
 		SimpleDateFormat after = new SimpleDateFormat("yyyyMMdd");
 		Date temp = before.parse(startDate);
 		startDate = after.format(temp);
+		// 항공사 선택옵션 null값 처리
+		if ("".equals(request.getParameter("airline")) || (request.getParameter("airline")) == null) {
+			airline = "";
+		} else {
+			airline = request.getParameter("airline");
+		}
 		
 		log.info("filght schedule search >>>> startPortName: " + startPortName + " // endPortName: " + endPortName 
-				+ " // startDate: " + startDate + " // pageNum: " + pageNum);
+				+ " // startDate: " + startDate + " // airline: " + airline + " // pageNum: " + pageNum);
 		
-		
-		ArrayList<FlightVO> flist = service.airApi(startPortName, endPortName, startDate, pageNum);
+		ArrayList<FlightVO> flist = service.airApi(startPortName, endPortName, startDate, airline, pageNum);
 		
 		if (flist.isEmpty()) {
 			response.setContentType("text/html; charset=UTF-8");
@@ -66,6 +72,7 @@ public class FlightController {
 		fhlist.setStartPortName(startPortName);
 		fhlist.setEndPortName(endPortName);
 		fhlist.setStartDate(startDate);
+		fhlist.setAirline(airline);
 		fhlist.setPageNo(pageNum);
 		fhlist.setTotalCount(flist.get(0).getTotalCount());
 		fhlist.setEndPN_ko(service.nameset(endPortName));
@@ -84,12 +91,13 @@ public class FlightController {
 		String startPortName = request.getParameter("spn");
 		String endPortName = request.getParameter("epn");
 		String startDate = request.getParameter("sd");
+		String airline = request.getParameter("al");
 		Integer pageNum = Integer.parseInt(request.getParameter("pNum"));
 		
-		log.info("NextPage schedule search >>>> startPortName: " + startPortName + " // endPortName: " + endPortName 
-				+ " // startDate: " + startDate + " // pageNum: " + pageNum);
+		log.info("filght schedule search >>>> startPortName: " + startPortName + " // endPortName: " + endPortName 
+				+ " // startDate: " + startDate + " // airline: " + airline + " // pageNum: " + pageNum);
 		
-		ArrayList<FlightVO> flist = service.airApi(startPortName, endPortName, startDate, pageNum);
+		ArrayList<FlightVO> flist = service.airApi(startPortName, endPortName, startDate, airline, pageNum);
 		
 		FlightVO fhlist = new FlightVO();
 		fhlist.setStartPortName(startPortName);

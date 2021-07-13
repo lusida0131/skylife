@@ -91,7 +91,7 @@
 							
 						</c:forEach>
 						
-						
+						<br>
 						<div style="text-align: center; margin-top: 30px;">
 							<c:set var="pNum" value="${fhlist.pageNo}"/>
 							<c:set var="toCnt" value="${fhlist.totalCount}"/>
@@ -99,6 +99,7 @@
 								<input type="hidden" value="${fhlist.startPortName}" name="spn" id="spn"/>
 								<input type="hidden" value="${fhlist.endPortName}" name="epn" id="epn"/>
 								<input type="hidden" value="${fhlist.startDate}" name="sd" id="sd"/>
+								<input type="hidden" value="${fhlist.airline}" name="al" id="al"/>
 								<input type="hidden" value="${fhlist.pageNo - 1}" name="pNum" id="pNum"/>
 								<input type="hidden" value="${fhlist.totalCount}" name="spn" id="toCnt"/>
 								<c:if test="${pNum > 1}"><%-- <c:if test="${(pNum+1)*30 > toCnt - pNum*30}"> --%>
@@ -111,6 +112,7 @@
 								<input type="hidden" value="${fhlist.startPortName}" name="spn" id="spn"/>
 								<input type="hidden" value="${fhlist.endPortName}" name="epn" id="epn"/>
 								<input type="hidden" value="${fhlist.startDate}" name="sd" id="sd"/>
+								<input type="hidden" value="${fhlist.airline}" name="al" id="al"/>
 								<input type="hidden" value="${fhlist.pageNo + 1}" name="pNum" id="pNum"/>
 								<input type="hidden" value="${fhlist.totalCount}" name="spn" id="toCnt"/>
 								<c:if test="${pNum*30 < toCnt}">

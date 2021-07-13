@@ -11,6 +11,6 @@ public interface FlightService {
 	
 	public String nameset(String name);
 	
-	public ArrayList<FlightVO> airApi(String daID, String aaID, String dpTime, Integer pageNum) throws IOException;
+	public ArrayList<FlightVO> airApi(String daID, String aaID, String dpTime, String airline, Integer pageNum) throws IOException;
 	
 }
