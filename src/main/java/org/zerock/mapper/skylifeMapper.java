@@ -38,4 +38,7 @@ public interface skylifeMapper {
 	// 회원 삭제 
 	public boolean delete(String id);
  	public skylifeVO read(String id);
+
+	
+	
 }

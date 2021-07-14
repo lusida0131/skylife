@@ -10,7 +10,7 @@ public class ReplyVO {
 	private int r_num;
 	private String id;
 	private String r_content;
-	private Date time;
+	private String time;
 	
 	
 }
