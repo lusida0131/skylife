@@ -12,8 +12,9 @@
 
 
 <div class="container">
-	<div class="card" style="padding: 20px; border-radius: 15px; margin: 20px auto;">
+	<div class="card" style="padding: 10px; border-radius: 15px;">
 		<form name="form1" method="post">
+		<div style=" background-color:rgba(245,245,245,0.25);">
 			<div class="form-group">
 				<!-- 글제목 -->
 				<%-- <input name="b_title" id="b_title" value="${data.b_title}" disabled class="form-control"
@@ -29,7 +30,7 @@
 				<span id="id" class="form-control" style="margin-left:10px; font-size:15pt; font-weight:200; border-size:0px; border-color:rgba(0,0,0,0); background-color:rgba(0,0,0,0); box-shadow: none;">
 						${data.id}&nbsp;&nbsp;|&nbsp;&nbsp;<fmt:formatDate value="${data.time}" pattern="yyy-MM-dd HH:mm:ss"/>&nbsp;&nbsp;|&nbsp;&nbsp;조회 ${data.rcount}</span>
 			</div>
-			<hr>
+			<hr></div>
 			<div>
 				<p style="font-size:60pt; font-weight:400; color:red; border: 1px solid; margin:20px; padding:20px;">여기가 사진 위치 입니다.<br>화이팅!</p>
 			</div>
@@ -190,7 +191,6 @@
 
 <script>
 	
-	var userID = $('#ided').val();
 	var bnoValue = '<c:out value="${data.b_num}" />';
 	var replyUL = $(".chat");
 
@@ -214,7 +214,7 @@
 				return;
 			}
 			for(var i = 0, len = list.length || 0 ; i < len ; i++) {
-				str +="<li class='left clearfix emptyReply' style='margin-top:20px; margin-bottom:20px;'>";
+				str +="<li class='left clearfix emptyReply' style='margin:20px 0px 20px 0px;'>";
 				str +="  <div><div class='header'><strong class='primary-font'>"+list[i].id+"&nbsp;&nbsp;("+list[i].time+")</strong>";	// 작성자
 				str +="    <p>"+list[i].r_content+"</p>";		// 댓글 내용
 				str +="    <small class='pull-right text-muted'>" + "</small></div>";
