@@ -6,26 +6,51 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 		<br><br>
-	<!-- ################ accordion toggle 적용 START ################ -->
+		<!-- ################ accordion toggle 적용 START ################ -->
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<h1>항공편 검색 목록</h1>
 					<fmt:parseDate value="${fhlist.startDate}" var="sdate" pattern="yyyyMMdd" />
-					<h3 style="text-align: center;">
-						검색 일자 : &nbsp;&nbsp;<fmt:formatDate value="${sdate}" pattern="yyyy년 MM월 dd일 (E)" />&nbsp;&nbsp;&nbsp;${fhlist.endPN_ko}행
-					</h3>
+					<fmt:formatDate value="${sdate}" var="fhSdate" pattern="MM/dd/yyyy" />
+					<h4 style="text-align: center;">
+						검색 일자 : &nbsp;&nbsp;<fmt:formatDate value="${sdate}" pattern="yyyy년 MM월 dd일 (E)" />&nbsp;&nbsp;&nbsp;&nbsp;${fhlist.endPN_ko}행
+					</h4>
+					
+					<div class="row" style="text-align:center; margin:40px 0px 40px 0px;">
+						<form id="flightFrm" name="flightFrm" action="/fs/searchFlight" method="post">
+							<input type="hidden" value="${fhlist.startPortName}" name="from_place" id="from_place"/>
+							<input type="hidden" value="${fhlist.endPortName}" name="to_place" id="to_place"/>
+							<input type="hidden" value="${fhSdate}" name="date_start" id="date_start"/>
+							<p style="margin:10px; text-size:40px; display:inline-block;">항공사 선택</p>
+							<div style="width:20%; margin:10px; display:inline-block;">
+								<select class="cs-select cs-skin-border" id="airline" name="airline">
+									<option value="" disabled selected>항공사</option>
+									<option value="N">전체 항공사</option>
+									<option value="AAR">아시아나항공</option>
+									<option value="ABL">에어부산</option>
+									<option value="ASV">에어서울</option>
+									<option value="ESR">이스타항공</option>
+									<option value="FGW">플라이강원</option>
+									<option value="HGG">하이에어</option>
+									<option value="JJA">제주항공</option>
+									<option value="JNA">진에어</option>
+									<option value="KAL">대한항공</option>
+									<option value="TWB">티웨이항공</option>
+								</select>
+							</div>
+							<input type="button" id="flightBtn" class="btn btn-primary btn-block" value="OK" style="width:70px; margin:10px; display:inline-block;">
+						</form>
+					</div>
 					
 					<c:set var="idCheck" value="${user.id}"/>
 					<c:if test="${idCheck eq null}">
-					<p style="color: red; text-align: center;">로그인시 항공권 결제 서비스의 이용이 가능합니다.</p>
+						<p style="color: red; text-align: center;">로그인시 항공권 결제 서비스 이용이 가능합니다.</p>
 					</c:if>
-					<hr>
 				</div>
 				
-				<div class="col-md-12">
+				<div class="col-md-12"><br><hr>
 					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
 						<c:set var="count" value="0"/>
 						<c:forEach var="list" items="${flist}">
 							<c:set var="count" value="${count = count + 1}"/>
@@ -48,7 +73,7 @@
 										<%-- <p>This is 간단한 내용. write here. (${count})</p> --%>
 										<form method="post" action="/addwish" id="wishFrm" target="param">
 											<iframe id="if" name="param" style="width: 0px; height: 0px; border: 0px;"></iframe>
-											<c:if test="${user.id ne null}"><button name="wishBtn" style="float: right; margin: 8px 10px 15px 10px;">찜</button></c:if>
+											<c:if test="${user.id ne null}"><button type="submit" name="wishBtn" style="float: right; margin: 8px 10px 15px 10px;">찜</button></c:if>
 											<input type="hidden" value="${user.id}" name="id" id="id"/>
 											<input type="hidden" value="${list.vihicleId}" name="vihicleId" id="vihicleId"/>
 											<input type="hidden" value="${list.airlineNm}" name="airlineNm" id="airlineNm"/>
@@ -88,44 +113,45 @@
 									</div>
 								</div>
 							</div>
-							
 						</c:forEach>
 						
 						<br>
 						<div style="text-align: center; margin-top: 30px;">
 							<c:set var="pNum" value="${fhlist.pageNo}"/>
 							<c:set var="toCnt" value="${fhlist.totalCount}"/>
-							<form method="post" action="/fs/flightPage" id="pbFrm" style="display:inline;">
-								<input type="hidden" value="${fhlist.startPortName}" name="spn" id="spn"/>
-								<input type="hidden" value="${fhlist.endPortName}" name="epn" id="epn"/>
-								<input type="hidden" value="${fhlist.startDate}" name="sd" id="sd"/>
-								<input type="hidden" value="${fhlist.airline}" name="al" id="al"/>
-								<input type="hidden" value="${fhlist.pageNo - 1}" name="pNum" id="pNum"/>
-								<input type="hidden" value="${fhlist.totalCount}" name="spn" id="toCnt"/>
-								<c:if test="${pNum > 1}"><%-- <c:if test="${(pNum+1)*30 > toCnt - pNum*30}"> --%>
+							
+							<c:if test="${pNum > 1}"><%-- <c:if test="${(pNum+1)*30 > toCnt - pNum*30}"> --%>
+								<form method="post" action="/fs/flightPage" id="pbFrm" style="display:inline;">
+									<input type="hidden" value="${fhlist.startPortName}" name="spn" id="spn"/>
+									<input type="hidden" value="${fhlist.endPortName}" name="epn" id="epn"/>
+									<input type="hidden" value="${fhlist.startDate}" name="sd" id="sd"/>
+									<input type="hidden" value="${fhlist.airline}" name="al" id="al"/>
+									<input type="hidden" value="${fhlist.pageNo - 1}" name="pNum" id="pNum"/>
+									<input type="hidden" value="${fhlist.totalCount}" name="spn" id="toCnt"/>
 									<input type="submit" name="backBtn" style="margin:10px;" value="이전"/>
-								</c:if><%-- </c:if> --%>
-							</form>
+								</form>
+							</c:if><%-- </c:if> --%>
+								
 							<fmt:parseNumber var="tCnt" integerOnly="true" value="${(toCnt/30)+(1-((toCnt/30)%1))%1}"/>
 							<span> ${pNum} / ${tCnt} </span>
-							<form method="post" action="/fs/flightPage" id="pnFrm" style="display:inline;">
-								<input type="hidden" value="${fhlist.startPortName}" name="spn" id="spn"/>
-								<input type="hidden" value="${fhlist.endPortName}" name="epn" id="epn"/>
-								<input type="hidden" value="${fhlist.startDate}" name="sd" id="sd"/>
-								<input type="hidden" value="${fhlist.airline}" name="al" id="al"/>
-								<input type="hidden" value="${fhlist.pageNo + 1}" name="pNum" id="pNum"/>
-								<input type="hidden" value="${fhlist.totalCount}" name="spn" id="toCnt"/>
-								<c:if test="${pNum*30 < toCnt}">
+							
+							<c:if test="${pNum*30 < toCnt}">
+								<form method="post" action="/fs/flightPage" id="pnFrm" style="display:inline;">
+									<input type="hidden" value="${fhlist.startPortName}" name="spn" id="spn"/>
+									<input type="hidden" value="${fhlist.endPortName}" name="epn" id="epn"/>
+									<input type="hidden" value="${fhlist.startDate}" name="sd" id="sd"/>
+									<input type="hidden" value="${fhlist.airline}" name="al" id="al"/>
+									<input type="hidden" value="${fhlist.pageNo + 1}" name="pNum" id="pNum"/>
+									<input type="hidden" value="${fhlist.totalCount}" name="spn" id="toCnt"/>
 									<input type="submit" name="nextBtn" style="margin:10px;" value="다음"/>
-								</c:if>
-							</form>
+								</form>
+							</c:if>
 						</div>
-						
 					</div>
 				</div>
 			</div>
 		</div><br>
-	<!-- ################ accordion toggle 적용 END ################ -->
+		<!-- ################ accordion toggle 적용 END ################ -->
 
 
 		<div id="fh5co-tours" class="fh5co-section-gray">
@@ -220,24 +246,25 @@
 				</div>
 			</div>
 		</div>
-		
-		
-											
+
+
 	<script type="text/javascript">
-	
-		$(document).ready(function(){
-			$('#wishBtn').click(function(){
-/* 				if(${idCheck} === 'none') {
-					alert("로그인이 필요한 서비스입니다.");
-					location.href="/auth/loginForm";
-				}
-				else { */
-					$('#wishFrm').submit();
-/* 				} */
-			});
-		});
 		
-	</script>
+			$(document).ready(function(e){
+				$('#flightBtn').click(function(){
+					
+					if($.trim($('#airline').val()) === "") {
+					    $('#airline').focus();
+						alert("항공사를 선택해주세요.");
+					}
+					else {
+						$('#flightFrm').submit();
+					}
+				});
+			});
+
+		</script>		
+
 
 <%@ include file="../layout/footer.jsp"%>
 

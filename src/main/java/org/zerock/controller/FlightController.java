@@ -57,8 +57,8 @@ public class FlightController {
 		Date temp = before.parse(startDate);
 		startDate = after.format(temp);
 		
-		// 항공사 선택옵션 null값 처리
-		if ("".equals(request.getParameter("airline")) || (request.getParameter("airline")) == null) {
+		// 항공사 선택옵션 null값, 전체조회 처리
+		if ("".equals(request.getParameter("airline")) || "N".equals(request.getParameter("airline")) || (request.getParameter("airline")) == null) {
 			airline = "";
 		} else {
 			airline = request.getParameter("airline");
