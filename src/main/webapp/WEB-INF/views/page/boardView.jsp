@@ -18,7 +18,7 @@
 				<!-- 글제목 -->
 				<%-- <input name="b_title" id="b_title" value="${data.b_title}" disabled class="form-control"
 						style="margin:5px; font-size:23pt; font-weight:400; color:blue; border-size:0px; border-color:rgba(0,0,0,0); background-color:rgba(0,0,0,0); box-shadow: none;"> --%>
-				<span id="b_title" class="form-control" style="margin:5px; font-size:23pt; font-weight:400; color:blue; border-size:0px; border-color:rgba(0,0,0,0); background-color:rgba(0,0,0,0); box-shadow: none;">
+				<span id="b_title" class="form-control" style="margin:5px; font-size:23pt; font-weight:400; color:#1e1e1e; border-size:0px; border-color:rgba(0,0,0,0); background-color:rgba(0,0,0,0); box-shadow: none;">
 						${data.b_title}</span>
 			</div>
 			<div class="form-group">
@@ -27,7 +27,7 @@
 						style="width:150px; display:inline; margin-left:15px; padding:10px 25px 30px 25px; font-size:18pt; font-weight:200; color:black; border-size:0px; border-color:rgba(0,0,0,0); background-color:rgba(0,0,0,0); box-shadow: none;"/> --%>
 				<%-- <span style="margin-left:15px; padding:10px 25px 30px 25px; font-size:15pt;">|&nbsp;&nbsp;<fmt:formatDate value="${data.time}" pattern="yyy-MM-dd HH:mm:ss"/></span> --%>
 				<span id="id" class="form-control" style="margin-left:10px; font-size:15pt; font-weight:200; border-size:0px; border-color:rgba(0,0,0,0); background-color:rgba(0,0,0,0); box-shadow: none;">
-						${data.id}&nbsp;&nbsp;|&nbsp;&nbsp;<fmt:formatDate value="${data.time}" pattern="yyy-MM-dd HH:mm:ss"/></span>
+						${data.id}&nbsp;&nbsp;|&nbsp;&nbsp;<fmt:formatDate value="${data.time}" pattern="yyy-MM-dd HH:mm:ss"/>&nbsp;&nbsp;|&nbsp;&nbsp;조회 ${data.rcount}</span>
 			</div>
 			<hr>
 			<div>
@@ -39,50 +39,53 @@
 				<span id="b_content" class="form-control" style="margin:10px; font-size:14pt; border-size:0px; border-color:rgba(0,0,0,0); background-color:rgba(0,0,0,0); box-shadow: none;">
 						${data.b_content}</span>
 			</div>
-			<br><hr>
+			<br>
 			<div style="width:90%; text-align:center;">
 				<input type="hidden" name="b_num" value="${data.b_num}">
-				<c:if test="${user.id == data.id || user.id == 'admin'}">
+				<c:if test="${user.id == data.id || user.id == 'admin'}"><br>
 					<input type="button" id="btnUpdate" onclick="location.href='/board/update?b_num=<c:out value="${data.b_num}"/>'" value="수정" class="btn btn-sm btn-primary">
 					<button type="button" id="btnDelete" class="btn btn-sm btn-primary">삭제</button>
 				</c:if>
-			</div>
-			<br><br>
-			<div>
-				<textarea rows="3px" name="r_contented" id="r_contented" placeholder="댓글을 작성해주세요." style="margin-left:20px; width:85%;"></textarea>
-				<input type="hidden" name="ided" id="ided" value="${user.id}">
-				<input type="hidden" name="b_num" id="b_num" value="${data.b_num}">
-				<%-- <input type="hidden" name="r_num" id="r_num" value="${data.r_num }"> --%>
-				<input type="button"id="reply_btn" name="commentInsertBtn" value="등록" class="btn btn-sm btn-primary" style="position: absolute; margin:2px 5px 2px 10px; height:60px;">
-			</div>
-			<c:set var="count" value="0"/>
-			<c:set var="count" value="${count = count + 1}"/>
-			<br><br>
-			<div id="book_reply">
-				<ul class="chat" style="list-style:none;">
-					<li class="emptyReply"></li>
-				</ul>
-			</div>
-			<div class="panel-footer"></div>
-			<div class="modal fade" id="myModal" role="dialog">
-				<div class="modal-dialog" style="z-index: 9999;">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">×</button>
-							<h4 class="modal-title">댓글 수정</h4>
-						</div>
-						<div class="modal-body">
-							<br/><br/>
-							<textarea rows="4px" cols="60px" name="r_content" id="r_content_text"></textarea>
-						</div>
-						<div class="modal-footer">
-							<input type="hidden" name="r_num" id="r_num" value="${com.r_num}" class="r_num">
-							<button type="button" class="btn btn-default" data-dismiss="modal" id="commentUpdate" value="${com.r_num}">수정</button> 
-							<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			</div><br>
+			
+			<div style="background-color:rgba(245,245,245,0.25);">
+				<div style="background-color:rgba(245,245,245,0.7);"><hr>
+					<textarea rows="3px" name="r_contented" id="r_contented" placeholder="댓글을 작성해주세요." style="margin-left:20px; width:85%;"></textarea>
+					<input type="hidden" name="ided" id="ided" value="${user.id}">
+					<input type="hidden" name="b_num" id="b_num" value="${data.b_num}">
+					<%-- <input type="hidden" name="r_num" id="r_num" value="${data.r_num }"> --%>
+					<input type="button"id="reply_btn" name="commentInsertBtn" value="등록" class="btn btn-sm btn-primary" style="position: absolute; margin:2px 5px 2px 10px; height:60px;">
+					<br><br>
+				</div>
+				<c:set var="count" value="0"/>
+				<c:set var="count" value="${count = count + 1}"/>
+				<div id="book_reply">
+					<ul class="chat" style="list-style:none;">
+						<li class="emptyReply"></li>
+					</ul>
+				</div>
+				<div class="panel-footer"></div>
+				<div class="modal fade" id="myModal" role="dialog">
+					<div class="modal-dialog" style="z-index: 9999;">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">×</button>
+								<h4 class="modal-title">댓글 수정</h4>
+							</div>
+							<div class="modal-body">
+								<br/><br/>
+								<textarea rows="4px" cols="60px" name="r_content" id="r_content_text"></textarea>
+							</div>
+							<div class="modal-footer">
+								<input type="hidden" name="r_num" id="r_num" value="${com.r_num}" class="r_num">
+								<button type="button" class="btn btn-default" data-dismiss="modal" id="commentUpdate" value="${com.r_num}">수정</button> 
+								<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+				
 		</form>
 	</div>
 </div>
@@ -211,7 +214,7 @@
 				return;
 			}
 			for(var i = 0, len = list.length || 0 ; i < len ; i++) {
-				str +="<li class='left clearfix emptyReply' style='margin-bottom:20px;'>";
+				str +="<li class='left clearfix emptyReply' style='margin-top:20px; margin-bottom:20px;'>";
 				str +="  <div><div class='header'><strong class='primary-font'>"+list[i].id+"&nbsp;&nbsp;("+list[i].time+")</strong>";	// 작성자
 				str +="    <p>"+list[i].r_content+"</p>";		// 댓글 내용
 				str +="    <small class='pull-right text-muted'>" + "</small></div>";
