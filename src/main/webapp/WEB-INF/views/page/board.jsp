@@ -16,6 +16,10 @@
 		<div class="col-md-3" style="float: right">
 			<form action="#" method="get">
 				<div class="input-group">
+				
+				</div>
+			</form>
+			<div class="input-group">
 					<input class="form-control" id="system-search" name="q"
 						placeholder="Search for" required> <span
 						class="input-group-btn">
@@ -24,7 +28,6 @@
 						</button>
 					</span>
 				</div>
-			</form>
 		</div>
 		<c:if test="${user.id != null || user.id == 'admin'}">
 		<button type="button" id="btnWrite" style="float: right" class="btn btn-sm btn-primary">글쓰기</button>

@@ -39,4 +39,6 @@ public interface skylifeService {
 	public boolean remove(String id);
 	public skylifeVO get(String id);
 	
+	
+
 }

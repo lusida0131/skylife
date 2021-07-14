@@ -4,7 +4,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/board.css" />
+<script src="${pageContext.request.contextPath}/resources/js/board.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  
 		<br><br>
 	<!-- ################ accordion toggle 적용 START ################ -->
 		<div class="container">
@@ -15,7 +19,15 @@
 				
 				<div class="col-md-12">
 					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
+<div class="input-group">
+					<input class="form-control" id="system-search" name="q"
+						placeholder="Search for" required> <span
+						class="input-group-btn">
+						<button type="submit" class="btn btn-default">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
 						<c:set var="cnt" value="0"/>
 						<c:forEach var="list" items="${pmlist}" varStatus="status">
 						<c:set var="cnt" value="${cnt = cnt + 1}"/>

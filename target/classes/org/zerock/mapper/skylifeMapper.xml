@@ -51,8 +51,6 @@
 		select * from smem
 	</select>
 	<delete id="delete">
-	SET foreign_key_checks = 0
 	delete from smem where id = #{id} 
-	SET foreign_key_checks = 1
 	</delete>
 </mapper>

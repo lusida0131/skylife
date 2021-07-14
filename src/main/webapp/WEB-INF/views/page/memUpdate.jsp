@@ -34,7 +34,7 @@
                             <input type="date" name="bday" id="bday" value="${user.bday}">
                             <input type="email" name="email" id="email" value="${user.email}">
                             <input type="text" name="phone" placeholder="전화번호" value="${user.phone}" required="required"id="phone">
-                            <input type = "button" id = "loginUp"value = "정보 수정">
+                            <input type = "button" id = "loginUp" value = "정보 수정">
                             <input hidden="">
                         </form>
                         <!--회원수정 인풋end-->
