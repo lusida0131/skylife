@@ -11,26 +11,38 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <div class="container">
-	<div class="row">
-      <%-- <form name="form1" method="post" action="${pageContext.request.contextPath}/board/update?"> --%>
-      <form name="form1" method="post" action="/board/update">
-      	<input type="hidden" name="b_num" value="${blist.b_num}" />
-		<div>
-			제목
-			<input name="b_title" id="b_title" value="${blist.b_title}">
-		</div>
-		<div>
-			내용
-			<textarea name="b_content" id="b_content" rows="4" cols="80">${blist.b_content}</textarea>
-		</div>
-		<div>
-			이름
-			<input name="id" id="id" value="${blist.id}" readonly>
-		</div>
-		<div style="width:650px; text-align:center;">
-			<button type="button" id="btnUpdate">수정</button>
-			<button type="reset">취소</button>
-		</div>
+	<div class="row" style="padding: 20px; border-radius: 15px; margin: 20px;">
+		<%-- <form name="form1" method="post" action="${pageContext.request.contextPath}/board/update?"> --%>
+		<form name="form1" method="post" action="/board/update">
+			<input type="hidden" name="b_num" value="${blist.b_num}" />
+			<input type="hidden" name="id" id="id" value="${blist.id}"/>
+			<div class="form-group">
+				<div class="col-sm-12">
+					<p>제목
+					<input class="form-control" name="b_title" id="b_title" style="width:90%;" value="${blist.b_title}"></p>
+				</div>
+			</div>
+			<%-- <div>
+				제목
+				<input name="b_title" id="b_title" value="${blist.b_title}">
+			</div> --%>
+			<br>
+			<div class="form-group">
+				<div class="col-sm-12">
+					<p>내용
+					<textarea class="form-control" name="b_content" id="b_content" rows="10" style="width:90%;">${blist.b_content}</textarea></p>
+				</div>
+			</div>
+			<%-- <div>
+				내용
+				<textarea name="b_content" id="b_content" rows="4" cols="80">${blist.b_content}</textarea>
+			</div> --%>
+			<br><br>
+			<div style="width:90%; text-align:center;">
+				<button type="button" id="btnUpdate"class="btn btn-sm btn-primary">수정</button>
+				<button type="reset"class="btn btn-sm btn-primary">취소</button>
+			</div>
+			<br><br>
 		</form>
 	</div>
 </div>
@@ -64,11 +76,11 @@
 		});
 	
 		$("#btnUpdate").click(function() {
-	         if(confirm("수정하시겠습니까?")) {
-	            document.form1.action = "${pageContext.request.contextPath}/board/update"
-	            document.form1.submit();
-	         }
-	      });
+			if(confirm("수정하시겠습니까?")) {
+				document.form1.action = "${pageContext.request.contextPath}/board/update"
+				document.form1.submit();
+			}
+		});
 	});
 </script>
 
