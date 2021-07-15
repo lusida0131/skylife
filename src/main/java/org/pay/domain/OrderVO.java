@@ -10,6 +10,7 @@ public class OrderVO {
 	private String tid;
 	
 	private int w_num;
+	private int pay_num;
 	
 	private String vihicleId;		// 항공편명
 	private String airlineNm;		// 항공사명
