@@ -15,8 +15,11 @@ public interface OrderMapper {
 	// 보류
 	public void AddOrderApproval(KakaoPayApprovalVO kvo);
 	
-	// 회원 매출 조회
+	// 회원 결제 리스트
 	public ArrayList<OrderVO> PaymentList(String id);
+	
+	// 회원 결제 리스트 - 상세보기
+	public OrderVO PaymentDetail(int pay_num);
 
 	// 총회원 매출 조회
 	public ArrayList<OrderVO> moneylist();

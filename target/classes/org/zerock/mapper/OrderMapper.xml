@@ -4,10 +4,6 @@
 
 <mapper namespace="org.zerock.mapper.OrderMapper">
 
-	<!-- <resultMap type="org.pay.domain.KakaoPayApprovalVO" id="PaymentList"> 
-		<id column="PNO" property="no" /> <result column="PNAME" property="title" 
-		/> </resultMap> -->
-
 	<!-- <insert id="AddOrder"> insert into spayment(vihicleId, airlineNm, depAirportNm, 
 		depPlandTime, arrAirportNm, arrPlandTime, economyCharge, prestigeCharge, 
 		aid, tid, partner_user_id, payment_method_type, amount_total, amount_vat, 
@@ -18,36 +14,40 @@
 		#{card_purchase_corp}, #{card_install_month}, #{item_name}, #{item_code}, 
 		#{quantity}, #{created_at}, #{approved_at}) </insert> -->
 	<insert id="AddOrder">
-		insert into spayment(vihicleId, airlineNm,
-		depAirportNm, depPlandTime,
-		arrAirportNm, arrPlandTime, economyCharge, prestigeCharge, tid)
+		insert into spayment(vihicleId, airlineNm, depAirportNm, depPlandTime,
+			arrAirportNm, arrPlandTime, economyCharge, prestigeCharge, tid)
 		values
-		(#{vihicleId}, #{airlineNm}, #{depAirportNm}, #{depPlandTime},
-		#{arrAirportNm}, #{arrPlandTime}, #{economyCharge}, #{prestigeCharge},
-		#{tid})
+			(#{vihicleId}, #{airlineNm}, #{depAirportNm}, #{depPlandTime},
+			#{arrAirportNm}, #{arrPlandTime}, #{economyCharge}, #{prestigeCharge}, #{tid})
 	</insert>
 	<update id="AddOrderApproval"
 		parameterType="org.pay.domain.KakaoPayApprovalVO">
 		update spayment set
-		aid = #{aid},
-		partner_user_id = #{partner_user_id},
-		payment_method_type = #{payment_method_type},
-		amount_total = #{amount.total},
-		amount_vat = #{amount.vat},
-		card_purchase_corp = #{card_info.purchase_corp},
-		card_install_month = #{card_info.install_month},
-		item_name = #{item_name},
-		item_code = #{item_code},
-		quantity = #{quantity},
-		created_at = #{created_at},
-		approved_at = #{approved_at}
+			aid = #{aid},
+			partner_user_id = #{partner_user_id},
+			payment_method_type = #{payment_method_type},
+			amount_total = #{amount.total},
+			amount_vat = #{amount.vat},
+			card_purchase_corp = #{card_info.purchase_corp},
+			card_install_month = #{card_info.install_month},
+			item_name = #{item_name},
+			item_code = #{item_code},
+			quantity = #{quantity},
+			created_at = #{created_at},
+			approved_at = #{approved_at}
 		where tid = #{tid}
 	</update>
 
 	<select id="PaymentList" resultType="org.pay.domain.OrderVO">
-		select * from spayment where
-		partner_user_id = #{id}
+		select * from spayment
+		where partner_user_id = #{id}
 	</select>
+	
+	<select id="PaymentDetail" resultType="org.pay.domain.OrderVO">
+		select * from spayment
+		where pay_num = #{pay_num}
+	</select>
+	
 	<select id="moneylist" resultType="org.pay.domain.OrderVO">
 		select * from spayment where partner_user_id is not null
 	</select>

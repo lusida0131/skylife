@@ -79,7 +79,7 @@ public class FlightController {
 		}
 		
 		FlightVO fhlist = new FlightVO(startPortName, endPortName, startDate, airline, pageNum, 
-				flist.get(0).getTotalCount(), service.nameset(endPortName));
+										flist.get(0).getTotalCount(), service.nameset(endPortName));
 		
 		// flist : api요청 결과		fhlist : api요청 정보
 		model.addAttribute("flist", flist);
@@ -105,7 +105,7 @@ public class FlightController {
 		// flist : api요청 결과		fhlist : api요청 정보
 		ArrayList<FlightVO> flist = service.airApi(startPortName, endPortName, startDate, airline, pageNum);
 		FlightVO fhlist = new FlightVO(startPortName, endPortName, startDate, airline, pageNum, 
-								flist.get(0).getTotalCount(), service.nameset(endPortName));
+										flist.get(0).getTotalCount(), service.nameset(endPortName));
 
 		model.addAttribute("flist", flist);
 		model.addAttribute("fhlist", fhlist);

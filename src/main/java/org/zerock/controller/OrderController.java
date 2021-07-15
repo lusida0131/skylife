@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -96,6 +98,28 @@ public class OrderController {
     	log.info("movement payment list: " + pmlist);
     	
     	return "/fs/payment";
+    }
+    
+    // 결제 목록 상세보기
+    @PostMapping("/fs/paymentDetail")
+    public String paymentDetail(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+
+    	String id = request.getParameter("id");
+		int pay_num = Integer.parseInt(request.getParameter("pay_num"));
+    	
+    	OrderVO pmdlist = om.PaymentDetail(pay_num);
+    	
+    	if(id.equals(pmdlist.getPartner_user_id()) != true) {
+			response.setContentType("text/html; charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>alert('고객 정보가 맞지 않습니다. 관리자에게 문의하세요.'); </script>");
+	        out.flush();
+			return "/";
+    	}
+    	
+    	model.addAttribute("pmdlist", pmdlist);
+    	
+    	return "/fs/paymentDetail";
     }
 
 }
