@@ -77,7 +77,7 @@ div.abcRioButton {
 							<div class="g-signin2" data-width="240" data-longtitle="true"
 								data-onsuccess="onSignIn" onclick="init();" id="google_login"></div>
 							<a
-								href="https://kauth.kakao.com/oauth/authorize?client_id=c4f3e60f17766b60ae9f4c4957c155f7&redirect_uri=http://localhost:8080/page/index&response_type=code"><br>
+								href="https://kauth.kakao.com/oauth/authorize?client_id=c4f3e60f17766b60ae9f4c4957c155f7&redirect_uri=http://localhost:8080/auth/loginForm&response_type=code"><br>
 							<img width="220" alt="Kakao Login"
 								src="/resources/images/kakao_login_medium_narrow.png"></a>
 						</div>
@@ -120,7 +120,7 @@ div.abcRioButton {
 
 	});
      
-/* 	function onSignIn(googleUser) {
+ 	function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
         console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -134,7 +134,7 @@ div.abcRioButton {
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
           
-      } */
+      } 
 </script>
 
 </html>
