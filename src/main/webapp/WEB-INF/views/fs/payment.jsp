@@ -29,14 +29,11 @@
 											${list.airlineNm}&nbsp;&nbsp;&nbsp;&nbsp;₩&nbsp; <fmt:formatNumber value="${list.economyCharge}" pattern="#,###,###" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											${list.depAirportNm} (<fmt:formatDate value="${depTime}" pattern="MM월dd일 HH시mm분" />) -> ${list.arrAirportNm} (<fmt:formatDate value="${arrTime}" pattern="MM월dd일 HH시mm분" />)&nbsp;
 										</a>
-										<!-- <button name="deleteBtn" id="deleteBtn" style="float: right; margin-top: 0px; border: 0px; background-color: rgba(0,0,0,0);">삭제</button> -->
-										<%-- <button name="${list.w_num}" id="deleteBtn_${cnt}" onClick="reply_click(this.name)" style="float: right; margin-top: 0px; border: 0px; background-color: rgba(0,0,0,0);">삭제</button> --%>
 									</h4>
 								</div>
 								<div id="collapse${cnt}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${cnt}">
 									<div class="panel-body">
 										<form method="post" action="/kakaoPay" id="searchFrm">
-											<%-- <p>This is 간단한 내용. write here. (${count})</p> --%>
 											<%-- <div style="float: right; margin-bottom: 30px; margin-top: 10px;">
 												<button name="payBtn" style="border: 0px; background-color: rgba(0,0,0,0);">
 											    	<img src="${pageContext.request.contextPath}/resources/images/payment_icon_yellow_small.png">
@@ -98,94 +95,6 @@
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
 						<h3>행복한 여행을 응원합니다.</h3>
 						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<div id="fh5co-features">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 animate-box">
-
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-hotairballoon"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Family Travel</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-								<p><a href="#">Learn More</a></p>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="col-md-4 animate-box">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-search"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Travel Plans</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-								<p><a href="#">Learn More</a></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 animate-box">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-wallet"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Honeymoon</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-								<p><a href="#">Learn More</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4 animate-box">
-
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-wine"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Business Travel</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-								<p><a href="#">Learn More</a></p>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="col-md-4 animate-box">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-genius"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Solo Travel</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-								<p><a href="#">Learn More</a></p>
-							</div>
-						</div>
-
-					</div>
-					<div class="col-md-4 animate-box">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-chat"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Explorer</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-								<p><a href="#">Learn More</a></p>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>

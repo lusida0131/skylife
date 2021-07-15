@@ -76,11 +76,10 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cs-select.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cs-skin-border.css">
 	
+	
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">	
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/map.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/accordions.css">
+
 	
 	
 	<!-- Modernizr JS -->
@@ -94,7 +93,7 @@
 </head>
 
 
-<body class="font-sans">
+<body class="font-sans" style="padding:0px 0px 0px 0px;">
 
 	<div id="fh5co-wrapper">
 	<div id="fh5co-page">
