@@ -112,7 +112,7 @@ public class OrderController {
     	if(id.equals(pmdlist.getPartner_user_id()) != true) {
 			response.setContentType("text/html; charset=UTF-8");
 	        PrintWriter out = response.getWriter();
-	        out.println("<script>alert('정보가 맞지 않습니다. 관리자에게 요청하세요.'); </script>");
+	        out.println("<script>alert('고객 정보가 맞지 않습니다. 관리자에게 문의하세요.'); </script>");
 	        out.flush();
 			return "/";
     	}
