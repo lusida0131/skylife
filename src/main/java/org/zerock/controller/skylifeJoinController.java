@@ -53,6 +53,7 @@ public class skylifeJoinController {
 	private skylifeService service;
 	private KakaoAPI kakao;
 
+
 	private static final Logger logger = LoggerFactory.getLogger(skylifeJoinController.class);
 	private static final String String = null;
 
@@ -115,10 +116,14 @@ public class skylifeJoinController {
 		String access_Token = kakao.getAccessToken(code);
 		HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
 		System.out.println("login Controller : " + userInfo);
-
+		
+		// 클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
 		if (userInfo.get("email") != null) {
 			session.setAttribute("userId", userInfo.get("email"));
+			
 			session.setAttribute("access_Token", access_Token);
+			
+			log.info(userInfo.get("email"));
 		}
 		return "redirect:/";
 	}
@@ -314,11 +319,7 @@ public class skylifeJoinController {
 	}
 	
 	
-	
-	
-	
-	
-	
+
 	
 	
 	

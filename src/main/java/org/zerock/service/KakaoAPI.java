@@ -21,7 +21,7 @@ public class KakaoAPI {
     public String getAccessToken (String authorize_code) {
         String access_Token = "";
         String refresh_Token = "";
-        String reqURL = "http://localhost:8080/page/index";
+        String reqURL = "http://localhost:8080/auth/loginForm";
         
         try {
             URL url = new URL(reqURL);
@@ -36,7 +36,7 @@ public class KakaoAPI {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=c4f3e60f17766b60ae9f4c4957c155f7");
-            sb.append("&redirect_uri=http://localhost:8080/page/index");
+            sb.append("&redirect_uri=http://localhost:8080/auth/loginForm");
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();
