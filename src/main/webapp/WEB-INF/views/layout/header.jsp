@@ -118,6 +118,7 @@
 							<li><a href="/page/public">공지사항</a></li>
 							<li><a href="#" class="fh5co-sub-ddown">Menu</a>
 								<c:set var="name" value="${user.id}"/>
+								<c:set var="gname" value="${user.id}"/>
 								<ul class="fh5co-sub-menu">
 								<c:choose>
 									<c:when test="${name eq null}">

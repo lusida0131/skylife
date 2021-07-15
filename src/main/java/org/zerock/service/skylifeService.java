@@ -40,5 +40,11 @@ public interface skylifeService {
 	public skylifeVO get(String id);
 	
 	
+	//구글회원가입
+	public void joinMemberByGoogle(skylifeVO vo);
+		
+	//구글로그인
+	public skylifeVO loginMemberByGoogle(skylifeVO vo);
+	
 
 }

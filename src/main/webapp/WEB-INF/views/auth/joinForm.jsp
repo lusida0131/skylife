@@ -27,6 +27,8 @@
                          
                          <!--회원가입 인풋-->
                         <form class="login__input" action="/auth/joinForm" method="post"id="signFrm"name="signFrm">
+                            
+                            
                             <input type="text" name="id" placeholder="아이디" required="required" id="id">
                             <input type = "button" id="check" value = "중복체크">
                             <input type="password" name="pw" placeholder="패스워드" required="required" id="pw">

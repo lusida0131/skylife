@@ -5,12 +5,13 @@
 <html lang="ko">
 
 <head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id"
 	content="11264373594-v17ti619msdqg94fdh10l60c157u3tl5.apps.googleusercontent.com">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Photogram</title>
@@ -22,7 +23,7 @@
 	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
 	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
 	crossorigin="anonymous" />
-<script src="https://apis.google.com/js/platform.js" async defer></script>
+
 
 <style>
 div.abcRioButton {
@@ -75,11 +76,10 @@ div.abcRioButton {
 						<div class="text-center">
 							<br>
 							<div class="g-signin2" data-width="240" data-longtitle="true"
-								data-onsuccess="onSignIn" onclick="init();" id="google_login"></div>
-							<a
-								href="https://kauth.kakao.com/oauth/authorize?client_id=c4f3e60f17766b60ae9f4c4957c155f7&redirect_uri=http://localhost:8080/auth/loginForm&response_type=code"><br>
-							<img width="220" alt="Kakao Login"
-								src="/resources/images/kakao_login_medium_narrow.png"></a>
+								data-onsuccess="onSignIn" onclick="init();" id="google_login">
+							</div>
+							<a href="https://kauth.kakao.com/oauth/authorize?client_id=c4f3e60f17766b60ae9f4c4957c155f7&redirect_uri=http://localhost:8080/auth/loginForm&response_type=code"><br>
+							<img width="220" alt="Kakao Login" src="/resources/images/kakao_login_medium_narrow.png"></a>
 						</div>
 						<!-- Oauth 소셜로그인end -->
 
@@ -120,7 +120,7 @@ div.abcRioButton {
 
 	});
      
- 	function onSignIn(googleUser) {
+/*   	function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
         console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -133,8 +133,65 @@ div.abcRioButton {
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
+        
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '${pageContext.request.contextPath}/loginGoogle');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function() {
+          console.log('Signed in as: ' + xhr.responseText);
+        };
+        xhr.send('idtoken=' + id_token);
           
-      } 
-</script>
+      } */
 
+
+</script>
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+<script type="text/javascript">
+//google signin API
+var googleUser = {};
+function init() {
+	 gapi.load('auth2', function() {
+	 	console.log("init()시작");
+	 	auth2 = gapi.auth2.init({
+	        client_id: '11264373594-v17ti619msdqg94fdh10l60c157u3tl5.apps.googleusercontent.com',
+	        cookiepolicy: 'single_host_origin'
+	    });
+	    attachSignin(document.getElementById('google_login'));
+	});
+}
+</script>
+<script type="text/javascript">
+//google signin API2
+function attachSignin(element) {
+    auth2.attachClickHandler(element, {},
+        function(googleUser) {
+    		var profile = googleUser.getBasicProfile();
+    		var id_token = googleUser.getAuthResponse().id_token;
+	  	  	console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	  	  	console.log('ID토큰: ' + id_token);
+	  	  	console.log('Name: ' + profile.getName());
+	  	  	console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+			$(function() {
+				$.ajax({
+				    url: '/loginGoogle',
+				    type: 'post',
+				    data: {
+						"id" : profile.getEmail(),		
+				        "name": profile.getName(),
+						"email": profile.getEmail()
+					},
+				    success: function (data) {
+				           alert("구글아이디로 로그인 되었습니다");
+				           location.href="/";
+				   }
+				});
+			});
+        }, function(error) {
+          		alert(JSON.stringify(error, undefined, 2));
+    });
+    console.log("구글API 끝");
+  }
+</script>
 </html>

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
 
 import javax.servlet.http.HttpServletRequest;
@@ -49,7 +50,7 @@ public class skylifeJoinController {
 	private OrderMapper om;
 	@Autowired
 	private JavaMailSender mailSender;
-
+	@Inject
 	private skylifeService service;
 	private KakaoAPI kakao;
 
@@ -318,11 +319,45 @@ public class skylifeJoinController {
 		return "redirect:/admin/member_list";
 	}
 	
-	
-
-	
-	
-	
-	
+	// 구글 로그인
+	@ResponseBody
+	@RequestMapping(value = "/loginGoogle", method = RequestMethod.POST)
+	public String loginGooglePOST(skylifeVO vo, HttpSession session, RedirectAttributes rttr, skylifeVO mvo) throws Exception{
+		skylifeVO returnVO = service.loginMemberByGoogle(vo);
+		String mvo_ajaxid = mvo.getId(); 
+		System.out.println("C: 구글아이디 포스트 db에서 가져온 vo "+ vo);
+		System.out.println("C: 구글아이디 포스트 ajax에서 가져온 id "+ mvo_ajaxid);
+		
+		//아이디가 DB에 존재하지 않는 경우
+		if(returnVO == null) { 
+			//구글 회원가입
+			service.joinMemberByGoogle(vo);	
+			
+			//구글 로그인
+			returnVO = service.loginMemberByGoogle(vo);
+			log.info("returnVO: " + returnVO);
+			session.setAttribute("user", returnVO);	
+			rttr.addFlashAttribute("mvo", returnVO);
+			
+		}
+		
+		//아이디가 DB에 존재하는 경우
+		if(mvo_ajaxid.equals(returnVO.getId())){ 
+			//구글 로그인
+			service.loginMemberByGoogle(vo);
+			session.setAttribute("user", returnVO);			
+			rttr.addFlashAttribute("mvo", returnVO);
+		}else {		//아이디가 DB에 존재하지 않는 경우
+			
+			//구글 회원가입
+			service.joinMemberByGoogle(vo);	
+			
+			//구글 로그인
+			returnVO = service.loginMemberByGoogle(vo);
+			session.setAttribute("user", returnVO);			
+			rttr.addFlashAttribute("mvo", returnVO);
+		}		
+		return "redirect:/";
+	}
 	
 }

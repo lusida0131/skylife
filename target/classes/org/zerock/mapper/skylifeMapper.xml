@@ -53,4 +53,16 @@
 	<delete id="delete">
 	delete from smem where id = #{id} 
 	</delete>
+	
+	
+	<insert id="joinMemberByGoogle">
+		insert into smem(id, name, email)
+		values (#{id}, #{name}, #{email})
+	</insert>
+	
+	<select id="readMemberWithIDPW" resultType="org.zerock.domain.skylifeVO">
+		select * from smem where id=#{id}
+	</select>
+	
+	
 </mapper>

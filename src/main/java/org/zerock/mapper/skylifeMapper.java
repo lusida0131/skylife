@@ -40,5 +40,13 @@ public interface skylifeMapper {
  	public skylifeVO read(String id);
 
 	
+	//구글회원가입
+	public void joinMemberByGoogle(skylifeVO vo);
+		
+	//구글로그인
+	public skylifeVO loginMemberByGoogle(skylifeVO vo);
+	
+	//R: 회원 정보 조회 - ID정보에 해당하는 사용자 정보
+	public skylifeVO readMemberWithIDPW(String userid) throws Exception;
 	
 }
