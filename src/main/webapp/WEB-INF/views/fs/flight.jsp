@@ -4,7 +4,7 @@
 
 		<div class="fh5co-hero">
 			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(${pageContext.request.contextPath}/resources/images/imagesair.jpg);">  <!-- 사진 왜 안뜨냐 해결좀요 -->
+			<div class="fh5co-cover" data-stellar-background-ratio="0.5">
 				<div class="desc">
 					<div class="container">
 						<div class="row">
@@ -109,10 +109,11 @@
 							
 							<div class="desc2 animate-box">
 								<div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
-									<p>HandCrafted by <a href="https://github.com/lusida0131/skylife" target="_blank" class="fh5co-site-name">SkyLife.git</a></p>
-									<h2>이제 여행을 시작하세요</h2>
-									<h3>현재 최저가 항공권으로 갈 수 있는 여행지를 확인해보세요. 이 밖에도 평균보다 낮은 가격으로 여행할 수 있는 여행지가 많습니다.</h3>
-									<span class="price">$599</span>
+									<p>Developed by <a href="https://github.com/lusida0131/skylife" target="_blank" class="fh5co-site-name">SkyLife.git</a></p>
+									<h2>SkyLife와 함께 여행을 시작하세요.</h2>
+									<h3>원하는 날짜와 여행지를 선택하여,<br>구매할 수 있는 항공편을 확인해보세요.</h3>
+									<h3>이 밖에도 여행객들의 커뮤니티, 여행지 주변 정보 조회,<br> 공항 주차정보 확인 등의 여러 서비스가 있습니다.</h3>
+									<!-- <span class="price">$599</span> -->
 									<!-- <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p> -->
 								</div>
 							</div>
@@ -132,7 +133,7 @@
 						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 					</div>
 				</div>
-				<div class="row row-bottom-padded-md">
+				<%-- <div class="row row-bottom-padded-md">
 					<div class="col-md-12 animate-box">
 						<h2 class="heading-title">Todays Flight Deal</h2>
 					</div>
@@ -297,11 +298,11 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> --%>
 			</div>
 		</div>
 		
-		<div id="fh5co-features">
+		<!-- <div id="fh5co-features">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4 animate-box">
@@ -387,11 +388,11 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box" style="margin-bottom: 25px;">
+				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box" style="margin-top:35px; margin-bottom:25px;">
 					<h3>주차장 목록</h3>
 					<p style="margin-bottom: 15px;">실시간 주차장 정보를 조회할 수 있습니다.</p>
 				</div>
@@ -497,7 +498,7 @@
 			</div>
 		</div>
 
-		<div id="fh5co-blog-section" class="fh5co-section-gray">
+		<%-- <div id="fh5co-blog-section" class="fh5co-section-gray">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
@@ -600,7 +601,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> --%>
 		
 		
 		<script type="text/javascript">
