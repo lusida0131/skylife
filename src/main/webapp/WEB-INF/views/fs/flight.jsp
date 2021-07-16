@@ -12,7 +12,6 @@
 								<div class="tabulation animate-box">
 									<div class="tab-content">
 									
-										<!-- ################################## FORM TAG HERE ################################## -->
 										<form id="flightFrm" name="flightFrm" action="/fs/searchFlight" method="post">
 											 <div role="tabpanel" class="tab-pane active" id="flights">
 												<div class="row">
@@ -70,12 +69,6 @@
 																
 															</div>
 														</div>
-														<!-- <div class="col-xxs-12 col-xs-6 mt alternate" id="datetimepicker_end">
-															<div class="input-field">
-																<label for="date-end">도착일</label>
-																<input type="text" class="form-control date_controll" id="date-end" name="date_end" placeholder="yyyymmdd"/>
-															</div>
-														</div> -->
 													</div>
 													<div class="col-sm-12 mt" style="margin-bottom: 60px;">
 														<section>
@@ -100,19 +93,17 @@
 													</div>
 												</div>
 											 </div>
-										 </form> <!-- ################################## FORM TAG HERE ################################## -->
+										 </form> 
 										 
 									</div>
-									
 								</div>
 							</div>
 							
 							<div class="desc2 animate-box">
-								<div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
+								<div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1" style="padding-right:20px;">
 									<p>Developed by <a href="https://github.com/lusida0131/skylife" target="_blank" class="fh5co-site-name">SkyLife.git</a></p>
-									<h2>SkyLife와 함께 여행을 시작하세요.</h2>
-									<h3>원하는 날짜와 여행지를 선택하여,<br>구매할 수 있는 항공편을 확인해보세요.</h3>
-									<h3>이 밖에도 여행객들의 커뮤니티, 여행지 주변 정보 조회,<br> 공항 주차정보 확인 등의 여러 서비스가 있습니다.</h3>
+									<h2>SkyLife와 함께 여행 준비를 시작하세요.</h2><br>
+									<h3>원하는 날짜와 여행지를 선택하여, 최적의 항공편을 확인해보세요.</h3>
 									<!-- <span class="price">$599</span> -->
 									<!-- <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p> -->
 								</div>
@@ -130,268 +121,85 @@
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
 						<h3>행복한 여행을 응원합니다.</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+						<p>SKYLIFE는 여행을 편하게 해줄 수 있는 여러 서비스들을 제공합니다.</p>
 					</div>
 				</div>
-				<%-- <div class="row row-bottom-padded-md">
-					<div class="col-md-12 animate-box">
-						<h2 class="heading-title">Todays Flight Deal</h2>
-					</div>
-					<div class="col-md-6 animate-box">
+				
+				<div id="fh5co-features" style="padding-top:15px; padding-bottom:15px;">
+					<div class="container">
 						<div class="row">
-							<div class="col-md-12">
-								<h4>Better Deals, More Abilities</h4>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+							<div class="col-md-4 animate-box">
+								<div class="feature-left">
+									<span class="icon"><br><i class="icon-hotairballoon"></i></span>
+									<div class="feature-copy">
+										<h3>항공편 조회</h3>
+										<p>출발지/목적지와 날짜만 있다면 어디든 갈 수 있습니다.</p>
+										<p><a href="#">Learn More</a></p>
+									</div>
+								</div>
 							</div>
-							<div class="col-md-12">
-								<h4>Keep up with the news of your airline</h4>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+							<div class="col-md-4 animate-box">
+								<div class="feature-left">
+									<span class="icon"><br><i class="icon-wallet"></i></span>
+									<div class="feature-copy">
+										<h3>항공권 예매</h3>
+										<p>SKYLIFE만의 자체 서비스 구현으로 항공권을 예약할 수 있습니다.</p>
+										<p><a href="/fs/wish">Learn More</a></p>
+									</div>
+								</div>
 							</div>
-							<div class="col-md-12">
-								<h4>In-Flight Experience</h4>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+							<div class="col-md-4 animate-box">
+								<div class="feature-left">
+									<span class="icon"><br><i class="icon-search"></i></span>
+									<div class="feature-copy">
+										<h3>공항 주차시설 실시간 확인</h3>
+										<p>실시간으로 공항 주차시설을 조회하여 주차 가능한 잔여 좌석을 알아볼 수 있습니다.</p>
+										<p><a href="/Park/park">Learn More</a></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4 animate-box">
+								<div class="feature-left">
+									<span class="icon"><br><i class="icon-genius"></i></span>
+									<div class="feature-copy">
+										<h3>주변 시설 조회</h3>
+										<p>주변에 있는 주유소/약국/은행/마트 등의 시설들을 보여줍니다.</p>
+										<p><a href="/page/map">Learn More</a></p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 animate-box">
+								<div class="feature-left">
+									<span class="icon"><br><i class="icon-wine"></i></span>
+									<div class="feature-copy">
+										<h3>맛집 검색</h3>
+										<p>현재 위치를 기준으로 주변 맛집을 추천받거나 검색할 수 있습니다.</p>
+										<p><a href="/page/map2">Learn More</a></p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 animate-box">
+								<div class="feature-left">
+									<span class="icon"><br><i class="icon-chat"></i></span>
+									<div class="feature-copy">
+										<h3>커뮤니티</h3>
+										<p>SKYLIFE만의 자체 커뮤니티입니다. 나만의 여행 이야기를 공유하고, 타인의 이야기를 들어보세요.</p>
+										<p><a href="/page/board">Learn More</a></p>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-6 animate-box">
-						<img class="img-responsive" src="${pageContext.request.contextPath}/resources/images/cover_bg_3.jpg" alt="travel">
-						<a href="#" class="flight-book">
-							<div class="plane-name">
-								<span class="p-flight">United States Airways</span>
-							</div>
-							<div class="desc">
-								<div class="left">
-									<h4>HK-MNL</h4>
-									<span>Dec 20 - Dec29</span>
-								</div>
-								<div class="right">
-									<span class="price">
-										<i class="icon-arrow-down22"></i>
-										$1000
-									</span>
-								</div>
-							</div>
-						</a>
-						<a href="#" class="flight-book">
-							<div class="plane-name">
-								<span class="p-flight">Qatar Airways</span>
-							</div>
-							<div class="desc">
-								<div class="left">
-									<h4>HK-MNL</h4>
-									<span>Dec 20 - Dec29</span>
-								</div>
-								<div class="right">
-									<span class="price">
-										<i class="icon-arrow-down22"></i>
-										$790
-									</span>
-								</div>
-							</div>
-						</a>
-						<a href="#" class="flight-book">
-							<div class="plane-name">
-								<span class="p-flight">Philippine Airline</span>
-							</div>
-							<div class="desc">
-								<div class="left">
-									<h4>MNL-HK</h4>
-									<span>Dec 20 - Dec29</span>
-								</div>
-								<div class="right">
-									<span class="price">
-										<i class="icon-arrow-down22"></i>
-										$500
-									</span>
-								</div>
-							</div>
-						</a>
-						<a href="#" class="flight-book">
-							<div class="plane-name">
-								<span class="p-flight">China Airways</span>
-							</div>
-							<div class="desc">
-								<div class="left">
-									<h4>HK-LAS</h4>
-									<span>Dec 20 - Dec29</span>
-								</div>
-								<div class="right">
-									<span class="price">
-										<i class="icon-arrow-down22"></i>
-										$900
-									</span>
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="row row-bottom-padded-md">
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#">
-							<img src="${pageContext.request.contextPath}/resources/images/place-1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>New York</h3>
-								<span>3 nights</span>
-								<span class="price">$1,000</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#">
-							<img src="${pageContext.request.contextPath}/resources/images/place-2.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Philippines</h3>
-								<span>4 nights</span>
-								<span class="price">$1,000</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#">
-							<img src="${pageContext.request.contextPath}/resources/images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Hongkong</h3>
-								<span>2 nights</span>
-								<span class="price">$1,000</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#">
-							<img src="${pageContext.request.contextPath}/resources/images/place-4.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>New York</h3>
-								<span>3 nights</span>
-								<span class="price">$1,000</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#">
-							<img src="${pageContext.request.contextPath}/resources/images/place-5.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Philippines</h3>
-								<span>4 nights</span>
-								<span class="price">$1,000</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#">
-							<img src="${pageContext.request.contextPath}/resources/images/place-6.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Hongkong</h3>
-								<span>2 nights</span>
-								<span class="price">$1,000</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-				</div> --%>
+				</div> 
+				
 			</div>
 		</div>
 		
-		<!-- <div id="fh5co-features">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 animate-box">
-
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-hotairballoon"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Family Travel</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-								<p><a href="#">Learn More</a></p>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="col-md-4 animate-box">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-search"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Travel Plans</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-								<p><a href="#">Learn More</a></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 animate-box">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-wallet"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Honeymoon</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-								<p><a href="#">Learn More</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4 animate-box">
-
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-wine"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Business Travel</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-								<p><a href="#">Learn More</a></p>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="col-md-4 animate-box">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-genius"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Solo Travel</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-								<p><a href="#">Learn More</a></p>
-							</div>
-						</div>
-
-					</div>
-					<div class="col-md-4 animate-box">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-chat"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Explorer</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-								<p><a href="#">Learn More</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> -->
 
 		<div class="container">
-			<div class="row">
+			<div class="row" style="margin:20px;">
 				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box" style="margin-top:35px; margin-bottom:25px;">
 					<h3>주차장 목록</h3>
 					<p style="margin-bottom: 15px;">실시간 주차장 정보를 조회할 수 있습니다.</p>

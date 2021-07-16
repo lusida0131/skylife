@@ -56,8 +56,16 @@ public class OrderController {
     
 	// wish 폼
     @GetMapping("/fs/wish")
-    public String wish(HttpSession session, Model model) {
-
+    public String wish(HttpSession session, HttpServletResponse response, Model model) throws IOException {
+    	
+    	if(session.getAttribute("user") == null) {
+			response.setContentType("text/html; charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>alert('로그인이 필요한 서비스입니다.'); </script>");
+	        out.flush();
+			return "/auth/loginForm";
+    	}
+    	
     	String str = String.valueOf(session.getAttribute("user"));
     	String[] arr = str.split(", ");
     	String id = arr[1].substring(3);
