@@ -1,5 +1,7 @@
 package org.pay.domain;
 
+import java.sql.Date;
+
 import lombok.Data;
 
 
@@ -36,4 +38,6 @@ public class OrderVO {
 	private String created_at;				// 결제 준비 요청 시각
 	private String approved_at;				// 결제 승인 시각
     
+	
+	private Date data;
 }

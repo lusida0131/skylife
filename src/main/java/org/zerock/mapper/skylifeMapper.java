@@ -1,5 +1,6 @@
 package org.zerock.mapper;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -39,7 +40,7 @@ public interface skylifeMapper {
 	public boolean delete(String id);
  	public skylifeVO read(String id);
 
-	
+ 	
 	//구글회원가입
 	public void joinMemberByGoogle(skylifeVO vo);
 		

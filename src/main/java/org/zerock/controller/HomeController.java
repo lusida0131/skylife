@@ -43,28 +43,6 @@ public class HomeController {
     public String map3() throws Exception {
         return "page/map3";
     }
-    // 관리자 페이지 이동
-    @GetMapping("/auth/anonymous")
-    public String admin() {
-    	return "auth/anonymous";
-    }
-    // 관리자 페이지
-    @GetMapping("/auth/admin")
-    public String admin1() {
-    	return "/auth/admin";
-    }
-  
-    //게시판 수정
-    @GetMapping("/admin/publicup")
-    public String public1() {
-    	return "/admin/publicup";
-    }
-    //댓글 수정
-    @GetMapping("/admin/product_list")
-    public String product() {
-    	return "/admin/product_list";
-    }
-    
     @GetMapping("/page/public")
     public String pub() throws Exception {
         return "redirect:/pub/public";

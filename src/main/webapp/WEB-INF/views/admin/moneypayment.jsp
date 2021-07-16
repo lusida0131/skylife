@@ -12,9 +12,7 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 
-<br>
-<br>
-<!-- ################ accordion toggle 적용 START ################ -->
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
@@ -47,7 +45,7 @@
 							<tbody>
 								<tr>
 
-									<td><fmt:formatNumber value="${all}"
+									<td><fmt:formatNumber value="${list}"
 											pattern="#,###,###" /></td>
 
 								</tr>

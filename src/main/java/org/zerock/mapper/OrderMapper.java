@@ -24,6 +24,9 @@ public interface OrderMapper {
 	// 총회원 매출 조회
 	public ArrayList<OrderVO> moneylist();
 	
+	// 월매출 조회
+	public Integer mobthspayment();
+		
 	// 장바구니 등록
 	public void WishInsert(OrderVO ovo);
 	
@@ -32,5 +35,7 @@ public interface OrderMapper {
 	
 	// 장바구니 삭제
 	public int WishDelete(int w_num);
+
+	public Integer data(String data);
 	
 }
