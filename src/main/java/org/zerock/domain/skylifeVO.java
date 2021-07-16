@@ -20,4 +20,13 @@ public class skylifeVO {
 	private String email;
 	private String phone;
 	
+	public skylifeVO() { }
+
+    public skylifeVO(String id, String name, String email) {
+
+        this.id = id;
+        this.name = name;
+        this.email = email;
+
+    }
 }

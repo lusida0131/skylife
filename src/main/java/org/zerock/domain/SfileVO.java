@@ -18,4 +18,7 @@ public class SfileVO {
 	private String uploadPath;
 	// 파일 이름
 	private String fileName;
+
+
+
 }

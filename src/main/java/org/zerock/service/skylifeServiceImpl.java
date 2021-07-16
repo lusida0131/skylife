@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 import org.zerock.domain.skylifeVO;
 import org.zerock.mapper.skylifeMapper;
@@ -123,5 +124,7 @@ public class skylifeServiceImpl implements skylifeService{
 		}
 		return returnVO;
 	}
+
+
 
 }

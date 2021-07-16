@@ -78,8 +78,10 @@ div.abcRioButton {
 							<div class="g-signin2" data-width="240" data-longtitle="true"
 								data-onsuccess="onSignIn" onclick="init();" id="google_login">
 							</div>
-							<a href="https://kauth.kakao.com/oauth/authorize?client_id=c4f3e60f17766b60ae9f4c4957c155f7&redirect_uri=http://localhost:8080/auth/loginForm&response_type=code"><br>
-							<img width="220" alt="Kakao Login" src="/resources/images/kakao_login_medium_narrow.png"></a>
+							<a
+								href="https://kauth.kakao.com/oauth/authorize?client_id=cef123d5f027968a178a756448ae5835&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code"><br>
+							<img 
+								src="/resources/images/kakao_login_medium_narrow.png"></a>
 						</div>
 						<!-- Oauth 소셜로그인end -->
 

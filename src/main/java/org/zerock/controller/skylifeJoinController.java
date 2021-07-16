@@ -34,7 +34,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.skylifeVO;
 import org.zerock.mapper.OrderMapper;
+import org.zerock.mapper.skylifeMapper;
 import org.zerock.service.KakaoAPI;
+import org.zerock.service.KakaoService;
 import org.zerock.service.skylifeService;
 
 import lombok.AllArgsConstructor;
@@ -54,6 +56,12 @@ public class skylifeJoinController {
 	private skylifeService service;
 	private KakaoAPI kakao;
 
+	    @Autowired
+	    private KakaoService kakaoService;
+	    
+	    
+	    @Autowired
+	    private skylifeMapper skylifeMapper;
 
 	private static final Logger logger = LoggerFactory.getLogger(skylifeJoinController.class);
 	private static final String String = null;
@@ -359,5 +367,29 @@ public class skylifeJoinController {
 		}		
 		return "redirect:/";
 	}
+	@GetMapping("/auth/kakao/callback")
+    public String home(@RequestParam(value = "code", required = false) String code, HttpSession session) throws Exception{
+    	
+          String access_Token = kakaoService.getAccessToken(code);
+          HashMap<String, Object> userInfo = kakaoService.getUserInfo(access_Token);
+          
+          System.out.println("이메일: " + userInfo.get("email")); // 아이디
+          System.out.println("이름: " + userInfo.get("nickname")); // 이름 
+          System.out.println("프로필: " + userInfo.get("profile_image"));
+           
+          String id = String.valueOf(userInfo.get("email"));
+          String email = String.valueOf(userInfo.get("email"));
+          String name = String.valueOf(userInfo.get("nickname"));
+          
+          
+          skylifeVO kvo = new skylifeVO(id, name, email);
+      
+        		  skylifeMapper.joinMemberByKakao(kvo);  // 저장
+			
+        	  session.setAttribute("user", kvo);  // 출력? 
+          
+          
+        return "redirect:/";
+}
 	
 }

@@ -46,5 +46,7 @@ public interface skylifeService {
 	//구글로그인
 	public skylifeVO loginMemberByGoogle(skylifeVO vo);
 	
+	
+	
 
 }

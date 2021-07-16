@@ -49,4 +49,9 @@ public interface skylifeMapper {
 	//R: 회원 정보 조회 - ID정보에 해당하는 사용자 정보
 	public skylifeVO readMemberWithIDPW(String userid) throws Exception;
 	
+	public skylifeVO readMemberWithKakaoID(String id) throws Exception;
+	public void joinMemberByKakao(skylifeVO kvo);
+	
+	//카카오 로긴
+	public skylifeVO loginMemberByKakao(skylifeVO vo);
 }

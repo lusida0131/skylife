@@ -64,5 +64,7 @@
 		select * from smem where id=#{id}
 	</select>
 	
-	
+	<insert id="joinMemberByKakao">
+	insert into smem(id, name, email, oauth)values (#{id}, #{name}, #{email}, 'kakao') 
+	</insert>
 </mapper>
