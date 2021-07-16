@@ -1,7 +1,7 @@
 package org.zerock.controller;
 
+
 import java.util.Random;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,15 +23,12 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.zerock.domain.BoardVO;
 import org.zerock.domain.skylifeVO;
 import org.zerock.mapper.OrderMapper;
 import org.zerock.mapper.skylifeMapper;
@@ -43,11 +40,13 @@ import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
+
 @Controller
 @RequestMapping
 @AllArgsConstructor
 @Log4j
 public class skylifeJoinController {
+	
 	@Setter(onMethod_ = { @Autowired })
 	private OrderMapper om;
 	@Autowired
@@ -56,13 +55,12 @@ public class skylifeJoinController {
 	private skylifeService service;
 	private KakaoAPI kakao;
 
-	    @Autowired
-	    private KakaoService kakaoService;
-	    
-	    
-	    @Autowired
-	    private skylifeMapper skylifeMapper;
+	@Autowired
+	private KakaoService kakaoService;
+	@Autowired
+	private skylifeMapper skylifeMapper;
 
+	
 	private static final Logger logger = LoggerFactory.getLogger(skylifeJoinController.class);
 	private static final String String = null;
 
@@ -79,7 +77,6 @@ public class skylifeJoinController {
 	public String joinForm() {
 		return "/auth/joinForm";
 	}
-	
 	// 회원 가입 폼
 	@PostMapping("/auth/joinForm")
 	public String joinForm(skylifeVO skylifevo, RedirectAttributes redirectAttributes) {
@@ -92,11 +89,10 @@ public class skylifeJoinController {
 	}
 	
 	// 로그인 폼
-		@GetMapping("/auth/loginForm")
-		public String login() {
-			return "/auth/loginForm";
-		}
-		
+	@GetMapping("/auth/loginForm")
+	public String login() {
+		return "/auth/loginForm";
+	}
 	// 로그인 폼
 	@PostMapping("/auth/loginForm")
 	public String loginForm(HttpSession session, skylifeVO skylifevo, Model model) throws Exception {
@@ -113,7 +109,7 @@ public class skylifeJoinController {
 	// 로그아웃 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {
-
+    	log.info("logout user: " + session.getAttribute("user"));
 		session.invalidate();
 
 		return "redirect:/";
@@ -346,7 +342,6 @@ public class skylifeJoinController {
 			log.info("returnVO: " + returnVO);
 			session.setAttribute("user", returnVO);	
 			rttr.addFlashAttribute("mvo", returnVO);
-			
 		}
 		
 		//아이디가 DB에 존재하는 경우
@@ -355,8 +350,7 @@ public class skylifeJoinController {
 			service.loginMemberByGoogle(vo);
 			session.setAttribute("user", returnVO);			
 			rttr.addFlashAttribute("mvo", returnVO);
-		}else {		//아이디가 DB에 존재하지 않는 경우
-			
+		} else {		//아이디가 DB에 존재하지 않는 경우
 			//구글 회원가입
 			service.joinMemberByGoogle(vo);	
 			
@@ -367,29 +361,31 @@ public class skylifeJoinController {
 		}		
 		return "redirect:/";
 	}
+	
+	// 카카오 로그인
 	@GetMapping("/auth/kakao/callback")
     public String home(@RequestParam(value = "code", required = false) String code, HttpSession session) throws Exception{
-    	
-          String access_Token = kakaoService.getAccessToken(code);
-          HashMap<String, Object> userInfo = kakaoService.getUserInfo(access_Token);
-          
-          System.out.println("이메일: " + userInfo.get("email")); // 아이디
-          System.out.println("이름: " + userInfo.get("nickname")); // 이름 
-          System.out.println("프로필: " + userInfo.get("profile_image"));
-           
-          String id = String.valueOf(userInfo.get("email"));
-          String email = String.valueOf(userInfo.get("email"));
-          String name = String.valueOf(userInfo.get("nickname"));
-          
-          
-          skylifeVO kvo = new skylifeVO(id, name, email);
-      
-        		  skylifeMapper.joinMemberByKakao(kvo);  // 저장
-			
-        	  session.setAttribute("user", kvo);  // 출력? 
-          
-          
-        return "redirect:/";
-}
+
+		String access_Token = kakaoService.getAccessToken(code);
+		HashMap<String, Object> userInfo = kakaoService.getUserInfo(access_Token);
+
+		System.out.println("이메일: " + userInfo.get("email")); // 아이디
+		System.out.println("이름: " + userInfo.get("nickname")); // 이름 
+		//System.out.println("프로필: " + userInfo.get("profile_image"));
+
+		String id = String.valueOf(userInfo.get("email"));
+		String email = String.valueOf(userInfo.get("email"));
+		String name = String.valueOf(userInfo.get("nickname"));
+
+		skylifeVO kvo = new skylifeVO(id, name, email);
+		
+		if(skylifeMapper.readMemberWithKakaoID(id) == null) {
+			// 회원 database에 없는 경우
+			skylifeMapper.joinMemberByKakao(kvo);  // 회원가입
+		}
+		session.setAttribute("user", kvo);
+
+		return "redirect:/";
+	}
 	
 }

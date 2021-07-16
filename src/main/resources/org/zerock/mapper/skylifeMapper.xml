@@ -50,8 +50,9 @@
 	<select id="list" resultType="org.zerock.domain.skylifeVO">
 		select * from smem
 	</select>
+	
 	<delete id="delete">
-	delete from smem where id = #{id} 
+		delete from smem where id = #{id} 
 	</delete>
 	
 	
@@ -59,12 +60,15 @@
 		insert into smem(id, name, email, oauth)
 		values (#{id}, #{name}, #{email}, 'google')
 	</insert>
-	
 	<select id="readMemberWithIDPW" resultType="org.zerock.domain.skylifeVO">
 		select * from smem where id=#{id}
 	</select>
 	
 	<insert id="joinMemberByKakao">
-	insert into smem(id, name, email, oauth)values (#{id}, #{name}, #{email}, 'kakao') 
+		insert into smem(id, name, email, oauth)values (#{id}, #{name}, #{email}, 'kakao') 
 	</insert>
+	<select id="readMemberWithKakaoID" resultType="org.zerock.domain.skylifeVO">
+		select * from smem where id=#{id}
+	</select>
+	
 </mapper>

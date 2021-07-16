@@ -1,10 +1,10 @@
 package org.zerock.mapper;
 
+
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.zerock.domain.skylifeVO;
+
 
 public interface skylifeMapper {
 	
@@ -40,18 +40,23 @@ public interface skylifeMapper {
  	public skylifeVO read(String id);
 
 	
-	//구글회원가입
+	// 구글회원가입
 	public void joinMemberByGoogle(skylifeVO vo);
 		
-	//구글로그인
+	// 구글로그인
 	public skylifeVO loginMemberByGoogle(skylifeVO vo);
 	
 	//R: 회원 정보 조회 - ID정보에 해당하는 사용자 정보
 	public skylifeVO readMemberWithIDPW(String userid) throws Exception;
 	
-	public skylifeVO readMemberWithKakaoID(String id) throws Exception;
+	
+	// 카카오 회원가입
 	public void joinMemberByKakao(skylifeVO kvo);
 	
-	//카카오 로긴
+	// 카카오 로그인
 	public skylifeVO loginMemberByKakao(skylifeVO vo);
+	
+	// 카카오 회원 ID 조회
+	public skylifeVO readMemberWithKakaoID(String id) throws Exception;
+	
 }
