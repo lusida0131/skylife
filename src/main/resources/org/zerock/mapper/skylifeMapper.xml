@@ -56,8 +56,8 @@
 	
 	
 	<insert id="joinMemberByGoogle">
-		insert into smem(id, name, email)
-		values (#{id}, #{name}, #{email})
+		insert into smem(id, name, email, oauth)
+		values (#{id}, #{name}, #{email}, 'google')
 	</insert>
 	
 	<select id="readMemberWithIDPW" resultType="org.zerock.domain.skylifeVO">
