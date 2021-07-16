@@ -79,6 +79,10 @@ public class OrderController {
     	
     	ArrayList<OrderVO> wlist = om.WishList(id);
     	
+    	if(wlist == null) {
+    		model.addAttribute("wishNull", "wish is null");
+    	}
+    	
     	model.addAttribute("wlist", wlist);
     	log.info("movement wish list: " + wlist);
     	
@@ -109,6 +113,9 @@ public class OrderController {
     	String id = arr[1].substring(3);
     	
     	ArrayList<OrderVO> pmlist = om.PaymentList(id);
+    	if(pmlist == null) {
+    		model.addAttribute("pmNull", "payment is null");
+    	}
     	model.addAttribute("pmlist", pmlist);
     	log.info("movement payment list: " + pmlist);
     	

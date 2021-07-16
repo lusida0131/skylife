@@ -167,7 +167,7 @@
 
 	function input() {
 	const dday = document.querySelector("#input_date").value;
-	const dday1 = document.querySelector("#input_date1").value;
+
 		console.log(dday);
 		 $('#signFrm').submit();
 	}

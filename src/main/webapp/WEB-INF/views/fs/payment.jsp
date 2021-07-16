@@ -14,6 +14,11 @@
 			</div>
 			<div class="col-md-12">
 				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					<c:if test="${pmNull eq null}">
+						<div  style="margin:100px; text-align:center;">
+							<h4>PAYMENT LIST 항목이 없습니다!</h4>
+						</div>
+					</c:if>
 					<c:set var="cnt" value="0"/>
 					<c:forEach var="list" items="${pmlist}" varStatus="status">
 					<c:set var="cnt" value="${cnt = cnt + 1}"/>
@@ -93,7 +98,7 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
 					<h3>행복한 여행을 응원합니다.</h3>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+					<p>SKYLIFE는 여행을 편하게 해줄 수 있는 여러 서비스들을 제공합니다.</p>
 				</div>
 			</div>
 		</div>

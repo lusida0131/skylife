@@ -1,11 +1,11 @@
 package org.zerock.service;
 
-import java.io.PrintWriter;
-import java.util.List;
 
+import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.zerock.domain.skylifeVO;
+
 
 public interface skylifeService {
 	
