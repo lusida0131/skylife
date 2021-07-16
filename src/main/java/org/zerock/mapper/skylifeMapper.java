@@ -53,9 +53,6 @@ public interface skylifeMapper {
 	// 카카오 회원가입
 	public void joinMemberByKakao(skylifeVO kvo);
 	
-	// 카카오 로그인
-	public skylifeVO loginMemberByKakao(skylifeVO vo);
-	
 	// 카카오 회원 ID 조회
 	public skylifeVO readMemberWithKakaoID(String id) throws Exception;
 	

@@ -151,7 +151,7 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
 					<h3>행복한 여행을 응원합니다.</h3>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+					<p>SKYLIFE는 여행을 편하게 해줄 수 있는 여러 서비스들을 제공합니다.</p>
 				</div>
 			</div>
 		</div>

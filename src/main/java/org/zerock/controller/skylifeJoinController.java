@@ -32,7 +32,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.skylifeVO;
 import org.zerock.mapper.OrderMapper;
 import org.zerock.mapper.skylifeMapper;
-import org.zerock.service.KakaoAPI;
 import org.zerock.service.KakaoService;
 import org.zerock.service.skylifeService;
 
@@ -49,11 +48,11 @@ public class skylifeJoinController {
 	
 	@Setter(onMethod_ = { @Autowired })
 	private OrderMapper om;
+	
 	@Autowired
 	private JavaMailSender mailSender;
 	@Inject
 	private skylifeService service;
-	private KakaoAPI kakao;
 
 	@Autowired
 	private KakaoService kakaoService;
@@ -112,24 +111,6 @@ public class skylifeJoinController {
     	log.info("logout user: " + session.getAttribute("user"));
 		session.invalidate();
 
-		return "redirect:/";
-	}
-
-	// 카카오 로그인 폼
-	@RequestMapping(value = "/auth/loginForm")
-	public String login(@RequestParam("code") String code, HttpSession session) {
-		String access_Token = kakao.getAccessToken(code);
-		HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
-		System.out.println("login Controller : " + userInfo);
-		
-		// 클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
-		if (userInfo.get("email") != null) {
-			session.setAttribute("userId", userInfo.get("email"));
-			
-			session.setAttribute("access_Token", access_Token);
-			
-			log.info(userInfo.get("email"));
-		}
 		return "redirect:/";
 	}
 
