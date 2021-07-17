@@ -6,9 +6,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/public.css">
 	
-	<div class="w-full md:w-3/5 mx-auto p-8" style="padding-top:30px; padding-bottom:20px;">
-		<h2>SkyLife의 공지사항</h2>
-		<br><br>
+	<div class="w-full md:w-3/5 mx-auto p-8" style="padding-top:30px; padding-bottom:30px;">
+		<h1 style="margin:10px 5px;">SkyLife의 공지사항</h1>
+		<hr><br>
 		<c:if test="${user.id == 'admin'}">
 			<input type="button" value="공지사항 등록" onclick="location.href='/pub/register'" class="btn btn-secondary mb-3">
 		</c:if>
@@ -26,9 +26,8 @@
 				</div>
 			</c:forEach>
 		</div>
-		<br>
+		<br><br>
 	</div>
-<!-- </body> -->
 
 
 <script>
@@ -50,6 +49,5 @@
 	
 </script>
 
-<!-- </html> -->
 
 <%@ include file="../layout/footer.jsp"%>

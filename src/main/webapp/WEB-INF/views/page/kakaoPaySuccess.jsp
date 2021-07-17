@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ticket.css">
-<title>결제 완료</title>
+<title>SkyLife - 결제 완료</title>
 </head>
 
 <body>

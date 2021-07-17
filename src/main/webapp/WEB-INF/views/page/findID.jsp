@@ -4,25 +4,24 @@
 <html lang="ko">
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="google-signin-scope" content="profile email">
-<meta name="google-signin-client_id" content="11264373594-v17ti619msdqg94fdh10l60c157u3tl5.apps.googleusercontent.com">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="google-signin-scope" content="profile email">
+	<meta name="google-signin-client_id" content="11264373594-v17ti619msdqg94fdh10l60c157u3tl5.apps.googleusercontent.com">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photogram</title>
+    <title>SkyLife - with Happy Life</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/instaStyle.css">
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/insta.svg">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
 
-<style>
-div.abcRioButton {
-margin: 0 auto;
-}
-
-</style>
+	<style>
+		div.abcRioButton {
+			margin: 0 auto;
+		}
+	</style>
 </head>
 
 <body>
@@ -35,7 +34,6 @@ margin: 0 auto;
                    <!--로그인 폼-->
                    <div class="login__form">
                         <h1><a href="/page/index" ><img src="${pageContext.request.contextPath}/resources/images/sky.png" alt=""></a></h1>
-                        
                         <!--로그인 인풋-->
                         <form class="login__input" action="/page/getID" method="post"id="signFrm">
                             <input type="text" name="name" placeholder="이름" id="name">
@@ -43,20 +41,20 @@ margin: 0 auto;
                             <input type="submit" class="findID" id = "signUp"value="아이디 찾기" >
                         </form>
                         <!--로그인 인풋end-->
-                        
-                    <!--계정이 없으신가요?-->
-                    <div class="login__register">
-                    	<span>계정이 있으신가요?</span>
-                        <a href="/auth/loginForm">로그인</a>
-                        <br>
-                        <span>계정이 없으신가요?</span>
-                        <a href="../auth/joinForm">가입하기</a>
+	                    <br>
+	                    <!--계정이 없으신가요?-->
+	                    <div class="login__register" style="border: 0px solid rgba(0,0,0,0)">
+	                    	<span>계정이 있으신가요?</span>
+	                        <a href="/auth/loginForm">로그인</a>
+	                        <br>
+	                        <span>계정이 없으신가요?</span>
+	                        <a href="../auth/joinForm">가입하기</a>
+	                    </div>
+	                    <!--계정이 없으신가요?end-->
                     </div>
-                    <!--계정이 없으신가요?end-->
                 </article>
             </section>
         </main>
-        
     </div>
 </body>
 
