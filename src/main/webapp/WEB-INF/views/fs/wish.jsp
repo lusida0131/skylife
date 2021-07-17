@@ -14,7 +14,7 @@
 			</div>
 			<div class="col-md-12">
 				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-					<c:if test="${wishNull eq null}">
+					<c:if test="${wn == 'null'}">
 						<div  style="margin:100px; text-align:center;">
 							<h4>WISH LIST에 추가된 항목이 없습니다!</h4>
 						</div>

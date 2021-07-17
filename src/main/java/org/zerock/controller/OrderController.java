@@ -5,11 +5,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,16 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.mindrot.jbcrypt.BCrypt;
+
 import org.pay.domain.OrderVO;
-import org.zerock.domain.skylifeVO;
 import org.zerock.mapper.OrderMapper;
-import org.zerock.service.OrderService;
-import org.zerock.service.skylifeService;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
@@ -43,8 +36,8 @@ public class OrderController {
 	@Setter(onMethod_ = {@Autowired})
 	private OrderMapper om;
 	
-	@Autowired
-	private OrderService service;
+	
+	
 	// 장바구니 추가 기능
     @PostMapping("/addwish")
     public void sWish(OrderVO ovo, HttpServletResponse response) throws IOException {
@@ -79,8 +72,8 @@ public class OrderController {
     	
     	ArrayList<OrderVO> wlist = om.WishList(id);
     	
-    	if(wlist == null) {
-    		model.addAttribute("wishNull", "wish is null");
+    	if(wlist.size() == 0) {
+    		model.addAttribute("wn", "null");
     	}
     	
     	model.addAttribute("wlist", wlist);
@@ -113,9 +106,11 @@ public class OrderController {
     	String id = arr[1].substring(3);
     	
     	ArrayList<OrderVO> pmlist = om.PaymentList(id);
-    	if(pmlist == null) {
-    		model.addAttribute("pmNull", "payment is null");
+    	
+    	if(pmlist.size() == 0) {
+    		model.addAttribute("pn", "null");
     	}
+    	
     	model.addAttribute("pmlist", pmlist);
     	log.info("movement payment list: " + pmlist);
     	

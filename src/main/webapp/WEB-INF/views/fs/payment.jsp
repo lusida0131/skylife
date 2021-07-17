@@ -14,7 +14,7 @@
 			</div>
 			<div class="col-md-12">
 				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-					<c:if test="${pmNull eq null}">
+					<c:if test="${pn == 'null'}">
 						<div  style="margin:100px; text-align:center;">
 							<h4>PAYMENT LIST 항목이 없습니다!</h4>
 						</div>
