@@ -19,8 +19,8 @@
 
 <div class="container">
 	<div class="row">
-			<div class="col-md-3" style="float: right"></div>
-			<div class="col-md-9">
+		<div class="col-md-3" style="float: right"></div>
+		<div class="col-md-9">
 			<form action="/remove" name="form1" method="post">
 				<table class="table table-list-search">
 					<thead>
@@ -29,30 +29,29 @@
 							<th>이름</th>
 							<th>생일</th>
 							<th>이메일</th>
-							<th>핸드폰 번호</th>
+							<th>핸드폰 번호<br></th>
 						</tr>
 					</thead>
-					<%-- <td><a href="${pageContext.request.contextPath}/page/boardView?b_num=${BoardVO.b_num}">${BoardVO.b_title}</a></td> --%>
 					<c:forEach var="memberVO" items="${list}">
 						<tr>
 							<td>${memberVO.id}&ensp;&ensp;</td>
-							<%--<td><a href="${pageContext.request.contextPath}/page/boardView?b_num=${BoardVO.b_num}">${BoardVO.b_title}</a></td> --%>
 							<td>${memberVO.name}&ensp;&ensp;</td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
 									value="${memberVO.bday}" />&ensp;&ensp;</td>
 							<td>${memberVO.email}&ensp;&ensp;</td>
 							<td>${memberVO.phone}&ensp;&ensp;</td>
-							<td>	<input type="button" value="탈퇴 시키기" onclick="location.href='/remove?id=<c:out value="${memberVO.id}" />'" class="btn btn-secondary mb-3">
-              	 	</td>
-						<td><input type="hidden" name="id" value="${memberVO.id}"></td>
- 						</tr>
-						
+							<td><input type="button" value="탈퇴 시키기"
+								onclick="location.href='/remove?id=<c:out value="${memberVO.id}" />'"
+								class="btn btn-secondary mb-3"></td>
+							<td><input type="hidden" name="id" value="${memberVO.id}"></td>
+						</tr>
+
 					</c:forEach>
-				</table>   
+				</table>
 			</form>
-			</div>
 		</div>
 	</div>
+</div>
 <br>
 </body>
 </html>

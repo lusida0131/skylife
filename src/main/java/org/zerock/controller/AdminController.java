@@ -22,12 +22,14 @@ public class AdminController {
 	@GetMapping("/admin/mobthspayment")
 	public String joinForm(HttpServletRequest request, Model model) {
 		String date = request.getParameter("input_date");
+	
 
 		Integer all = service.data(date);
 		log.info("data " + date);
 
 		log.info("all " + all);
 		model.addAttribute("all", all);
+		model.addAttribute("date", date);
 		return "/admin/mobthspayment";
 	}
 
