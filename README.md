@@ -35,7 +35,8 @@
  ## 메인 페이지   
    * 항공편 조회   
    * 주차장 조회   
-  ![SkyLife - with Happy Life - Chrome 2021-07-19 00-01-33](https://user-images.githubusercontent.com/78531061/126072133-d1b2298b-55f3-4fb2-b785-56750eef42ac.gif)
+![IMG_7107](https://user-images.githubusercontent.com/78531061/126074993-3042259d-2be1-4061-89c3-923fa45cbd3a.gif)
+
  
  
  ## 항공 조회   
