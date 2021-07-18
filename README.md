@@ -29,7 +29,7 @@
 * Notion
 
 # DB 명세서
-![image](https://user-images.githubusercontent.com/78531061/126074231-dd1a5d25-093b-4255-af06-3ee7bc4428a9.png)
+![image](https://user-images.githubusercontent.com/78531061/126074377-10d029a7-b8a6-498b-898b-67784ee831c2.png)
 
 # 🖥 기능 구현 사항
  ## 메인 페이지   
