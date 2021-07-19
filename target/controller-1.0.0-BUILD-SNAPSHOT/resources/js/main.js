@@ -33,7 +33,38 @@
 
 	//Date Picker
 
-   $('#date-start, #date-end').datepicker({ dateFormat: 'yy-mm-dd', autoclose : true });
+   $('#date-start').datepicker({ 
+   				dateFormat: 'yy-mm-dd', 
+   				autoclose : true ,
+   				startDate :  new Date(),
+   				endDate : '+30d'
+ 
+   				
+   }).on("changeDate", function(e) {
+        
+  		$('#date-end').datepicker('setStartDate', $('#date-start').val());
+  		
+	});
+   
+ $('#date-end').datepicker({ 
+   				dateFormat: 'yy-mm-dd', 
+   				autoclose : true ,
+   				endDate :  new Date()
+   				
+   				
+}).on("changeDate", function(e) {
+        
+  		$('#date-start').datepicker('setEndDate', $('#date-end').val());
+  		
+	});
+
+
+	
+   
+  //  onSelect: function(dateText, inst) {
+  //        var date = $(this).val();
+  //        alert('선택하신 날짜는'+date);
+  //   }
 
    [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {  
       new SelectFx(el);

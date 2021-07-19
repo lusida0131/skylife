@@ -20,6 +20,7 @@
 	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
 	<meta name="author" content="FREEHTML5.CO" />
 
+
 	<!-- 
 	//////////////////////////////////////////////////////
 
@@ -47,6 +48,15 @@
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="shortcut icon" href="favicon.ico">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- 부가적인 테마 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
 	
@@ -66,23 +76,24 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cs-select.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cs-skin-border.css">
 	
+	
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
-	
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/map.css">
+
 	
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<!-- Modernizr JS -->
-	<script src=""${pageContext.request.contextPath}/resources/js/modernizr-2.6.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	
 
 </head>
 
 
-<body class="font-sans">
+<body class="font-sans" style="padding:0px 0px 0px 0px;">
 
 	<div id="fh5co-wrapper">
 	<div id="fh5co-page">
@@ -100,23 +111,25 @@
 							<li><a href="#" class="fh5co-sub-ddown">서비스</a>
 								<ul class="fh5co-sub-menu">
 									<li><a href="/page/map">지도</a></li>
-									<li><a href="/page/park">주차장</a></li>
+									<li><a href="/Park/park">주차장</a></li>
 								</ul>
 							</li>
 							<li><a href="/page/board">게시판</a></li>
 							<li><a href="/page/public">공지사항</a></li>
 							<li><a href="#" class="fh5co-sub-ddown">Menu</a>
 								<c:set var="name" value="${user.id}"/>
+								<c:set var="gname" value="${user.id}"/>
 								<ul class="fh5co-sub-menu">
 								<c:choose>
 									<c:when test="${name eq null}">
 										<li><a href="/auth/loginForm">로그인</a></li>
-										<li><a href="#">메뉴</a></li>
+										<li><a href="/auth/joinAgree">회원가입</a></li>
 									</c:when>	
 									<c:when test="${name ne null}">
-										<li><a href="#">${user.id}님</a></li>
-										<li><a href="#">메뉴</a></li>
+										<li><a href="#">${user.name}님</a></li>
 										<li><a href="/page/memView">회원정보</a></li>
+										<li><a href="/fs/wish">wishlist</a></li>
+										<li><a href="/fs/payment">paymentlist</a></li>
 										<li><a href="/logout">로그아웃</a></li>
 									</c:when>
 								</c:choose>

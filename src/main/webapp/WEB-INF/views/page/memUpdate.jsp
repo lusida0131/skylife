@@ -28,11 +28,11 @@
                          
                          <!--회원수정 인풋-->
                         <form class="login__input" action="/memUpdate" method="post"id="loginFrm"name="loginFrm">
-                            <input type="text" name="id" id="id" value="${user.id}">
+                            <input type="text" name="id" id="id" value="${user.id}" readonly>
                             <input type="password" name="pw" placeholder="패스워드" required="required"id="pw">
-                            <input type="text" name="name" id="name" value="${user.name}">
-                            <input type="date" name="bday" id="bday" value="${user.bday}">
-                            <input type="email" name="email" id="email" value="${user.email}">
+                            <input type="text" name="name" id="name" value="${user.name}" readonly>
+                            <input type="date" name="bday" id="bday" value="${user.bday}" readonly>
+                            <input type="email" name="email" id="email" value="${user.email}" readonly>
                             <input type="text" name="phone" placeholder="전화번호" value="${user.phone}" required="required"id="phone">
                             <input type = "button" id = "loginUp" value = "정보 수정">
                             <input hidden="">
@@ -59,6 +59,7 @@
 		            $('#phone').focus();
 		            return;
 		     }else{
+		    	alert("회원정보가 수정되었습니다.");
 	            $('#loginFrm').submit();
 	         }
 		});

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="org.zerock.mapper.OrderMapper">
+
+	<!-- <insert id="AddOrder"> insert into spayment(vihicleId, airlineNm, depAirportNm, 
+		depPlandTime, arrAirportNm, arrPlandTime, economyCharge, prestigeCharge, 
+		aid, tid, partner_user_id, payment_method_type, amount_total, amount_vat, 
+		card_purchase_corp, card_install_month, item_name, item_code, quantity, created_at, 
+		approved_at) values (#{vihicleId}, #{airlineNm}, #{depAirportNm}, #{depPlandTime}, 
+		#{arrAirportNm}, #{arrPlandTime}, #{economyCharge}, #{prestigeCharge}, #{aid}, 
+		#{tid}, #{partner_user_id}, #{payment_method_type}, #{amount_total}, #{amount_vat}, 
+		#{card_purchase_corp}, #{card_install_month}, #{item_name}, #{item_code}, 
+		#{quantity}, #{created_at}, #{approved_at}) </insert> -->
+	<insert id="AddOrder">
+		insert into spayment(vihicleId, airlineNm,
+		depAirportNm, depPlandTime,
+		arrAirportNm, arrPlandTime, economyCharge,
+		prestigeCharge, tid)
+		values
+		(#{vihicleId}, #{airlineNm},
+		#{depAirportNm}, #{depPlandTime},
+		#{arrAirportNm}, #{arrPlandTime},
+		#{economyCharge}, #{prestigeCharge},
+		#{tid})
+	</insert>
+	<update id="AddOrderApproval"
+		parameterType="org.pay.domain.KakaoPayApprovalVO">
+		update spayment set
+		aid = #{aid},
+		partner_user_id =
+		#{partner_user_id},
+		payment_method_type = #{payment_method_type},
+		amount_total = #{amount.total},
+		amount_vat = #{amount.vat},
+		card_purchase_corp = #{card_info.purchase_corp},
+		card_install_month =
+		#{card_info.install_month},
+		item_name = #{item_name},
+		item_code =
+		#{item_code},
+		quantity = #{quantity},
+		created_at = #{created_at},
+		approved_at = #{approved_at}
+		where tid = #{tid}
+	</update>
+
+	<select id="PaymentList" resultType="org.pay.domain.OrderVO">
+		select * from spayment
+		where
+		partner_user_id = #{id}
+	</select>
+
+	<select id="PaymentDetail" resultType="org.pay.domain.OrderVO">
+		select * from spayment
+		where pay_num = #{pay_num}
+	</select>
+
+	<select id="moneylist" resultType="org.pay.domain.OrderVO">
+		select * from spayment where
+		partner_user_id is not null
+	</select>
+
+
+<!-- 	<select id="mobthspayment" resultType="int">
+		<![CDATA[
+	 	select 
+       sum(economyCharge)
+  FROM spayment
+ WHERE DATE(approved_at) >= STR_TO_DATE('2021-07-10', '%Y-%m-%d')
+   AND DATE(approved_at) <= STR_TO_DATE('2021-07-12', '%Y-%m-%d')
+ ]]>
+	</select>
+ -->
+ <select id="data" resultType="Integer">
+   SELECT sum(amount_total)  FROM  spayment where MONTH(approved_at)=MONTH(#{data})
+ </select>
+	<insert id="WishInsert">
+		insert into swish(id, vihicleId, airlineNm,
+		depAirportNm, depPlandTime,
+		arrAirportNm, arrPlandTime, economyCharge,
+		prestigeCharge)
+		values (#{id},
+		#{vihicleId}, #{airlineNm},
+		#{depAirportNm}, #{depPlandTime},
+		#{arrAirportNm}, #{arrPlandTime},
+		#{economyCharge}, #{prestigeCharge})
+	</insert>
+
+	<select id="WishList" parameterType="String"
+		resultType="org.pay.domain.OrderVO">
+		select * from swish where id = #{uid}
+	</select>
+
+	<delete id="WishDelete">
+		delete from swish where (w_num = #{w_num})
+	</delete>
+
+</mapper>

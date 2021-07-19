@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>skyLife</title>
+    <title>SkyLife - with Happy Life</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/instaStyle.css">
 <%--     <link rel="shortcut icon" href="${pageContext.request.contextPath}/""">  인터넷창 로고 --%> 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -33,8 +33,8 @@
                             <input type="text" name="name" id="name" value="${user.name}">
                             <input type="date" name="bday" id="bday" value="${user.bday}">
                             <input type="email" name="email" id="email" value="${user.email}">
-                            <input type="text" name="phone" placeholder="전화번호" required="required"id="phone">
-                            <input type = "button" id = "loginUp"value = "정보 수정">
+                            <input type="text" name="phone" placeholder="전화번호" value="${user.phone}" required="required"id="phone">
+                            <input type = "button" id = "loginUp" value = "정보 수정">
                             <input hidden="">
                         </form>
                         <!--회원수정 인풋end-->
