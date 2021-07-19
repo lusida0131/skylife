@@ -19,26 +19,19 @@
 		<div class="col-md-12">
 			<h1>회 원 매 출</h1>
 			<hr>
-		<!-- 	<input type="button" onclick="location.href='/admin/mobthspayment'" value="총 매출 확인"> -->
-				<form class="login__input" action="/admin/mobthspayment"  method="GET" id="signFrm"name="signFrm">
-                            <input type="date" name="input_date"  required="required" id="input_date" pattern="%Y-%m-%d">
-                            <input type="button" id="input_submit" onclick="input()" value="조회" >
-                           
-                        </form>
+			<form class="login__input" action="/admin/mobthspayment" method="GET"
+				id="signFrm" name="signFrm">
+				<input type="date" name="input_date" required="required"
+					id="input_date" pattern="%Y-%m-%d"> <input type="button"
+					id="input_submit" onclick="input()" value="조회">
+
+			</form>
 		</div>
 
 		<div class="col-md-12">
 			<div class="panel-group" id="accordion" role="tablist"
 				aria-multiselectable="true">
-				<div class="input-group">
-					<input class="form-control" id="system-search" name="q"
-						placeholder="Search for" required> <span
-						class="input-group-btn">
-						<button type="submit" class="btn btn-default">
-							<i class="glyphicon glyphicon-search"></i>
-						</button>
-					</span>
-				</div>
+
 				<c:set var="cnt" value="0" />
 				<c:forEach var="list" items="${pmlist}" varStatus="status">
 					<c:set var="cnt" value="${cnt = cnt + 1}" />
@@ -62,37 +55,12 @@
 										pattern="MM월dd일 HH시mm분" />) -> ${list.arrAirportNm} (<fmt:formatDate
 										value="${arrTime}" pattern="MM월dd일 HH시mm분" />)&nbsp;
 								</a>
-								<!-- <button name="deleteBtn" id="deleteBtn" style="float: right; margin-top: 0px; border: 0px; background-color: rgba(0,0,0,0);">삭제</button> -->
-								<%-- <button name="${list.w_num}" id="deleteBtn_${cnt}" onClick="reply_click(this.name)" style="float: right; margin-top: 0px; border: 0px; background-color: rgba(0,0,0,0);">삭제</button> --%>
 							</h4>
 						</div>
 						<div id="collapse${cnt}" class="panel-collapse collapse"
 							role="tabpanel" aria-labelledby="heading${cnt}">
 							<div class="panel-body">
 								<form method="post" action="/kakaoPay" id="searchFrm">
-									<%-- <p>This is 간단한 내용. write here. (${count})</p> --%>
-									<%-- <div style="float: right; margin-bottom: 30px; margin-top: 10px;">
-												<button name="payBtn" style="border: 0px; background-color: rgba(0,0,0,0);">
-											    	<img src="${pageContext.request.contextPath}/resources/images/payment_icon_yellow_small.png">
-											    </button>
-											</div> --%>
-									<%-- <input type="hidden" value="${user.id}" name="id" id="id" /> <input
-										type="hidden" value="${list.w_num}" name="w_num" id="w_num" />
-									<input type="hidden" value="${list.vihicleId}" name="vihicleId"
-										id="vihicleId" /> <input type="hidden"
-										value="${list.airlineNm}" name="airlineNm" id="airlineNm" /> <input
-										type="hidden" value="${list.depAirportNm}" name="depAirportNm"
-										id="depAirportNm" /> <input type="hidden"
-										value="${list.depPlandTime}" name="depPlandTime"
-										id="depPlandTime" /> <input type="hidden"
-										value="${list.arrAirportNm}" name="arrAirportNm"
-										id="arrAirportNm" /> <input type="hidden"
-										value="${list.arrPlandTime}" name="arrPlandTime"
-										id="arrPlandTime" /> <input type="hidden"
-										value="${list.economyCharge}" name="economyCharge"
-										id="economyCharge" /> <input type="hidden"
-										value="${list.prestigeCharge}" name="prestigeCharge"
-										id="prestigeCharge" /> --%>
 									<table class="table table-striped">
 										<thead>
 											<tr>
@@ -163,15 +131,12 @@
 </div>
 <br>
 <script type="text/javascript">
-
-
 	function input() {
-	const dday = document.querySelector("#input_date").value;
+		const dday = document.querySelector("#input_date").value;
 
 		console.log(dday);
-		 $('#signFrm').submit();
+		$('#signFrm').submit();
 	}
-
 </script>
 
 <%@ include file="../layout/footer.jsp"%>
