@@ -51,4 +51,8 @@ public class HomeController {
     public String map4() throws Exception {
         return "page/map4";
     }
+    @GetMapping("/page/map5")
+    public String map5() throws Exception {
+        return "page/map5";
+    }
 }

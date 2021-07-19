@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 
-<a href="/page/map2">이동</a>
+<a href="/page/map2">위치 검색 하러가기</a>
 <p style="margin-top: -12px"></p>
    <div class="map_wrap">
       <div id="map"
