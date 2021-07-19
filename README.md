@@ -56,27 +56,27 @@
 
 
 # 📄 기능 구현 사항
- ## 메인 페이지    
-   * 항공편, 주차장 조회   
+ ## 1. 메인 페이지    
+   #### (1) 항공편, 주차장 조회   
    
- ## 항공 조회 페이지
-  * 항공사별 카테고리   
-  * 페이징 처리   
+ ## 2. 항공 조회 페이지
+  #### (1) 항공사별 카테고리   
+  #### (2) 페이징 처리   
+  #### (3) 찜 기능 
+  #### (4) 카카오 페이 결제 API
+  #### (5) 결제 상세보기
   
-      
- <img src="https://user-images.githubusercontent.com/78531061/126076309-d09f85f8-7160-4632-b146-79289266c0d7.gif" width="100%">
- 
-  * 찜 기능 
-  * 카카오 페이 결제 API    
+<img src="https://user-images.githubusercontent.com/78531061/126076309-d09f85f8-7160-4632-b146-79289266c0d7.gif" width="100%">  
+  ##구현 기능: 1-1),
   
 <img src="https://user-images.githubusercontent.com/78531061/126184220-566c036c-e24f-445b-86f5-90b4c59169b7.gif" width="100%">
 
  
- ## 회원가입, 로그인 페이지   
-   * 이용약관 동의   
-   * 아이디, 이메일 중복체크      
-   * 이메일 인증번호 인증   
-   * 카카오, 구글 로그인 API
+ ## 3. 회원가입, 로그인 페이지   
+   #### (1) 이용약관 동의   
+   #### (2) 아이디, 이메일 중복체크      
+   #### (3) 이메일 인증번호 인증   
+   #### (4) 카카오, 구글 로그인 API
 
    <img src="https://user-images.githubusercontent.com/78531061/126184484-a0c63638-107a-4ece-a4eb-37bd5ebc36c2.gif" width="100%">
  
@@ -84,53 +84,56 @@
    <img src="https://user-images.githubusercontent.com/78531061/126111918-303108c2-3f4a-46de-9782-7dde2a188caa.gif" width="100%">
 
  
- ## 서비스 페이지
-   * 지도 API   
-       * 카테고리별 위치, 현재 위치 표시   
-       * 검색기능   
- 
-   * 주차장 API   
-      * 각 공항별 주차장 실시간 정보   
-        * 주차장 구역   
-        * 총 주차공간, 주차 가능공간     
-        * 업데이트 시간   
+ ## 4. 서비스 페이지(지도 API, 주차장 API)  
+   #### (1) 카테고리별 위치, 현재 위치 표시   
+   #### (2) 검색기능       
+   #### (3) 각 공항별 주차장 실시간 정보   
+   #### (4) 주차장 구역   
+   #### (5) 총 주차공간, 주차 가능공간     
+   #### (6) 업데이트 시간   
 
 
 <img src="https://user-images.githubusercontent.com/78531061/126184673-2491229f-2186-4976-884b-ab260c4e285e.gif" width="100%">
 
- ## 게시판   
-   * 글 작성, 수정/삭제, 상세보기         
-   * 글 조회수, 페이징 처리, 검색      
-   * 댓글 작성, 수정/삭제, 페이징 처리   
+ ## 5. 게시판   
+   #### (1) 글 작성, 수정/삭제, 상세보기         
+   #### (2) 글 조회수, 페이징 처리, 검색      
+   #### (3) 댓글 작성, 수정/삭제, 페이징 처리   
   <img src="https://user-images.githubusercontent.com/78531061/126184927-b0b7a23c-5e46-41ea-af9e-4f6ff43c6e1e.gif" width="100%">
   
   <img src="https://user-images.githubusercontent.com/78531061/126185582-69af1f2f-eaab-4038-94e3-6e0daac3280f.gif" width="100%">
 
- ## 공지사항   
-   * 관리자 공지사항 추가, 수정/삭제     
-   * 아코디언 토글   
+ ## 6. 공지사항   
+   #### (1) 관리자 공지사항 추가, 수정/삭제     
+   #### (2) 아코디언 토글   
 
-<img src="https://user-images.githubusercontent.com/78531061/126190273-ed52dd07-5580-4c72-9894-529e5c6dab77.gif" width="100%">
+
+<img src="https://user-images.githubusercontent.com/78531061/126213787-d7bac242-b40f-4356-8aa9-d161434b8fb2.gif" width="100%" height="554">
+
+
+
+
+
 
  
- ## 마이 페이지   
-   * 회원정보 조회/수정, 탈퇴   
-
-   * 찜 목록 조회/삭제   
-   * 결제 목록 조회   
-   * 카카오 페이 결제 API   
+ ## 7. 마이 페이지   
+   #### (1) 회원정보 조회/수정, 탈퇴   
+   #### (2) 찜 목록 조회/삭제   
+   #### (3) 결제 목록 조회   
+   #### (4) 카카오 페이 결제 API   
     
  
- ## 관리자 페이지   
-   * 회원 목록 조회/삭제   
-   * 회원 결제목록 조회/통계(월별 매출)      
-   * 게시글, 댓글 삭제
-   * 공지사항 작성, 수정, 삭제 
+ ## 8. 관리자 페이지   
+   #### (1) 회원 목록 조회/삭제   
+   #### (2) 회원 결제목록 조회/통계(월별 매출)      
+   #### (3) 게시글, 댓글 삭제
+   #### (4) 공지사항 작성, 수정, 삭제 
 
 
-  <img src="https://user-images.githubusercontent.com/78531061/126187949-4ea6a317-ba65-44ef-af0c-8e06e3e9af96.gif" width="100%">
-     
-  <img src="https://user-images.githubusercontent.com/78531061/126187617-53de9564-281b-46ae-928e-2bd0f9e0a144.gif" width="100%">
+<img src="https://user-images.githubusercontent.com/78531061/126212517-081f69b5-9559-419d-b797-8f971e7b8240.gif" width="100%" height="554">
+
+<img src="https://user-images.githubusercontent.com/78531061/126213848-b7011332-8cf7-427a-9e70-6a8ac8b55283.gif" width="100%" height="554">
+
+<img src="https://user-images.githubusercontent.com/78531061/126213871-9ddb636e-a1d0-45b2-93dd-29d4240d1b4e.gif" width="100%" height="554">
 
 
-<img src="https://user-images.githubusercontent.com/78531061/126188113-347a545c-80d8-4e32-bfa3-ce5dda3d8d90.gif" width="100%">
