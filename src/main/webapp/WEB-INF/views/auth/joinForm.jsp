@@ -102,6 +102,7 @@
 				return;
 			}
 			else{
+				alert("회원가입에 성공하였습니다.")
 				$('#signFrm').submit();
 			}
 		});
@@ -118,7 +119,7 @@
 						idx=true;
 						alert("사용 가능한 아이디 입니다.")
 					} else{
-						alert("사용 불가능한 아이디 입니다.")
+						alert("사용할 수 없는 아이디 입니다.")
 					}
 				},
 				error: function(){
