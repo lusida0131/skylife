@@ -47,30 +47,11 @@
  
 # 📜 API 사용내역
 
- ## 1. 카카오 로그인, 맵, 페이 API
-<details markdown="1">
-<summary>카카오 로그인, 맵 ,페이 API</summary>
+ ### 1. 카카오 로그인, 맵, 페이 API
 
-<img src="https://user-images.githubusercontent.com/78531061/126103055-6bdc67ac-b2cd-4215-bebd-2539409cf2b1.png" width="100%" height="379">
-<img src="https://user-images.githubusercontent.com/78531061/126102950-0aebf437-539c-4bbf-9db1-9b56337849d1.png" width="100%" height="379">
-<img src="https://user-images.githubusercontent.com/78531061/126103269-5ea28c75-89b4-4e23-b7a4-d8bafec57128.png" width="100%" height="379">
-</details>
+ ### 2. 구글 로그인 API
 
-
- ## 2. 구글 로그인 API
-<details markdown="1">
-<summary>구글 로그인 API</summary>
-
- <img src="https://user-images.githubusercontent.com/78531061/126106236-84a2aeb1-0bcc-4d43-abde-448711007a74.png" width="100%" height="379">
-</details>
-
- ## 3. 항공조회, 주차장조회 API(공공데이터포탈)
-<details markdown="1">
-<summary>항공조회, 주차장조회 API</summary>
-
-
-![image](https://user-images.githubusercontent.com/78531061/126103341-af130d45-09e2-474d-824f-b1a31f65d9e5.png)
-</details>   
+ ### 3. 항공조회, 주차장조회 API(공공데이터포탈)
 
 
 
