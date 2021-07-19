@@ -26,16 +26,13 @@
                         <h1><a href="/"><img src="${pageContext.request.contextPath}/resources/images/sky.png" alt=""></a></h1>
                          <!--로고end-->
                          <!--회원수정 인풋-->
-                        <form class="login__input" action="/memUpdate" method="post" id="loginFrm" name="loginFrm">
+                        <form class="login__input" action="/memPWUpdate" method="post" id="puFrm" name="puFrm">
                             <input type="hidden" name="id" id="id" value="${user.id}">
-                            <input type="text" name="id" id="id" value="${user.id}" disabled>
-                            <input type="password" name="pw" id="pw" placeholder="현재 비밀번호" required="required" style="background-color:#ccffff;">
-                            <input type="text" name="name" id="name" value="${user.name}" placeholder="이름" style="background-color:#ccffff;">
-                            <input type="date" name="bday" id="bday" value="${user.bday}" disabled>
-                            <input type="email" name="email" id="email" value="${user.email}" disabled>
-                            <input type="text" name="phone" id="phone" placeholder="전화번호" value="${user.phone}" required="required" style="background-color:#ccffff;">
-                            <br><input type="button" id="loginUp" value="정보 수정 완료">
-                            <br><a href="${pageContext.request.contextPath}/page/memPWUpdate"><input type="button" id="pu" value="비밀번호 변경&nbsp;&nbsp;"></a><br>
+                            <input type="password" name="pw1" id="pw1" placeholder="현재 비밀번호" style="background-color:#ccffff;">
+                            <input type="password" name="pw2" id="pw2" placeholder="변경할 비밀번호" style="background-color:#ccffff;">
+                            <input type="password" name="pw3" id="pw3" placeholder="변경 비밀번호 확인" style="background-color:#ccffff;">
+                            <br><br><!-- <input type="button" id="puBtn" name="puBtn" value="비밀번호 변경"> -->
+                           <button name="puBtn">비밀번호 변경</button> <br>
                         </form>
                         <!--회원수정 인풋end-->
                     </div>
@@ -49,25 +46,29 @@
 <script type="text/javascript">
 
 	$(document).ready(function(e) {
-		$('#loginUp').click(function() {
-			if ($.trim($('#pw').val()) == '') {
-				alert("패스워드를 입력해주세요.");
-				$('#pw').focus();
+		$('#puBtn').click(function() {
+			if ($.trim($('#pw1').val()) === '') {
+				alert("현재 비밀번호를 입력해주세요.");
+				$('#pw1').focus();
 				return;
-			} else if ($.trim($('#name').val()) == '') {
-				alert("이름을 입력해주세요.");
-				$('#name').focus();
+			} else if ($.trim($('#pw2').val()) === '') {
+				alert("변경할 비밀번호를 입력해주세요.");
+				$('#pw2').focus();
 				return;
-			} else if ($.trim($('#phone').val()) == '') {
-				alert("전화번호를 입력해주세요.");
-				$('#phone').focus();
+			} else if ($.trim($('#pw3').val()) === '') {
+				alert("변경할 비밀번호 확인용을 입력해주세요.");
+				$('#pw3').focus();
+				return;
+			} else if ($.trim($('#pw2').val() === $.trim($('#pw3').val())) {
+				alert("변경할 비밀번호가 일치하지 않습니다.");
+				$('#pw2').focus();
 				return;
 			} else {
-				alert("회원정보 수정이 진행됩니다.");
-				$('#loginFrm').submit();
+				$('#puFrm').submit();
 			}
 		});
 	});
+		
 </script>
 
 </html>

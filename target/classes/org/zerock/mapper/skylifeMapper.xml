@@ -1,41 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
 <mapper namespace="org.zerock.mapper.skylifeMapper">
+
 	<insert id="register">
 		insert into smem(id, pw, name, bday, email, phone)
 		values (#{id}, #{pw}, #{name}, #{bday}, #{email}, #{phone})
 	</insert>
 	<select id="idCheck" resultType="int">
 		select count(*) from smem
-		where
-		id=#{id}
+		where id=#{id}
 	</select>
 
 	<select id="login" resultType="org.zerock.domain.skylifeVO">
 		select * from smem where id=#{id}
 	</select>
 
-	<update id="memUpdate">
+	<update id="memUpdate" parameterType="org.zerock.domain.skylifeVO">
 		update smem
-		set pw = #{pw}, phone = #{phone}
-		where id =
-		#{id}
+		set name = #{name}, phone = #{phone}
+		where id = #{id}
 	</update>
+	<select id="getPW" parameterType="org.zerock.domain.skylifeVO" resultType="String">
+		select pw from smem where id=#{id}
+	</select>
+	<update id="memPWUpdate" parameterType="org.zerock.domain.skylifeVO">
+		update smem set pw=#{pw} where id=#{id}
+	</update> 
 
-	<select id="findPw" parameterType="String"
-		resultType="org.zerock.domain.skylifeVO">
+	<select id="findPw" parameterType="String" resultType="org.zerock.domain.skylifeVO">
 		select * from smem where email = #{email}
 	</select>
 
-	<update id="updatePW"
-		parameterType="org.zerock.domain.skylifeVO">
+	<update id="updatePW" parameterType="org.zerock.domain.skylifeVO">
 		update smem set pw=#{pw} where email = #{email}
 	</update>
 
 	<select id="findID" parameterType="String" resultType="String">
-		select *
-		from smem where email = #{email}
+		select * from smem where email = #{email}
 	</select>
 
 	<select id="getID">
@@ -43,8 +46,7 @@
 	</select>
 
 	<select id="emailhave" resultType="int">
-		select count(*) from smem
-		where email=#{email}
+		select count(*) from smemwhere email=#{email}
 	</select>
 
 	<select id="list" resultType="org.zerock.domain.skylifeVO">
@@ -65,7 +67,8 @@
 	</select>
 	
 	<insert id="joinMemberByKakao">
-		insert into smem(id, name, email, oauth)values (#{id}, #{name}, #{email}, 'kakao') 
+		insert into smem(id, name, email, oauth) 
+		values (#{id}, #{name}, #{email}, 'kakao') 
 	</insert>
 	<select id="readMemberWithKakaoID" resultType="org.zerock.domain.skylifeVO">
 		select * from smem where id=#{id}

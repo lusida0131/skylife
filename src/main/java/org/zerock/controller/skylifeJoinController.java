@@ -2,6 +2,7 @@ package org.zerock.controller;
 
 
 import java.util.Random;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -188,12 +189,46 @@ public class skylifeJoinController {
 
 	// 회원 수정 기능
 	@RequestMapping(value = "/memUpdate", method = RequestMethod.POST)
-	public String memUpdate(skylifeVO vo, HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
-		String hashedPw = BCrypt.hashpw(vo.getPw(), BCrypt.gensalt());
-		vo.setPw(hashedPw);
+	public String memUpdate(skylifeVO vo, HttpServletResponse response, HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
+		log.info("memUpdate vo: " + vo);
+		if(BCrypt.checkpw(vo.getPw(), service.getPW(vo)) != true) {		// 입력된 현재비밀번호 pw1과 db현재비밀번호 비교 : 비밀번호가 다르므로 돌려보냄
+			response.setContentType("text/html; charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>alert('정보가 맞지 않습니다.'); </script>");
+	        out.flush();
+			return "/page/memView";
+		}
+		
 		service.memUpdate(vo);
 		redirectAttributes.addFlashAttribute("msg", "REGISTERED");
+		session.invalidate();
+		
+		return "redirect:/";
+	}
+	
+	// 회원 정보 중 비밀번호 수정 기능
+	@GetMapping("/page/memPWUpdate")
+	public String memPWUpdate() {
+		return "/page/memPWUpdate";
+	}
+	// 회원 정보 중 비밀번호 수정 기능
+	@RequestMapping(value = "/memPWUpdate", method = RequestMethod.POST)
+	public String memPWUpdate(HttpServletRequest request, HttpServletResponse response, skylifeVO vo, HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
+		log.info("memPWUpdate >>> pw1: " + request.getParameter("pw1") + " pw2: " + request.getParameter("pw2"));
+		String pw1 = request.getParameter("pw1");
+		
+		if(BCrypt.checkpw(pw1, service.getPW(vo)) != true) {		// 입력된 현재비밀번호 pw1과 db현재비밀번호 비교 : 비밀번호가 다르므로 돌려보냄
+			response.setContentType("text/html; charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>alert('정보가 맞지 않습니다.'); </script>");
+	        out.flush();
+			return "/page/memView";
+		}
 
+		String hashedPw = BCrypt.hashpw(request.getParameter("pw2"), BCrypt.gensalt());
+		vo.setPw(hashedPw);
+		service.memPWUpdate(vo);
+		redirectAttributes.addFlashAttribute("msg", "REGISTERED");
 		session.invalidate();
 
 		return "redirect:/";

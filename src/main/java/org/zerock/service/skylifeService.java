@@ -20,6 +20,10 @@ public interface skylifeService {
 	
 	// 회원 수정
 	public void memUpdate(skylifeVO vo) throws Exception;
+	// 회원정보 비밀번호 체크
+	public String getPW(skylifeVO vo) throws Exception;
+	// 회원정보 비밀번호 수정
+	public void memPWUpdate(skylifeVO vo) throws Exception;
 	
 	// 비밀번호 찾기
 	public skylifeVO findPw(String email) throws Exception;

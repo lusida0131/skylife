@@ -47,6 +47,19 @@ public class skylifeServiceImpl implements skylifeService{
 		mapper.memUpdate(vo);
 	}
 	
+	// 회원정보 비밀번호 체크
+	@Override
+	public String getPW(skylifeVO vo) throws Exception {
+		String gp = mapper.getPW(vo);
+		return gp;
+	}
+	
+	// 회원정보 비밀번호 수정
+	@Override
+	public void memPWUpdate(skylifeVO vo) throws Exception{
+		mapper.memPWUpdate(vo);
+	}
+	
 	// 비밀번호 찾기
 	@Override
 	public skylifeVO findPw(String email) throws Exception {
