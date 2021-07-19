@@ -50,7 +50,7 @@
 	        position: locPosition
 	    }); 
 	    
-	    var iwContent = message, // 인포윈도우에 표시할 내용
+	    var iwContent = message,
 	        iwRemoveable = true;
 
 	    // 인포윈도우를 생성합니다
