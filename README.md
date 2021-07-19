@@ -79,6 +79,9 @@
    * 아이디, 이메일 중복체크      
    * 이메일 인증번호 인증   
    * 카카오, 구글 로그인 API  
+   <img src="https://user-images.githubusercontent.com/78531061/126111946-c7be16e7-f41e-4306-b898-93eeeb575826.gif" width="100%">
+   <img src="https://user-images.githubusercontent.com/78531061/126111918-303108c2-3f4a-46de-9782-7dde2a188caa.gif" width="100%">
+
  
  ## 서비스 페이지
    * 지도 API   
