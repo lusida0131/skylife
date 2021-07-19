@@ -59,7 +59,7 @@ public class KakaoPay {
         body.add("quantity", String.valueOf(quantity));						// (int) 상품 수량
         body.add("total_amount", String.valueOf(totalAmount));				// (int) 상품 총액
         body.add("tax_free_amount", "0");									// (int) 상품 비과세 금액
-        body.add("approval_url", "http://localhost:8080/page/kakaoPaySuccess");	// (String) 결제 성공시 url
+        body.add("approval_url", "http://localhost:8080/kakaoPaySuccess");	// (String) 결제 성공시 url
         body.add("cancel_url", "http://localhost:8080/kakaoPayCancel");		// (String) 결제 취소시 url
         body.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");	// (String) 결제 실패시 url
         body.add("install_month", String.valueOf(installMonth));			// (int) 카드 할부개월, 0~12
