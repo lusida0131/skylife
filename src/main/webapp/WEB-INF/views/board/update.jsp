@@ -29,8 +29,7 @@
 			<br>
 			<div class="form-group">
 				<div class="col-sm-12">
-					<p>내용
-					<textarea class="form-control" name="b_content" id="b_content" rows="10" style="width:90%;">${blist.b_content}</textarea></p>
+					<p>내용<textarea class="form-control" name="b_content" id="b_content" rows="10" style="width:90%;">${blist.b_content}</textarea></p>
 				</div>
 			</div>
 			<%-- <div>

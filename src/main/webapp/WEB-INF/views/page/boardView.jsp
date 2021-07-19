@@ -31,9 +31,7 @@
 						${data.id}&nbsp;&nbsp;|&nbsp;&nbsp;<fmt:formatDate value="${data.time}" pattern="yyy-MM-dd HH:mm:ss"/>&nbsp;&nbsp;|&nbsp;&nbsp;조회 ${data.rcount}</span>
 			</div>
 			<hr></div>
-			<div>
-				<p style="font-size:60pt; font-weight:400; color:red; border: 1px solid; margin:20px; padding:20px;">여기가 사진 위치 입니다.<br>화이팅!</p>
-			</div>
+		
 			<div class="form-group">
 				<!-- 게시글 내용 -->
 				<%-- <textarea name="b_content" id="b_content" rows="4" cols="80" readonly class="form-control">${data.b_content}</textarea> --%>

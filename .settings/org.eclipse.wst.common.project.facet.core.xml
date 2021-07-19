@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faceted-project>
-<<<<<<< HEAD
-  <runtime name="VMware tc Server Developer Edition (Runtime) v4.1"/>
-=======
-  <runtime name="Apache Tomcat v9.0 (2)"/>
->>>>>>> 9554efe61a944dd9c59606400fb613c47515cb7c
   <fixed facet="wst.jsdt.web"/>
   <installed facet="java" version="1.8"/>
+  <installed facet="jst.web" version="3.1"/>
   <installed facet="wst.jsdt.web" version="1.0"/>
-  <installed facet="jst.web" version="4.0"/>
 </faceted-project>
