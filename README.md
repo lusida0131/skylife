@@ -61,14 +61,15 @@
    
  ## 항공 조회 페이지
   * 항공사별 카테고리   
-  * 찜 기능   
-  * 페이징 처리
-  * 아코디언 토글
-  * 카카오 페이 결제 API 
+  * 페이징 처리   
+  
       
  <img src="https://user-images.githubusercontent.com/78531061/126076309-d09f85f8-7160-4632-b146-79289266c0d7.gif" width="100%">
  
-![002](https://user-images.githubusercontent.com/78531061/126184220-566c036c-e24f-445b-86f5-90b4c59169b7.gif)
+  * 찜 기능 
+  * 카카오 페이 결제 API    
+  
+<img src="https://user-images.githubusercontent.com/78531061/126184220-566c036c-e24f-445b-86f5-90b4c59169b7.gif" width="100%">
 
  
  ## 회원가입, 로그인 페이지   
@@ -77,7 +78,7 @@
    * 이메일 인증번호 인증   
    * 카카오, 구글 로그인 API
 
-![003](https://user-images.githubusercontent.com/78531061/126184484-a0c63638-107a-4ece-a4eb-37bd5ebc36c2.gif)
+   <img src="https://user-images.githubusercontent.com/78531061/126184484-a0c63638-107a-4ece-a4eb-37bd5ebc36c2.gif" width="100%">
  
    <img src="https://user-images.githubusercontent.com/78531061/126111946-c7be16e7-f41e-4306-b898-93eeeb575826.gif" width="100%">
    <img src="https://user-images.githubusercontent.com/78531061/126111918-303108c2-3f4a-46de-9782-7dde2a188caa.gif" width="100%">
@@ -93,19 +94,24 @@
         * 주차장 구역   
         * 총 주차공간, 주차 가능공간     
         * 업데이트 시간   
- ![005_2](https://user-images.githubusercontent.com/78531061/126184673-2491229f-2186-4976-884b-ab260c4e285e.gif)
+
+
+<img src="https://user-images.githubusercontent.com/78531061/126184673-2491229f-2186-4976-884b-ab260c4e285e.gif" width="100%">
 
  ## 게시판   
    * 글 작성, 수정/삭제, 상세보기         
    * 글 조회수, 페이징 처리, 검색      
    * 댓글 작성, 수정/삭제, 페이징 처리   
-  ![006_1](https://user-images.githubusercontent.com/78531061/126184927-b0b7a23c-5e46-41ea-af9e-4f6ff43c6e1e.gif)
+  <img src="https://user-images.githubusercontent.com/78531061/126184927-b0b7a23c-5e46-41ea-af9e-4f6ff43c6e1e.gif" width="100%">
   
-  ![006_2](https://user-images.githubusercontent.com/78531061/126185582-69af1f2f-eaab-4038-94e3-6e0daac3280f.gif)
+  <img src="https://user-images.githubusercontent.com/78531061/126185582-69af1f2f-eaab-4038-94e3-6e0daac3280f.gif" width="100%">
 
  ## 공지사항   
    * 관리자 공지사항 추가, 수정/삭제     
    * 아코디언 토글   
+
+<img src="https://user-images.githubusercontent.com/78531061/126190273-ed52dd07-5580-4c72-9894-529e5c6dab77.gif" width="100%">
+
  
  ## 마이 페이지   
    * 회원정보 조회/수정, 탈퇴   
@@ -119,5 +125,12 @@
    * 회원 목록 조회/삭제   
    * 회원 결제목록 조회/통계(월별 매출)      
    * 게시글, 댓글 삭제
-   * 공지사항 작성, 수정, 삭제      
-  
+   * 공지사항 작성, 수정, 삭제 
+
+
+  <img src="https://user-images.githubusercontent.com/78531061/126187949-4ea6a317-ba65-44ef-af0c-8e06e3e9af96.gif" width="100%">
+     
+  <img src="https://user-images.githubusercontent.com/78531061/126187617-53de9564-281b-46ae-928e-2bd0f9e0a144.gif" width="100%">
+
+
+<img src="https://user-images.githubusercontent.com/78531061/126188113-347a545c-80d8-4e32-bfa3-ce5dda3d8d90.gif" width="100%">
