@@ -2,22 +2,20 @@
 <%@ include file="../layout/header.jsp"%>
 
 
-	<span><button style="padding: 10px;" type="button" class="btn btn-sm btn-primary" onClick="location.href='/page/map2'">카테고리 검색하기</button></span>
-<p style="margin-top: -12px"></p>
-   <div class="map_wrap">
-      <div id="map"
-         style="width: 100%; height: 90vh; position: relative; overflow: hidden;"></div>
-      <ul id="category">
-         <li id="BK9" data-order="0"><span class="category_bg bank"></span>은행</li>
-         <li id="CS2" data-order="1"><span class="category_bg mart"></span>마트</li>
-         <li id="PM9" data-order="2"><span class="category_bg pharmacy"></span>약국</li>
-         <li id="CT1" data-order="3"><span class="category_bg fun"></span>문화시설</li>
-         <li id="AT4" data-order="4"><span class="category_bg store"></span>관광명소</li>
-         <li id="AD5" data-order="5"><span class="category_bg Attractions"></span> 숙박</li>
-      </ul>
-   </div>
-
-   <script type="text/javascript"
+	<button class="btn btn-lg btn-primary" style="margin:10px; padding:10px;" type="button" class="btn btn-sm btn-primary" onClick="location.href='/page/map2'">&nbsp;키워드 검색하러 가기&nbsp;</button>
+	<div class="map_wrap">
+		<div id="map" style="width: 100%; height: 90vh; position: relative; overflow: hidden;"></div>
+		<ul id="category">
+			<li id="BK9" data-order="0"><span class="category_bg bank"></span>은행</li>
+			<li id="CS2" data-order="1"><span class="category_bg mart"></span>마트</li>
+			<li id="PM9" data-order="2"><span class="category_bg pharmacy"></span>약국</li>
+			<li id="CT1" data-order="3"><span class="category_bg fun"></span>문화시설</li>
+			<li id="AT4" data-order="4"><span class="category_bg store"></span>관광명소</li>
+			<li id="AD5" data-order="5"><span class="category_bg Attractions"></span>숙박</li>
+		</ul>
+	</div>
+	
+<script type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fd8866ad623c48904091d8acb42a7829&libraries&libraries=services"></script>
    <script>
    if (navigator.geolocation) {
