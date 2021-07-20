@@ -33,9 +33,9 @@
                 <article class="login__form__container">
                    <!--로그인 폼-->
                    <div class="login__form">
-                        <h1><a href="/page/index" ><img src="${pageContext.request.contextPath}/resources/images/sky.png" alt=""></a></h1>
+                        <h1><a href="/" ><img src="${pageContext.request.contextPath}/resources/images/sky.png" alt=""></a></h1>
                         <!--로그인 인풋-->
-                        <form class="login__input" action="/page/getID" method="post"id="signFrm">
+                        <form class="login__input" action="/auth/getID" method="post"id="signFrm">
                             <input type="text" name="name" placeholder="이름" id="name">
                        		<input type="email" class="email_input" name="email" required="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)?$/i" placeholder="이메일"id="email">
                             <input type="submit" class="findID" id = "signUp"value="아이디 찾기" >

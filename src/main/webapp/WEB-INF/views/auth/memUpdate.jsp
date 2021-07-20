@@ -35,7 +35,7 @@
                             <input type="email" name="email" id="email" value="${user.email}" disabled>
                             <input type="text" name="phone" id="phone" placeholder="전화번호" value="${user.phone}" required="required" style="background-color:#ccffff;">
                             <br><input type="button" id="loginUp" value="정보 수정 완료">
-                            <br><a href="${pageContext.request.contextPath}/page/memPWUpdate"><input type="button" id="pu" value="비밀번호 변경&nbsp;&nbsp;"></a><br>
+                            <br><a href="${pageContext.request.contextPath}/auth/memPWUpdate"><input type="button" id="pu" value="비밀번호 변경&nbsp;&nbsp;"></a><br>
                         </form>
                         <!--회원수정 인풋end-->
                     </div>

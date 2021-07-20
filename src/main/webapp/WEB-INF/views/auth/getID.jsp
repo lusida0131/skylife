@@ -33,8 +33,7 @@
                 <article class="login__form__container">
                    <!--로그인 폼-->
                    <div class="login__form">
-                        <h1><a href="/page/index" ><img src="${pageContext.request.contextPath}/resources/images/sky.png" alt=""></a></h1>
-                        
+                        <h1><a href="/" ><img src="${pageContext.request.contextPath}/resources/images/sky.png" alt=""></a></h1>
                         <!--로그인 인풋-->
                         <form class="login__input" action="/auth/loginForm" method="post"id="signFrm">
                             <div class="w3-center">

@@ -176,15 +176,15 @@ public class skylifeJoinController {
 
 	////////////////////////////////////////////////////////
 	// 회원 목록
-	@RequestMapping(value = "/page/memView", method = RequestMethod.GET)
+	@RequestMapping(value = "/auth/memView", method = RequestMethod.GET)
 	public String memView() throws Exception {
-		return "/page/memView";
+		return "/auth/memView";
 	}
 
 	// 회원 수정폼
-	@RequestMapping(value = "/page/memUpdate", method = RequestMethod.GET)
+	@RequestMapping(value = "/auth/memUpdate", method = RequestMethod.GET)
 	public String memUpdateView() throws Exception {
-		return "/page/memUpdate";
+		return "/auth/memUpdate";
 	}
 
 	// 회원 수정 기능
@@ -196,7 +196,7 @@ public class skylifeJoinController {
 	        PrintWriter out = response.getWriter();
 	        out.println("<script>alert('정보가 맞지 않습니다.'); </script>");
 	        out.flush();
-			return "/page/memView";
+			return "/auth/memView";
 		}
 		
 		service.memUpdate(vo);
@@ -207,9 +207,9 @@ public class skylifeJoinController {
 	}
 	
 	// 회원 정보 중 비밀번호 수정 기능
-	@GetMapping("/page/memPWUpdate")
+	@GetMapping("/auth/memPWUpdate")
 	public String memPWUpdate() {
-		return "/page/memPWUpdate";
+		return "/auth/memPWUpdate";
 	}
 	// 회원 정보 중 비밀번호 수정 기능
 	@RequestMapping(value = "/memPWUpdate", method = RequestMethod.POST)
@@ -222,7 +222,7 @@ public class skylifeJoinController {
 	        PrintWriter out = response.getWriter();
 	        out.println("<script>alert('정보가 맞지 않습니다.'); </script>");
 	        out.flush();
-			return "/page/memView";
+			return "/auth/memView";
 		}
 
 		String hashedPw = BCrypt.hashpw(request.getParameter("pw2"), BCrypt.gensalt());
@@ -249,9 +249,9 @@ public class skylifeJoinController {
 
 	///////////////////////////////////////////////////////////
 	// 아이디/비밀번호 찾기
-	@GetMapping("/page/findPw")
+	@GetMapping("/auth/findPw")
 	public String findPw() throws Exception {
-		return "/page/findPw";
+		return "/auth/findPw";
 	}
 
 	// 임시 비밀번호 전송 폼
@@ -294,16 +294,16 @@ public class skylifeJoinController {
 	}
 
 	// 아이디 찾기
-	@GetMapping("/page/findID")
+	@GetMapping("/auth/findID")
 	public String findID() throws Exception {
-		return "/page/findID";
+		return "/auth/findID";
 	}
 
 	// 아이디 찾기
-	@PostMapping("/page/getID")
+	@PostMapping("/auth/getID")
 	public String getID(HttpServletResponse response, @RequestParam("email") String email, Model md) throws Exception {
 		md.addAttribute("id", service.findID(response, email));
-		return "/page/getID";
+		return "/auth/getID";
 	}
 
 	// 관리회원 목록

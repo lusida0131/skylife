@@ -26,7 +26,7 @@
 						<h1><a href="/"><img src="${pageContext.request.contextPath}/resources/images/sky.png" alt=""></a></h1>
 						<!--로고end-->
 						<!--회원수정 인풋-->
-						<form class="login__input" action="${pageContext.request.contextPath}/page/memUpdate" method="get" id="loginFrm" name="loginFrm">
+						<form class="login__input" action="${pageContext.request.contextPath}/auth/memUpdate" method="get" id="loginFrm" name="loginFrm">
 							<input type="text" name="id" id="id" value="${user.id}" disabled> 
 							<input type="text" name="name" id="name" value="${user.name}" disabled> 
 							<input type="date" name="bday" id="bday" value="${user.bday}" disabled> 
