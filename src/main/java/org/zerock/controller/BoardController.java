@@ -125,55 +125,5 @@ public class BoardController {
 		return "redirect:/board/board";
 	}
 	
-	/*************************** 파일 업로드 **********************************/
-	// bean의 id가 uploadPath인 태그를 참조
-	@Resource(name="uploadPath")
-	String uploadPath;
-	
-	@RequestMapping(value="/fileTest/fileupload2", method=RequestMethod.GET)
-    public String fileupload() {
-        return "fileUpload/fileupload2";
-    }
-	
-	// 업로드 흐름 : 업로드 버튼을 클릭 -> 임시디렉토리에 업로드 => 지정된 디렉토리에 저장  => 파일정보가 file에 저장
-	@RequestMapping(value="/fileTest/fileupload", method=RequestMethod.POST)
-	public ModelAndView uploadForm(MultipartFile file, ModelAndView mav, SfileVO fvo) throws Exception {
-		
-		log.info("파일 이름 : " + file.getOriginalFilename());
-		log.info("파일 크기 : " + file.getSize());
-		log.info("컨텐츠 타입 : " + file.getContentType());
-		
-		String fileName = file.getOriginalFilename();
-		
-		// 업로드 폴더 생성
-		if(!new File(uploadPath).exists()) {
-			new File(uploadPath).mkdirs();
-		}
-		
-		// 파일이름 중복 방지
-		UUID uuid = UUID.randomUUID();
-		fileName = uuid.toString() + "_" + fileName;
-		
-		// 파일 저장
-		File savefile = new File(uploadPath, fileName);
-		try {
-		// FileCopyUtils.copy(바이트배열, 파일객체)
-		file.transferTo(savefile);
-		mav.addObject("file", file);
-		fvo.setUuid(uuid.toString());
-		fvo.setUploadPath(uploadPath);
-		fvo.setFileName(fileName);
-		} catch (Exception e) {
-			e.printStackTrace();
-			mav.addObject("file", "error");
-		}
-		
-		// View 위치 설정
-		mav.setViewName("fileUpload/fileupload");
-		mav.addObject("fileName", fileName);
-		
-		// 업로드 결과화면으로 포워딩
-		fservice.insert(fvo);
-		return mav;
-	}
+
 }
