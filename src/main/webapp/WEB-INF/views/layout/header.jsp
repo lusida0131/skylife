@@ -104,7 +104,7 @@
 							<li class="active"><a href="/page/flight">항공편</a></li>
 							<li><a href="#" class="fh5co-sub-ddown">서비스</a>
 								<ul class="fh5co-sub-menu">
-									<li><a href="/page/map">지도</a></li>
+									<li><a href="/map/map">지도</a></li>
 									<li><a href="/Park/park">주차장</a></li>
 								</ul>
 							</li>

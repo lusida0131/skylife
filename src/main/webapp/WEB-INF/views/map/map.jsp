@@ -2,7 +2,7 @@
 <%@ include file="../layout/header.jsp"%>
 
 
-	<button class="btn btn-lg btn-primary" style="margin:10px; padding:10px;" type="button" class="btn btn-sm btn-primary" onClick="location.href='/page/map2'">&nbsp;키워드 검색하러 가기&nbsp;</button>
+	<button class="btn btn-lg btn-primary" style="margin:10px; padding:10px;" type="button" class="btn btn-sm btn-primary" onClick="location.href='/map/map2'">&nbsp;키워드 검색하러 가기&nbsp;</button>
 	 <input type="button" class="btn btn-lg btn-primary" id="roadviewControl" onclick="setRoadviewRoad()" value="현재위치 확인" />
 	
 	<div class="map_wrap">
