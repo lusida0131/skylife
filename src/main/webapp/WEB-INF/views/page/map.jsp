@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 
-<a href="/page/map2">위치 검색 하러가기</a>
+
+	<span><button style="padding: 10px;" type="button" class="btn btn-sm btn-primary" onClick="location.href='/page/map2'">카테고리 검색하기</button></span>
 <p style="margin-top: -12px"></p>
    <div class="map_wrap">
       <div id="map"
