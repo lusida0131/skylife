@@ -42,7 +42,7 @@ public class AdminController {
 	// 관리자 페이지
 	@GetMapping("/auth/admin")
 	public String admin1() {
-		return "/auth/admin";
+		return "/admin/admin";
 	}
 
 	//게시판 수정

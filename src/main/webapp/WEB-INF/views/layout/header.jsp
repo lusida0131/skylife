@@ -108,7 +108,7 @@
 									<li><a href="/Park/park">주차장</a></li>
 								</ul>
 							</li>
-							<li><a href="/page/board">게시판</a></li>
+							<li><a href="/board/board">게시판</a></li>
 							<li><a href="/page/public">공지사항</a></li>
 							<li><a href="#" class="fh5co-sub-ddown">Menu</a>
 								<c:set var="name" value="${user.id}"/>

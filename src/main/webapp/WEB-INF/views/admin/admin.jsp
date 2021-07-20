@@ -15,7 +15,7 @@
 		<span><button style="width:300px; height:30pt;" type="button" class="btn btn-sm btn-primary" onClick="location.href='/admin/member_list'">회원 목록 보기 </button></span><br><br>
 		<span><button style="width:300px; height:30pt;" type="button" class="btn btn-sm btn-primary" onClick="location.href='/admin/money_list'">회원 매출 보기</button></span><br><br>
 		<span><button style="width:300px; height:30pt;" type="button" class="btn btn-sm btn-primary" onClick="location.href='/pub/public'">공지사항 등록/수정</button></span><br><br>
-		<span><button style="width:300px; height:30pt;" type="button" class="btn btn-sm btn-primary" onClick="location.href='/page/board'">게시판 수정</button></span><br><br>
+		<span><button style="width:300px; height:30pt;" type="button" class="btn btn-sm btn-primary" onClick="location.href='/board/board'">게시판 수정</button></span><br><br>
 </div>
 </body>
 </html>

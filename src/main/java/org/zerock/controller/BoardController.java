@@ -54,7 +54,7 @@ public class BoardController {
 	SfileService fservice;
 	
 	// 게시글 리스트
-	@GetMapping("/page/board")
+	@GetMapping("/board/board")
 	public void boardList(Criteria cri, Model model) {
 		log.info("list..." + cri);
 		model.addAttribute("list", service.list(cri));	// 게시글 목록
@@ -72,7 +72,7 @@ public class BoardController {
 	@GetMapping("/page/boardWrite")
 	public String write(@ModelAttribute skylifeVO vo) {
 		log.info("board write button click");
-		return "/page/boardWrite";
+		return "/board/boardWrite";
 	}
 	// 게시글 작성
 	@PostMapping("/page/boardWrite")
@@ -80,7 +80,7 @@ public class BoardController {
 		service.insert(vo);
 		log.info("write success: " + vo);
 		
-		return "redirect:/page/board";
+		return "redirect:/board/board";
 	}
 	
 	// 게시글 조회
@@ -96,7 +96,7 @@ public class BoardController {
 		model.addAttribute("replyData", replyData);
 		log.info("reply: " + replyData);;
 
-		return "/page/boardView";
+		return "/board/boardView";
 	}
 		
 
@@ -113,7 +113,7 @@ public class BoardController {
 		service.update(vo);
 		log.info("update success: " + vo);
 		
-		return "redirect:/page/board";
+		return "redirect:/board/board";
 	}
 
 	
@@ -122,7 +122,7 @@ public class BoardController {
 	public String delete(@RequestParam int b_num) throws Exception {
 		service.delete(b_num);
 		
-		return "redirect:/page/board";
+		return "redirect:/board/board";
 	}
 	
 	/*************************** 파일 업로드 **********************************/
