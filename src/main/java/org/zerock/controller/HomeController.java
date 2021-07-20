@@ -31,28 +31,17 @@ public class HomeController {
         return "Park/park";
     }
     
-    @GetMapping("/page/map")
+    @GetMapping("/map/map")
     public String map() throws Exception {
-        return "page/map";
+        return "map/map";
     }
-    @GetMapping("/page/map2")
+    @GetMapping("/map/map2")
     public String map2() throws Exception {
-        return "page/map2";
+        return "map/map2";
     }
-    @GetMapping("/page/map3")
-    public String map3() throws Exception {
-        return "page/map3";
-    }
+
     @GetMapping("/page/public")
     public String pub() throws Exception {
         return "redirect:/pub/public";
     }
-    @GetMapping("/page/map4")
-    public String map4() throws Exception {
-        return "page/map4";
-    }
-    @GetMapping("/page/map5")
-    public String map5() throws Exception {
-        return "page/map5";
-    }
-}
+ }
