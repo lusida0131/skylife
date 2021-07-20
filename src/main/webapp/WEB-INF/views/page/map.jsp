@@ -169,7 +169,7 @@
 
       // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
       function addMarker(position, order) {
-         /*    var imageSrc = "${pageContext.request.contextPath}/resources/images/image.png" */
+
          // 좌표값 사진
          var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png' // 마커 이미지 url, 스프라이트 이미지를 씁니다
          imageSize = new kakao.maps.Size(27, 28), // 마커 이미지의 크기
@@ -261,6 +261,7 @@
             el.className = 'on';
          }
       }
+      
    </script>
 
 <%@ include file="../layout/footer.jsp"%>
