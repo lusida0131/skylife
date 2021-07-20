@@ -164,7 +164,7 @@
                places[i].x), order);
 
          // 마커와 검색결과 항목을 클릭 했을 때
-         // 장소정보를 표출하도록 클릭 이벤트를 등록합니다
+         // 장소정보를 표출하도록 클릭 이벤트를등록합니다
          (function(marker, place) {
             kakao.maps.event.addListener(marker, 'click', function() {
 

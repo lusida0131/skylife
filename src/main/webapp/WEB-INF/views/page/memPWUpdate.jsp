@@ -31,8 +31,8 @@
                             <input type="password" name="pw1" id="pw1" placeholder="현재 비밀번호" style="background-color:#ccffff;">
                             <input type="password" name="pw2" id="pw2" placeholder="변경할 비밀번호" style="background-color:#ccffff;">
                             <input type="password" name="pw3" id="pw3" placeholder="변경 비밀번호 확인" style="background-color:#ccffff;">
-                            <br><br><!-- <input type="button" id="puBtn" name="puBtn" value="비밀번호 변경"> -->
-                           <button name="puBtn">비밀번호 변경</button> <br>
+                            <br><br><input type="button" id="puBtn" name="puBtn" value="비밀번호 변경">
+                            <!-- <button name="puBtn">비밀번호 변경</button> --> <br>
                         </form>
                         <!--회원수정 인풋end-->
                     </div>
@@ -59,7 +59,7 @@
 				alert("변경할 비밀번호 확인용을 입력해주세요.");
 				$('#pw3').focus();
 				return;
-			} else if ($.trim($('#pw2').val() === $.trim($('#pw3').val())) {
+			} else if ($.trim($('#pw2').val()) != $.trim($('#pw3').val())) {
 				alert("변경할 비밀번호가 일치하지 않습니다.");
 				$('#pw2').focus();
 				return;
