@@ -103,7 +103,7 @@
 							<li class="one-forth text-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/WJU.jpg); border: 1px solid;">
 								<a href="/Park/WJUList">
 									<div class="case-studies-summary">
-										<br><br><br><br><br><br>
+										<br><br><br><br><br>
 										<span>실시간 주차정보 >></span>
 									</div>
 								</a>
