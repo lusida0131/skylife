@@ -255,7 +255,7 @@ public class skylifeJoinController {
 	}
 
 	// 임시 비밀번호 전송 폼
-	@RequestMapping(value = "page/emailPW", method = RequestMethod.GET)
+	@RequestMapping(value = "/auth/emailPW", method = RequestMethod.GET)
 	@ResponseBody
 	public String FindEmail(String email, skylifeVO vo, RedirectAttributes redirectAttributes) throws Exception {
 		/* 난수 생성 */

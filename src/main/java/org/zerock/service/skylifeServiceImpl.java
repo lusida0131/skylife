@@ -75,7 +75,7 @@ public class skylifeServiceImpl implements skylifeService{
 	// 아이디 찾기
 	@Override
 	public String findID(HttpServletResponse response, String email) throws Exception {
-		response.setContentType("texk/html;charset=ftf-8");
+		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		String id = mapper.findID(email);
 		

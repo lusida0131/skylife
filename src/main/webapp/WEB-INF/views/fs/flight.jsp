@@ -102,7 +102,7 @@
 							<div class="desc2 animate-box">
 								<div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1" style="padding-right:20px;">
 									<p>Developed by <a href="https://github.com/lusida0131/skylife" target="_blank" class="fh5co-site-name">SkyLife.git</a></p>
-									<h2>SkyLife와 함께 여행 준비를 시작하세요.</h2><br>
+									<h2>SkyLife와 함께 <br>여행 준비를 시작하세요.</h2><br>
 									<h3>원하는 날짜와 여행지를 선택하여, 최적의 항공편을 확인해보세요.</h3>
 									<!-- <span class="price">$599</span> -->
 									<!-- <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p> -->

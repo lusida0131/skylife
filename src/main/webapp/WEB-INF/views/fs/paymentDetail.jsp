@@ -44,7 +44,7 @@
 										2021-06-27 <br>
 										GANGSEO, SEOUL <br>
 										KOREA <br>
-										<a href="#">skylife@gmail.com</a>
+										<a href="#">skylifekorea@gmail.com</a>
 									</p>
 								</div>
 							</div>
