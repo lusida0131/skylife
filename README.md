@@ -92,7 +92,7 @@
    
   ### <p align="center"> :point_up_2: 구현기능 : 3 </p>
  ---
- 승준이잉이이이이
+
    <img src="https://user-images.githubusercontent.com/78531061/126111918-303108c2-3f4a-46de-9782-7dde2a188caa.gif" width="100%">
    
    ### <p align="center"> :point_up_2: 구현기능 : 4 </p>
