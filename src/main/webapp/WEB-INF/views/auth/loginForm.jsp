@@ -45,8 +45,8 @@
 						</form>
 						
 						<div style="margin:3px;">
-							<a href="${pageContext.request.contextPath}/page/findID">ID 찾기</a>&nbsp;
-							<a href="${pageContext.request.contextPath}/page/findPw">PW 찾기</a>
+							<a href="${pageContext.request.contextPath}/auth/findID">ID 찾기</a>&nbsp;
+							<a href="${pageContext.request.contextPath}/auth/findPw">PW 찾기</a>
 						</div>
 						<!--로그인 인풋end-->
 
