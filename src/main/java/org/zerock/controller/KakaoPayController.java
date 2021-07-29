@@ -43,8 +43,7 @@ public class KakaoPayController {
 	// 카카오페이 결제 1
     @RequestMapping(value="/kakaoPay", method=RequestMethod.POST)
     public String kakaoPay(OrderVO ovo, HttpServletResponse resp) throws IOException {
-        log.info("kakaoPay post start..........");
-        log.info("ovo: " + ovo);
+        log.info("...kakaoPay post start.....  ovo: " + ovo);
         
         return "redirect:" + kakaopay.kakaoPayReady(ovo);
     }
@@ -52,8 +51,7 @@ public class KakaoPayController {
     // 카카오페이 결제 2
     @GetMapping("/kakaoPaySuccess")
     public void kakaoPaySuccess(@RequestParam("pg_token") String pg_token, HttpSession session, Model model) {
-        log.info("kakaoPaySuccess get..........");
-        log.info("pg_token: " + pg_token);
+        log.info("...kakaoPaySuccess get.....  pg_token: " + pg_token);
         
         String str = String.valueOf(session.getAttribute("user"));
     	String[] arr = str.split(", ");

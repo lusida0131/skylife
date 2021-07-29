@@ -68,24 +68,15 @@ public class FlightServiceImpl implements FlightService{
 		
 		ArrayList<FlightVO> list = new ArrayList<FlightVO>();
 		
-		// URL
-		StringBuilder urlBuilder = new StringBuilder("http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList");
-		// Service Key
-		urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=E7TR7GkGB3YlWwOR8BSGYwtixVpS2cWRFjy4QGwrUCYwfQDoxoiNyg8jBvpJaBL4li1G1zDarq9S%2BZpgqa8KZg%3D%3D");
-		// 한 페이지 결과 수
-		urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("30", "UTF-8"));
-		// 페이지 번호
-		urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(String.valueOf(pageNum), "UTF-8"));
-		// 출발공항ID
-		urlBuilder.append("&" + URLEncoder.encode("depAirportId","UTF-8") + "=" + URLEncoder.encode(daID, "UTF-8"));
-		// 도착공항ID
-		urlBuilder.append("&" + URLEncoder.encode("arrAirportId","UTF-8") + "=" + URLEncoder.encode(aaID, "UTF-8"));
-		// 출발일
-		urlBuilder.append("&" + URLEncoder.encode("depPlandTime","UTF-8") + "=" + URLEncoder.encode(dpTime, "UTF-8"));
-		// 항공사ID
-		urlBuilder.append("&" + URLEncoder.encode("airlineId","UTF-8") + "=" + URLEncoder.encode(airline, "UTF-8"));
-		// json type return
-		urlBuilder.append("&" + URLEncoder.encode("_type","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
+		StringBuilder urlBuilder = new StringBuilder("http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList"); // URL
+		urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=E7TR7GkGB3YlWwOR8BSGYwtixVpS2cWRFjy4QGwrUCYwfQDoxoiNyg8jBvpJaBL4li1G1zDarq9S%2BZpgqa8KZg%3D%3D"); // Service Key
+		urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("30", "UTF-8"));// 한 페이지 결과 수
+		urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(String.valueOf(pageNum), "UTF-8")); // 페이지 번호
+		urlBuilder.append("&" + URLEncoder.encode("depAirportId","UTF-8") + "=" + URLEncoder.encode(daID, "UTF-8")); // 출발공항ID
+		urlBuilder.append("&" + URLEncoder.encode("arrAirportId","UTF-8") + "=" + URLEncoder.encode(aaID, "UTF-8")); // 도착공항ID
+		urlBuilder.append("&" + URLEncoder.encode("depPlandTime","UTF-8") + "=" + URLEncoder.encode(dpTime, "UTF-8")); // 출발일
+		urlBuilder.append("&" + URLEncoder.encode("airlineId","UTF-8") + "=" + URLEncoder.encode(airline, "UTF-8")); // 항공사ID
+		urlBuilder.append("&" + URLEncoder.encode("_type","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8")); // json type return
 	    
 	    URL url = new URL(urlBuilder.toString());
 	    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -108,7 +99,6 @@ public class FlightServiceImpl implements FlightService{
 	    rd.close();
 	    conn.disconnect();
 	    
-	    
 	    //========================= (list code) =========================
 	    
 	    String jsonString = sb.toString();
@@ -130,8 +120,7 @@ public class FlightServiceImpl implements FlightService{
 	    String numOfRows = Integer.toString(bodyObject.getInt("numOfRows"));
 	    String pageNo = Integer.toString(bodyObject.getInt("pageNo"));
 	    String totalCount = Integer.toString(bodyObject.getInt("totalCount"));
-	    System.out.println("(body)numOfRows: " + numOfRows + 
-	    					"  (body)pageNo: " + pageNo + "  (body)totalCount: " + totalCount);
+	    System.out.println("(body)numOfRows: " + numOfRows + "  (body)pageNo: " + pageNo + "  (body)totalCount: " + totalCount);
 	    
 	    if(totalCount.equals("0")) {
 	    	System.out.println("존재하지 않는 항공편. 항공편 개수: " + totalCount);
@@ -146,7 +135,6 @@ public class FlightServiceImpl implements FlightService{
 	    	
 	    	FlightVO svo = new FlightVO();
 	    	JSONObject iobj = itemArray.getJSONObject(i);
-	    	//System.out.println("iobj(" + i + "): " + iobj.toString());
 	        
 	    	// 항공편명
 	        svo.setVihicleId(iobj.getString("vihicleId"));
@@ -177,14 +165,10 @@ public class FlightServiceImpl implements FlightService{
 	        svo.setPageNo(Integer.parseInt(pageNo));
 	        svo.setTotalCount(Integer.parseInt(totalCount));
 	        
-	        //System.out.println(i + "번째 item: " + svo);
-	        
 	        list.add(svo);
-	        
 	    }
 	    
 	    return list;
 	}
 
-	
 }

@@ -52,17 +52,17 @@ public class KakaoPay {
         
         MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();
         body.add("cid", "TC0ONETIME");										// (String) test code, 가맹점코드
-        body.add("partner_order_id", "SkyLife_oi");							// (String) 가맹점 주문번호, 최대 100자
-        body.add("partner_user_id", ovo.getId());							// (String) 가맹점 회원 id, 최대 100자
-        body.add("item_name", itemName);									// (String) 상품명, 최대 100자
-        body.add("item_code", itemCode);									// (String) 상품코드, 최대 100자
+        body.add("partner_order_id", "SkyLife_oi");							// (String) 가맹점 주문번호
+        body.add("partner_user_id", ovo.getId());							// (String) 가맹점 회원 id
+        body.add("item_name", itemName);									// (String) 상품명
+        body.add("item_code", itemCode);									// (String) 상품코드
         body.add("quantity", String.valueOf(quantity));						// (int) 상품 수량
         body.add("total_amount", String.valueOf(totalAmount));				// (int) 상품 총액
         body.add("tax_free_amount", "0");									// (int) 상품 비과세 금액
         body.add("approval_url", "http://localhost:8080/kakaoPaySuccess");	// (String) 결제 성공시 url
         body.add("cancel_url", "http://localhost:8080/kakaoPayCancel");		// (String) 결제 취소시 url
         body.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");	// (String) 결제 실패시 url
-        body.add("install_month", String.valueOf(installMonth));			// (int) 카드 할부개월, 0~12
+        body.add("install_month", String.valueOf(installMonth));			// (int) 카드 할부개월
         
         HttpEntity<MultiValueMap<String, String>> param = new HttpEntity<MultiValueMap<String, String>>(body, header);
  

@@ -39,7 +39,6 @@
 							<div id="collapse${cnt}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${cnt}">
 								<div class="panel-body">
 									<form method="post" action="/kakaoPay" id="searchFrm">
-										<%-- <p>This is 간단한 내용. write here. (${count})</p> --%>
 										<div style="float: right; margin-bottom: 30px; margin-top: 10px;">
 											<button name="payBtn" style="border: 0px; background-color: rgba(0,0,0,0);">
 										    	<img src="${pageContext.request.contextPath}/resources/images/payment_icon_yellow_small.png">

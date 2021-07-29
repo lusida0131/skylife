@@ -13,9 +13,7 @@
 				<h1>항공편 검색 목록</h1>
 				<fmt:parseDate value="${fhlist.startDate}" var="sdate" pattern="yyyyMMdd" />
 				<fmt:formatDate value="${sdate}" var="fhSdate" pattern="MM/dd/yyyy" />
-				<h4 style="text-align: center;">
-					검색 일자 : &nbsp;&nbsp;<fmt:formatDate value="${sdate}" pattern="yyyy년 MM월 dd일 (E)" />&nbsp;&nbsp;&nbsp;&nbsp;${fhlist.endPN_ko}행
-				</h4>
+				<h4 style="text-align: center;">검색 일자 : &nbsp;&nbsp;<fmt:formatDate value="${sdate}" pattern="yyyy년 MM월 dd일 (E)" />&nbsp;&nbsp;&nbsp;&nbsp;${fhlist.endPN_ko}행</h4>
 				<div class="row" style="text-align:center; margin:40px 0px 40px 0px;">
 					<form id="flightFrm" name="flightFrm" action="/fs/searchFlight" method="post">
 						<input type="hidden" value="${fhlist.startPortName}" name="from_place" id="from_place"/>
@@ -59,9 +57,9 @@
 								<h4 class="panel-title">
 									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${count}" aria-expanded="true" aria-controls="collapse${count}">
 										<div>
-										<span style="float: left;"><img height="20" width="20" src="${pageContext.request.contextPath}/resources/images/airplane.png">&nbsp;
-										${list.airlineNm}&nbsp;&nbsp;&nbsp;&nbsp;₩&nbsp; <fmt:formatNumber value="${list.economyCharge}" pattern="#,###,###" /></span>
-										<span style="float: right;">${list.depAirportNm} (<fmt:formatDate value="${depTime}" pattern="HH시mm분" />) -> ${list.arrAirportNm} (<fmt:formatDate value="${arrTime}" pattern="HH시mm분" />)</span>&nbsp;
+											<span style="float: left;"><img height="20" width="20" src="${pageContext.request.contextPath}/resources/images/airplane.png">&nbsp;
+											${list.airlineNm}&nbsp;&nbsp;&nbsp;&nbsp;₩&nbsp; <fmt:formatNumber value="${list.economyCharge}" pattern="#,###,###" /></span>
+											<span style="float: right;">${list.depAirportNm} (<fmt:formatDate value="${depTime}" pattern="HH시mm분" />) -> ${list.arrAirportNm} (<fmt:formatDate value="${arrTime}" pattern="HH시mm분" />)</span>&nbsp;
 										</div>
 									</a>
 								</h4>
@@ -116,7 +114,7 @@
 					<div style="text-align: center; margin-top: 30px;">
 						<c:set var="pNum" value="${fhlist.pageNo}"/>
 						<c:set var="toCnt" value="${fhlist.totalCount}"/>
-						<c:if test="${pNum > 1}"><%-- <c:if test="${(pNum+1)*30 > toCnt - pNum*30}"> --%>
+						<c:if test="${pNum > 1}">
 							<form method="post" action="/fs/flightPage" id="pbFrm" style="display:inline;">
 								<input type="hidden" value="${fhlist.startPortName}" name="spn" id="spn"/>
 								<input type="hidden" value="${fhlist.endPortName}" name="epn" id="epn"/>
@@ -126,7 +124,7 @@
 								<input type="hidden" value="${fhlist.totalCount}" name="spn" id="toCnt"/>
 								<input type="submit" name="backBtn" style="margin:10px;" value="이전"/>
 							</form>
-						</c:if><%-- </c:if> --%>
+						</c:if>
 						<fmt:parseNumber var="tCnt" integerOnly="true" value="${(toCnt/30)+(1-((toCnt/30)%1))%1}"/>
 						<span> ${pNum} / ${tCnt} </span>
 						<c:if test="${pNum*30 < toCnt}">
@@ -163,7 +161,6 @@
 	
 		$(document).ready(function(e){
 			$('#flightBtn').click(function(){
-				
 				if($.trim($('#airline').val()) === "") {
 				    $('#airline').focus();
 					alert("항공사를 선택해주세요.");
@@ -175,6 +172,7 @@
 		});
 
 	</script>		
+
 
 
 <%@ include file="../layout/footer.jsp"%>

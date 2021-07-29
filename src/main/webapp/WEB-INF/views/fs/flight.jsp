@@ -11,7 +11,7 @@
 							<div class="col-sm-5 col-md-5" style="margin-top: 60px;">
 								<div class="tabulation animate-box">
 									<div class="tab-content">
-									
+										<!-- form start -->
 										<form id="flightFrm" name="flightFrm" action="/fs/searchFlight" method="post">
 											 <div role="tabpanel" class="tab-pane active" id="flights">
 												<div class="row">
@@ -66,7 +66,6 @@
 															<div class="input-field">
 																<label for="date-start" style="margin-bottom: 10px;">출발일 (필수)</label>
 																<input type="text" class="form-control date_controll" id="date-start" name="date_start" placeholder="yyyymmdd"/>
-																
 															</div>
 														</div>
 													</div>
@@ -94,21 +93,19 @@
 												</div>
 											 </div>
 										 </form> 
-										 
+										 <!-- form end -->
 									</div>
 								</div>
 							</div>
-							
+							<!-- main text start -->
 							<div class="desc2 animate-box">
 								<div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1" style="padding-right:20px;">
 									<p>Developed by <a href="https://github.com/lusida0131/skylife" target="_blank" class="fh5co-site-name">SkyLife.git</a></p>
 									<h2>SkyLife와 함께 <br>여행 준비를 시작하세요.</h2><br>
 									<h3>원하는 날짜와 여행지를 선택하여, 최적의 항공편을 확인해보세요.</h3>
-									<!-- <span class="price">$599</span> -->
-									<!-- <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p> -->
 								</div>
 							</div>
-							
+							<!-- main text end -->
 						</div>
 					</div>
 				</div>
@@ -124,7 +121,7 @@
 						<p>SKYLIFE는 여행을 편하게 해줄 수 있는 여러 서비스들을 제공합니다.</p>
 					</div>
 				</div>
-				
+				<!-- service category start -->
 				<div id="fh5co-features" style="padding-top:15px; padding-bottom:15px;">
 					<div class="container">
 						<div class="row">
@@ -193,11 +190,11 @@
 						</div>
 					</div>
 				</div> 
-				
+				<!-- service category end -->
 			</div>
 		</div>
 		
-
+		<!-- park list start -->
 		<div class="container">
 			<div class="row" style="margin:20px;">
 				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box" style="margin-top:35px; margin-bottom:25px;">
@@ -305,36 +302,36 @@
 				</div>
 			</div>
 		</div>
+		<!-- park list end -->
 		
 		
-		<script type="text/javascript">
-		
-			$(document).ready(function(e){
-				$('#flightBtn').click(function(){
-					
-					if($.trim($('#from_place').val()) === "") {
-					    $('#from_place').focus();
-						alert("출발지를 입력해주세요.");
-					}
-					else if($.trim($('#to_place').val()) === "") {
-					    $('#to_place').focus();
-						alert("도착지를 입력해주세요.");
-					}
-					/* else if($.trim($('#date_start').val()) === "") {
-					    $('#date_start').focus();
-						alert("출발일을 입력해주세요.");
-					} 
-					else if($.trim($('#date_end').val()) === "") {
-					    $('#date_end').focus();
-						alert("도착일을 입력해주세요.");
-					} */
-					else {
-						$('#flightFrm').submit();
-					}
-				});
+	<script type="text/javascript">
+	
+		$(document).ready(function(e){
+			$('#flightBtn').click(function(){
+				if($.trim($('#from_place').val()) === "") {
+				    $('#from_place').focus();
+					alert("출발지를 입력해주세요.");
+				}
+				else if($.trim($('#to_place').val()) === "") {
+				    $('#to_place').focus();
+					alert("도착지를 입력해주세요.");
+				}
+				/* else if($.trim($('#date_start').val()) === "") {
+				    $('#date_start').focus();
+					alert("출발일을 입력해주세요.");
+				} 
+				else if($.trim($('#date_end').val()) === "") {
+				    $('#date_end').focus();
+					alert("도착일을 입력해주세요.");
+				} */
+				else {
+					$('#flightFrm').submit();
+				}
 			});
+		});
 
-		</script>
+	</script>
 		
 
 
