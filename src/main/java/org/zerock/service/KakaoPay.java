@@ -92,9 +92,8 @@ public class KakaoPay {
 
 	// 결제 완료 후 정보를 받아옴
     public KakaoPayApprovalVO kakaoPayInfo(String pg_token, String id) {
-    	 
-        System.out.println("KakaoPayInfo............................................");
-        System.out.println("kakaoPayInfo String id: " + id);
+    	
+        System.out.println("... KakaoPayInfo.....  kakaoPayInfo String id: " + id);
         
         RestTemplate restTemplate = new RestTemplate();
         
