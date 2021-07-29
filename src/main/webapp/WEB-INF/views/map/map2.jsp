@@ -63,7 +63,7 @@
     </div>
 </div>
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fd8866ad623c48904091d8acb42a7829&libraries=services,clusterer,drawing"></script>
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=myServiceKey&libraries=services,clusterer,drawing"></script>
 	<script>
 	var markers = [];
 	

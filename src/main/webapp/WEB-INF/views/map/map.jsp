@@ -18,7 +18,7 @@
 	</div>
 	
 <script type="text/javascript"
-      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fd8866ad623c48904091d8acb42a7829&libraries&libraries=services"></script>
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=myServiceKey&libraries&libraries=services"></script>
    <script>
 
    // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다

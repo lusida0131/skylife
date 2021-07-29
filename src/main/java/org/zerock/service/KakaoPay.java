@@ -46,7 +46,7 @@ public class KakaoPay {
         int installMonth = 1;
         
         HttpHeaders header = new HttpHeaders();
-        header.add("Authorization", "KakaoAK b13acc12ae82b6a10f628a48b0e3990d"); // admin key
+        header.add("Authorization", "KakaoAK myServiceKey"); // admin key
         header.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
         header.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
         
@@ -98,7 +98,7 @@ public class KakaoPay {
         RestTemplate restTemplate = new RestTemplate();
         
         HttpHeaders header = new HttpHeaders();
-        header.add("Authorization", "KakaoAK b13acc12ae82b6a10f628a48b0e3990d");	// admin key
+        header.add("Authorization", "KakaoAK myServiceKey");	// admin key
         header.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
         header.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
         

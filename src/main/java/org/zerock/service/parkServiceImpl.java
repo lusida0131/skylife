@@ -51,7 +51,7 @@ public class parkServiceImpl implements parkService {
 		StringBuilder urlBuilder = new StringBuilder(
 				"http://openapi.airport.co.kr/service/rest/AirportParking/airportparkingRT");
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
-				+ "=c1sNS0F8dzRRFujphkwtO4hhp5OmOL%2FM8ZD31ri59F0wB%2B3CtmKCGRzhXc43qEHoEvIdMERNztk0vvVjdNKOFA%3D%3D"); /*
+				+ "=myServiceKey"); /*
 																														 * Service
 																														 * Key
 																														 */
@@ -140,7 +140,7 @@ public class parkServiceImpl implements parkService {
 		StringBuilder urlBuilder = new StringBuilder(
 				"http://openapi.airport.co.kr/service/rest/AirportParking/airportparkingRT");
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
-				+ "=c1sNS0F8dzRRFujphkwtO4hhp5OmOL%2FM8ZD31ri59F0wB%2B3CtmKCGRzhXc43qEHoEvIdMERNztk0vvVjdNKOFA%3D%3D"); /*
+				+ "=myServiceKey"); /*
 																														 * Service
 																														 * Key
 																														 */
@@ -230,7 +230,7 @@ public class parkServiceImpl implements parkService {
 		StringBuilder urlBuilder = new StringBuilder(
 				"http://openapi.airport.kr/openapi/service/StatusOfParking/getTrackingParking"); /* URL */
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
-				+ "=c1sNS0F8dzRRFujphkwtO4hhp5OmOL%2FM8ZD31ri59F0wB%2B3CtmKCGRzhXc43qEHoEvIdMERNztk0vvVjdNKOFA%3D%3D"); /*
+				+ "=myServiceKey"); /*
 																														 * Service
 																														 * Key
 																														 */

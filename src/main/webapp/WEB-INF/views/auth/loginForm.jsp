@@ -63,7 +63,7 @@
 							<br>
 							<div class="g-signin2" data-width="240" data-longtitle="true" data-onsuccess="onSignIn" onclick="init();" id="google_login">
 							</div>
-							<a href="https://kauth.kakao.com/oauth/authorize?client_id=cef123d5f027968a178a756448ae5835&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code"><br>
+							<a href="https://kauth.kakao.com/oauth/authorize?client_id=myServiceKey&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code"><br>
 								<img src="/resources/images/kakao_login_medium_narrow.png">
 							</a>
 						</div>
@@ -142,7 +142,7 @@
 		gapi.load('auth2', function() {
 			console.log("init()시작");
 			auth2 = gapi.auth2.init({
-				client_id: '11264373594-v17ti619msdqg94fdh10l60c157u3tl5.apps.googleusercontent.com',
+				client_id: 'myServiceKey',
 				cookiepolicy: 'single_host_origin'
 			});
 			attachSignin(document.getElementById('google_login'));

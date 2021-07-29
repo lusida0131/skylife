@@ -69,7 +69,7 @@ public class FlightServiceImpl implements FlightService{
 		ArrayList<FlightVO> list = new ArrayList<FlightVO>();
 		
 		StringBuilder urlBuilder = new StringBuilder("http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList"); // URL
-		urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=E7TR7GkGB3YlWwOR8BSGYwtixVpS2cWRFjy4QGwrUCYwfQDoxoiNyg8jBvpJaBL4li1G1zDarq9S%2BZpgqa8KZg%3D%3D"); // Service Key
+		urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "myServiceKey"); // Service Key
 		urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("30", "UTF-8"));// 한 페이지 결과 수
 		urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(String.valueOf(pageNum), "UTF-8")); // 페이지 번호
 		urlBuilder.append("&" + URLEncoder.encode("depAirportId","UTF-8") + "=" + URLEncoder.encode(daID, "UTF-8")); // 출발공항ID
