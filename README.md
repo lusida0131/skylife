@@ -55,7 +55,7 @@
 
 ---
 
-# 📄 기능 구현 사항
+# 📄 기능 구현 사항 ([유튜브로 이동](https://www.youtube.com/watch?app=desktop&v=n38M9lNqI_4))
 ## 1. 메인 페이지    
   * ####  (1) 항공편, 주차장 조회   
    
