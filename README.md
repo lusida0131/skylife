@@ -10,9 +10,6 @@
 여행 지역의 정보를 공유할 수 있는 항공 예매 플랫폼 서비스를 만들고자 한다.
 </details>
 
->수정버전 [co_bye](https://github.com/seulda/co_bye)
-</details>
-
 ---
 
 
